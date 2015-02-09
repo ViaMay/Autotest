@@ -1,0 +1,50 @@
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.WebPages\bin\Debug\Autotests.WebPages.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.WebPages\bin\Debug\Autotests.WebPages.pdb
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.WebPages\bin\Debug\Autotests.Utilities.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.WebPages\bin\Debug\WebDriver.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.WebPages\bin\Debug\Autotests.Utilities.pdb
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.csprojResolveAssemblyReference.cache
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.pdb
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.WebPages\bin\Debug\CodeContracts\Autotests.WebPages.noReferenceAssembly
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.rewritten
+C:\Users\Виктория\Desktop\AA\Autotests\Autotests.WebPages\bin\Debug\CodeContracts\Autotests.WebPages.noReferenceAssembly
+C:\Users\Виктория\Desktop\AA\Autotests\Autotests.WebPages\bin\Debug\Autotests.WebPages.dll
+C:\Users\Виктория\Desktop\AA\Autotests\Autotests.WebPages\bin\Debug\Autotests.WebPages.pdb
+C:\Users\Виктория\Desktop\AA\Autotests\Autotests.WebPages\bin\Debug\Autotests.Utilities.dll
+C:\Users\Виктория\Desktop\AA\Autotests\Autotests.WebPages\bin\Debug\WebDriver.dll
+C:\Users\Виктория\Desktop\AA\Autotests\Autotests.WebPages\bin\Debug\Autotests.Utilities.pdb
+C:\Users\Виктория\Desktop\AA\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.csprojResolveAssemblyReference.cache
+C:\Users\Виктория\Desktop\AA\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.rewritten
+C:\Users\Виктория\Desktop\AA\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.dll
+C:\Users\Виктория\Desktop\AA\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.pdb
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.csprojResolveAssemblyReference.cache
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\bin\Debug\CodeContracts\Autotests.WebPages.noReferenceAssembly
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\bin\Debug\Autotests.WebPages.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\bin\Debug\Autotests.WebPages.pdb
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\bin\Debug\Autotests.Utilities.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\bin\Debug\log4net.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\bin\Debug\nunit.framework.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\bin\Debug\WebDriver.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\bin\Debug\WebDriver.Support.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\bin\Debug\Autotests.Utilities.pdb
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\bin\Debug\WebDriver.pdb
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\bin\Debug\WebDriver.xml
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.rewritten
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\May\Autotests\Autotests.WebPages\obj\Debug\Autotests.WebPages.pdb
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\bin\Debug\CodeContracts\Autotests.WebPages.noReferenceAssembly
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\bin\Debug\Autotests.WebPages.dll
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\bin\Debug\Autotests.WebPages.pdb
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\bin\Debug\Autotests.Utilities.dll
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\bin\Debug\log4net.dll
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\bin\Debug\nunit.framework.dll
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\bin\Debug\WebDriver.dll
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\bin\Debug\WebDriver.Support.dll
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\bin\Debug\Autotests.Utilities.pdb
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\bin\Debug\WebDriver.pdb
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\bin\Debug\WebDriver.xml
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\obj\Debug\Autotests.WebPages.csprojResolveAssemblyReference.cache
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\obj\Debug\Autotests.WebPages.rewritten
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\obj\Debug\Autotests.WebPages.dll
+C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.WebPages\obj\Debug\Autotests.WebPages.pdb

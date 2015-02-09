@@ -1,0 +1,13 @@
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\bin\Debug\Autotests.Suites.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\bin\Debug\Autotests.Suites.pdb
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\bin\Debug\Autotests.Utilities.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\bin\Debug\Autotests.WebPages.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\bin\Debug\WebDriver.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\bin\Debug\WebDriver.Support.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\bin\Debug\Autotests.Utilities.pdb
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\bin\Debug\Autotests.WebPages.pdb
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\obj\Debug\Autotests.Suites.csprojResolveAssemblyReference.cache
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\obj\Debug\Autotests.Suites.dll
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\obj\Debug\Autotests.Suites.pdb
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\bin\Debug\CodeContracts\Autotests.Suites.noReferenceAssembly
+C:\Users\Виктория\Documents\Visual Studio 2013\Projects\AA\Autotests\Autotests.Suites\obj\Debug\Autotests.Suites.rewritten

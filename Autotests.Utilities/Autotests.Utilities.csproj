@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{574C34F7-C509-42C5-9131-16B7B023113A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Autotests.Utilities</RootNamespace>
+    <AssemblyName>Autotests.Utilities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CONTRACTS_FULL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsDisjunctiveRequires>False</CodeContractsDisjunctiveRequires>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\Assemblies\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\Assemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver, Version=2.39.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support, Version=2.31.0.0, Culture=neutral, PublicKeyToken=1c2bd1631853048f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="WebTestCore\Pages\PageBase.cs" />
+    <Compile Include="WebTestCore\Pages\Timing\DefaultPageTimeStatistics.cs" />
+    <Compile Include="WebTestCore\Pages\Timing\IPageTimeStatistics.cs" />
+    <Compile Include="WebTestCore\Pages\Timing\PageTimeStatistics.cs" />
+    <Compile Include="WebTestCore\SystemControls\AlertControl.cs" />
+    <Compile Include="WebTestCore\SystemControls\AutocompleteControl.cs" />
+    <Compile Include="WebTestCore\SystemControls\Select.cs" />
+    <Compile Include="WebTestCore\SystemControls\ButtonInput.cs" />
+    <Compile Include="WebTestCore\SystemControls\LoaderControl.cs" />
+    <Compile Include="WebTestCore\TestSystem\BY.cs" />
+    <Compile Include="WebTestCore\TestSystem\ByExtensions\ByByAndManualCondition.cs" />
+    <Compile Include="WebTestCore\TestSystem\ByExtensions\ByModifiedIdOfHtmlContol.cs" />
+    <Compile Include="WebTestCore\TestSystem\ByExtensions\ByNthOfBy.cs" />
+    <Compile Include="WebTestCore\TestSystem\ByExtensions\ByNthOfClass.cs" />
+    <Compile Include="WebTestCore\TestSystem\BySelf.cs" />
+    <Compile Include="Core\Web\Controllers\ApplicationSettings.cs" />
+    <Compile Include="TestCore\ContainerCache.cs" />
+    <Compile Include="Core\Configuration.Settings\IApplicationSettings.cs" />
+    <Compile Include="Core\Configuration.Settings\Exception\InvalidSettingsFileException.cs" />
+    <Compile Include="WebTestCore\SystemControls\JsLogger.cs" />
+    <Compile Include="Core\Configuration.Settings\Implementation\KeyValueReader.cs" />
+    <Compile Include="WebTestCore\Utils\DoNotCleanAttribute.cs" />
+    <Compile Include="WebTestCore\Utils\FieldsCleaner.cs" />
+    <Compile Include="WebTestCore\Utils\FieldsCleanerCache.cs" />
+    <Compile Include="WebTestCore\Utils\Log4NetConfiguration.cs" />
+    <Compile Include="Core\Configuration.Settings\Implementation\PlainTextApplicationSettings.cs" />
+    <Compile Include="Core\Configuration.Settings\Exception\SettingsKeyNotFoundException.cs" />
+    <Compile Include="Core\Configuration.Settings\Implementation\TimeSpanParser.cs" />
+    <Compile Include="WebTestCore\TestSystem\ByExtensions\ChangeId\Actions\AppendSuffix.cs" />
+    <Compile Include="WebTestCore\TestSystem\ByExtensions\ChangeId\ChangeIdStrategy.cs" />
+    <Compile Include="WebTestCore\SystemControls\HtmlControl.cs" />
+    <Compile Include="WebTestCore\SystemControls\HtmlControlContainer.cs" />
+    <Compile Include="WebTestCore\SystemControls\HtmlControlExtensions.cs" />
+    <Compile Include="WebTestCore\TestSystem\ByExtensions\ChangeId\Actions\IChangeIdAction.cs" />
+    <Compile Include="WebTestCore\SystemControls\Link.cs" />
+    <Compile Include="WebTestCore\SystemControls\TextInput.cs" />
+    <Compile Include="WebTestCore\SystemControls\StaticControl.cs" />
+    <Compile Include="WebTestCore\SystemControls\StaticText.cs" />
+    <Compile Include="WebTestCore\TestSystem\ByExtensions\ChangeId\Actions\TrimSuffix.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebTestCore\TestSystem\PageLoadCounter.cs" />
+    <Compile Include="WebTestCore\TestSystem\Waiter.cs" />
+    <Compile Include="WebTestCore\TestSystem\WebDriverCache.cs" />
+    <Compile Include="WebTestCore\TestSystem\WebDriverDownloadDirectory.cs" />
+    <Compile Include="WebTestCore\TestSystem\WebDriverWrapper.cs" />
+    <Compile Include="WebTestCore\TestSystem\WebElementWrapper.cs" />
+    <Compile Include="WebTestCore\WebDriverFunctionalTestBase.cs" />
+    <Compile Include="WebWorms\FuncTests\CommonPageBase.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
