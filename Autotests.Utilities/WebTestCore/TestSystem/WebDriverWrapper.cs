@@ -39,10 +39,6 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
                     {"http://*,*", new {plugins = 1}}
                 });
             capabilities.SetCapability(ChromeOptions.Capability, chromeOptions);
-
-//            driver = GetDriver(capabilities);
-
-//            var directory = assembliesDirectory + "Selenium\\";
             string directory = Path.Combine(assembliesDirectory, "Selenium");
             driver = new ChromeDriver(directory, chromeOptions);
         }
@@ -92,16 +88,24 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
 
         public void WaitAjax()
         {
-            ExecuteScript("return (typeof($) === 'undefined') ? true : !$.active;");
+            ExecuteScript("return '*options*'");
             ExecuteScript("return (typeof($) === 'userWindow.jQuery') ? true : !$.active;");
             ExecuteScript("return (typeof($) === 'userWindow.Ajax') ? true : !$.active;");
             ExecuteScript("return (typeof($) === 'userWindow.dojo') ? true : !$.active;");
+
+
         }
+        protected IJavaScriptExecutor _jsExecutor;
 
         public void WaitForAjaxComplete()
         {
-            driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0,0,0,300));
-            ExecuteScript("return (typeof MathJax === 'undefined') || (MathJax.Hub.signal.posted[window.MathJax.Hub.signal.posted.length-1][0]=='End Process')");
+            var script = @"var c = $('table>tbody:visible').last();" +
+                            "c = c.find(\"tr:nth-child(2)\");" +
+                            "c.find(\"td:nth-child(1)\").click();";
+            ExecuteScript(script);
+
+//            driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0,0,0,300));
+//            ExecuteScript("return (typeof MathJax === 'undefined') || (MathJax.Hub.signal.posted[window.MathJax.Hub.signal.posted.length-1][0]=='End Process')");
         }
 
         public IAlert Alert()
@@ -159,26 +163,6 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             var url = new Uri(Url);
             return HttpUtility.ParseQueryString(url.Query).Get(parameterName);
         }
-
-//        private MyRemoteWebDriver GetDriver(DesiredCapabilities capabilities)
-//        {
-//            for (var i = 3; i >= 0; i--)
-//            {
-//                try
-//                {
-//                    return new MyRemoteWebDriver(new Uri("http://localhost:9515/"), capabilities);
-//                }
-//                catch (InvalidOperationException e)
-//                {
-//                    if (i == 0)
-//                        throw;
-//                    if (e.Message.IndexOf("unable to discover open pages", StringComparison.Ordinal) != -1)
-//                        continue;
-//                    throw;
-//                }
-//            }
-//            return new MyRemoteWebDriver(new Uri("http://localhost:9515/"), capabilities);
-//        }
 
         private static void SetChromeVersionToRegistry(string chromePath)
         {

@@ -27,7 +27,8 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
 
         private static string Read()
         {
-            return WebDriverCache.WebDriver.ExecuteScript("return Logger.read()") as string;
+//            return WebDriverCache.WebDriver.ExecuteScript("return Logger.read()") as string;
+            return WebDriverCache.WebDriver.ExecuteScript("return $(document.body)") as string;
         }
     }
 }

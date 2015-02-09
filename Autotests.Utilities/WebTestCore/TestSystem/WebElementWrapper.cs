@@ -147,7 +147,6 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
                 var actions = new Actions((IWebDriver) GetRootSearchContext());
                 actions.MoveToElement(FindNativeWebElement()).Perform();
                 return 0;
-//                new SelectElement(driver.findElement(By.name("driver"))).selectByVisibleText("Boxberry");
             });
         }
 
@@ -229,14 +228,6 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
 
         private void TryFixPage()
         {
-            /**
-             * Код решает 2 проблемы:
-             * 1. Текущий элемент, с которым мы пытаемся взаимодействовать (кликать, вводить данные и т.д.) 
-             * может быть вне видимой области, потому что ChromeDriver неверно действует со всякими всплывающими/залипающими элементами
-             * Поэтому мы пытаемся скроллить страницу.
-             * 2. Текущий элемент может быть закрыт всякими всплывашками (автокомлит), которые появляются в результате получения фокуса
-             * какого-то элемента. Поэтому мы пытаемся сделать blur() текущему активному элементу страницы.
-             * */
             ScrollDown();
             BlurCurrentActiveElement();
         }

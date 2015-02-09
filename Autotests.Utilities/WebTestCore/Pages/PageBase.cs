@@ -1,5 +1,6 @@
 ﻿using System;
 using Autotests.Utilities.WebTestCore.Pages.Timing;
+using Autotests.Utilities.WebTestCore.SystemControls;
 using Autotests.Utilities.WebTestCore.TestSystem;
 using Autotests.Utilities.WebTestCore.Utils;
 
@@ -93,7 +94,7 @@ namespace Autotests.Utilities.WebTestCore.Pages
 
         private void VerifyPageIsAlive()
         {
-            //JsLogger.Complete();
+            JsLogger.Complete();
             if (alive == null)
                 throw new InvalidOperationException("Данная страница уже закрыта");
         }

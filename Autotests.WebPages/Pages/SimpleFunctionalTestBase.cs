@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using Autotests.Utilities.WebTestCore;
+﻿using Autotests.Utilities.WebTestCore;
 using Autotests.Utilities.WebTestCore.TestSystem;
 using Autotests.WebPages.Pages.PageAdmin;
 using Autotests.WebPages.Pages.PageUser;
@@ -13,7 +12,6 @@ namespace Autotests.WebPages.Pages
         public override void SetUp()
         {
             base.SetUp();
-//            container = ContainerCache.GetContainer(ContainerCacheKey, "functionalTestsSettings");
             DefaultPage = LoadPage<DefaultPage>("");
         }
 
@@ -21,7 +19,6 @@ namespace Autotests.WebPages.Pages
         public override void TearDown()
         {
             base.TearDown();
-            
         }
 
         protected UserHomePage LoginAsUser(string login, string password)
@@ -47,11 +44,6 @@ namespace Autotests.WebPages.Pages
             return partyCreationPage;
         }
 
-        protected virtual string ContainerCacheKey
-        {
-            get { return "EDIFunctionalTests.Tests"; }
-        }
         protected DefaultPage DefaultPage { get; private set; }
-        protected IContainer container;
     }
 }

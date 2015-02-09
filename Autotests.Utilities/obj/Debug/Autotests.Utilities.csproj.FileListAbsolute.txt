@@ -39,3 +39,16 @@ C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.Utilities\bin\Debu
 C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.Utilities\obj\Debug\Autotests.Utilities.rewritten
 C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.Utilities\obj\Debug\Autotests.Utilities.dll
 C:\Users\Виктория\Documents\GitHub\Autotest\Autotests.Utilities\obj\Debug\Autotests.Utilities.pdb
+C:\MyGit\Autotests\Autotests.Utilities\bin\Debug\CodeContracts\Autotests.Utilities.noReferenceAssembly
+C:\MyGit\Autotests\Autotests.Utilities\bin\Debug\Autotests.Utilities.dll
+C:\MyGit\Autotests\Autotests.Utilities\bin\Debug\Autotests.Utilities.pdb
+C:\MyGit\Autotests\Autotests.Utilities\bin\Debug\log4net.dll
+C:\MyGit\Autotests\Autotests.Utilities\bin\Debug\nunit.framework.dll
+C:\MyGit\Autotests\Autotests.Utilities\bin\Debug\WebDriver.dll
+C:\MyGit\Autotests\Autotests.Utilities\bin\Debug\WebDriver.Support.dll
+C:\MyGit\Autotests\Autotests.Utilities\bin\Debug\WebDriver.pdb
+C:\MyGit\Autotests\Autotests.Utilities\bin\Debug\WebDriver.xml
+C:\MyGit\Autotests\Autotests.Utilities\obj\Debug\Autotests.Utilities.rewritten
+C:\MyGit\Autotests\Autotests.Utilities\obj\Debug\Autotests.Utilities.dll
+C:\MyGit\Autotests\Autotests.Utilities\obj\Debug\Autotests.Utilities.pdb
+C:\MyGit\Autotests\Autotests.Utilities\obj\Debug\Autotests.Utilities.csprojResolveAssemblyReference.cache
