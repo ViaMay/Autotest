@@ -13,14 +13,8 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
         public AutocompleteControl(By locator)
             : base(locator, null)
         {
-//            id = locator;
-//            autocompleteList = new AutocompleteList();
-//            LinkElement = new Link(By.ClassName(value), 0), this);
-//            page = new Page();
+
         }
-
-
-//        private readonly Link LinkElement;
 
         public void SetValueAndSelect(string value)
         {
@@ -31,11 +25,11 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             else
             {
                 SetValue(value);
-                Thread.Sleep(1000);
-                WebDriverCache.WebDriver.WaitAjax();
-//                WebDriverCache.WebDriver.WaitForAjaxComplete();
+                Thread.Sleep(1500);
+                WebDriverCache.WebDriver.WaitAjax(value);
                 SendKeys(Keys.Tab);
-//                Thread.Sleep(1000);
+                SendKeys(Keys.Tab);
+                Thread.Sleep(500);
             }
         }
     }

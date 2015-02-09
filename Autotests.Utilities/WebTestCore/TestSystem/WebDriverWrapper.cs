@@ -86,32 +86,27 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             return ((IJavaScriptExecutor) driver).ExecuteScript(script, args);
         }
 
-        public void WaitAjax()
+        public void WaitAjax(string value)
         {
-            ExecuteScript("return '*options*'");
+            ExecuteScript("return '*options*value'");
             ExecuteScript("return (typeof($) === 'userWindow.jQuery') ? true : !$.active;");
             ExecuteScript("return (typeof($) === 'userWindow.Ajax') ? true : !$.active;");
             ExecuteScript("return (typeof($) === 'userWindow.dojo') ? true : !$.active;");
-
-
         }
-        protected IJavaScriptExecutor _jsExecutor;
 
-        public void WaitForAjaxComplete()
-        {
-            var script = @"var c = $('table>tbody:visible').last();" +
-                            "c = c.find(\"tr:nth-child(2)\");" +
-                            "c.find(\"td:nth-child(1)\").click();";
-            ExecuteScript(script);
-
-//            driver.Manage().Timeouts().ImplicitlyWait(new TimeSpan(0,0,0,300));
-//            ExecuteScript("return (typeof MathJax === 'undefined') || (MathJax.Hub.signal.posted[window.MathJax.Hub.signal.posted.length-1][0]=='End Process')");
-        }
+//        public void WaitForAjaxComplete()
+//        {
+//            var script = @"var c = $('table>tbody:visible').last();" +
+//                            "c = c.find(\"tr:nth-child(2)\");" +
+//                            "c.find(\"td:nth-child(1)\").click();";
+//            ExecuteScript(script);
+//         }
 
         public IAlert Alert()
         {
             return driver.SwitchTo().Alert();
         }
+
         public string GetScreenshot()
         {
             return ((MyRemoteWebDriver) driver).GetScreenshot();

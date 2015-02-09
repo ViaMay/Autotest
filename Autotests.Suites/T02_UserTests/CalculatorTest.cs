@@ -63,7 +63,7 @@ namespace Autotests.Tests.T02_UserTests
             shopsListPage.Table.GetRow(1).Name.WaitPresence();
         }
 
-        [Test, Description("Калькулятор")]
+        [Test, Description("Калькулятор"), Repeat(10)]
         public void T03_CalculatorTest()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
@@ -101,5 +101,24 @@ namespace Autotests.Tests.T02_UserTests
             сalculatorPage.TableCourier.GetRow(1).PricePickup.WaitText("200");
         }
 
+
+        [Test, Description("Калькулятор")]
+        public void T03_CalculatorValidationTest()
+        {
+            var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
+            userPage.Calculator.Click();
+            var сalculatorPage = userPage.GoTo<СalculatorPage>();
+            сalculatorPage.CityFrom.SetValueAndSelect("Москва");
+            сalculatorPage.Shop.SetValueAndSelect(userShops);
+            сalculatorPage.CityTo.SetValueAndSelect("Москва");
+            сalculatorPage.СountedButton.Click();
+
+            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
+
+            сalculatorPage.СountedButton.Click();
+
+            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
+            
+        }
     }
 }
