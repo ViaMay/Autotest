@@ -19,8 +19,8 @@ namespace Autotests.WebPages.Pages.PageUser
 
             СountedButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
 
-            TableSelf = new СalculatorListControl(By.XPath("//table[1]"));
-            TableCourier = new СalculatorListControl(By.XPath("//table[2]"));
+            TableFirst = new СalculatorListControl(By.XPath("//table[1]"));
+            TableSecond = new СalculatorListControl(By.XPath("//table[2]"));
         }
 
         public override void BrowseWaitVisible()
@@ -41,7 +41,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public ButtonInput СountedButton { get; set; }
 
 
-        public СalculatorListControl TableSelf { get; set; }
-        public СalculatorListControl TableCourier { get; set; }
+        public СalculatorListControl TableFirst { get; set; }
+        public СalculatorListControl TableSecond { get; set; }
     }
 }
