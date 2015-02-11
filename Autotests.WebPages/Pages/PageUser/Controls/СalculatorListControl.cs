@@ -13,17 +13,9 @@ namespace Autotests.WebPages.Pages.PageUser.Controls
 
         public СalculatorRowControl GetRow(int index)
         {
-            var row = new СalculatorRowControl(index, locator);
+            var row = new СalculatorRowControl(index + 1, locator);
             return row;
         }
-
-//        public СalculatorRowControl FindRowByName(string value)
-//        {
-//
-//            var row = new СalculatorRowControl(index, locator);
-//            return row;
-//        }
-
         private readonly string locator;
     }
 }

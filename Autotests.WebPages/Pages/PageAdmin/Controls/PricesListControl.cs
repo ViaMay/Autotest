@@ -11,7 +11,7 @@ namespace Autotests.WebPages.Pages.PageAdmin.Controls
 
         public PricesRowControl GetRow(int index)
         {
-            var row = new PricesRowControl(index);
+            var row = new PricesRowControl(index + 1);
             row.WaitPresenceWithRetries();
             return row;
         }

@@ -10,13 +10,13 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
 //        private readonly By id;
 //        private readonly Page page;
 
-        public AutocompleteControl(By locator)
-            : base(locator, null)
+        public AutocompleteControl(By locator, HtmlControl container = null)
+            : base(locator, container)
         {
 
         }
 
-        public void SetValueAndSelect(string value)
+        public void SetFirstValueSelect(string value)
         {
             if (string.IsNullOrEmpty(value))
             {

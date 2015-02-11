@@ -22,9 +22,9 @@ namespace Autotests.Tests.T01_StartTests
 //            Проверяем нет ли пользователя с таким именем, если есть удаляем
             usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
             usersPage = usersPage.SeachButtonRowClickAndGo();
-            while (usersPage.UsersTable.GetRow(1).UserEmail.IsPresent)
+            while (usersPage.UsersTable.GetRow(0).UserEmail.IsPresent)
             {
-                usersPage.UsersTable.GetRow(1).ActionsDelete.Click();
+                usersPage.UsersTable.GetRow(0).ActionsDelete.Click();
                 usersPage = usersPage.GoTo<UsersPage>();
                 usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
                 usersPage = usersPage.SeachButtonRowClickAndGo();
@@ -33,7 +33,7 @@ namespace Autotests.Tests.T01_StartTests
             var userCreatePage = usersPage.GoTo<UserCreatePage>();
             userCreatePage.UserEmail.SetValueAndWait(userNameAndPass);
             userCreatePage.UserPassword.SetValueAndWait(userNameAndPass);
-            userCreatePage.UserGroups.SetValueAndSelect("user");
+            userCreatePage.UserGroups.SetFirstValueSelect("user");
             userCreatePage.UserGroupsAddButton.Click();
             userCreatePage.OfficialName.SetValueAndWait(legalEntityName);
             userCreatePage.SaveButton.Click();
@@ -41,7 +41,7 @@ namespace Autotests.Tests.T01_StartTests
 
             usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
             usersPage = usersPage.SeachButtonRowClickAndGo();
-            usersPage.UsersTable.GetRow(1).UserEmail.WaitText(userNameAndPass);
+            usersPage.UsersTable.GetRow(0).UserEmail.WaitText(userNameAndPass);
 
 //            Проверяем что не осталось не использованных складов
             usersPage.AdminUsers.Click();
@@ -49,9 +49,9 @@ namespace Autotests.Tests.T01_StartTests
             var warehousesPage = usersPage.GoTo<UsersWarehousesPage>();
             warehousesPage.Table.RowSearch.Name.SetValue(userWarehouses);
             warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
-            while (warehousesPage.Table.GetRow(1).Name.IsPresent)
+            while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
-                warehousesPage.Table.GetRow(1).ActionsDelete.Click();
+                warehousesPage.Table.GetRow(0).ActionsDelete.Click();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouses);
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
@@ -63,9 +63,9 @@ namespace Autotests.Tests.T01_StartTests
             var shopsPage = warehousesPage.GoTo<UsersShopsPage>();
             shopsPage.Table.RowSearch.Name.SetValue(userShops);
             shopsPage = shopsPage.SeachButtonRowClickAndGo();
-            while (shopsPage.Table.GetRow(1).Name.IsPresent)
+            while (shopsPage.Table.GetRow(0).Name.IsPresent)
             {
-                shopsPage.Table.GetRow(1).ActionsDelete.Click();
+                shopsPage.Table.GetRow(0).ActionsDelete.Click();
                 shopsPage = shopsPage.GoTo<UsersShopsPage>();
                 shopsPage.Table.RowSearch.Name.SetValue(userShops);
                 shopsPage = shopsPage.SeachButtonRowClickAndGo();

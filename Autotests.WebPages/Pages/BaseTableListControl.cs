@@ -13,7 +13,7 @@ namespace Autotests.WebPages.Pages
 
         public BaseRowControl GetRow(int index)
         {
-            var row = new BaseRowControl(index);
+            var row = new BaseRowControl(index + 1);
             row.WaitPresenceWithRetries();
             return row;
         }

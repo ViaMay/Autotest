@@ -10,8 +10,8 @@ namespace Autotests.WebPages.Pages.PageUser.Controls
         public TimeWorkRowControl(int index)
             : base(index)
         {
-            FromHour = new TextInput(By.Id(string.Format("from_hour_{0}", index - 1)));
-            ToHour = new TextInput(By.Id(string.Format("to_hour_{0}", index - 1)));
+            FromHour = new TextInput(By.Id(string.Format("from_hour_{0}", index)));
+            ToHour = new TextInput(By.Id(string.Format("to_hour_{0}", index)));
         }
         public TextInput ToHour { get; private set; }
         public TextInput FromHour { get; private set; }

@@ -6,11 +6,6 @@ namespace Autotests.Tests.T02_UserTests
 {
     public class LoginUserTest : SimpleFunctionalTestBase
     {
-        public override void SetUp()
-        {
-            base.SetUp();
-        }
-        
         [Test]
         public void Test01()
         {

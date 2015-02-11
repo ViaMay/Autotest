@@ -13,7 +13,7 @@ namespace Autotests.WebPages.Pages.PageAdmin.Controls
 
         public PricesPickupRowControl GetRow(int index)
         {
-            var row = new PricesPickupRowControl(index);
+            var row = new PricesPickupRowControl(index + 1);
             row.WaitPresenceWithRetries();
             return row;
         }

@@ -12,7 +12,7 @@ namespace Autotests.WebPages.Pages.PageUser.Controls
 
         public ShopsRowControl GetRow(int index)
         {
-            var row = new ShopsRowControl(index);
+            var row = new ShopsRowControl(index + 1);
             row.WaitPresenceWithRetries();
             return row;
         }

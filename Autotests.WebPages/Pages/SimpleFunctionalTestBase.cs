@@ -15,7 +15,6 @@ namespace Autotests.WebPages.Pages
             DefaultPage = LoadPage<DefaultPage>("");
         }
 
-
         public override void TearDown()
         {
             base.TearDown();
