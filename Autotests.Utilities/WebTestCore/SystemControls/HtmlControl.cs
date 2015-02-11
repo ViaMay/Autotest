@@ -233,6 +233,16 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             body.WaitClassAbsenceWithRetries(animationClass);
         }
 
+        public void ClickAndWaitTextError(int index = 0)
+        {
+            var alertClass = new StaticControl(BY.NthOfClass("alert-error", index));
+            var errorClass = new StaticControl(BY.NthOfClass("help-inline", index));
+            Click();
+            while (errorClass.IsPresent == false && alertClass.IsPresent == false)
+            {
+            }
+        }
+
         public void Mouseover()
         {
             element.Mouseover();

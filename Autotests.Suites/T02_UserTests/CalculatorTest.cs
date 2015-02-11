@@ -69,36 +69,36 @@ namespace Autotests.Tests.T02_UserTests
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
-            var сalculatorPage = userPage.GoTo<СalculatorPage>();
-            сalculatorPage.CityFrom.SetFirstValueSelect("Москва");
-            сalculatorPage.Shop.SetFirstValueSelect(userShops);
-            сalculatorPage.CityTo.SetFirstValueSelect("Москва");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
+            var calculatorPage = userPage.GoTo<СalculatorPage>();
+            calculatorPage.CityFrom.SetFirstValueSelect("Москва");
+            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.CityTo.SetFirstValueSelect("Москва");
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
 
-            сalculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            сalculatorPage.TableFirst.GetRow(0).TimeDelivery.WaitText("1 - 2");
-            сalculatorPage.TableFirst.GetRow(0).PriceDelivery.WaitText("16.00");
-            сalculatorPage.TableFirst.GetRow(0).PricePickup.WaitText("200");
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableFirst.GetRow(0).TimeDelivery.WaitText("1 - 2");
+            calculatorPage.TableFirst.GetRow(0).PriceDelivery.WaitText("16.00");
+            calculatorPage.TableFirst.GetRow(0).PricePickup.WaitText("200");
 
-            сalculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
-            сalculatorPage.TableSecond.GetRow(0).TimeDelivery.WaitText("1 - 2");
-            сalculatorPage.TableSecond.GetRow(0).PriceDelivery.WaitText("14.00");
-            сalculatorPage.TableSecond.GetRow(0).PricePickup.WaitText("200");
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableSecond.GetRow(0).TimeDelivery.WaitText("1 - 2");
+            calculatorPage.TableSecond.GetRow(0).PriceDelivery.WaitText("14.00");
+            calculatorPage.TableSecond.GetRow(0).PricePickup.WaitText("200");
 
-            сalculatorPage.Weight.SetValueAndWait("9.1");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
+            calculatorPage.Weight.SetValueAndWait("9.1");
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
 
-            сalculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            сalculatorPage.TableFirst.GetRow(0).TimeDelivery.WaitText("1 - 2");
-            сalculatorPage.TableFirst.GetRow(0).PriceDelivery.WaitText("52.00");
-            сalculatorPage.TableFirst.GetRow(0).PricePickup.WaitText("200");
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableFirst.GetRow(0).TimeDelivery.WaitText("1 - 2");
+            calculatorPage.TableFirst.GetRow(0).PriceDelivery.WaitText("52.00");
+            calculatorPage.TableFirst.GetRow(0).PricePickup.WaitText("200");
 
-            сalculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
-            сalculatorPage.TableSecond.GetRow(0).TimeDelivery.WaitText("1 - 2");
-            сalculatorPage.TableSecond.GetRow(0).PriceDelivery.WaitText("41.00");
-            сalculatorPage.TableSecond.GetRow(0).PricePickup.WaitText("200");
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableSecond.GetRow(0).TimeDelivery.WaitText("1 - 2");
+            calculatorPage.TableSecond.GetRow(0).PriceDelivery.WaitText("41.00");
+            calculatorPage.TableSecond.GetRow(0).PricePickup.WaitText("200");
         }
 
 
@@ -107,35 +107,35 @@ namespace Autotests.Tests.T02_UserTests
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
-            var сalculatorPage = userPage.GoTo<СalculatorPage>();
-            сalculatorPage.CityFrom.SetFirstValueSelect("Москва");
-            сalculatorPage.Shop.SetFirstValueSelect(userShops);
-            сalculatorPage.CityTo.SetFirstValueSelect("Москва");
-            
-            сalculatorPage.Weight.SetValueAndWait("9.1");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
-            сalculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            сalculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            var calculatorPage = userPage.GoTo<СalculatorPage>();
+            calculatorPage.CityFrom.SetFirstValueSelect("Москва");
+            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.CityTo.SetFirstValueSelect("Москва");
 
-            сalculatorPage.Weight.SetValueAndWait("10.0");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
-            сalculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            сalculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.Weight.SetValueAndWait("9.1");
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
 
-            сalculatorPage.Weight.SetValueAndWait("10.01");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
+            calculatorPage.Weight.SetValueAndWait("10.0");
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+
+            calculatorPage.Weight.SetValueAndWait("10.01");
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
 //            проверяем что нет таблиц
-            if (сalculatorPage.TableFirst.IsPresent)
+            if (calculatorPage.TableFirst.IsPresent)
 //    если все таки есть, то проверяем что нет нашей компании
-                Assert.False(сompanyName == сalculatorPage.TableFirst.GetRow(0).Company.GetText());
+                Assert.False(сompanyName == calculatorPage.TableFirst.GetRow(0).Company.GetText());
 
             //            проверяем что нет таблиц
-            if (сalculatorPage.TableSecond.IsPresent)
+            if (calculatorPage.TableSecond.IsPresent)
                 //    если все таки есть, то проверяем что нет нашей компании
-                Assert.False(сompanyName == сalculatorPage.TableSecond.GetRow(0).Company.GetText());
+                Assert.False(сompanyName == calculatorPage.TableSecond.GetRow(0).Company.GetText());
         }
 
         [Test, Description("Калькулятор. Проверяем, что не находит нашу компанию если размеры превышают допустимые")]
@@ -143,68 +143,68 @@ namespace Autotests.Tests.T02_UserTests
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
-            var сalculatorPage = userPage.GoTo<СalculatorPage>();
-            сalculatorPage.CityFrom.SetFirstValueSelect("Москва");
-            сalculatorPage.Shop.SetFirstValueSelect(userShops);
-            сalculatorPage.CityTo.SetFirstValueSelect("Москва");
-            
-            сalculatorPage.Width.SetValueAndWait("9.1");
-            сalculatorPage.Height.SetValueAndWait("9.1");
-            сalculatorPage.Length.SetValueAndWait("9.1");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
-            сalculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            сalculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            var calculatorPage = userPage.GoTo<СalculatorPage>();
+            calculatorPage.CityFrom.SetFirstValueSelect("Москва");
+            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.CityTo.SetFirstValueSelect("Москва");
 
-            сalculatorPage.Width.SetValueAndWait("80.0");
-            сalculatorPage.Height.SetValueAndWait("100.0");
-            сalculatorPage.Length.SetValueAndWait("50.0");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
-            сalculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            сalculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.Width.SetValueAndWait("9.1");
+            calculatorPage.Height.SetValueAndWait("9.1");
+            calculatorPage.Length.SetValueAndWait("9.1");
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
 
-            сalculatorPage.Width.SetValueAndWait("80.1");
-            сalculatorPage.Height.SetValueAndWait("100.0");
-            сalculatorPage.Length.SetValueAndWait("50.0");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
+            calculatorPage.Width.SetValueAndWait("80.0");
+            calculatorPage.Height.SetValueAndWait("100.0");
+            calculatorPage.Length.SetValueAndWait("50.0");
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+
+            calculatorPage.Width.SetValueAndWait("80.1");
+            calculatorPage.Height.SetValueAndWait("100.0");
+            calculatorPage.Length.SetValueAndWait("50.0");
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             //            проверяем что нет таблиц
-            if (сalculatorPage.TableFirst.IsPresent)
+            if (calculatorPage.TableFirst.IsPresent)
             //    если все таки есть, то проверяем что нет нашей компании
-                Assert.True(сompanyName != сalculatorPage.TableFirst.GetRow(0).Company.GetText());
+                Assert.True(сompanyName != calculatorPage.TableFirst.GetRow(0).Company.GetText());
             //            проверяем что нет таблиц
-            if (сalculatorPage.TableSecond.IsPresent)
+            if (calculatorPage.TableSecond.IsPresent)
                 //    если все таки есть, то проверяем что нет нашей компании
-                Assert.True(сompanyName != сalculatorPage.TableSecond.GetRow(0).Company.GetText());
+                Assert.True(сompanyName != calculatorPage.TableSecond.GetRow(0).Company.GetText());
 
-            сalculatorPage.Width.SetValueAndWait("80.0");
-            сalculatorPage.Height.SetValueAndWait("100.1");
-            сalculatorPage.Length.SetValueAndWait("50.0");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
+            calculatorPage.Width.SetValueAndWait("80.0");
+            calculatorPage.Height.SetValueAndWait("100.1");
+            calculatorPage.Length.SetValueAndWait("50.0");
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             //            проверяем что нет таблиц
-            if (сalculatorPage.TableFirst.IsPresent)
+            if (calculatorPage.TableFirst.IsPresent)
                 //    если все таки есть, то проверяем что нет нашей компании
-                Assert.True(сompanyName != сalculatorPage.TableFirst.GetRow(0).Company.GetText());
+                Assert.True(сompanyName != calculatorPage.TableFirst.GetRow(0).Company.GetText());
             //            проверяем что нет таблиц
-            if (сalculatorPage.TableSecond.IsPresent)
+            if (calculatorPage.TableSecond.IsPresent)
                 //    если все таки есть, то проверяем что нет нашей компании
-                Assert.True(сompanyName != сalculatorPage.TableSecond.GetRow(0).Company.GetText());
+                Assert.True(сompanyName != calculatorPage.TableSecond.GetRow(0).Company.GetText());
 
-            сalculatorPage.Width.SetValueAndWait("80.0");
-            сalculatorPage.Height.SetValueAndWait("100.0");
-            сalculatorPage.Length.SetValueAndWait("50.1");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage = сalculatorPage.GoTo<СalculatorPage>();
+            calculatorPage.Width.SetValueAndWait("80.0");
+            calculatorPage.Height.SetValueAndWait("100.0");
+            calculatorPage.Length.SetValueAndWait("50.1");
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             //            проверяем что нет таблиц
-            if (сalculatorPage.TableFirst.IsPresent)
+            if (calculatorPage.TableFirst.IsPresent)
                 //    если все таки есть, то проверяем что нет нашей компании
-                Assert.True(сompanyName != сalculatorPage.TableFirst.GetRow(0).Company.GetText());
+                Assert.True(сompanyName != calculatorPage.TableFirst.GetRow(0).Company.GetText());
             //            проверяем что нет таблиц
-            if (сalculatorPage.TableSecond.IsPresent)
+            if (calculatorPage.TableSecond.IsPresent)
                 //    если все таки есть, то проверяем что нет нашей компании
-                Assert.True(сompanyName != сalculatorPage.TableSecond.GetRow(0).Company.GetText());
+                Assert.True(сompanyName != calculatorPage.TableSecond.GetRow(0).Company.GetText());
         }
 
         [Test, Description("Провека сообщений об ошибках для автокомплитов стран и магазина")]
@@ -212,30 +212,29 @@ namespace Autotests.Tests.T02_UserTests
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
-            var сalculatorPage = userPage.GoTo<СalculatorPage>();
+            var calculatorPage = userPage.GoTo<СalculatorPage>();
 
-            сalculatorPage.СountedButton.Click();
+            calculatorPage.СountedButton.ClickAndWaitTextError();
+            calculatorPage.AlertErrorText[0].WaitText("Магазин обязательно к заполнению");
+            calculatorPage.AlertErrorText[1].WaitText("Город получения обязательно к заполнению");
+            calculatorPage.AlertErrorText[2].WaitText("Город отправления обязательно к заполнению");
 
-            сalculatorPage.AlertErrorText[0].WaitText("Магазин обязательно к заполнению");
-            сalculatorPage.AlertErrorText[1].WaitText("Город получения обязательно к заполнению");
-            сalculatorPage.AlertErrorText[2].WaitText("Город отправления обязательно к заполнению");
+            calculatorPage.CityFrom.SetFirstValueSelect("Москва");
+            calculatorPage.СountedButton.ClickAndWaitTextError();
+            calculatorPage.AlertErrorText[0].WaitText("Город получения обязательно к заполнению");
+            calculatorPage.AlertErrorText[1].WaitAbsence();
 
-            сalculatorPage.CityFrom.SetFirstValueSelect("Москва");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage.AlertErrorText[0].WaitText("Город получения обязательно к заполнению");
-            сalculatorPage.AlertErrorText[1].WaitAbsence();
+            calculatorPage.CityFromConbobox.Remove.Click();
+            calculatorPage.CityTo.SetFirstValueSelect("Москва");
+            calculatorPage.СountedButton.ClickAndWaitTextError();
+            calculatorPage.AlertErrorText[0].WaitText("Магазин обязательно к заполнению");
+            calculatorPage.AlertErrorText[1].WaitText("Город отправления обязательно к заполнению");
+            calculatorPage.AlertErrorText[2].WaitAbsence();
 
-            сalculatorPage.CityFromConbobox.Remove.Click();
-            сalculatorPage.CityTo.SetFirstValueSelect("Москва");
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage.AlertErrorText[0].WaitText("Магазин обязательно к заполнению");
-            сalculatorPage.AlertErrorText[1].WaitText("Город отправления обязательно к заполнению");
-            сalculatorPage.AlertErrorText[2].WaitAbsence();
-
-            сalculatorPage.Shop.SetFirstValueSelect(userShops);
-            сalculatorPage.СountedButton.Click();
-            сalculatorPage.AlertErrorText[0].WaitText("Город отправления обязательно к заполнению");
-            сalculatorPage.AlertErrorText[1].WaitAbsence();
+            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.СountedButton.ClickAndWaitTextError();
+            calculatorPage.AlertErrorText[0].WaitText("Город отправления обязательно к заполнению");
+            calculatorPage.AlertErrorText[1].WaitAbsence();
         }
 
         [Test, Description("Провека сообщений об ошибках для размера")]
@@ -243,27 +242,110 @@ namespace Autotests.Tests.T02_UserTests
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
-            var сalculatorPage = userPage.GoTo<СalculatorPage>();
+            var calculatorPage = userPage.GoTo<СalculatorPage>();
 
-            сalculatorPage.CityFrom.SetFirstValueSelect("Москва");
-            сalculatorPage.CityTo.SetFirstValueSelect("Москва");
-            сalculatorPage.Shop.SetFirstValueSelect(userShops);
-            сalculatorPage.DeclaredPrice.SetValueAndWait("");
-            сalculatorPage.Weight.SetValueAndWait("");
-            сalculatorPage.Width.SetValueAndWait("");
-            сalculatorPage.Height.SetValueAndWait("");
-            сalculatorPage.Length.SetValueAndWait("");
+            calculatorPage.CityFrom.SetFirstValueSelect("Москва");
+            calculatorPage.CityTo.SetFirstValueSelect("Москва");
+            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.DeclaredPrice.SetValueAndWait("");
+            calculatorPage.Weight.SetValueAndWait("");
+            calculatorPage.Width.SetValueAndWait("");
+            calculatorPage.Height.SetValueAndWait("");
+            calculatorPage.Length.SetValueAndWait("");
 
-            сalculatorPage.СountedButton.Click();
+            calculatorPage.СountedButton.ClickAndWaitTextError();
 
-            сalculatorPage.DeclaredPrice.WaitText("");
-            сalculatorPage.Weight.WaitText("");
-            сalculatorPage.Width.WaitText("");
-            сalculatorPage.WidthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
-            сalculatorPage.Height.WaitText("");
-            сalculatorPage.HeightErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
-            сalculatorPage.Length.WaitText("");
-            сalculatorPage.LengthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.Width.WaitText("");
+            calculatorPage.WidthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.Height.WaitText("");
+            calculatorPage.HeightErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.Length.WaitText("");
+            calculatorPage.LengthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+
+            calculatorPage.Width.SetValueAndWait("0");
+            calculatorPage.Height.SetValueAndWait("0");
+            calculatorPage.Length.SetValueAndWait("0");
+
+            calculatorPage.СountedButton.ClickAndWaitTextError();
+
+            calculatorPage.WidthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.HeightErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.LengthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+
+            calculatorPage.Width.SetValueAndWait("249");
+            calculatorPage.Height.SetValueAndWait("249");
+            calculatorPage.Length.SetValueAndWait("249");
+
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
+
+            calculatorPage.WidthErrorText.WaitAbsence();
+            calculatorPage.HeightErrorText.WaitAbsence();
+            calculatorPage.LengthErrorText.WaitAbsence();
+
+            calculatorPage.Width.SetValueAndWait("250");
+            calculatorPage.Height.SetValueAndWait("250");
+            calculatorPage.Length.SetValueAndWait("250");
+
+            calculatorPage.СountedButton.ClickAndWaitTextError();
+
+            calculatorPage.WidthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.HeightErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.LengthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+        }
+
+        [Test, Description("Автозаполнение полей стоимости и весе")]
+        public void T08_CalculatoraUpdatePriceAndTest()
+        {
+            UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
+            userPage.Calculator.Click();
+            var calculatorPage = userPage.GoTo<СalculatorPage>();
+            calculatorPage.CityFrom.SetFirstValueSelect("Москва");
+            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.CityTo.SetFirstValueSelect("Москва");
+
+            calculatorPage.DeclaredPrice.WaitText("1500");
+            calculatorPage.Weight.WaitText("0.8");
+            calculatorPage.Width.WaitText("15");
+            calculatorPage.Height.WaitText("6");
+            calculatorPage.Length.WaitText("12");
+
+            calculatorPage.DeclaredPrice.SetValue("0");
+            calculatorPage.Weight.SetValue("0");
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
+
+            calculatorPage.DeclaredPrice.WaitText("1500");
+            calculatorPage.Weight.WaitText("0.8");
+        }
+
+        [Test, Description("Проверяем корректную работу с запятыми")]
+        public void T09_CalculatoraFormatFielInputTest()
+        {
+            UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
+            userPage.Calculator.Click();
+            var calculatorPage = userPage.GoTo<СalculatorPage>();
+            calculatorPage.CityFrom.SetFirstValueSelect("Москва");
+            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.CityTo.SetFirstValueSelect("Москва");
+
+            calculatorPage.DeclaredPrice.SetValueAndWait("15,1200");
+            calculatorPage.Weight.SetValueAndWait("0,123123");
+            calculatorPage.Width.SetValueAndWait("15,4444");
+            calculatorPage.Height.SetValueAndWait("6,999999");
+            calculatorPage.Length.SetValueAndWait("12,20");
+
+            calculatorPage.СountedButton.Click();
+            calculatorPage = calculatorPage.GoTo<СalculatorPage>();
+
+            calculatorPage.DeclaredPrice.WaitText("15,1200");
+            calculatorPage.Weight.WaitText("0,123123");
+            calculatorPage.Width.WaitText("15,4444");
+            calculatorPage.Height.WaitText("6,999999");
+            calculatorPage.Length.WaitText("12,20");
+
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
         }
     }
 }

@@ -10,15 +10,12 @@ namespace Autotests.WebPages.Pages.PageUser
         public СalculatorPage()
         {
             CityFromConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 0)); 
-//                new ComboboxSelectedListControl(By.ClassName("row"), null));
             CityFrom = new AutocompleteControl(By.Name("city_from__value__"));
 
-            CityToConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 1)); 
-//                new ComboboxSelectedListControl(By.ClassName("row"), null));
+            CityToConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 1));
             CityTo = new AutocompleteControl(By.Name("city_to__value__"));
 
-            ShopConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 2)); 
-//                new ComboboxSelectedListControl(By.ClassName("row"), null));
+            ShopConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 2));
             Shop = new AutocompleteControl(By.Name("shop__value__"));
 
             DeclaredPrice = new TextInput(By.Name("declared_price"));
