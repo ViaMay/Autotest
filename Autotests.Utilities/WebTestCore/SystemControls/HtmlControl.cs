@@ -133,7 +133,7 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             Waiter.Wait(() => !IsEnabled, description, timeout);
         }
 
-        public void WaitText(string expectedText)
+        public virtual void WaitText(string expectedText)
         {
             string description =
                 FormatWithLocator(string.Format("Ожидание появления текста '{0}' в элементе", expectedText));
@@ -222,24 +222,28 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
         {
             element.ClickLeftUp();
         }
-        
-        public void ClickAndWaitAnimation()
-        {
-            const string animationClass = "animationIsRunning";
-            var body = new StaticControl(By.TagName("body"));
-            body.WaitClassAbsenceWithRetries(animationClass);
-            Click();
-            body.WaitClassPresence(animationClass);
-            body.WaitClassAbsenceWithRetries(animationClass);
-        }
+     
+//        public void ClickAndWaitAnimation()
+//        {
+//            const string animationClass = "animationIsRunning";
+//            var body = new StaticControl(By.TagName("body"));
+//            body.WaitClassAbsenceWithRetries(animationClass);
+//            Click();
+//            body.WaitClassPresence(animationClass);
+//            body.WaitClassAbsenceWithRetries(animationClass);
+//        }
 
         public void ClickAndWaitTextError(int index = 0)
         {
             var alertClass = new StaticControl(BY.NthOfClass("alert-error", index));
             var errorClass = new StaticControl(BY.NthOfClass("help-inline", index));
             Click();
+            var second = 0;
             while (errorClass.IsPresent == false && alertClass.IsPresent == false)
             {
+                second = second + 1;
+                if (second >= 60) Assert.AreEqual(errorClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
+                if (second >= 60) Assert.AreEqual(alertClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
             }
         }
 

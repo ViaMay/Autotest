@@ -34,12 +34,6 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             Waiter.Wait(() => GetAttributeValue("value") == value, description);
         }
 
-        public void WaitText(string value)
-        {
-            string description = FormatWithLocator(string.Format("Ожидание value '{0}' в элементе", value));
-            Waiter.Wait(() => GetAttributeValue("value") == value, description);
-        }
-
         public void Clear()
         {
             element.Clear();

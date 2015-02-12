@@ -18,19 +18,18 @@ namespace Autotests.WebPages.Pages.PageUser
             UserChangePassword = new Link(By.LinkText("Сменить пароль"));
             UserLogOut = new Link(By.LinkText("Выход"));
 
-//            Orders = new Link("");
-//
-//            OrdersCreate = new Link("");
-//            OrdersCreateCourirs = new Link("");
-//
-//            Documents = new Link("");
-//
+            Orders = new Link(By.LinkText("Заказы"));
+            OrderNew = new Link(By.LinkText("Новый"));
+            OrderCreateSelf = new Link(By.LinkText("Выход"));
+            OrderCreateCourirs = new Link(By.LinkText("Курьерская доставка"));
+
+            Documents = new Link(By.LinkText("Документы"));
 //            DocumentsCreate = new Link("");
 //            DocumentsList = new Link("");
 
             Calculator = new Link(By.LinkText("Калькулятор"));
-//
-//            Support = new Link("");
+
+            Support = new Link(By.LinkText("Поддержка"));
 //            SupportCreate = new Link("");
 //            SupportList = new Link("");
 
@@ -46,8 +45,9 @@ namespace Autotests.WebPages.Pages.PageUser
         public Link UserLogOut { get; private set; }
 
         public Link Orders { get; set; }
-        public Link OrdersCreate { get; private set; }
-        public Link OrdersCreateCourirs { get; private set; }
+        public Link OrderNew { get; private set; }
+        public Link OrderCreateSelf { get; private set; }
+        public Link OrderCreateCourirs { get; private set; }
 
         public Link Documents { get; set; }
         public Link DocumentsCreate { get; private set; }
@@ -64,10 +64,10 @@ namespace Autotests.WebPages.Pages.PageUser
         public override void BrowseWaitVisible()
         {
             UseProfile.WaitVisible();
-//            Orders.WaitVisible();
-//            Documents.WaitVisible();
-//            Calculator.WaitVisible();
-//            Support.WaitVisible();
+            Orders.WaitVisible();
+            Documents.WaitVisible();
+            Calculator.WaitVisible();
+            Support.WaitVisible();
         }
 
         public DefaultPage LoginOut()

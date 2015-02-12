@@ -5,11 +5,6 @@ namespace Autotests.Tests.T03_ClearTests
 {
     public class ClearTestTest : ConstantVariablesTestBase
     {
-        public override void SetUp()
-        {
-            base.SetUp();
-        }
-
         [Test, Description("Удаляем usera")]
         public void T01_DeleteUser()
         {

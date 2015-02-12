@@ -3,69 +3,10 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T02_UserTests
 {
-    public class CalculatorTest : ConstantVariablesTestBase
+    public class CalculatorTests : ConstantVariablesTestBase
     {
-        [Test, Description("Создания Склада для тестов на калькулятор")]
-        public void T01_CreateWarehouseTest()
-        {
-            UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.UseProfile.Click();
-            userPage.UserWarehouses.Click();
-            var warehousesListPage = userPage.GoTo<UserWarehousesPage>();
-
-            if (!warehousesListPage.Table.GetRow(0).Name.IsPresent)
-            {
-                warehousesListPage.WarehousesCreate.Click();
-                var warehouseCreatePage = warehousesListPage.GoTo<UserWarehouseCreatePage>();
-                warehouseCreatePage.Name.SetValueAndWait(userWarehouses);
-                warehouseCreatePage.Street.SetValueAndWait("Улица");
-                warehouseCreatePage.House.SetValueAndWait("Дом");
-                warehouseCreatePage.Flat.SetValueAndWait("Квартира");
-                warehouseCreatePage.ContactPerson.SetValueAndWait(legalEntityName);
-                warehouseCreatePage.ContactPhone.SetValueAndWait("1111111111");
-                warehouseCreatePage.ContactEmail.SetValueAndWait(userNameAndPass);
-                warehouseCreatePage.City.SetFirstValueSelect("Москва");
-
-                for (int i = 0; i < 7; i++)
-                {
-                    warehouseCreatePage.GetDay(i).FromHour.SetValueAndWait("1:12");
-                    warehouseCreatePage.GetDay(i).ToHour.SetValueAndWait("23:23");
-                }
-
-                warehouseCreatePage.CreateButton.Click();
-                warehousesListPage = warehouseCreatePage.GoTo<UserWarehousesPage>();
-            }
-            warehousesListPage.Table.GetRow(0).Name.WaitPresence();
-        }
-
-        [Test, Description("Создания магазина для тестов на калькулятор")]
-        public void T02_CreateShopTest()
-        {
-            UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.UseProfile.Click();
-            userPage.UserShops.Click();
-            var shopsListPage = userPage.GoTo<UserShopsPage>();
-
-            while (shopsListPage.Table.GetRow(0).Name.IsPresent)
-            {
-                shopsListPage.Table.GetRow(0).ActionsDelete.Click();
-                shopsListPage.AletrDelete.WaitText("Вы действительно хотите удалить магазин?");
-                shopsListPage.AletrDelete.Accept();
-                shopsListPage = shopsListPage.GoTo<UserShopsPage>();
-            }
-
-            shopsListPage.ShopsCreate.Click();
-            var shopCreatePage = shopsListPage.GoTo<UserShopCreatePage>();
-            shopCreatePage.Name.SetValueAndWait(userShops);
-            shopCreatePage.Address.SetValueAndWait("Москва");
-            shopCreatePage.Warehouse.SelectValue(userWarehouses);
-            shopCreatePage.CreateButton.Click();
-            shopsListPage = shopCreatePage.GoTo<UserShopsPage>();
-            shopsListPage.Table.GetRow(0).Name.WaitPresence();
-        }
-
-        [Test, Description("Калькулятор. Проверяем, что цена меняется в зависимости от указанного веса")]
-        public void T03_CalculatorChangePriceTest()
+       [Test, Description("Калькулятор. Проверяем, что цена меняется в зависимости от указанного веса")]
+        public void CalculatorChangePriceTest()
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
@@ -103,7 +44,7 @@ namespace Autotests.Tests.T02_UserTests
 
 
         [Test, Description("Калькулятор. Проверяем, что не находит нашу компанию если вес превышает допустимый")]
-        public void T04_CalculatorOverWeightTest()
+        public void CalculatorOverWeightTest()
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
@@ -139,7 +80,7 @@ namespace Autotests.Tests.T02_UserTests
         }
 
         [Test, Description("Калькулятор. Проверяем, что не находит нашу компанию если размеры превышают допустимые")]
-        public void T05_CalculatorOverSideTest()
+        public void CalculatorOverSideTest()
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
@@ -208,7 +149,7 @@ namespace Autotests.Tests.T02_UserTests
         }
 
         [Test, Description("Провека сообщений об ошибках для автокомплитов стран и магазина")]
-        public void T06_CalculatorValidationCityAndShopTest()
+        public void CalculatorValidationCityAndShopTest()
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
@@ -238,7 +179,7 @@ namespace Autotests.Tests.T02_UserTests
         }
 
         [Test, Description("Провека сообщений об ошибках для размера")]
-        public void T07_CalculatorValidationSizeTest()
+        public void CalculatorValidationSizeTest()
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
@@ -295,7 +236,7 @@ namespace Autotests.Tests.T02_UserTests
         }
 
         [Test, Description("Автозаполнение полей стоимости и весе")]
-        public void T08_CalculatoraUpdatePriceAndTest()
+        public void CalculatoraUpdatePriceAndTest()
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
@@ -304,23 +245,23 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.Shop.SetFirstValueSelect(userShops);
             calculatorPage.CityTo.SetFirstValueSelect("Москва");
 
-            calculatorPage.DeclaredPrice.WaitText("1500");
-            calculatorPage.Weight.WaitText("0.8");
-            calculatorPage.Width.WaitText("15");
-            calculatorPage.Height.WaitText("6");
-            calculatorPage.Length.WaitText("12");
+            calculatorPage.DeclaredPrice.WaitValue("1500");
+            calculatorPage.Weight.WaitValue("0.8");
+            calculatorPage.Width.WaitValue("15");
+            calculatorPage.Height.WaitValue("6");
+            calculatorPage.Length.WaitValue("12");
 
             calculatorPage.DeclaredPrice.SetValue("0");
             calculatorPage.Weight.SetValue("0");
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
 
-            calculatorPage.DeclaredPrice.WaitText("1500");
-            calculatorPage.Weight.WaitText("0.8");
+            calculatorPage.DeclaredPrice.WaitValue("1500");
+            calculatorPage.Weight.WaitValue("0.8");
         }
 
         [Test, Description("Проверяем корректную работу с запятыми")]
-        public void T09_CalculatoraFormatFielInputTest()
+        public void CalculatoraFormatFielInputTest()
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Calculator.Click();
@@ -338,11 +279,11 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
 
-            calculatorPage.DeclaredPrice.WaitText("15,1200");
-            calculatorPage.Weight.WaitText("0,123123");
-            calculatorPage.Width.WaitText("15,4444");
-            calculatorPage.Height.WaitText("6,999999");
-            calculatorPage.Length.WaitText("12,20");
+            calculatorPage.DeclaredPrice.WaitValue("15,1200");
+            calculatorPage.Weight.WaitValue("0,123123");
+            calculatorPage.Width.WaitValue("15,4444");
+            calculatorPage.Height.WaitValue("6,999999");
+            calculatorPage.Length.WaitValue("12,20");
 
             calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
             calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);

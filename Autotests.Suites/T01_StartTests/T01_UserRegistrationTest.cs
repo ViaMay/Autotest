@@ -5,12 +5,6 @@ namespace Autotests.Tests.T01_StartTests
 {
     public class T01UserRegistrationTest : ConstantVariablesTestBase
     {
-        public override void SetUp()
-        {
-            base.SetUp();
-        }
-
-
         [Test, Description("Создания пользователя - user")]
         public void T01_CreateUserTest()
         {

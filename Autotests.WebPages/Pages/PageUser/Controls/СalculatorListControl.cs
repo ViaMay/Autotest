@@ -8,7 +8,7 @@ namespace Autotests.WebPages.Pages.PageUser.Controls
         public СalculatorListControl(By className)
             : base(className)
         {
-            locator = className.ToString().Replace("By.XPath: ", "");;
+            locator = className.ToString().Replace("By.XPath: ", "");
         }
 
         public СalculatorRowControl GetRow(int index)
