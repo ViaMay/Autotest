@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Autotests.Utilities.WebTestCore.TestSystem;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace Autotests.Utilities.WebTestCore.SystemControls
@@ -26,10 +27,14 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             {
                 SetValue(value);
                 Thread.Sleep(1500);
-                WebDriverCache.WebDriver.WaitAjax(value);
-                SendKeys(Keys.Tab);
+                WebDriverCache.WebDriver.WaitForAjax();
+//                SendKeys(Keys.Tab);
                 SendKeys(Keys.Tab);
                 Thread.Sleep(500);
+//            }
+
+
+
             }
         }
     }

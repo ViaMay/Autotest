@@ -86,14 +86,17 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="T01_StartTests\T03_CreateWarehouseAndShopTest.cs" />
+    <Compile Include="T01_StartSettingTests\T01_CreateLegalEntityTest.cs" />
+    <Compile Include="T01_StartSettingTests\T04_CreateSizeTests.cs" />
+    <Compile Include="T01_StartSettingTests\T05_CreatePriceTests.cs" />
+    <Compile Include="T01_StartSettingTests\T06_CreateWarehouseAndShopTests.cs" />
     <Compile Include="T02_UserTests\OrderCreateCourirsTests.cs" />
     <Compile Include="T03_ClearTests\ClearTest.cs" />
-    <Compile Include="T01_StartTests\T01_UserRegistrationTest.cs" />
-    <Compile Include="T01_StartTests\T02_CompanyRegistrationTest.cs" />
+    <Compile Include="T01_StartSettingTests\T02_UserRegistrationTest.cs" />
+    <Compile Include="T01_StartSettingTests\T03_CompanyRegistrationTests.cs" />
     <Compile Include="T02_UserTests\LoginUserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ConstantVariablesTestBase.cs" />
+    <Compile Include="ConstVariablesTestBase.cs" />
     <Compile Include="T02_UserTests\CalculatorTests.cs" />
   </ItemGroup>
   <ItemGroup>

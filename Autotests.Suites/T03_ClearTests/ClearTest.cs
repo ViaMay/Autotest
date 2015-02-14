@@ -3,10 +3,10 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ClearTests
 {
-    public class ClearTestTest : ConstantVariablesTestBase
+    public class ClearTestTest : ConstVariablesTestBase
     {
         [Test, Description("Удаляем usera")]
-        public void T01_DeleteUser()
+        public void T01_DeleteUserTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
@@ -24,7 +24,7 @@ namespace Autotests.Tests.T03_ClearTests
         }
 
         [Test, Description("Удаляем скалды usera")]
-        public void T02_DeleteUserWarehouse()
+        public void T02_DeleteUserWarehouseTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
@@ -42,7 +42,7 @@ namespace Autotests.Tests.T03_ClearTests
         }
 
         [Test, Description("Удаляем магазины usera")]
-        public void T03_DeleteUserShop()
+        public void T03_DeleteUserShopTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
@@ -60,7 +60,7 @@ namespace Autotests.Tests.T03_ClearTests
         }
 
         [Test, Description("удаление юр лица")]
-        public void T04_DeleteLegalEntities()
+        public void T04_DeleteLegalEntitiesTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminReference.Click();
@@ -80,7 +80,7 @@ namespace Autotests.Tests.T03_ClearTests
         }
 
         [Test, Description("удаление компании")]
-        public void T05_DeleteCompany()
+        public void T05_DeleteCompanyTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminСompanies.Click();
@@ -99,7 +99,7 @@ namespace Autotests.Tests.T03_ClearTests
         }
 
         [Test, Description("удаление точки доставки")]
-        public void T06_DeleteDeliveryPoint()
+        public void T06_DeleteDeliveryPointTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminСompanies.Click();
@@ -114,6 +114,45 @@ namespace Autotests.Tests.T03_ClearTests
                 deliveryPointsPage = deliveryPointsPage.GoTo<DeliveryPointsPage>();
                 deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
                 deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
+            }
+        }
+        [Test, Description("Создания веса")]
+        public void T07_DeleteWeightTest()
+        {
+            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
+            adminPage.AdminReference.Click();
+            adminPage.Intervals.Mouseover();
+            adminPage.IntervalsWeight.Click();
+            var intervalsWeightPage = adminPage.GoTo<IntervalsWeightPage>();
+            intervalsWeightPage.Table.RowSearch.Name.SetValue(weightName);
+            intervalsWeightPage = intervalsWeightPage.SeachButtonRowClickAndGo();
+
+            while (intervalsWeightPage.Table.GetRow(0).Name.IsPresent)
+            {
+                intervalsWeightPage.Table.GetRow(0).ActionsDelete.Click();
+                intervalsWeightPage = intervalsWeightPage.GoTo<IntervalsWeightPage>();
+                intervalsWeightPage.Table.RowSearch.Name.SetValue(weightName);
+                intervalsWeightPage = intervalsWeightPage.SeachButtonRowClickAndGo();
+            }
+        }
+
+        [Test, Description("Удаление размера")]
+        public void T01_DeleteSizeTest()
+        {
+            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
+            adminPage.AdminReference.Click();
+            adminPage.Intervals.Mouseover();
+            adminPage.IntervalsSize.Click();
+            var intervalsSizePage = adminPage.GoTo<IntervalsSizePage>();
+            intervalsSizePage.Table.RowSearch.Name.SetValue(sizeName);
+            intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
+
+            while (intervalsSizePage.Table.GetRow(0).Name.IsPresent)
+            {
+                intervalsSizePage.Table.GetRow(0).ActionsDelete.Click();
+                intervalsSizePage = intervalsSizePage.GoTo<IntervalsSizePage>();
+                intervalsSizePage.Table.RowSearch.Name.SetValue(sizeName);
+                intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
             }
         }
     }

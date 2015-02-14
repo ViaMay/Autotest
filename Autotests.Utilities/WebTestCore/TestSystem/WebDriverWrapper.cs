@@ -81,27 +81,43 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
 //            return cookie.Value;
 //        }
 
+//        public void TakeScreenshot(IWebDriver driver, string saveLocation)
+//        {
+//            ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+//            Screenshot screenshot = screenshotDriver.GetScreenshot();
+//            screenshot.SaveAsFile(saveLocation, ImageFormat.Png);
+//        }
+
         public object ExecuteScript(string script, params object[] args)
         {
             return ((IJavaScriptExecutor) driver).ExecuteScript(script, args);
         }
 
-        public void WaitAjax(string value)
+        public void WaitForAjax()
         {
-            ExecuteScript("return '*options*value'");
-            ExecuteScript("return (typeof($) === 'userWindow.jQuery') ? true : !$.active;");
-            ExecuteScript("return (typeof($) === 'userWindow.Ajax') ? true : !$.active;");
-            ExecuteScript("return (typeof($) === 'userWindow.dojo') ? true : !$.active;");
+            while (true) // Handle timeout somewhere
+            {
+                var ajaxIsComplete = (bool)(driver as IJavaScriptExecutor).ExecuteScript("return jQuery.active == 0");
+                if (ajaxIsComplete)
+                    break;
+                Thread.Sleep(100);
+            }
+            while (true) // Handle timeout somewhere
+            {
+                var ajaxIsComplete = (bool)(driver as IJavaScriptExecutor).ExecuteScript("return typeof(Ajax) != 'function' || Ajax.activeRequestCount == 0;");
+                if (ajaxIsComplete)
+                    break;
+                Thread.Sleep(100);
+            }
+            while (true) // Handle timeout somewhere
+            {
+                            var ajaxIsComplete = (bool)(driver as IJavaScriptExecutor).ExecuteScript("return typeof(dojo) != 'function' ||  dojo.io.XMLHTTPTransport.inFlight.length == 0;");
+                if (ajaxIsComplete)
+                    break;
+                Thread.Sleep(100);
+            }
         }
-
-//        public void WaitForAjaxComplete()
-//        {
-//            var script = @"var c = $('table>tbody:visible').last();" +
-//                            "c = c.find(\"tr:nth-child(2)\");" +
-//                            "c.find(\"td:nth-child(1)\").click();";
-//            ExecuteScript(script);
-//         }
-
+ 
         public IAlert Alert()
         {
             return driver.SwitchTo().Alert();

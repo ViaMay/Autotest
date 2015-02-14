@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using Autotests.Utilities.WebTestCore.TestSystem;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -242,8 +243,24 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             while (errorClass.IsPresent == false && alertClass.IsPresent == false)
             {
                 second = second + 1;
+                Thread.Sleep(100);
                 if (second >= 60) Assert.AreEqual(errorClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
                 if (second >= 60) Assert.AreEqual(alertClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
+            }
+        }
+
+        public void ClickAndWaitTextErrorAbsence(int index = 0)
+        {
+            var alertClass = new StaticControl(BY.NthOfClass("alert-error", index));
+            var errorClass = new StaticControl(BY.NthOfClass("help-inline", index));
+            Click();
+            var second = 0;
+            while (errorClass.IsPresent || alertClass.IsPresent)
+            {
+                second = second + 1;
+                Thread.Sleep(100);
+                if (second >= 60) Assert.AreEqual(errorClass.IsPresent, false, "Время ожидание завершено. Найден элемент содержаший ошибку");
+                if (second >= 60) Assert.AreEqual(alertClass.IsPresent, false, "Время ожидание завершено. Найден элемент содержаший ошибку");
             }
         }
 

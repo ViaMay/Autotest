@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T02_UserTests
 {
-    public class OrderCreateCourirsTests : ConstantVariablesTestBase
+    public class OrderCreateCourirsTests : ConstVariablesTestBase
     {
         [Test, Description("Создание черновика заказа и проверка введенных значений")]
         public void OrderCreateCourirsCheckDraftTest()

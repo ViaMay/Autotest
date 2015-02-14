@@ -1,12 +1,12 @@
 ﻿using Autotests.WebPages.Pages.PageAdmin;
 using NUnit.Framework;
 
-namespace Autotests.Tests.T01_StartTests
+namespace Autotests.Tests.T01_StartSettingTests
 {
-    public class T01UserRegistrationTest : ConstantVariablesTestBase
+    public class T01UserRegistrationTest : ConstVariablesTestBase
     {
         [Test, Description("Создания пользователя - user")]
-        public void T01_CreateUserTest()
+        public void CreateUserTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();

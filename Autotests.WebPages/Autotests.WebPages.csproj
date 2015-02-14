@@ -105,6 +105,9 @@
     <Compile Include="Pages\PageAdmin\Controls\UsersListControl.cs" />
     <Compile Include="Pages\PageAdmin\Controls\UsersRowControl.cs" />
     <Compile Include="Pages\PageAdmin\Controls\UsersRowSearchControl.cs" />
+    <Compile Include="Pages\PageAdmin\IntervalsSizePage.cs" />
+    <Compile Include="Pages\PageAdmin\IntervalsWeightPage.cs" />
+    <Compile Include="Pages\PageAdmin\IntervalSizeCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\PricesCourierPage.cs" />
     <Compile Include="Pages\PageAdmin\PricesPickupPage.cs" />
     <Compile Include="Pages\PageAdmin\UsersShopsPage.cs" />
@@ -118,6 +121,7 @@
     <Compile Include="Pages\PageAdmin\UserCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\DeliveryPointsPage.cs" />
     <Compile Include="Pages\PageAdmin\DeliveryPointCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\IntervalWeightCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\СompanyCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\СompaniesPage.cs" />
     <Compile Include="Pages\PageAdmin\AdminHomePage.cs" />

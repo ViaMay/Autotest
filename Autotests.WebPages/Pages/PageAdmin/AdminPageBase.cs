@@ -11,6 +11,12 @@ namespace Autotests.WebPages.Pages.PageAdmin
         {
             DDeliveryLink = new Link(By.LinkText("DDelivery"));
 
+            AdminReference = new Link(By.LinkText("Справочники"));
+            LegalEntities = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(3)"));
+            Intervals = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(2)"));
+            IntervalsWeight = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(2)> ul > li:nth-child(1)"));
+            IntervalsSize = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(2)> ul > li:nth-child(2)"));
+
             AdminСompanies = new Link(By.LinkText("Компании"));
             Сompanies = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li"));
             DeliveryPoints = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(3)"));
@@ -24,15 +30,16 @@ namespace Autotests.WebPages.Pages.PageAdmin
             UsersWarehouses = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(5)"));
             UsersShops = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(4)"));
 
-            AdminReference = new Link(By.LinkText("Справочники"));
-            LegalEntities = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(3)"));
-
             UserLogOut = new Link(By.LinkText("Выход"));
 
             Loader = new LoaderControl();
         }
 
         public Link DDeliveryLink { get; set; }
+
+        public Link Intervals { get; set; }
+        public Link IntervalsWeight { get; set; }
+        public Link IntervalsSize { get; set; }
 
         public Link AdminСompanies { get; set; }
         public Link Сompanies { get; set; }

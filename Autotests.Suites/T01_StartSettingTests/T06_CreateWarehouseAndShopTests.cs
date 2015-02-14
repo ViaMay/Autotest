@@ -1,9 +1,9 @@
 ﻿using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
 
-namespace Autotests.Tests.T01_StartTests
+namespace Autotests.Tests.T01_StartSettingTests
 {
-    public class T03CreateWarehouseAndShopTest : ConstantVariablesTestBase
+    public class T05CreateWarehouseAndShopTests : ConstVariablesTestBase
     {
         [Test, Description("Создания Склада для тестов на калькулятор")]
         public void T01_CreateWarehouseTest()
