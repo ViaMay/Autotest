@@ -1,4 +1,5 @@
 ﻿using Autotests.Utilities.WebTestCore.SystemControls;
+using Autotests.Utilities.WebTestCore.TestSystem;
 using Autotests.WebPages.Pages.PageUser.Controls;
 using OpenQA.Selenium;
 
@@ -15,7 +16,7 @@ namespace Autotests.WebPages.Pages.PageUser
             ContactPerson = new TextInput(By.Name("contact_person"));
             ContactPhone = new TextInput(By.Name("contact_phone"));
             ContactEmail = new TextInput(By.Name("contact_email"));
-            City = new AutocompleteControl(By.Name("to_city__value__"));
+            City = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 0));
             Freshlogic = new TextInput(By.Name("freshlogic_id"));
 
             CreateButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));

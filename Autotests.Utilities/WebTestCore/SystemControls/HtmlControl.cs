@@ -319,7 +319,7 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             return expectedClassesArray.All(actualClassesArray.Contains);
         }
 
-        private string FormatControlDescription(string locatorString, HtmlControl container)
+        public string FormatControlDescription(string locatorString, HtmlControl container)
         {
             string description = string.Format("{0} ({1})", GetType().Name, locatorString);
             if (container == null)

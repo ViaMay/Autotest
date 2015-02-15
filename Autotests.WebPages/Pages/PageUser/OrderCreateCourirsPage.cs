@@ -12,7 +12,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public OrderCreateCourirsPage()
         {
             CityToConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 1));
-            CityTo = new AutocompleteControl(By.Name("to_city__value__"));
+            CityTo = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 0));
 
             DeclaredPrice = new TextInput(By.Name("declared_price"));
             Weight = new TextInput(By.Name("weight"));

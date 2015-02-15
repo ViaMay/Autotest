@@ -129,7 +129,6 @@
     <Compile Include="Pages\PageUser\Controls\AlertErrorTextControl.cs" />
     <Compile Include="Pages\PageUser\Controls\OrdersListControl.cs" />
     <Compile Include="Pages\PageUser\Controls\OrdersRowControl.cs" />
-    <Compile Include="Pages\PageUser\Controls\RadioButtonListControl.cs" />
     <Compile Include="Pages\PageUser\Controls\ShopsRowControl.cs" />
     <Compile Include="Pages\PageUser\Controls\СalculatorListControl.cs" />
     <Compile Include="Pages\PageUser\Controls\ShopsListControl.cs" />

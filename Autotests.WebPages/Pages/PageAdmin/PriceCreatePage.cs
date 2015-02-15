@@ -1,4 +1,5 @@
 ﻿using Autotests.Utilities.WebTestCore.SystemControls;
+using Autotests.Utilities.WebTestCore.TestSystem;
 using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
@@ -9,10 +10,10 @@ namespace Autotests.WebPages.Pages.PageAdmin
         {
             Price = new TextInput(By.Name("price"));
             PriceOverFlow = new TextInput(By.Name("weight_overflow_price"));
-            Route = new AutocompleteControl(By.Name("route__value__"));
-            CompanyName = new AutocompleteControl(By.Name("company__value__"));
-            Weight = new AutocompleteControl(By.Name("weight__value__"));
-            Dimension = new AutocompleteControl(By.Name("dimension__value__"));
+            Route = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 0));
+            CompanyName = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 1));
+            Weight = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 2));
+            Dimension = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 3));
             SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
         

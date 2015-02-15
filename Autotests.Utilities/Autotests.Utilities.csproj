@@ -101,6 +101,7 @@
     <Compile Include="WebTestCore\Pages\Timing\PageTimeStatistics.cs" />
     <Compile Include="WebTestCore\SystemControls\AlertControl.cs" />
     <Compile Include="WebTestCore\SystemControls\AutocompleteControl.cs" />
+    <Compile Include="WebTestCore\SystemControls\RadioButtonListControl.cs" />
     <Compile Include="WebTestCore\SystemControls\Select.cs" />
     <Compile Include="WebTestCore\SystemControls\ButtonInput.cs" />
     <Compile Include="WebTestCore\SystemControls\LoaderControl.cs" />

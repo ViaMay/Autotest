@@ -62,7 +62,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             var priceCourierCreatePage = pricesCourierPage.GoTo<PriceCreatePage>();
             priceCourierCreatePage.Price.SetValueAndWait("11");
             priceCourierCreatePage.PriceOverFlow.SetValueAndWait("3");
-            priceCourierCreatePage.Route.SetFirstValueSelect("2");
+            priceCourierCreatePage.Route.SetFirstValueSelect("2", "г. Москва #151184 - г. Москва #151184");
             priceCourierCreatePage.CompanyName.SetFirstValueSelect(сompanyName);
             priceCourierCreatePage.Weight.SetFirstValueSelect(weightName);
             priceCourierCreatePage.Dimension.SetFirstValueSelect(sizeName);
@@ -97,7 +97,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             var priceSelfCreatePage = pricesSelfPage.GoTo<PriceCreatePage>();
             priceSelfCreatePage.Price.SetValueAndWait("12");
             priceSelfCreatePage.PriceOverFlow.SetValueAndWait("4");
-            priceSelfCreatePage.Route.SetFirstValueSelect("2");
+            priceSelfCreatePage.Route.SetFirstValueSelect("2", "г. Москва #151184 - г. Москва #151184");
             priceSelfCreatePage.CompanyName.SetFirstValueSelect(сompanyName);
             priceSelfCreatePage.Weight.SetFirstValueSelect(weightName);
             priceSelfCreatePage.Dimension.SetFirstValueSelect(sizeName);

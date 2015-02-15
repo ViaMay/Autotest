@@ -1,4 +1,5 @@
 ﻿using Autotests.Utilities.WebTestCore.SystemControls;
+using Autotests.Utilities.WebTestCore.TestSystem;
 using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
@@ -7,8 +8,8 @@ namespace Autotests.WebPages.Pages.PageAdmin
     {
         public DeliveryPointCreatePage()
         {
-            City = new AutocompleteControl(By.Name("city__value__"));
-            CompanyName = new AutocompleteControl(By.Name("company__value__"));
+            City = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 0));
+            CompanyName = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 1));
             DeliveryPointName = new TextInput(By.Name("name"));
             CompanyCode = new TextInput(By.Name("company_code"));
             Address = new TextInput(By.Name("address"));

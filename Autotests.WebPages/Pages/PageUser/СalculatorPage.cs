@@ -9,14 +9,14 @@ namespace Autotests.WebPages.Pages.PageUser
     {
         public СalculatorPage()
         {
-            CityFromConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 0)); 
-            CityFrom = new AutocompleteControl(By.Name("city_from__value__"));
+            CityFromConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 0));
+            CityFrom = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 0));
 
             CityToConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 1));
-            CityTo = new AutocompleteControl(By.Name("city_to__value__"));
+            CityTo = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 1));
 
             ShopConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 2));
-            Shop = new AutocompleteControl(By.Name("shop__value__"));
+            Shop = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 2));
 
             DeclaredPrice = new TextInput(By.Name("declared_price"));
             Weight = new TextInput(By.Name("weight"));
@@ -47,6 +47,13 @@ namespace Autotests.WebPages.Pages.PageUser
         public ComboboxControl CityFromConbobox { get; set; }
         public AutocompleteControl CityTo { get; set; }
         public ComboboxControl CityToConbobox { get; set; }
+        public StaticText HeightErrorText { get; set; }
+        public StaticText LengthErrorText { get; set; }
+
+        public ButtonInput СountedButton { get; set; }
+
+        public СalculatorListControl TableFirst { get; set; }
+        public СalculatorListControl TableSecond { get; set; }
         public TextInput DeclaredPrice { get; set; }
         public AutocompleteControl Shop { get; set; }
         public ComboboxControl ShopConbobox { get; set; }
@@ -57,13 +64,6 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput Length { get; set; }
 
         public StaticText WidthErrorText { get; set; }
-        public StaticText HeightErrorText { get; set; }
-        public StaticText LengthErrorText { get; set; }
-
-        public ButtonInput СountedButton { get; set; }
-
-        public СalculatorListControl TableFirst { get; set; }
-        public СalculatorListControl TableSecond { get; set; }
 
         public AlertErrorTextControl AlertErrorText { get; set; }
     }

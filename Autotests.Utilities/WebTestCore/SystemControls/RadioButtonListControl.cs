@@ -1,9 +1,7 @@
-﻿using System;
-using Autotests.Utilities.WebTestCore.SystemControls;
-using Autotests.Utilities.WebTestCore.TestSystem;
+﻿using Autotests.Utilities.WebTestCore.TestSystem;
 using OpenQA.Selenium;
 
-namespace Autotests.WebPages.Pages.PageUser.Controls
+namespace Autotests.Utilities.WebTestCore.SystemControls
 {
     public class RadioButtonListControl : HtmlControl
     {
