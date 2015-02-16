@@ -143,15 +143,15 @@ namespace Autotests.Tests.T03_ClearTests
             adminPage.AdminReference.Click();
             adminPage.Intervals.Mouseover();
             adminPage.IntervalsSize.Click();
-            var intervalsSizePage = adminPage.GoTo<IntervalsSizePage>();
-            intervalsSizePage.Table.RowSearch.Name.SetValue(sizeName);
+            var intervalsSizePage = adminPage.GoTo<IntervalsSidePage>();
+            intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
             intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
 
             while (intervalsSizePage.Table.GetRow(0).Name.IsPresent)
             {
                 intervalsSizePage.Table.GetRow(0).ActionsDelete.Click();
-                intervalsSizePage = intervalsSizePage.GoTo<IntervalsSizePage>();
-                intervalsSizePage.Table.RowSearch.Name.SetValue(sizeName);
+                intervalsSizePage = intervalsSizePage.GoTo<IntervalsSidePage>();
+                intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
                 intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
             }
         }

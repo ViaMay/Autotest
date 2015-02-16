@@ -3,9 +3,9 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class IntervalSizeCreatePage : AdminPageBase
+    public class IntervalSideCreatePage : AdminPageBase
     {
-        public IntervalSizeCreatePage()
+        public IntervalSideCreatePage()
         {
             Name = new TextInput(By.Name("name"));
             Side1Min = new TextInput(By.Name("side1_min"));

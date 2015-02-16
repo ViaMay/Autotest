@@ -4,15 +4,15 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T02_UserTests
 {
-    public class LoginUserTest : SimpleFunctionalTestBase
+    public class LoginUserTest : ConstVariablesTestBase
     {
         [Test]
         public void Test01()
         {
             var defaultPage = LoadPage<DefaultPage>("");
             var loginPage = defaultPage.LoginButtonClickAndGo();
-            loginPage.LoginInput.SetValue("slonas@ukr.net");
-            loginPage.PasswordInput.SetValue("slonas@ukr.net");
+            loginPage.LoginInput.SetValue(userNameAndPass);
+            loginPage.PasswordInput.SetValue(userNameAndPass);
             loginPage.LoginButton.Click();
             loginPage.GoTo<UserHomePage>();
         }

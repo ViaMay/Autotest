@@ -26,8 +26,8 @@ namespace Autotests.Tests.T01_StartSettingTests
             intervalsWeightPage.IntervalWeightCreate.Click();
             var intervalWeightCreatePage = intervalsWeightPage.GoTo<IntervalWeightCreatePage>();
             intervalWeightCreatePage.Name.SetValueAndWait(weightName);
-            intervalWeightCreatePage.Min.SetValueAndWait(weightMin);
-            intervalWeightCreatePage.Max.SetValueAndWait(weightMax);
+            intervalWeightCreatePage.Min.SetValueAndWait(weightMin.ToString());
+            intervalWeightCreatePage.Max.SetValueAndWait(weightMax.ToString());
             intervalWeightCreatePage.SaveButton.Click();
             intervalsWeightPage = intervalWeightCreatePage.GoTo<IntervalsWeightPage>();
 
@@ -37,42 +37,46 @@ namespace Autotests.Tests.T01_StartSettingTests
         }
 
         [Test, Description("Создания размера")]
-        public void CreateSizeTest()
+        public void CreateSideTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminReference.Click();
             adminPage.Intervals.Mouseover();
             adminPage.IntervalsSize.Click();
-            var intervalsSizePage = adminPage.GoTo<IntervalsSizePage>();
-            intervalsSizePage.Table.RowSearch.Name.SetValue(sizeName);
+            var intervalsSizePage = adminPage.GoTo<IntervalsSidePage>();
+            intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
             intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
 
             while (intervalsSizePage.Table.GetRow(0).Name.IsPresent)
             {
                 intervalsSizePage.Table.GetRow(0).ActionsDelete.Click();
-                intervalsSizePage = intervalsSizePage.GoTo<IntervalsSizePage>();
-                intervalsSizePage.Table.RowSearch.Name.SetValue(sizeName);
+                intervalsSizePage = intervalsSizePage.GoTo<IntervalsSidePage>();
+                intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
                 intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
             }
-            intervalsSizePage.IntervalSizeCreate.Click();
-            var intervalSizeCreatePage = intervalsSizePage.GoTo<IntervalSizeCreatePage>();
-            intervalSizeCreatePage.Name.SetValueAndWait(sizeName);
-            intervalSizeCreatePage.Side1Min.SetValueAndWait(side1Min);
-            intervalSizeCreatePage.Side2Min.SetValueAndWait(side2Min);
-            intervalSizeCreatePage.Side3Min.SetValueAndWait(side3Min);
-            intervalSizeCreatePage.SidesSumMin.SetValueAndWait(sidesSumMin);
-            intervalSizeCreatePage.VolumeMin.SetValueAndWait(volumeMin);
-            intervalSizeCreatePage.Side1Max.SetValueAndWait(side1Max);
-            intervalSizeCreatePage.Side2Max.SetValueAndWait(side2Max);
-            intervalSizeCreatePage.Side3Max.SetValueAndWait(side3Max);
-            intervalSizeCreatePage.SidesSumMax.SetValueAndWait(sidesSumMax);
-            intervalSizeCreatePage.VolumeMax.SetValueAndWait(volumeMax);
+            intervalsSizePage.IntervalSideCreate.Click();
+            var intervalSizeCreatePage = intervalsSizePage.GoTo<IntervalSideCreatePage>();
+            intervalSizeCreatePage.Name.SetValueAndWait(sideName);
+            intervalSizeCreatePage.Side1Min.SetValueAndWait(side1Min.ToString());
+            intervalSizeCreatePage.Side2Min.SetValueAndWait(side2Min.ToString());
+            intervalSizeCreatePage.Side3Min.SetValueAndWait(side3Min.ToString());
+//            intervalSizeCreatePage.SidesSumMin.SetValueAndWait(sidesSumMin.ToString());
+//            intervalSizeCreatePage.VolumeMin.SetValueAndWait(volumeMin.ToString());  
+            intervalSizeCreatePage.SidesSumMin.SetValueAndWait("");
+            intervalSizeCreatePage.VolumeMin.SetValueAndWait("");
+            intervalSizeCreatePage.Side1Max.SetValueAndWait(side1Max.ToString());
+            intervalSizeCreatePage.Side2Max.SetValueAndWait(side2Max.ToString());
+            intervalSizeCreatePage.Side3Max.SetValueAndWait(side3Max.ToString());
+//            intervalSizeCreatePage.SidesSumMax.SetValueAndWait(sidesSumMax.ToString());
+//            intervalSizeCreatePage.VolumeMax.SetValueAndWait(volumeMax.ToString());
+            intervalSizeCreatePage.SidesSumMax.SetValueAndWait("");
+            intervalSizeCreatePage.VolumeMax.SetValueAndWait("");
             intervalSizeCreatePage.SaveButton.Click();
-            intervalsSizePage = intervalSizeCreatePage.GoTo<IntervalsSizePage>();
+            intervalsSizePage = intervalSizeCreatePage.GoTo<IntervalsSidePage>();
 
-            intervalsSizePage.Table.RowSearch.Name.SetValue(sizeName);
+            intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
             intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
-            intervalsSizePage.Table.GetRow(0).Name.WaitText(sizeName);
+            intervalsSizePage.Table.GetRow(0).Name.WaitText(sideName);
         }
     }
 }

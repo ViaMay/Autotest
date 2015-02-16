@@ -30,7 +30,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             pricePickupCreatePage.Price.SetValueAndWait("10");
             pricePickupCreatePage.PriceOverFlow.SetValueAndWait("2");
             pricePickupCreatePage.Weight.SetFirstValueSelect(weightName);
-            pricePickupCreatePage.Dimension.SetFirstValueSelect(sizeName);
+            pricePickupCreatePage.Dimension.SetFirstValueSelect(sideName);
             pricePickupCreatePage.SaveButton.Click();
             pricesPickupPage = pricePickupCreatePage.GoTo<PricesPickupPage>();
 
@@ -65,7 +65,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             priceCourierCreatePage.Route.SetFirstValueSelect("2", "г. Москва #151184 - г. Москва #151184");
             priceCourierCreatePage.CompanyName.SetFirstValueSelect(сompanyName);
             priceCourierCreatePage.Weight.SetFirstValueSelect(weightName);
-            priceCourierCreatePage.Dimension.SetFirstValueSelect(sizeName);
+            priceCourierCreatePage.Dimension.SetFirstValueSelect(sideName);
             priceCourierCreatePage.SaveButton.Click();
             pricesCourierPage = priceCourierCreatePage.GoTo<PricesCourierPage>();
 
@@ -100,7 +100,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             priceSelfCreatePage.Route.SetFirstValueSelect("2", "г. Москва #151184 - г. Москва #151184");
             priceSelfCreatePage.CompanyName.SetFirstValueSelect(сompanyName);
             priceSelfCreatePage.Weight.SetFirstValueSelect(weightName);
-            priceSelfCreatePage.Dimension.SetFirstValueSelect(sizeName);
+            priceSelfCreatePage.Dimension.SetFirstValueSelect(sideName);
             priceSelfCreatePage.SaveButton.Click();
             pricesSelfPage = priceSelfCreatePage.GoTo<PricesSelfPage>();
 
