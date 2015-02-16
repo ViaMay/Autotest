@@ -6,9 +6,11 @@ using System.IO;
 using System.Threading;
 using System.Web;
 using Microsoft.Win32;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Support.UI;
 
 namespace Autotests.Utilities.WebTestCore.TestSystem
 {
@@ -117,10 +119,39 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
                 Thread.Sleep(100);
             }
         }
- 
+
+        protected bool IsAlertPresent(IWebDriver webDriver)
+        {
+            var second = 0;
+            try
+            {
+                driver.SwitchTo().Alert();
+                return true;
+            }
+            catch (NoAlertPresentException e)
+            {
+                Thread.Sleep(10);
+                if (second >= 100) return false;
+            }
+            return false;
+        }
+
         public IAlert Alert()
         {
+
+            var second = 0;
+            try
+            {
+                driver.SwitchTo().Alert();
+                return driver.SwitchTo().Alert();
+            }
+            catch (NoAlertPresentException e)
+            {
+                Thread.Sleep(1000);
+                if (second >= 10) Assert.Fail("Не найден Alert");
+            }
             return driver.SwitchTo().Alert();
+            
         }
 
         public string GetScreenshot()

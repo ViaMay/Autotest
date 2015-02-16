@@ -25,16 +25,13 @@ namespace Autotests.WebPages.Pages.PageUser
             Height = new TextInput(By.Name("dimension_side2"));
             Length = new TextInput(By.Name("dimension_side3"));
 
-            WidthErrorText = new StaticText(BY.NthOfClass("help-inline", 0));
-            HeightErrorText = new StaticText(BY.NthOfClass("help-inline", 1));
-            LengthErrorText = new StaticText(BY.NthOfClass("help-inline", 2));
-
             СountedButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
 
             TableFirst = new СalculatorListControl(By.XPath("//table[1]"));
             TableSecond = new СalculatorListControl(By.XPath("//table[2]"));
 
-            AlertErrorText = new AlertErrorTextControl(By.ClassName("form-horizontal"), null);
+            ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"), null);
+            ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"), null);
         }
 
         public override void BrowseWaitVisible()
@@ -47,24 +44,21 @@ namespace Autotests.WebPages.Pages.PageUser
         public ComboboxControl CityFromConbobox { get; set; }
         public AutocompleteControl CityTo { get; set; }
         public ComboboxControl CityToConbobox { get; set; }
-        public StaticText HeightErrorText { get; set; }
-        public StaticText LengthErrorText { get; set; }
+        public AutocompleteControl Shop { get; set; }
+        public ComboboxControl ShopConbobox { get; set; }
 
         public ButtonInput СountedButton { get; set; }
 
         public СalculatorListControl TableFirst { get; set; }
         public СalculatorListControl TableSecond { get; set; }
+        
         public TextInput DeclaredPrice { get; set; }
-        public AutocompleteControl Shop { get; set; }
-        public ComboboxControl ShopConbobox { get; set; }
         public TextInput Weight { get; set; }
-
         public TextInput Width { get; set; }
         public TextInput Height { get; set; }
         public TextInput Length { get; set; }
 
-        public StaticText WidthErrorText { get; set; }
-
-        public AlertErrorTextControl AlertErrorText { get; set; }
+        public ErrorActionTextControl ActionErrorText { get; set; }
+        public ErrorTextControl ErrorText { get; set; }
     }
 }

@@ -20,11 +20,6 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             WebDriverCache.WebDriver.Alert().Dismiss();
         }
 
-        public void WaitText()
-        {
-            var d = WebDriverCache.WebDriver.Alert().Text;
-        }
-
         public void WaitText(string expectedText)
         {
             Waiter.Wait(() => WebDriverCache.WebDriver.Alert().Text == expectedText, "Ожидание видимости элемента");

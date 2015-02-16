@@ -4,8 +4,8 @@ namespace Autotests.Tests
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
-        protected override string ApplicationBaseUrl { get { return "dev.ddelivery.ru"; } }
-//        protected override string ApplicationBaseUrl { get { return "sprint.dev.ddelivery.ru"; } }
+//        protected override string ApplicationBaseUrl { get { return "dev.ddelivery.ru"; } }
+        protected override string ApplicationBaseUrl { get { return "sprint.dev.ddelivery.ru"; } }
 
         public override void SetUp()
         {
@@ -27,16 +27,16 @@ namespace Autotests.Tests
             weightMax = 15;
 
             sideName = "test_via_Side";
-            side1Min = 3.96;
-            side2Min = 1.87;
-            side3Min = 2.29;
-            sidesSumMin = 17.50;
-            volumeMin = 16.96;
-            side1Max = 60.11;
-            side2Max = 40.99;
-            side3Max = 50.5;
-            sidesSumMax = 100.6;
-            volumeMax = 6783.63;
+            side1Min = 1;
+            side2Min = 2;
+            side3Min = 3;
+//            sidesSumMin = 9;
+//            volumeMin = 27;
+            side1Max = 40;
+            side2Max = 50;
+            side3Max = 60;
+//            sidesSumMax = 90;
+//            volumeMax = 27000;
         }
 
         public string adminName;

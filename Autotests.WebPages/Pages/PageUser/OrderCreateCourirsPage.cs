@@ -11,7 +11,9 @@ namespace Autotests.WebPages.Pages.PageUser
     {
         public OrderCreateCourirsPage()
         {
-            CityToConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 1));
+            AletrError = new AlertControl();
+
+            CityToConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 0));
             CityTo = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 0));
 
             DeclaredPrice = new TextInput(By.Name("declared_price"));
@@ -21,9 +23,10 @@ namespace Autotests.WebPages.Pages.PageUser
             Length = new TextInput(By.Name("dimension_side3"));
 
             СountedButton = new ButtonInput(By.Name("recalc"));
+            TextHelpValidation = new StaticText(By.ClassName("help-block"));
 
             SaveDraftButton = new ButtonInput(By.CssSelector("input.btn.btn-primary.btn-success"));
-            SendOrderButton = new ButtonInput(By.LinkText("Отправить заказ"));
+            SendOrderButton = new ButtonInput(By.CssSelector("input.btn.btn-primary.pull-right"));
 
             DeliveryList = new RadioButtonListControl("radio_div");
 
@@ -40,6 +43,9 @@ namespace Autotests.WebPages.Pages.PageUser
             GoodsDescription = new TextInput(By.Name("goods_description"));
 
             Countedloader = new StaticControl(By.CssSelector("#radio_div > div > imj"));
+
+            ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"), null);
+            ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"), null);
          }
 
         public OrderArticleRowControl GetArticleRow(int index)
@@ -59,9 +65,21 @@ namespace Autotests.WebPages.Pages.PageUser
             while (!DeliveryList[0].IsPresent)
             {
                 second = second + 1;
-                Thread.Sleep(1000);
-                if (second >= 60) Assert.AreEqual(DeliveryList[0].IsPresent, true, "Время ожидание завершено. Не найден элемент");
+                Thread.Sleep(10);
+                if (second >= 1000) Assert.AreEqual(DeliveryList[0].IsPresent, true, "Время ожидание завершено. Не найден элемент");
             }
+        }
+
+        public void WaitTextRadioButtonError(string value)
+        {
+            var second = 0;
+            while (!TextHelpValidation.IsPresent)
+            {
+                second = second + 1;
+                if (second >= 1000) Assert.AreEqual(Countedloader.IsPresent, false, "Время ожидание завершено. Не найден элемент");
+                Thread.Sleep(10);
+            }
+            TextHelpValidation.WaitText(value);
         }
 
         public override void BrowseWaitVisible()
@@ -69,6 +87,7 @@ namespace Autotests.WebPages.Pages.PageUser
             base.BrowseWaitVisible();
             CityTo.WaitVisible();
         }
+        public AlertControl AletrError { get; set; }
 
         public AutocompleteControl CityTo { get; set; }
         public ComboboxControl CityToConbobox { get; set; }
@@ -81,7 +100,8 @@ namespace Autotests.WebPages.Pages.PageUser
         public ButtonInput СountedButton { get; set; }
         public ButtonInput SaveDraftButton { get; set; }
         public ButtonInput SendOrderButton { get; set; }
-        
+
+        public StaticText TextHelpValidation { get; set; }
         public RadioButtonListControl DeliveryList { get; set; }
 
         public TextInput BuyerPostalCode { get; set; }
@@ -96,5 +116,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput GoodsDescription { get; set; }
 
         public StaticControl Countedloader { get; set; }
+        public ErrorActionTextControl ActionErrorText { get; set; }
+        public ErrorTextControl ErrorText { get; set; }
     }
 }

@@ -13,33 +13,33 @@ namespace Autotests.Tests.T02_UserTests
             var calculatorPage = userPage.GoTo<СalculatorPage>();
 
             calculatorPage.СountedButton.ClickAndWaitTextError();
-            calculatorPage.AlertErrorText[0].WaitText("Магазин обязательно к заполнению");
-            calculatorPage.AlertErrorText[1].WaitText("Город получения обязательно к заполнению");
-            calculatorPage.AlertErrorText[2].WaitText("Город отправления обязательно к заполнению");
+            calculatorPage.ActionErrorText[0].WaitText("Магазин обязательно к заполнению");
+            calculatorPage.ActionErrorText[1].WaitText("Город получения обязательно к заполнению");
+            calculatorPage.ActionErrorText[2].WaitText("Город отправления обязательно к заполнению");
 
             calculatorPage.CityFrom.SetFirstValueSelect("Москва");
             calculatorPage.СountedButton.ClickAndWaitTextError();
-            calculatorPage.AlertErrorText[0].WaitText("Город получения обязательно к заполнению");
-            calculatorPage.AlertErrorText[1].WaitAbsence();
+            calculatorPage.ActionErrorText[0].WaitText("Город получения обязательно к заполнению");
+            calculatorPage.ActionErrorText[1].WaitAbsence();
 
             calculatorPage.CityFromConbobox.Remove.Click();
             calculatorPage.CityFrom.SetFirstValueSelect("Питер");
             calculatorPage.СountedButton.ClickAndWaitTextError();
-            calculatorPage.AlertErrorText[0].WaitText("Магазин обязательно к заполнению");
-            calculatorPage.AlertErrorText[1].WaitText("Город получения обязательно к заполнению");
-            calculatorPage.AlertErrorText[2].WaitAbsence();
+            calculatorPage.ActionErrorText[0].WaitText("Магазин обязательно к заполнению");
+            calculatorPage.ActionErrorText[1].WaitText("Город получения обязательно к заполнению");
+            calculatorPage.ActionErrorText[2].WaitAbsence();
 
             calculatorPage.CityFromConbobox.Remove.Click();
             calculatorPage.CityTo.SetFirstValueSelect("Москва");
             calculatorPage.СountedButton.ClickAndWaitTextError();
-            calculatorPage.AlertErrorText[0].WaitText("Магазин обязательно к заполнению");
-            calculatorPage.AlertErrorText[1].WaitText("Город отправления обязательно к заполнению");
-            calculatorPage.AlertErrorText[2].WaitAbsence();
+            calculatorPage.ActionErrorText[0].WaitText("Магазин обязательно к заполнению");
+            calculatorPage.ActionErrorText[1].WaitText("Город отправления обязательно к заполнению");
+            calculatorPage.ActionErrorText[2].WaitAbsence();
 
             calculatorPage.Shop.SetFirstValueSelect(userShops);
             calculatorPage.СountedButton.ClickAndWaitTextError();
-            calculatorPage.AlertErrorText[0].WaitText("Город отправления обязательно к заполнению");
-            calculatorPage.AlertErrorText[1].WaitAbsence();
+            calculatorPage.ActionErrorText[0].WaitText("Город отправления обязательно к заполнению");
+            calculatorPage.ActionErrorText[1].WaitAbsence();
         }
 
         [Test, Description("Провека сообщений об ошибках для размера")]
@@ -61,11 +61,11 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.СountedButton.ClickAndWaitTextError();
 
             calculatorPage.Width.WaitText("");
-            calculatorPage.WidthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.ErrorText[0].WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
             calculatorPage.Height.WaitText("");
-            calculatorPage.HeightErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.ErrorText[1].WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
             calculatorPage.Length.WaitText("");
-            calculatorPage.LengthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.ErrorText[2].WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
 
             calculatorPage.Width.SetValueAndWait("0");
             calculatorPage.Height.SetValueAndWait("0");
@@ -73,9 +73,9 @@ namespace Autotests.Tests.T02_UserTests
 
             calculatorPage.СountedButton.ClickAndWaitTextError();
 
-            calculatorPage.WidthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
-            calculatorPage.HeightErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
-            calculatorPage.LengthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.ErrorText[0].WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.ErrorText[1].WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.ErrorText[2].WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
 
             calculatorPage.Width.SetValueAndWait("249");
             calculatorPage.Height.SetValueAndWait("249");
@@ -83,9 +83,9 @@ namespace Autotests.Tests.T02_UserTests
 
             calculatorPage.СountedButton.ClickAndWaitTextErrorAbsence();
 
-            calculatorPage.WidthErrorText.WaitAbsence();
-            calculatorPage.HeightErrorText.WaitAbsence();
-            calculatorPage.LengthErrorText.WaitAbsence();
+            calculatorPage.ErrorText[0].WaitAbsence();
+            calculatorPage.ErrorText[1].WaitAbsence();
+            calculatorPage.ErrorText[2].WaitAbsence();
 
             calculatorPage.Width.SetValueAndWait("250");
             calculatorPage.Height.SetValueAndWait("250");
@@ -93,9 +93,9 @@ namespace Autotests.Tests.T02_UserTests
 
             calculatorPage.СountedButton.ClickAndWaitTextError();
 
-            calculatorPage.WidthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
-            calculatorPage.HeightErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
-            calculatorPage.LengthErrorText.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.ErrorText[0].WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.ErrorText[1].WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            calculatorPage.ErrorText[2].WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
         }
     }
 }

@@ -3,11 +3,11 @@ using Autotests.Utilities.WebTestCore.SystemControls;
 using Autotests.Utilities.WebTestCore.TestSystem;
 using OpenQA.Selenium;
 
-namespace Autotests.WebPages.Pages.PageUser.Controls
+namespace Autotests.WebPages.Pages
 {
-    public class AlertErrorTextControl : HtmlControl
+    public class ErrorActionTextControl : HtmlControl
     {
-        public AlertErrorTextControl(By locator, HtmlControl container)
+        public ErrorActionTextControl(By locator, HtmlControl container)
             :
                 base(locator, container)
         {

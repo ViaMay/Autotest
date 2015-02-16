@@ -22,7 +22,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
 
-            orderCreateCourirsPage.DeliveryList[0].WaitText("test_via, цена: 41.00 руб, срок доставки: 1 - 2 дн.");
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 41.00 руб");
             orderCreateCourirsPage.DeliveryList[0].Click();
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
@@ -76,7 +76,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableArticle.GetRow(0).Count.WaitText("6");
         }
 
-        [Test, Description("Соз ")]
+        [Test, Description("Проверка изменения статусов")]
         public void OrderCreateCourirsCheckStatusTest()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
@@ -131,6 +131,40 @@ namespace Autotests.Tests.T02_UserTests
             ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Подтвердить");
+        }
+
+        [Test, Description("Проверка изменения статусов")]
+        public void OrderCreateCourirsAndSendTest()
+        {
+            var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
+            userPage.OrderNew.Click();
+            userPage.OrderCreateCourirs.Click();
+            var orderCreateCourirsPage = userPage.GoTo<OrderCreateCourirsPage>();
+            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
+            orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
+            orderCreateCourirsPage.Width.SetValueAndWait("10.1");
+            orderCreateCourirsPage.Height.SetValueAndWait("11.1");
+            orderCreateCourirsPage.Length.SetValueAndWait("12.1");
+            orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
+
+            orderCreateCourirsPage.СountedButton.Click();
+            orderCreateCourirsPage.WaitCounted();
+
+            orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
+            orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
+            orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
+
+            orderCreateCourirsPage.GoodsDescription.SetValueAndWait("ok");
+            orderCreateCourirsPage.SendOrderButton.Click();
+            var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderCourirsPage>();
+            orderCourirsPage.StatusOrder.WaitText("Подтверждена");
+            orderCourirsPage.BackOrders.Click();
+            var ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
+            ordersPage.Table.GetRow(0).Status.WaitText("Подтверждена");
+            ordersPage.Table.GetRow(0).Сonfirm.WaitText("Отменить");
         }
     }
 }

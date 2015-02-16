@@ -76,7 +76,7 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             });
         }
 
-        public string GetAttribute(string attributeName)
+        public string  GetAttribute(string attributeName)
         {
             return Execute(() => FindNativeWebElement().GetAttribute(attributeName));
         }

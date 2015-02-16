@@ -92,6 +92,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\ErrorTextControl.cs" />
+    <Compile Include="Pages\ErrorActionTextControl.cs" />
     <Compile Include="Pages\BaseRowSearchControl.cs" />
     <Compile Include="Pages\BaseTableListControl.cs" />
     <Compile Include="Pages\ComboboxControl.cs" />
@@ -126,7 +128,6 @@
     <Compile Include="Pages\PageAdmin\СompaniesPage.cs" />
     <Compile Include="Pages\PageAdmin\AdminHomePage.cs" />
     <Compile Include="Pages\PageAdmin\AdminPageBase.cs" />
-    <Compile Include="Pages\PageUser\Controls\AlertErrorTextControl.cs" />
     <Compile Include="Pages\PageUser\Controls\OrdersListControl.cs" />
     <Compile Include="Pages\PageUser\Controls\OrdersRowControl.cs" />
     <Compile Include="Pages\PageUser\Controls\ShopsRowControl.cs" />

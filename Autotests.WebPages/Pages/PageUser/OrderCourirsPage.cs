@@ -7,7 +7,7 @@ namespace Autotests.WebPages.Pages.PageUser
     {
         public OrderCourirsPage()
         {
-            StatusOrder = new StaticText(By.CssSelector("legend > span"));
+            StatusOrder = new StaticText(By.CssSelector("legend > span.label"));
             BackOrders = new ButtonInput(By.LinkText("Вернутся к списку"));
 
             TableSender = new SenderListControl(By.XPath("//div[@class='span5']/table[1]"));
