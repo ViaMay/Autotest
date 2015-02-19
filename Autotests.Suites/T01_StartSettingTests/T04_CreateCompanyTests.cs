@@ -3,10 +3,10 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T01_StartSettingTests
 {
-    public class T02CompanyRegistrationTests : ConstVariablesTestBase
+    public class T04CreateCompanyTests : ConstVariablesTestBase
     {
         [Test, Description("Создания компании")]
-        public void T01_CreateCompatyTest()
+        public void CreateCompatyTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminСompanies.Click();
@@ -45,37 +45,9 @@ namespace Autotests.Tests.T01_StartSettingTests
             companyCreatePage.CompanyPickupAddButton.Click();
             companyCreatePage.SaveButton.Click();
             companyCreatePage.GoTo<СompaniesPage>();
-        }
 
-        [Test, Description("Создания точки доставки")]
-        public void T02_CreateDeliveryPointTest()
-        {
-            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
-            adminPage.DeliveryPoints.Click();
-            var deliveryPointsPage = adminPage.GoTo<DeliveryPointsPage>();
-            deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
-            deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
-
-            while (deliveryPointsPage.Table.GetRow(0).Name.IsPresent)
-            {
-                deliveryPointsPage.Table.GetRow(0).ActionsDelete.Click();
-                deliveryPointsPage = deliveryPointsPage.GoTo<DeliveryPointsPage>();
-                deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
-                deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
-            }
-            deliveryPointsPage.DeliveryPointCreate.Click();
-            var deliveryPointCreatePage = deliveryPointsPage.GoTo<DeliveryPointCreatePage>();
-            deliveryPointCreatePage.City.SetFirstValueSelect("Москва");
-            deliveryPointCreatePage.DeliveryPointName.SetValueAndWait(deliveryPointName);
-            deliveryPointCreatePage.CompanyName.SetFirstValueSelect(сompanyName);
-            deliveryPointCreatePage.Address.SetValueAndWait("Москва");
-            deliveryPointCreatePage.SaveButton.Click();
-            deliveryPointsPage = deliveryPointCreatePage.GoTo<DeliveryPointsPage>();
-
-            deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
-            deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
-            deliveryPointsPage.Table.GetRow(0).Name.WaitPresence();
+            var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
+            adminMaintenancePage.AlertText.WaitText("Cache flushed!");
         }
     }
 }

@@ -3,10 +3,10 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T01_StartSettingTests
 {
-    public class T04CreatePriceTests : ConstVariablesTestBase
+    public class T06CreatePriceTests : ConstVariablesTestBase
     {
         [Test, Description("Создания цены забора")]
-        public void T01_CreatePricePickupTest()
+        public void CreatePricePickupTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminСompanies.Click();
@@ -40,7 +40,7 @@ namespace Autotests.Tests.T01_StartSettingTests
         }
 
         [Test, Description("Создания цены курьера")]
-        public void T02_CreatePriceCourierTest()
+        public void CreatePriceCourierTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminСompanies.Click();
@@ -75,7 +75,7 @@ namespace Autotests.Tests.T01_StartSettingTests
         }
 
         [Test, Description("Создания цены самовывоза")]
-        public void T03_CreateSelfPriceTest()
+        public void CreateSelfPriceTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminСompanies.Click();

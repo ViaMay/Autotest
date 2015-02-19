@@ -7,12 +7,10 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageUser
 {
-    public class OrderCreateCourirsPage : UserPageBase
+    public class OrderCourirsCreatePage : UserPageBase
     {
-        public OrderCreateCourirsPage()
+        public OrderCourirsCreatePage()
         {
-            AletrError = new AlertControl();
-
             CityToConbobox = new ComboboxControl(BY.NthOfClass("combobox-container", 0));
             CityTo = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 0));
 
@@ -23,10 +21,9 @@ namespace Autotests.WebPages.Pages.PageUser
             Length = new TextInput(By.Name("dimension_side3"));
 
             СountedButton = new ButtonInput(By.Name("recalc"));
-            TextHelpValidation = new StaticText(By.ClassName("help-block"));
 
-            SaveDraftButton = new ButtonInput(By.CssSelector("input.btn.btn-primary.btn-success"));
-            SendOrderButton = new ButtonInput(By.CssSelector("input.btn.btn-primary.pull-right"));
+            SaveDraftButton = new ButtonInput(By.CssSelector("div.form-actions > input.btn.btn-primary.btn-success"));
+            SendOrderButton = new ButtonInput(By.CssSelector("div.form-actions > input.btn.btn-primary.pull-right"));
 
             DeliveryList = new RadioButtonListControl("radio_div");
 
@@ -44,8 +41,10 @@ namespace Autotests.WebPages.Pages.PageUser
 
             Countedloader = new StaticControl(By.CssSelector("#radio_div > div > imj"));
 
+            TextRadioButtonError = new StaticText(By.ClassName("help-block"));
             ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"), null);
             ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"), null);
+            AletrError = new AlertControl();
          }
 
         public OrderArticleRowControl GetArticleRow(int index)
@@ -73,13 +72,13 @@ namespace Autotests.WebPages.Pages.PageUser
         public void WaitTextRadioButtonError(string value)
         {
             var second = 0;
-            while (!TextHelpValidation.IsPresent)
+            while (!TextRadioButtonError.IsPresent)
             {
                 second = second + 1;
                 if (second >= 1000) Assert.AreEqual(Countedloader.IsPresent, false, "Время ожидание завершено. Не найден элемент");
                 Thread.Sleep(10);
             }
-            TextHelpValidation.WaitText(value);
+            TextRadioButtonError.WaitText(value);
         }
 
         public override void BrowseWaitVisible()
@@ -87,8 +86,6 @@ namespace Autotests.WebPages.Pages.PageUser
             base.BrowseWaitVisible();
             CityTo.WaitVisible();
         }
-        public AlertControl AletrError { get; set; }
-
         public AutocompleteControl CityTo { get; set; }
         public ComboboxControl CityToConbobox { get; set; }
         public TextInput DeclaredPrice { get; set; }
@@ -101,7 +98,6 @@ namespace Autotests.WebPages.Pages.PageUser
         public ButtonInput SaveDraftButton { get; set; }
         public ButtonInput SendOrderButton { get; set; }
 
-        public StaticText TextHelpValidation { get; set; }
         public RadioButtonListControl DeliveryList { get; set; }
 
         public TextInput BuyerPostalCode { get; set; }
@@ -118,5 +114,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public StaticControl Countedloader { get; set; }
         public ErrorActionTextControl ActionErrorText { get; set; }
         public ErrorTextControl ErrorText { get; set; }
+        public StaticText TextRadioButtonError { get; set; }
+        public AlertControl AletrError { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T01_StartSettingTests
 {
-    public class T01UserRegistrationTest : ConstVariablesTestBase
+    public class T02UserRegistrationTest : ConstVariablesTestBase
     {
         [Test, Description("Создания пользователя - user")]
         public void CreateUserTest()

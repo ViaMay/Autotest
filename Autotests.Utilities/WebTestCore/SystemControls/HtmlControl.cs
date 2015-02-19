@@ -28,6 +28,16 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
         {
         }
 
+        public void SwitchToFrame()
+        {
+            WebDriverCache.WebDriver.driver.SwitchTo().Frame(SearchContext.FindElement(By.XPath("//*[@id='ddelivery-container']/iframe")));
+        }
+
+        public void SwitchToDefaultContent()
+        {
+            WebDriverCache.WebDriver.driver.SwitchTo().DefaultContent();
+        }
+
         public virtual bool IsEnabled
         {
             get { return !HasClass("disabled"); }
@@ -223,16 +233,6 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
         {
             element.ClickLeftUp();
         }
-     
-//        public void ClickAndWaitAnimation()
-//        {
-//            const string animationClass = "animationIsRunning";
-//            var body = new StaticControl(By.TagName("body"));
-//            body.WaitClassAbsenceWithRetries(animationClass);
-//            Click();
-//            body.WaitClassPresence(animationClass);
-//            body.WaitClassAbsenceWithRetries(animationClass);
-//        }
 
         public void ClickAndWaitTextError(int index = 0)
         {
@@ -243,9 +243,9 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             while (errorClass.IsPresent == false && alertClass.IsPresent == false)
             {
                 second = second + 1;
-                Thread.Sleep(100);
-                if (second >= 60) Assert.AreEqual(errorClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
-                if (second >= 60) Assert.AreEqual(alertClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
+                Thread.Sleep(10);
+                if (second >= 600) Assert.AreEqual(errorClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
+                if (second >= 600) Assert.AreEqual(alertClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
             }
         }
 
@@ -258,9 +258,9 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             while (errorClass.IsPresent || alertClass.IsPresent)
             {
                 second = second + 1;
-                Thread.Sleep(100);
-                if (second >= 60) Assert.AreEqual(errorClass.IsPresent, false, "Время ожидание завершено. Найден элемент содержаший ошибку");
-                if (second >= 60) Assert.AreEqual(alertClass.IsPresent, false, "Время ожидание завершено. Найден элемент содержаший ошибку");
+                Thread.Sleep(10);
+                if (second >= 600) Assert.AreEqual(errorClass.IsPresent, false, "Время ожидание завершено. Найден элемент содержаший ошибку");
+                if (second >= 600) Assert.AreEqual(alertClass.IsPresent, false, "Время ожидание завершено. Найден элемент содержаший ошибку");
             }
         }
 

@@ -16,7 +16,7 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
 {
     public class WebDriverWrapper
     {
-        private readonly IWebDriver driver;
+        public readonly IWebDriver driver;
 
         public WebDriverWrapper(string proxy = null)
         {
@@ -65,6 +65,10 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             return driver;
         }
 
+
+
+
+
         public void DeleteAllCookies()
         {
             driver.Manage().Cookies.DeleteAllCookies();
@@ -102,38 +106,19 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
                 var ajaxIsComplete = (bool)(driver as IJavaScriptExecutor).ExecuteScript("return jQuery.active == 0");
                 if (ajaxIsComplete)
                     break;
-                Thread.Sleep(100);
             }
             while (true) // Handle timeout somewhere
             {
                 var ajaxIsComplete = (bool)(driver as IJavaScriptExecutor).ExecuteScript("return typeof(Ajax) != 'function' || Ajax.activeRequestCount == 0;");
                 if (ajaxIsComplete)
                     break;
-                Thread.Sleep(100);
             }
             while (true) // Handle timeout somewhere
             {
                             var ajaxIsComplete = (bool)(driver as IJavaScriptExecutor).ExecuteScript("return typeof(dojo) != 'function' ||  dojo.io.XMLHTTPTransport.inFlight.length == 0;");
                 if (ajaxIsComplete)
                     break;
-                Thread.Sleep(100);
             }
-        }
-
-        protected bool IsAlertPresent(IWebDriver webDriver)
-        {
-            var second = 0;
-            try
-            {
-                driver.SwitchTo().Alert();
-                return true;
-            }
-            catch (NoAlertPresentException e)
-            {
-                Thread.Sleep(10);
-                if (second >= 100) return false;
-            }
-            return false;
         }
 
         public IAlert Alert()
@@ -142,23 +127,15 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             var second = 0;
             try
             {
-                driver.SwitchTo().Alert();
                 return driver.SwitchTo().Alert();
             }
             catch (NoAlertPresentException e)
             {
                 Thread.Sleep(1000);
-                if (second >= 10) Assert.Fail("Не найден Alert");
             }
             return driver.SwitchTo().Alert();
-            
         }
-
-        public string GetScreenshot()
-        {
-            return ((MyRemoteWebDriver) driver).GetScreenshot();
-        }
-
+       
         public void Quit()
         {
             try

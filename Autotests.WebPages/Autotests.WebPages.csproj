@@ -92,6 +92,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\MapControl.cs" />
     <Compile Include="Pages\ErrorTextControl.cs" />
     <Compile Include="Pages\ErrorActionTextControl.cs" />
     <Compile Include="Pages\BaseRowSearchControl.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Pages\DefaultPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\BaseRowControl.cs" />
+    <Compile Include="Pages\PageAdmin\AdminMaintenancePage.cs" />
     <Compile Include="Pages\PageAdmin\Controls\PricesListControl.cs" />
     <Compile Include="Pages\PageAdmin\Controls\PricesPickupListControl.cs" />
     <Compile Include="Pages\PageAdmin\Controls\PricesPickupRowControl.cs" />
@@ -138,9 +140,10 @@
     <Compile Include="Pages\PageUser\Controls\СalculatorRowControl.cs" />
     <Compile Include="Pages\PageUser\Controls\WarehousesRowControl.cs" />
     <Compile Include="Pages\PageUser\Controls\TimeWorkRowControl.cs" />
+    <Compile Include="Pages\PageUser\OrderSelfCreatePage.cs" />
     <Compile Include="Pages\PageUser\OrdersListPage.cs" />
-    <Compile Include="Pages\PageUser\OrderCourirsPage.cs" />
-    <Compile Include="Pages\PageUser\OrderCreateCourirsPage.cs" />
+    <Compile Include="Pages\PageUser\OrderPage.cs" />
+    <Compile Include="Pages\PageUser\OrderCourirsCreatePage.cs" />
     <Compile Include="Pages\PageUser\СalculatorPage.cs" />
     <Compile Include="Pages\PageUser\UserWarehouseCreatePage.cs" />
     <Compile Include="Pages\PageUser\UserShopCreatePage.cs" />

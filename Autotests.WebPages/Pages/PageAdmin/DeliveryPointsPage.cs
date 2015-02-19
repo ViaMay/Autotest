@@ -1,5 +1,4 @@
 ﻿using Autotests.Utilities.WebTestCore.SystemControls;
-using Autotests.WebPages.Pages.PageAdmin.Controls;
 using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin

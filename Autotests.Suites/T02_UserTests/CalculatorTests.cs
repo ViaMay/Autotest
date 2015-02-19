@@ -43,7 +43,7 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.TableSecond.GetRow(0).PricePickup.WaitText("200");
         }
 
-        [Test, Description("Автозаполнение полей стоимости и веса")]
+        [Test, Description("проверяем автозаполнение полей стоимости и веса")]
         public void CalculatoraUpdatePriceAndTest()
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);

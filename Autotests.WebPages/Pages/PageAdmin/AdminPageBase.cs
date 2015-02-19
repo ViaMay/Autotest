@@ -19,11 +19,11 @@ namespace Autotests.WebPages.Pages.PageAdmin
 
             AdminСompanies = new Link(By.LinkText("Компании"));
             Сompanies = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li"));
-            DeliveryPoints = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(3)"));
-            Prices = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(7)"));
-            PricesPickup = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(7) > ul > li:nth-child(1)"));
-            PricesSelf = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(7) ul > li:nth-child(2)"));
-            PricesCourier = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(7) ul > li:nth-child(3)"));
+            DeliveryPoints = new Link(By.LinkText("Пункты выдачи"));
+            Prices = new Link(By.LinkText("Цены"));
+            PricesPickup = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(9) > ul > li:nth-child(1)"));
+            PricesSelf = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(9) ul > li:nth-child(2)"));
+            PricesCourier = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(9) ul > li:nth-child(3)"));
 
             AdminUsers = new Link(By.LinkText("Пользователи"));
             Users = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li"));

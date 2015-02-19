@@ -20,7 +20,7 @@ namespace Autotests.WebPages.Pages.PageUser
 
             Orders = new Link(By.LinkText("Заказы"));
             OrderNew = new Link(By.LinkText("Новый"));
-            OrderCreateSelf = new Link(By.LinkText("Выход"));
+            OrderCreateSelf = new Link(By.LinkText("Самовывоз"));
             OrderCreateCourirs = new Link(By.LinkText("Курьерская доставка"));
 
             Documents = new Link(By.LinkText("Документы"));

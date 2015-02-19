@@ -57,14 +57,5 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
                 ;
             }
         }
-
-        public void SetFirstValueSelectOld(string value)
-        {
-            SetValue(value);
-            Thread.Sleep(1500);
-            WebDriverCache.WebDriver.WaitForAjax();
-            SendKeys(Keys.Tab);
-            Thread.Sleep(500);
-        }
     }
 }

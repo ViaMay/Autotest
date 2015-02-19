@@ -1,7 +1,4 @@
-﻿using Autotests.Utilities.WebTestCore.SystemControls;
-using OpenQA.Selenium;
-
-namespace Autotests.WebPages.Pages.PageAdmin
+﻿namespace Autotests.WebPages.Pages.PageAdmin
 {
     public class AdminHomePage : AdminPageBase
     {

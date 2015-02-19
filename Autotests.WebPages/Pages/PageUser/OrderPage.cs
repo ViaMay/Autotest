@@ -3,9 +3,9 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageUser
 {
-    public class OrderCourirsPage : UserPageBase
+    public class OrderPage : UserPageBase
     {
-        public OrderCourirsPage()
+        public OrderPage()
         {
             StatusOrder = new StaticText(By.CssSelector("legend > span.label"));
             BackOrders = new ButtonInput(By.LinkText("Вернутся к списку"));

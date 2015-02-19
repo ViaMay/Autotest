@@ -4,8 +4,8 @@ namespace Autotests.Tests
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
-//        protected override string ApplicationBaseUrl { get { return "dev.ddelivery.ru"; } }
-        protected override string ApplicationBaseUrl { get { return "sprint.dev.ddelivery.ru"; } }
+        protected override string ApplicationBaseUrl { get { return "dev.ddelivery.ru"; } }
+//        protected override string ApplicationBaseUrl { get { return "sprint.dev.ddelivery.ru"; } }
 
         public override void SetUp()
         {

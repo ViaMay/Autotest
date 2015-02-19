@@ -106,6 +106,7 @@
     <Compile Include="WebTestCore\SystemControls\ButtonInput.cs" />
     <Compile Include="WebTestCore\SystemControls\LoaderControl.cs" />
     <Compile Include="WebTestCore\SystemControls\RadioButtonControl.cs" />
+    <Compile Include="WebTestCore\SystemControls\CheckBox.cs" />
     <Compile Include="WebTestCore\TestSystem\BY.cs" />
     <Compile Include="WebTestCore\TestSystem\ByExtensions\ByByAndManualCondition.cs" />
     <Compile Include="WebTestCore\TestSystem\ByExtensions\ByModifiedIdOfHtmlContol.cs" />

@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Linq;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
-using OpenQA.Selenium.Support.UI;
 
 namespace Autotests.Utilities.WebTestCore.TestSystem
 {

@@ -1,4 +1,5 @@
 ﻿using Autotests.Utilities.WebTestCore;
+using Autotests.Utilities.WebTestCore.Pages;
 using Autotests.Utilities.WebTestCore.TestSystem;
 using Autotests.WebPages.Pages.PageAdmin;
 using Autotests.WebPages.Pages.PageUser;

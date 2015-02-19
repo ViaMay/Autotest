@@ -3,15 +3,15 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T02_UserTests
 {
-    public class OrderCreateCourirsValidationTests : ConstVariablesTestBase
+    public class OrderCourirsValidationTests : ConstVariablesTestBase
     {
-        [Test, Description("проверка значений до перерасчета")]
+        [Test, Description("проверка валидаций в параметры заявки до перерасчета")]
         public void TestAlertValidationСounted()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.OrderNew.Click();
             userPage.OrderCreateCourirs.Click();
-            var orderCreateCourirsPage = userPage.GoTo<OrderCreateCourirsPage>();
+            var orderCreateCourirsPage = userPage.GoTo<OrderCourirsCreatePage>();
 
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
@@ -72,7 +72,7 @@ namespace Autotests.Tests.T02_UserTests
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.OrderNew.Click();
             userPage.OrderCreateCourirs.Click();
-            var orderCreateCourirsPage = userPage.GoTo<OrderCreateCourirsPage>();
+            var orderCreateCourirsPage = userPage.GoTo<OrderCourirsCreatePage>();
             orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
             orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
             orderCreateCourirsPage.Width.SetValueAndWait("10.1");
@@ -102,17 +102,17 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("ok");
             orderCreateCourirsPage.SendOrderButton.Click();
-            var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderCourirsPage>();
+            var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");
         }
 
-        [Test, Description("проверка валидации маршрута после появления полей для Buyer-ra")]
+        [Test, Description("проверка валидации маршрута после появления полей для Buyer-a")]
         public void TestValidationRouter()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.OrderNew.Click();
             userPage.OrderCreateCourirs.Click();
-            var orderCreateCourirsPage = userPage.GoTo<OrderCreateCourirsPage>();
+            var orderCreateCourirsPage = userPage.GoTo<OrderCourirsCreatePage>();
             orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
             orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
             orderCreateCourirsPage.Width.SetValueAndWait("10.1");
@@ -134,7 +134,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("ok");
 
-
             orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError();
             orderCreateCourirsPage.ActionErrorText[0].WaitText("Ошибка просчета цены, или маршрут недоступен");
             orderCreateCourirsPage.ActionErrorText[1].WaitText("Город получения обязательно к заполнению");
@@ -149,7 +148,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.WaitCounted();
 
             orderCreateCourirsPage.SendOrderButton.Click();
-            var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderCourirsPage>();
+            var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");
         }
     }
