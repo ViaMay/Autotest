@@ -30,12 +30,12 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
 
         public void SwitchToFrame()
         {
-            WebDriverCache.WebDriver.driver.SwitchTo().Frame(SearchContext.FindElement(By.XPath("//*[@id='ddelivery-container']/iframe")));
+            WebDriverCache.WebDriver.SwitchToFrame(SearchContext.FindElement(By.XPath("//*[@id='ddelivery-container']/iframe")));
         }
 
         public void SwitchToDefaultContent()
         {
-            WebDriverCache.WebDriver.driver.SwitchTo().DefaultContent();
+            WebDriverCache.WebDriver.SwitchToDefaultContent();
         }
 
         public virtual bool IsEnabled

@@ -30,8 +30,8 @@ namespace Autotests.WebPages.Pages.PageUser
             TableFirst = new СalculatorListControl(By.XPath("//table[1]"));
             TableSecond = new СalculatorListControl(By.XPath("//table[2]"));
 
-            ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"), null);
-            ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"), null);
+            ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"));
+            ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"));
         }
 
         public override void BrowseWaitVisible()

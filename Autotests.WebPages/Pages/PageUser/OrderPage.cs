@@ -24,7 +24,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public override void BrowseWaitVisible()
         {
             base.BrowseWaitVisible();
-            StatusOrder.WaitVisible();
+            BackOrders.WaitVisibleWithRetries(1000);
         }
         public StaticText StatusOrder { get; set; }
         public ButtonInput BackOrders { get; set; }

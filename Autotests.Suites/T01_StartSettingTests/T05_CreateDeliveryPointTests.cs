@@ -27,9 +27,9 @@ namespace Autotests.Tests.T01_StartSettingTests
             deliveryPointCreatePage.City.SetFirstValueSelect("Москва");
             deliveryPointCreatePage.DeliveryPointName.SetValueAndWait(deliveryPointName);
             deliveryPointCreatePage.CompanyName.SetFirstValueSelect(сompanyName);
-            deliveryPointCreatePage.Address.SetValueAndWait("Ленинский проспект 127");
-            deliveryPointCreatePage.Longitude.SetValueAndWait("37.477078814299");
-            deliveryPointCreatePage.Latitude.SetValueAndWait("55.645872547535");
+            deliveryPointCreatePage.Address.SetValueAndWait(deliveryPointAddress);
+            deliveryPointCreatePage.Longitude.SetValueAndWait(deliveryPointLongitude);
+            deliveryPointCreatePage.Latitude.SetValueAndWait(deliveryPointLatitude);
             deliveryPointCreatePage.HasFittingRoom.Click();
             deliveryPointCreatePage.IsCard.Click();
             deliveryPointCreatePage.IsCash.Click();

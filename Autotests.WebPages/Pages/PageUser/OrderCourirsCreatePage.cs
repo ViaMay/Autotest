@@ -42,8 +42,8 @@ namespace Autotests.WebPages.Pages.PageUser
             Countedloader = new StaticControl(By.CssSelector("#radio_div > div > imj"));
 
             TextRadioButtonError = new StaticText(By.ClassName("help-block"));
-            ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"), null);
-            ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"), null);
+            ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"));
+            ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"));
             AletrError = new AlertControl();
          }
 

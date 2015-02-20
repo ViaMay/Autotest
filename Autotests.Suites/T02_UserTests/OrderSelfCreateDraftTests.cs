@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using Autotests.WebPages.Pages.PageUser;
+﻿using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
 
 namespace Autotests.Tests.T02_UserTests
@@ -13,10 +12,11 @@ namespace Autotests.Tests.T02_UserTests
             userPage.OrderNew.Click();
             userPage.OrderCreateSelf.Click();
             var orderCreateSelfPage = userPage.GoTo<OrderSelfCreatePage>();
-            orderCreateSelfPage.Weight.SetValueAndWait("4");
             orderCreateSelfPage.Width.SetValueAndWait("4");
             orderCreateSelfPage.Height.SetValueAndWait("4");
             orderCreateSelfPage.Length.SetValueAndWait("4");
+            orderCreateSelfPage.Weight.SetValueAndWait("4");
+            orderCreateSelfPage.OrderNumber.SetValue("14");
 
             orderCreateSelfPage.BuyerName.SetValueAndWait("Фамилия Имя Отчество");
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
@@ -33,7 +33,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.СountedButton.Click();
             orderCreateSelfPage.MapOrders.SwitchToFrame();
 
-            Thread.Sleep(1000);
             orderCreateSelfPage.MapOrders.GetMapCompanyRow(1).Name.Click();
             orderCreateSelfPage.MapOrders.GetMapCompanyRow(2).Name.Click();
             orderCreateSelfPage.MapOrders.GetMapCompanyRow(3).Name.Click();
@@ -42,7 +41,12 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.MapOrders.ImageLocator.Click();
             orderCreateSelfPage.MapOrders.TakeHere.Click();
             orderCreateSelfPage.MapOrders.SwitchToDefaultContent();
-            
+
+            orderCreateSelfPage.PointDeliveryName.WaitText("Пункт выдачи: " + deliveryPointName);
+            orderCreateSelfPage.PointDeliveryAddress.WaitText("Адрес: " + deliveryPointAddress);
+            orderCreateSelfPage.PointDeliveryCompany.WaitText("Компания: " + сompanyName);
+            orderCreateSelfPage.PointDeliveryPrice.WaitText("Цена: 28");
+
             orderCreateSelfPage.SaveDraftButton.Click();
             var orderPage = orderCreateSelfPage.GoTo<OrderPage>();
 

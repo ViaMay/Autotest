@@ -51,6 +51,7 @@ namespace Autotests.Utilities.WebTestCore
                     {
                         CaptureJavascriptErrors();
                         JsLogger.Show();
+                        WebDriverCache.WebDriver.CaptureScreenshot();
                     }
                 }
                 catch

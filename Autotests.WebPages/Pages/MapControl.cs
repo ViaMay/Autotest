@@ -1,4 +1,5 @@
 ﻿using Autotests.Utilities.WebTestCore.SystemControls;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages
@@ -9,13 +10,13 @@ namespace Autotests.WebPages.Pages
             : base(locator, container)
         {
             CityName = new TextInput(By.Name("ddelivery_city"));
-            TakeHere = new Link(By.XPath("//div/div[2]/div[4]/div[5]/a"));
-            ImageLocator = new Link(By.CssSelector("ymaps.ymaps-image"));
+            TakeHere = new LinkWaiter(By.XPath("//div/div[2]/div[4]/div[5]/a"));
+            ImageLocator = new LinkWaiter(By.CssSelector("ymaps.ymaps-image"));
         }
 
         public TextInput CityName { get; set; }
-        public Link TakeHere { get; set; }
-        public Link ImageLocator { get; set; }
+        public LinkWaiter TakeHere { get; set; }
+        public LinkWaiter ImageLocator { get; set; }
 
         public MapCompanyRowControl GetMapCompanyRow(int index)
         {
@@ -31,13 +32,13 @@ namespace Autotests.WebPages.Pages
             : base(By.ClassName("map-popup__main__right__btn"))
 
         {
-            Name = new StaticText(By.XPath(string.Format("//li[{0}]/a/span[1]", index + 1)));
-            Price = new StaticText(By.XPath(string.Format("//li[{0}]/a/span[2]", index + 1)));
-            Date = new StaticText(By.XPath(string.Format("//li[{0}]/a/span[3]", index + 1)));
+            Name = new LinkWaiter(By.XPath(string.Format("//li[{0}]/a/span[1]", index + 1)));
+            Price = new LinkWaiter(By.XPath(string.Format("//li[{0}]/a/span[2]", index + 1)));
+            Date = new LinkWaiter(By.XPath(string.Format("//li[{0}]/a/span[3]", index + 1)));
         }
 
-        public StaticText Name { get; private set; }
-        public StaticText Price { get; private set; }
-        public StaticText Date { get; private set; }
+        public LinkWaiter Name { get; private set; }
+        public LinkWaiter Price { get; private set; }
+        public LinkWaiter Date { get; private set; }
     }
 }

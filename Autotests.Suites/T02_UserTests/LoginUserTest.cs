@@ -7,7 +7,7 @@ namespace Autotests.Tests.T02_UserTests
     public class LoginUserTest : ConstVariablesTestBase
     {
         [Test]
-        public void Test01()
+        public void Test()
         {
             var defaultPage = LoadPage<DefaultPage>("");
             var loginPage = defaultPage.LoginButtonClickAndGo();

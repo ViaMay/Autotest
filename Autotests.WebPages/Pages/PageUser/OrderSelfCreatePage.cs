@@ -23,15 +23,16 @@ namespace Autotests.WebPages.Pages.PageUser
             PaymentPrice = new TextInput(By.Name("payment_price"));
             GoodsDescription = new TextInput(By.Name("goods_description"));
 
-//            DeclaredPrice = new StaticText(By.Name("//fieldset/div[@class='point_info']/div/"));
-//            PaymentPrice = new StaticText(By.Name("payment_price"));
-//            GoodsDescription = new StaticText(By.Name("goods_description"));
+            PointDeliveryName = new StaticText(By.XPath("//div[@class='point_info_detail']/div"));
+            PointDeliveryAddress = new StaticText(By.XPath("//div[@class='point_info_detail']/div[2]"));
+            PointDeliveryCompany = new StaticText(By.XPath("//div[@class='point_info_detail']/div[3]"));
+            PointDeliveryPrice = new StaticText(By.XPath("//div[@class='point_info_detail']/div[4]"));
 
             SaveDraftButton = new ButtonInput(By.CssSelector("div.form-actions > input.btn.btn-primary.btn-success"));
             SendOrderButton = new ButtonInput(By.CssSelector("div.form-actions > input.btn.btn-primary.pull-right"));
 
-            ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"), null);
-            ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"), null);
+            ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"));
+            ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"));
             AletrError = new AlertControl();
 
             MapOrders = new MapControl(By.Id("ddelivery"));
@@ -65,7 +66,12 @@ namespace Autotests.WebPages.Pages.PageUser
 
         public ButtonInput SaveDraftButton { get; set; }
         public ButtonInput SendOrderButton { get; set; }
-        
+
+        public StaticText PointDeliveryName { get; set; }
+        public StaticText PointDeliveryAddress { get; set; }
+        public StaticText PointDeliveryCompany { get; set; }
+        public StaticText PointDeliveryPrice { get; set; }
+
         public ErrorActionTextControl ActionErrorText { get; set; }
         public ErrorTextControl ErrorText { get; set; }
         public AlertControl AletrError { get; set; }

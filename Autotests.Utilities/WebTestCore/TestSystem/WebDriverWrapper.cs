@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.Contracts;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
 using System.Web;
 using Microsoft.Win32;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.UI;
 
 namespace Autotests.Utilities.WebTestCore.TestSystem
 {
     public class WebDriverWrapper
     {
-        public readonly IWebDriver driver;
+        private readonly IWebDriver driver;
 
         public WebDriverWrapper(string proxy = null)
         {
@@ -64,11 +62,7 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
         {
             return driver;
         }
-
-
-
-
-
+        
         public void DeleteAllCookies()
         {
             driver.Manage().Cookies.DeleteAllCookies();
@@ -78,21 +72,6 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
         {
             driver.Manage().Cookies.AddCookie(new Cookie(cookieName, cookieValue, "/"));
         }
-
-//        public string FindCookie(string cookieName)
-//        {
-//            Cookie cookie = driver.Manage().Cookies.GetCookieNamed(cookieName);
-//            if (cookie == null)
-//                return null;
-//            return cookie.Value;
-//        }
-
-//        public void TakeScreenshot(IWebDriver driver, string saveLocation)
-//        {
-//            ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
-//            Screenshot screenshot = screenshotDriver.GetScreenshot();
-//            screenshot.SaveAsFile(saveLocation, ImageFormat.Png);
-//        }
 
         public object ExecuteScript(string script, params object[] args)
         {
@@ -123,8 +102,6 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
 
         public IAlert Alert()
         {
-
-            var second = 0;
             try
             {
                 return driver.SwitchTo().Alert();
@@ -135,7 +112,17 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             }
             return driver.SwitchTo().Alert();
         }
-       
+
+        public IWebDriver SwitchToFrame(IWebElement value)
+        {
+            return driver.SwitchTo().Frame(value);
+        }
+
+        public IWebDriver SwitchToDefaultContent()
+        {
+            return driver.SwitchTo().DefaultContent();
+        }
+
         public void Quit()
         {
             try
@@ -159,6 +146,26 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             catch (Exception exception)
             {
                 Console.WriteLine("Ошибка при остановке ChromeDriver:\r\n{0}", exception);
+            }
+        }
+
+        public void CaptureScreenshot()
+        {
+            Random random = new Random();
+            int num = random.Next();
+            String dir = Environment.CurrentDirectory;
+            Directory.CreateDirectory(dir + @"\screenshots");
+            String saveLocation = dir + @"\screenshots\screenshot" + num + ".png";
+            try
+            {
+                ITakesScreenshot screenshotDriver = driver as ITakesScreenshot;
+                Screenshot screenshot = screenshotDriver.GetScreenshot();
+                screenshot.SaveAsFile(saveLocation, ImageFormat.Png);
+                Console.WriteLine("Screenshot saved to:\r\n{0}", saveLocation);
+            }
+            catch (IOException e)
+            {
+
             }
         }
 
@@ -207,19 +214,6 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
                         return directoryInfo.FullName;
                 }
                 currentDirectory = currentDirectory.Parent;
-            }
-        }
-
-        private class MyRemoteWebDriver : RemoteWebDriver
-        {
-            public MyRemoteWebDriver(Uri remoteAddress, ICapabilities desiredCapabilities)
-                : base(remoteAddress, desiredCapabilities, TimeSpan.FromSeconds(60))
-            {
-            }
-
-            public string GetScreenshot()
-            {
-                return Execute(DriverCommand.Screenshot, null).Value.ToString();
             }
         }
     }

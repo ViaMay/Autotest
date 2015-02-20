@@ -16,7 +16,7 @@ namespace Autotests.Tests
 
             legalEntityName = "test_legalEntity";
             сompanyName = "test_via";
-            deliveryPointName = "test_deliveryPoint";
+            deliveryPointName = "test_deliverypoint";
 
             userNameAndPass = "tester@user.ru";
             userWarehouses = "test_userWarehouses_via";
@@ -30,13 +30,13 @@ namespace Autotests.Tests
             side1Min = 1;
             side2Min = 2;
             side3Min = 3;
-//            sidesSumMin = 9;
-//            volumeMin = 27;
             side1Max = 40;
             side2Max = 50;
             side3Max = 60;
-//            sidesSumMax = 90;
-//            volumeMax = 27000;
+
+            deliveryPointAddress = "Ленинский проспект 127";
+            deliveryPointLongitude = "37.477078814299";
+            deliveryPointLatitude = "55.645872547535";
         }
 
         public string adminName;
@@ -58,12 +58,12 @@ namespace Autotests.Tests
         public double side1Min;
         public double side2Min;
         public double side3Min;
-        public double sidesSumMin;
-        public double volumeMin;
         public double side1Max;
         public double side2Max;
         public double side3Max;
-        public double sidesSumMax;
-        public double volumeMax;
+
+        public string deliveryPointAddress;
+        public string deliveryPointLongitude;
+        public string deliveryPointLatitude;
     }
 }

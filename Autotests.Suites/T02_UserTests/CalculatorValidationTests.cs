@@ -23,7 +23,7 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.ActionErrorText[1].WaitAbsence();
 
             calculatorPage.CityFromConbobox.Remove.Click();
-            calculatorPage.CityFrom.SetFirstValueSelect("Питер");
+            calculatorPage.CityFrom.SetFirstValueSelect("Санкт-Петербург");
             calculatorPage.СountedButton.ClickAndWaitTextError();
             calculatorPage.ActionErrorText[0].WaitText("Магазин обязательно к заполнению");
             calculatorPage.ActionErrorText[1].WaitText("Город получения обязательно к заполнению");

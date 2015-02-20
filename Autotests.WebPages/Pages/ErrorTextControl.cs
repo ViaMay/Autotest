@@ -7,7 +7,7 @@ namespace Autotests.WebPages.Pages
 {
     public class ErrorTextControl : HtmlControl
     {
-        public ErrorTextControl(By locator, HtmlControl container)
+        public ErrorTextControl(By locator, HtmlControl container = null)
             :
                 base(locator, container)
         {

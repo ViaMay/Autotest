@@ -5,7 +5,7 @@ namespace Autotests.Tests.T02_UserTests
 {
     public class OrderCourirsValidationTests : ConstVariablesTestBase
     {
-        [Test, Description("проверка валидаций в параметры заявки до перерасчета")]
+        [Test, Description("Проверка валидаций в параметры заявки до перерасчета")]
         public void TestAlertValidationСounted()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
@@ -66,7 +66,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.DeliveryList[0].WaitVisible();    
         }
 
-        [Test, Description("проверка валидации у Buyer")]
+        [Test, Description("Проверка валидации у Buyer")]
         public void TestValidationBuyer()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
@@ -106,7 +106,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");
         }
 
-        [Test, Description("проверка валидации маршрута после появления полей для Buyer-a")]
+        [Test, Description("Проверка валидации маршрута после появления полей для Buyer-a")]
         public void TestValidationRouter()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
