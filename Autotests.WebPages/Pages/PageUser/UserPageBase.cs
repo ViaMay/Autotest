@@ -63,6 +63,7 @@ namespace Autotests.WebPages.Pages.PageUser
 
         public override void BrowseWaitVisible()
         {
+            WebDriverCache.WebDriver.WaitForAjax();
             UseProfile.WaitVisible();
             Orders.WaitVisible();
             Documents.WaitVisible();

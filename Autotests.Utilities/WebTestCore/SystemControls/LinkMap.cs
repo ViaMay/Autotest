@@ -3,14 +3,14 @@ using OpenQA.Selenium;
 
 namespace Autotests.Utilities.WebTestCore.SystemControls
 {
-    public class LinkWaiter : HtmlControl
+    public class LinkMap : HtmlControl
     {
-        public LinkWaiter(By locator, HtmlControl container = null)
+        public LinkMap(By locator, HtmlControl container = null)
             : base(locator, container)
         {
         }
 
-        public LinkWaiter(string idLocator, HtmlControl container = null)
+        public LinkMap(string idLocator, HtmlControl container = null)
             : base(idLocator, container)
         {
         }
@@ -21,7 +21,7 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             while (!IsPresent)
             {
                 second = second + 1;
-                if (second >= 1000) Assert.AreEqual(IsPresent, false, "Время ожидание завершено. Не найден элемент");
+                if (second >= 1000) Assert.AreEqual(IsPresent, true, "Время ожидание завершено. Не найден элемент");
             }
             element.Click();
         }
