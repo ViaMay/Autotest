@@ -36,8 +36,15 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             }
             GetAttributeValue("title");
             element.SendKeys(value + Keys.Tab + Keys.Enter);
-            SwitchToDefaultContent();
-            SwitchToFrame();
+            var rowSelected = new Link(By.XPath(".//div[1]/ul[2]/li/a/strong"));
+            second = 0;
+            while (rowSelected.IsVisible)
+            {
+                second = second + 1;
+                if (second >= 1000) Assert.AreEqual(IsPresent, true, "Время ожидание завершено. Не найден элемент");
+            }
+//            SwitchToDefaultContent();
+//            SwitchToFrame();
         }
 
 //        public void SelectValue(string value)

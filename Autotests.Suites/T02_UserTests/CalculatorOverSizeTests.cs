@@ -5,7 +5,7 @@ namespace Autotests.Tests.T02_UserTests
 {
     public class CalculatorOverSizeTests : ConstVariablesTestBase
     {
-     [Test, Description("Проверяем, что не находит нашу компанию если вес превышает max или меньше min")]
+        [Test, Description("Проверяем, что не находит нашу компанию если вес превышает max или меньше min")]
         public void CalculatorOverWeightTest()
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
@@ -19,9 +19,9 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableFirst.GetRow(0).Company.GetText());
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
             if (calculatorPage.TableSecond.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableSecond.GetRow(0).Company.GetText());
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
 
             calculatorPage.Weight.SetValueAndWait((weightMin + 0.1).ToString());
             calculatorPage.СountedButton.Click();
@@ -38,14 +38,11 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.Weight.SetValueAndWait((weightMax + 0.1).ToString());
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
-//            проверяем что нет таблиц
             if (calculatorPage.TableFirst.IsPresent)
-//    если все таки есть, то проверяем что нет нашей компании
-                Assert.False(сompanyName == calculatorPage.TableFirst.GetRow(0).Company.GetText());
-//            проверяем что нет таблиц
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
+
             if (calculatorPage.TableSecond.IsPresent)
-//    если все таки есть, то проверяем что нет нашей компании
-                Assert.False(сompanyName == calculatorPage.TableSecond.GetRow(0).Company.GetText());
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
         }
 
         [Test, Description("Проверяем, что не находит нашу компанию если превышает max или меньше min")]
@@ -65,9 +62,9 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableFirst.GetRow(0).Company.GetText());
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
             if (calculatorPage.TableSecond.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableSecond.GetRow(0).Company.GetText());
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
 
             calculatorPage.Width.SetValueAndWait(side2Min.ToString());
             calculatorPage.Height.SetValueAndWait(side3Min.ToString());
@@ -75,9 +72,9 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableFirst.GetRow(0).Company.GetText());
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
             if (calculatorPage.TableSecond.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableSecond.GetRow(0).Company.GetText());
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
 
             calculatorPage.Width.SetValueAndWait((side3Min + 0.01).ToString());
             calculatorPage.Height.SetValueAndWait((side1Min + 0.01).ToString());
@@ -115,18 +112,18 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableFirst.GetRow(0).Company.GetText());
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
             if (calculatorPage.TableSecond.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableSecond.GetRow(0).Company.GetText());
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
 
             calculatorPage.Width.SetValueAndWait((side3Max).ToString());
             calculatorPage.Height.SetValueAndWait((side1Max + 0.01).ToString());
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableFirst.GetRow(0).Company.GetText());
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
             if (calculatorPage.TableSecond.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableSecond.GetRow(0).Company.GetText());
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
 
 
             calculatorPage.Height.SetValueAndWait((side1Max).ToString());
@@ -134,9 +131,9 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableFirst.GetRow(0).Company.GetText());
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
             if (calculatorPage.TableSecond.IsPresent)
-                Assert.False(сompanyName == calculatorPage.TableSecond.GetRow(0).Company.GetText());
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
         }
     }
 }
