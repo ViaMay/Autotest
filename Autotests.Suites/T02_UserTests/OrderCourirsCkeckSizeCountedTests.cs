@@ -26,22 +26,22 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Weight.SetValueAndWait(weightMin.ToString());
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(сompanyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(companyName);
 
             orderCreateCourirsPage.Weight.SetValueAndWait((weightMin + 0.1).ToString());
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains(сompanyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains(companyName);
 
             orderCreateCourirsPage.Weight.SetValueAndWait(weightMax.ToString());
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains(сompanyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains(companyName);
 
             orderCreateCourirsPage.Weight.SetValueAndWait((weightMax + 0.1).ToString());
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(сompanyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(companyName);
         }
 
         [Test, Description("Проверка что нашей компании нету при привешении допустимых размеров")]
@@ -63,28 +63,28 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Length.SetValueAndWait(side2Min.ToString());
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(сompanyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(companyName);
 
             orderCreateCourirsPage.Width.SetValueAndWait((side3Min + 0.01).ToString());
             orderCreateCourirsPage.Height.SetValueAndWait((side1Min + 0.01).ToString());
             orderCreateCourirsPage.Length.SetValueAndWait((side2Min + 0.01).ToString());
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains(сompanyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains(companyName);
 
             orderCreateCourirsPage.Width.SetValueAndWait(side2Max.ToString());
             orderCreateCourirsPage.Height.SetValueAndWait(side1Max.ToString());
             orderCreateCourirsPage.Length.SetValueAndWait(side3Max.ToString());
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains(сompanyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains(companyName);
 
             orderCreateCourirsPage.Width.SetValueAndWait((side2Max + 0.01).ToString());
             orderCreateCourirsPage.Height.SetValueAndWait((side1Max + 0.01).ToString());
             orderCreateCourirsPage.Length.SetValueAndWait((side3Max + 0.01).ToString());
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(сompanyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(companyName);
         }
     }
 }

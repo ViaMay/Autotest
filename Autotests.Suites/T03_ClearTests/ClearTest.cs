@@ -86,14 +86,14 @@ namespace Autotests.Tests.T03_ClearTests
             adminPage.AdminСompanies.Click();
             adminPage.Сompanies.Click();
             var companiesPage = adminPage.GoTo<СompaniesPage>();
-            companiesPage.Table.RowSearch.Name.SetValue(сompanyName);
+            companiesPage.Table.RowSearch.Name.SetValue(companyName);
             companiesPage = companiesPage.SeachButtonRowClickAndGo();
 
             while (companiesPage.Table.GetRow(0).Name.IsPresent)
             {
                 companiesPage.Table.GetRow(0).ActionsDelete.Click();
                 companiesPage = companiesPage.GoTo<СompaniesPage>();
-                companiesPage.Table.RowSearch.Name.SetValue(сompanyName);
+                companiesPage.Table.RowSearch.Name.SetValue(companyName);
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
             }
         }

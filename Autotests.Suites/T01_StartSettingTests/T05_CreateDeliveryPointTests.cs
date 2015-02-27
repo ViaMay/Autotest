@@ -26,7 +26,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             var deliveryPointCreatePage = deliveryPointsPage.GoTo<DeliveryPointCreatePage>();
             deliveryPointCreatePage.City.SetFirstValueSelect("Москва");
             deliveryPointCreatePage.DeliveryPointName.SetValueAndWait(deliveryPointName);
-            deliveryPointCreatePage.CompanyName.SetFirstValueSelect(сompanyName);
+            deliveryPointCreatePage.CompanyName.SetFirstValueSelect(companyName);
             deliveryPointCreatePage.Address.SetValueAndWait(deliveryPointAddress);
             deliveryPointCreatePage.Longitude.SetValueAndWait(deliveryPointLongitude);
             deliveryPointCreatePage.Latitude.SetValueAndWait(deliveryPointLatitude);

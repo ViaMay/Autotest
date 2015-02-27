@@ -45,7 +45,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateSelfPage.PointDeliveryName.WaitText("Пункт выдачи: " + deliveryPointName);
             orderCreateSelfPage.PointDeliveryAddress.WaitText("Адрес: " + deliveryPointAddress);
-            orderCreateSelfPage.PointDeliveryCompany.WaitText("Компания: " + сompanyName);
+            orderCreateSelfPage.PointDeliveryCompany.WaitText("Компания: " + companyName);
             orderCreateSelfPage.PointDeliveryPrice.WaitText("Цена: 28");
 
             orderCreateSelfPage.SendOrderButton.Click();

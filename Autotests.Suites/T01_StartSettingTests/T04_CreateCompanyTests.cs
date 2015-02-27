@@ -12,19 +12,19 @@ namespace Autotests.Tests.T01_StartSettingTests
             adminPage.AdminСompanies.Click();
             adminPage.Сompanies.Click();
             var companiesPage = adminPage.GoTo<СompaniesPage>();
-            companiesPage.Table.RowSearch.Name.SetValue(сompanyName);
+            companiesPage.Table.RowSearch.Name.SetValue(companyName);
             companiesPage = companiesPage.SeachButtonRowClickAndGo();
 
             while (companiesPage.Table.GetRow(0).Name.IsPresent)
             {
                 companiesPage.Table.GetRow(0).ActionsDelete.Click();
                 companiesPage = companiesPage.GoTo<СompaniesPage>();
-                companiesPage.Table.RowSearch.Name.SetValue(сompanyName);
+                companiesPage.Table.RowSearch.Name.SetValue(companyName);
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
             }
             companiesPage.CompanyCreate.Click();
             var companyCreatePage = companiesPage.GoTo<СompanyCreatePage>();
-            companyCreatePage.Name.SetValueAndWait(сompanyName);
+            companyCreatePage.Name.SetValueAndWait(companyName);
             companyCreatePage.CompanyDriver.SelectValue("Boxberry");
             companyCreatePage.CompanyAddress.SetValueAndWait("Address");
             companyCreatePage.CompanyPickup.SetFirstValueSelect("FSD забор");
@@ -35,13 +35,13 @@ namespace Autotests.Tests.T01_StartSettingTests
             companyCreatePage.SaveButton.Click();
             companiesPage = companyCreatePage.GoTo<СompaniesPage>();
 
-            companiesPage.Table.RowSearch.Name.SetValue(сompanyName);
+            companiesPage.Table.RowSearch.Name.SetValue(companyName);
             companiesPage = companiesPage.SeachButtonRowClickAndGo();
-            companiesPage.Table.GetRow(0).Name.WaitText(сompanyName);
+            companiesPage.Table.GetRow(0).Name.WaitText(companyName);
 
             companiesPage.Table.GetRow(0).ActionsEdit.Click();
             companyCreatePage = companiesPage.GoTo<СompanyCreatePage>();
-            companyCreatePage.CompanyPickup.SetFirstValueSelect(сompanyName);
+            companyCreatePage.CompanyPickup.SetFirstValueSelect(companyName);
             companyCreatePage.CompanyPickupAddButton.Click();
             companyCreatePage.SaveButton.Click();
             companyCreatePage.GoTo<СompaniesPage>();

@@ -19,30 +19,30 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(companyName);
             if (calculatorPage.TableSecond.IsPresent)
-                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(companyName);
 
             calculatorPage.Weight.SetValueAndWait((weightMin + 0.1).ToString());
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
-            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(companyName);
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(companyName);
 
             calculatorPage.Weight.SetValueAndWait(weightMax.ToString());
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
-            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(companyName);
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(companyName);
 
             calculatorPage.Weight.SetValueAndWait((weightMax + 0.1).ToString());
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(companyName);
 
             if (calculatorPage.TableSecond.IsPresent)
-                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(companyName);
         }
 
         [Test, Description("Проверяем, что не находит нашу компанию если превышает max или меньше min")]
@@ -62,9 +62,9 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(companyName);
             if (calculatorPage.TableSecond.IsPresent)
-                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(companyName);
 
             calculatorPage.Width.SetValueAndWait(side2Min.ToString());
             calculatorPage.Height.SetValueAndWait(side3Min.ToString());
@@ -72,58 +72,58 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(companyName);
             if (calculatorPage.TableSecond.IsPresent)
-                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(companyName);
 
             calculatorPage.Width.SetValueAndWait((side3Min + 0.01).ToString());
             calculatorPage.Height.SetValueAndWait((side1Min + 0.01).ToString());
             calculatorPage.Length.SetValueAndWait((side2Min + 0.01).ToString());
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
-            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(companyName);
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(companyName);
 
             calculatorPage.Width.SetValueAndWait((side1Min + 0.01).ToString());
             calculatorPage.Height.SetValueAndWait((side2Min + 0.01).ToString());
             calculatorPage.Length.SetValueAndWait((side3Min + 0.01).ToString());
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
-            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(companyName);
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(companyName);
 
             calculatorPage.Width.SetValueAndWait(side3Max.ToString());
             calculatorPage.Height.SetValueAndWait(side2Max.ToString());
             calculatorPage.Length.SetValueAndWait(side1Max.ToString());
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
-            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(companyName);
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(companyName);
 
             calculatorPage.Width.SetValueAndWait(side2Max.ToString());
             calculatorPage.Height.SetValueAndWait(side1Max.ToString());
             calculatorPage.Length.SetValueAndWait(side3Max.ToString());
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
-            calculatorPage.TableFirst.GetRow(0).Company.WaitText(сompanyName);
-            calculatorPage.TableSecond.GetRow(0).Company.WaitText(сompanyName);
+            calculatorPage.TableFirst.GetRow(0).Company.WaitText(companyName);
+            calculatorPage.TableSecond.GetRow(0).Company.WaitText(companyName);
 
             calculatorPage.Width.SetValueAndWait((side3Max + 0.01).ToString());
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(companyName);
             if (calculatorPage.TableSecond.IsPresent)
-                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(companyName);
 
             calculatorPage.Width.SetValueAndWait((side3Max).ToString());
             calculatorPage.Height.SetValueAndWait((side1Max + 0.01).ToString());
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(companyName);
             if (calculatorPage.TableSecond.IsPresent)
-                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(companyName);
 
 
             calculatorPage.Height.SetValueAndWait((side1Max).ToString());
@@ -131,9 +131,9 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<СalculatorPage>();
             if (calculatorPage.TableFirst.IsPresent)
-                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableFirst.GetRow(0).Company.WaitTextNotContains(companyName);
             if (calculatorPage.TableSecond.IsPresent)
-                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(сompanyName);
+                calculatorPage.TableSecond.GetRow(0).Company.WaitTextNotContains(companyName);
         }
     }
 }

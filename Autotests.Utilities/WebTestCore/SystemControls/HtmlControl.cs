@@ -165,12 +165,13 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             StringAssert.Contains(expectedText, GetText(), description);
         }
 
-        public void WaitTextNotContains(string expectedText)
+        public virtual void WaitTextNotContains(string expectedText)
         {
             string description =
                 FormatWithLocator(string.Format("Ожидание отсутствия текста '{0}' внутри текста элемента", expectedText));
             StringAssert.DoesNotContain(expectedText, GetText(), description);
         }
+
         public void WaitTextContainsWithRetries(string expectedText, int? timeout = null)
         {
             string description =

@@ -46,7 +46,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateSelfPage.PointDeliveryName.WaitText("Пункт выдачи: " + deliveryPointName);
             orderCreateSelfPage.PointDeliveryAddress.WaitText("Адрес: " + deliveryPointAddress);
-            orderCreateSelfPage.PointDeliveryCompany.WaitText("Компания: " + сompanyName);
+            orderCreateSelfPage.PointDeliveryCompany.WaitText("Компания: " + companyName);
             orderCreateSelfPage.PointDeliveryPrice.WaitText("Цена: 28");
 
             orderCreateSelfPage.SaveDraftButton.Click();
@@ -65,7 +65,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableRecipient.Phone.WaitText("+7 (111)111-1111");
             orderPage.TableRecipient.Issue.WaitText("Ручная");
             orderPage.TableRecipient.PickupCompany.WaitText("FSD забор");
-            orderPage.TableRecipient.DeliveryCompany.WaitText(сompanyName);
+            orderPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
             orderPage.TablePrice.PaymentPrice.WaitText("4.00 руб.");
             orderPage.TablePrice.DeclaredPrice.WaitText("4.00 руб.");
@@ -126,7 +126,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.MapOrders.SwitchToDefaultContent();
             orderCreateSelfPage.PointDeliveryName.WaitText("Пункт выдачи: " + deliveryPointName);
             orderCreateSelfPage.PointDeliveryAddress.WaitText("Адрес: " + deliveryPointAddress);
-            orderCreateSelfPage.PointDeliveryCompany.WaitText("Компания: " + сompanyName);
+            orderCreateSelfPage.PointDeliveryCompany.WaitText("Компания: " + companyName);
             orderCreateSelfPage.PointDeliveryPrice.WaitText("Цена: 28");
 
             orderCreateSelfPage.SaveDraftButton.Click();

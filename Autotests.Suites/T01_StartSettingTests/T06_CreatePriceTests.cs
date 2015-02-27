@@ -13,19 +13,19 @@ namespace Autotests.Tests.T01_StartSettingTests
             adminPage.Prices.Mouseover();
             adminPage.PricesPickup.Click();
             var pricesPickupPage = adminPage.GoTo<PricesPickupPage>();
-            pricesPickupPage.Table.RowSearch.CompanyName.SetValue(сompanyName);
+            pricesPickupPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesPickupPage = pricesPickupPage.SeachButtonRowClickAndGo();
 
             while (pricesPickupPage.Table.GetRow(0).CompanyName.IsPresent)
             {
                 pricesPickupPage.Table.GetRow(0).ActionsDelete.Click();
                 pricesPickupPage = pricesPickupPage.GoTo<PricesPickupPage>();
-                pricesPickupPage.Table.RowSearch.CompanyName.SetValue(сompanyName);
+                pricesPickupPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 pricesPickupPage = pricesPickupPage.SeachButtonRowClickAndGo();
             }
             pricesPickupPage.PricePickupCreate.Click();
             var pricePickupCreatePage = pricesPickupPage.GoTo<PricePickupCreatePage>();
-            pricePickupCreatePage.CompanyName.SetFirstValueSelect(сompanyName);
+            pricePickupCreatePage.CompanyName.SetFirstValueSelect(companyName);
             pricePickupCreatePage.City.SetFirstValueSelect("Москва");
             pricePickupCreatePage.Price.SetValueAndWait("10");
             pricePickupCreatePage.PriceOverFlow.SetValueAndWait("2");
@@ -34,9 +34,9 @@ namespace Autotests.Tests.T01_StartSettingTests
             pricePickupCreatePage.SaveButton.Click();
             pricesPickupPage = pricePickupCreatePage.GoTo<PricesPickupPage>();
 
-            pricesPickupPage.Table.RowSearch.CompanyName.SetValue(сompanyName);
+            pricesPickupPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesPickupPage = pricesPickupPage.SeachButtonRowClickAndGo();
-            pricesPickupPage.Table.GetRow(0).CompanyName.WaitText(сompanyName);
+            pricesPickupPage.Table.GetRow(0).CompanyName.WaitText(companyName);
         }
 
         [Test, Description("Создания цены курьера")]
@@ -47,14 +47,14 @@ namespace Autotests.Tests.T01_StartSettingTests
             adminPage.Prices.Mouseover();
             adminPage.PricesCourier.Click();
             var pricesCourierPage = adminPage.GoTo<PricesCourierPage>();
-            pricesCourierPage.Table.RowSearch.CompanyName.SetValue(сompanyName);
+            pricesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesCourierPage = pricesCourierPage.SeachButtonRowClickAndGo();
 
             while (pricesCourierPage.Table.GetRow(0).CompanyName.IsPresent)
             {
                 pricesCourierPage.Table.GetRow(0).ActionsDelete.Click();
                 pricesCourierPage = pricesCourierPage.GoTo<PricesCourierPage>();
-                pricesCourierPage.Table.RowSearch.CompanyName.SetValue(сompanyName);
+                pricesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 pricesCourierPage = pricesCourierPage.SeachButtonRowClickAndGo();
             }
 
@@ -63,15 +63,15 @@ namespace Autotests.Tests.T01_StartSettingTests
             priceCourierCreatePage.Price.SetValueAndWait("11");
             priceCourierCreatePage.PriceOverFlow.SetValueAndWait("3");
             priceCourierCreatePage.Route.SetFirstValueSelect("2", "г. Москва #151184 - г. Москва #151184");
-            priceCourierCreatePage.CompanyName.SetFirstValueSelect(сompanyName);
+            priceCourierCreatePage.CompanyName.SetFirstValueSelect(companyName);
             priceCourierCreatePage.Weight.SetFirstValueSelect(weightName);
             priceCourierCreatePage.Dimension.SetFirstValueSelect(sideName);
             priceCourierCreatePage.SaveButton.Click();
             pricesCourierPage = priceCourierCreatePage.GoTo<PricesCourierPage>();
 
-            pricesCourierPage.Table.RowSearch.CompanyName.SetValue(сompanyName);
+            pricesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesCourierPage = pricesCourierPage.SeachButtonRowClickAndGo();
-            pricesCourierPage.Table.GetRow(0).CompanyName.WaitText(сompanyName);
+            pricesCourierPage.Table.GetRow(0).CompanyName.WaitText(companyName);
         }
 
         [Test, Description("Создания цены самовывоза")]
@@ -82,14 +82,14 @@ namespace Autotests.Tests.T01_StartSettingTests
             adminPage.Prices.Mouseover();
             adminPage.PricesSelf.Click();
             var pricesSelfPage = adminPage.GoTo<PricesSelfPage>();
-            pricesSelfPage.Table.RowSearch.CompanyName.SetValue(сompanyName);
+            pricesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesSelfPage = pricesSelfPage.SeachButtonRowClickAndGo();
 
             while (pricesSelfPage.Table.GetRow(0).CompanyName.IsPresent)
             {
                 pricesSelfPage.Table.GetRow(0).ActionsDelete.Click();
                 pricesSelfPage = pricesSelfPage.GoTo<PricesSelfPage>();
-                pricesSelfPage.Table.RowSearch.CompanyName.SetValue(сompanyName);
+                pricesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 pricesSelfPage = pricesSelfPage.SeachButtonRowClickAndGo();
             }
 
@@ -98,15 +98,15 @@ namespace Autotests.Tests.T01_StartSettingTests
             priceSelfCreatePage.Price.SetValueAndWait("12");
             priceSelfCreatePage.PriceOverFlow.SetValueAndWait("4");
             priceSelfCreatePage.Route.SetFirstValueSelect("2", "г. Москва #151184 - г. Москва #151184");
-            priceSelfCreatePage.CompanyName.SetFirstValueSelect(сompanyName);
+            priceSelfCreatePage.CompanyName.SetFirstValueSelect(companyName);
             priceSelfCreatePage.Weight.SetFirstValueSelect(weightName);
             priceSelfCreatePage.Dimension.SetFirstValueSelect(sideName);
             priceSelfCreatePage.SaveButton.Click();
             pricesSelfPage = priceSelfCreatePage.GoTo<PricesSelfPage>();
 
-            pricesSelfPage.Table.RowSearch.CompanyName.SetValue(сompanyName);
+            pricesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesSelfPage = pricesSelfPage.SeachButtonRowClickAndGo();
-            pricesSelfPage.Table.GetRow(0).CompanyName.WaitText(сompanyName);
+            pricesSelfPage.Table.GetRow(0).CompanyName.WaitText(companyName);
         }
     }
 }

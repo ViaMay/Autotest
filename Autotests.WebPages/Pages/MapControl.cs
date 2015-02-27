@@ -37,7 +37,7 @@ namespace Autotests.WebPages.Pages
             : base(By.ClassName("map-popup__main__right__btn"))
 
         {
-            Name = new LinkMap(By.XPath(string.Format("//li[{0}]/a/span[1]", index + 1)));
+            Name = new LinkMap(By.XPath(string.Format("//li[{0}]/a/span[1]/img[2]", index + 1)));
             Price = new LinkMap(By.XPath(string.Format("//li[{0}]/a/span[2]", index + 1)));
             Date = new LinkMap(By.XPath(string.Format("//li[{0}]/a/span[3]", index + 1)));
         }

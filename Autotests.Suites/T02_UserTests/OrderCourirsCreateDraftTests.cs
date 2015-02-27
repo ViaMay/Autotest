@@ -58,7 +58,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.Phone.WaitText("+7 (111)111-1111");
             orderCourirsPage.TableRecipient.Issue.WaitText("Ручная");
             orderCourirsPage.TableRecipient.PickupCompany.WaitText("FSD забор");
-            orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(сompanyName);
+            orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
             orderCourirsPage.TablePrice.PaymentPrice.WaitText("0.00 руб.");
             orderCourirsPage.TablePrice.DeclaredPrice.WaitText("10.10 руб.");
@@ -130,58 +130,6 @@ namespace Autotests.Tests.T02_UserTests
             ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Подтвердить");
-        }
-
-        [Test, Description("Проверка работы кнопки пересчета и работы пересчета индекса")]
-        public void OrderCreateCourirsCheckСountedAndIndexTest()
-        {
-            var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateCourirs.Click();
-            var orderCreateCourirsPage = userPage.GoTo<OrderCourirsCreatePage>();
-            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
-            orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
-            orderCreateCourirsPage.Width.SetValueAndWait("10.1");
-            orderCreateCourirsPage.Height.SetValueAndWait("11.1");
-            orderCreateCourirsPage.Length.SetValueAndWait("12.1");
-
-            orderCreateCourirsPage.Weight.SetValueAndWait("3.0");
-            orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 20.00 руб");
-            orderCreateCourirsPage.BuyerPostalCode.WaitValue("101000");
-
-            orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
-            orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 41.00 руб");
-            orderCreateCourirsPage.BuyerPostalCode.WaitValue("101000");
-
-            orderCreateCourirsPage.Weight.SetValueAndWait("20.1");
-            orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(сompanyName);
-            
-            orderCreateCourirsPage.BuyerPostalCode.WaitValue("101000");
-
-            orderCreateCourirsPage.Weight.SetValueAndWait("10");
-            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Санкт-Петербург");
-            orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(сompanyName);
-            orderCreateCourirsPage.BuyerPostalCode.WaitValue("190000");
-
-            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Екатеринбург");
-            orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(сompanyName);
-            orderCreateCourirsPage.BuyerPostalCode.WaitValue("620000");
-
-            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Питеримка");
-            orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(сompanyName);
-            orderCreateCourirsPage.BuyerPostalCode.WaitValue("162035");
         }
     }
 }
