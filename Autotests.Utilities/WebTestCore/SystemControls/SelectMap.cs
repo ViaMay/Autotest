@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Text;
-using NUnit.Framework;
+using System.Threading;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 
 namespace Autotests.Utilities.WebTestCore.SystemControls
 {
@@ -28,23 +24,27 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
 
         public void SelectValueFirst(string value)
         {
-            var second = 0;
-            while (!IsPresent)
-            {
-                second = second + 1;
-                if (second >= 1000) Assert.AreEqual(IsPresent, true, "Время ожидание завершено. Не найден элемент");
-            }
-            GetAttributeValue("title");
+            WaitPresenceWithRetries();
+            if (GetAttributeValue("title").Contains(value))
+                return;
             element.SendKeys(value + Keys.Tab + Keys.Enter);
-            var rowSelected = new Link(By.XPath(".//div[1]/ul[2]/li/a/strong"));
-            second = 0;
-            while (rowSelected.IsVisible)
+            var clickelement = new LinkMap(By.XPath("//div[3]/div[3]/h2"));
+            var second = 0;
+            Link:
+            try
             {
-                second = second + 1;
-                if (second >= 1000) Assert.AreEqual(IsPresent, true, "Время ожидание завершено. Не найден элемент");
+                clickelement.WaitVisibleWithRetries();
+                clickelement.WaitPresenceWithRetries();
+                clickelement.Click();
             }
-//            SwitchToDefaultContent();
-//            SwitchToFrame();
+            catch (Exception)
+            {
+                if (second >= 1000)
+                    return;
+                Thread.Sleep(10);
+                goto Link;
+            }
+            clickelement.WaitVisibleWithRetries();
         }
 
 //        public void SelectValue(string value)
@@ -62,12 +62,12 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
 //                }
 //            }
 //        }
-
-        private static void SetSelected(IWebElement option)
-        {
-            if (option.Selected)
-                return;
-            option.Click();
-        }
+//
+//        private static void SetSelected(IWebElement option)
+//        {
+//            if (option.Selected)
+//                return;
+//            option.Click();
+//        }
     }
 }

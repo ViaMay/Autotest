@@ -55,7 +55,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.СountedButton.Click();
  }
 
-
         [Test, Description("Проверка валидации при отправке")]
         public void TestValidationSend()
         {
@@ -101,17 +100,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.SendOrderButton.Click();
             var orderCourirsPage = orderCreateSelfPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");
-        }
-
-        [Test, Description("Проверка валидации на карте")]
-        public void TestValidationRouter()
-        {
-            var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateCourirs.Click();
-            var orderCreateCourirsPage = userPage.GoTo<OrderCourirsCreatePage>();
-            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
-
         }
     }
 }

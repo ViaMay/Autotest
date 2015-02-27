@@ -23,6 +23,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.Height.SetValueAndWait(side3Min.ToString());
             orderCreateSelfPage.Length.SetValueAndWait(side2Min.ToString());
             orderCreateSelfPage.СountedButton.Click();
+
             orderCreateSelfPage.MapOrders.SwitchToFrame();
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
             orderCreateSelfPage.MapOrders.GetMapCompanyRow(0).Name.WaitTextNotContains(companyName);
