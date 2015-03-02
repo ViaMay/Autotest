@@ -140,6 +140,8 @@
     <Compile Include="Pages\PageUser\Controls\СalculatorRowControl.cs" />
     <Compile Include="Pages\PageUser\Controls\WarehousesRowControl.cs" />
     <Compile Include="Pages\PageUser\Controls\TimeWorkRowControl.cs" />
+    <Compile Include="Pages\PageUser\OrderSelfEditingPage.cs" />
+    <Compile Include="Pages\PageUser\OrderCourirsEditingPage.cs" />
     <Compile Include="Pages\PageUser\OrderSelfCreatePage.cs" />
     <Compile Include="Pages\PageUser\OrdersListPage.cs" />
     <Compile Include="Pages\PageUser\OrderPage.cs" />

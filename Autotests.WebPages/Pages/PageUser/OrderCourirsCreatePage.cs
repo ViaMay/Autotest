@@ -111,7 +111,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput OrderNumber { get; set; }
         public TextInput GoodsDescription { get; set; }
 
-        public StaticControl Countedloader { get; set; }
+        private StaticControl Countedloader { get; set; }
         public ErrorActionTextControl ActionErrorText { get; set; }
         public ErrorTextControl ErrorText { get; set; }
         public StaticText TextRadioButtonError { get; set; }

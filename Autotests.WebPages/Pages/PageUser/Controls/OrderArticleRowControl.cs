@@ -1,5 +1,4 @@
 ﻿using Autotests.Utilities.WebTestCore.SystemControls;
-using Autotests.Utilities.WebTestCore.TestSystem;
 using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageUser.Controls
@@ -8,7 +7,6 @@ namespace Autotests.WebPages.Pages.PageUser.Controls
         : HtmlControl
     {
         public OrderArticleRowControl(int index)
-//            : base(BY.NthOfClass("control_group", index + 1))
             : base(string.Format("group_{0}", index + 1))
         {
             Name = new TextInput(By.Name(string.Format("order_content_name_{0}", index + 1)), this);
@@ -23,5 +21,21 @@ namespace Autotests.WebPages.Pages.PageUser.Controls
         public TextInput Count { get; private set; }
         public ButtonInput Add { get; private set; }
         public ButtonInput Remove { get; private set; }
+    }
+
+    public class OrderArticleStaticRowControl
+    : HtmlControl
+    {
+        public OrderArticleStaticRowControl(int index)
+            : base(string.Format("group_{0}", index + 1))
+        {
+            Name = new StaticText(By.Name(string.Format("order_content_name_{0}", index + 1)), this);
+            Article = new StaticText(By.Name(string.Format("order_content_article_{0}", index + 1)), this);
+            Count = new StaticText(By.Name(string.Format("order_content_count_{0}", index + 1)), this);
+        }
+
+        public StaticText Name { get; private set; }
+        public StaticText Article { get; private set; }
+        public StaticText Count { get; private set; }
     }
 }

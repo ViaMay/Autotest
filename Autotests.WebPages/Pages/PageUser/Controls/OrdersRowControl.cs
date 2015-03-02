@@ -4,10 +4,10 @@ using OpenQA.Selenium;
 namespace Autotests.WebPages.Pages.PageUser.Controls
 {
     public class OrdersRowControl
-        : BaseRowControl
+        : HtmlControl
     {
         public OrdersRowControl(int index)
-            : base(index)
+            : base(By.XPath(string.Format("//tbody")))
         {
             Checkbox = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[1]", index)));
             ID = new Link(By.XPath(string.Format("//tbody/tr[{0}]/td[2]/strong", index)));
