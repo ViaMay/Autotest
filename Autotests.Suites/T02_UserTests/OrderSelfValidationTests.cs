@@ -72,7 +72,10 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.ErrorText[5].WaitText("Сторона 3 обязательно к заполнению");
             orderCreateSelfPage.ErrorText[6].WaitText("Вес обязательно к заполнению");
 
-            orderCreateSelfPage.ActionErrorText[0].WaitText("Не выбран пункт выдачи");
+            orderCreateSelfPage.ActionErrorText[0].WaitText("Ошибка просчета цены, или маршрут недоступен");
+            orderCreateSelfPage.ActionErrorText[1].WaitText("Компания доставки обязательно к заполнению");
+            orderCreateSelfPage.ActionErrorText[2].WaitText("Не выбран пункт выдачи");
+            orderCreateSelfPage.ActionErrorText[3].WaitText("Город получения обязательно к заполнению");
 
             orderCreateSelfPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
@@ -83,7 +86,10 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.Weight.SetValueAndWait("4");
 
             orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError();
-            orderCreateSelfPage.ActionErrorText[0].WaitText("Не выбран пункт выдачи");
+            orderCreateSelfPage.ActionErrorText[0].WaitText("Ошибка просчета цены, или маршрут недоступен");
+            orderCreateSelfPage.ActionErrorText[1].WaitText("Компания доставки обязательно к заполнению");
+            orderCreateSelfPage.ActionErrorText[2].WaitText("Не выбран пункт выдачи");
+            orderCreateSelfPage.ActionErrorText[3].WaitText("Город получения обязательно к заполнению");
             orderCreateSelfPage.ErrorText[0].WaitAbsence();
 
             orderCreateSelfPage.MapOrders.SwitchToFrame();

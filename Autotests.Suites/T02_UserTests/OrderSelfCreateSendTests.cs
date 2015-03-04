@@ -5,7 +5,7 @@ namespace Autotests.Tests.T02_UserTests
 {
     public class OrderSelfCreateSendTests : ConstVariablesTestBase
     {
-        [Test, Description("Создание заяки и отправление"),  Ignore]
+        [Test, Description("Создание заяки и отправление")]
         public void OrderCreateAndSendTest()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
@@ -22,7 +22,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateSelfPage.BuyerEmail.SetValueAndWait(userNameAndPass);
             orderCreateSelfPage.DeclaredPrice.SetValueAndWait("4");
-            orderCreateSelfPage.PaymentPrice.SetValueAndWait("4");
+            orderCreateSelfPage.PaymentPrice.SetValueAndWait("0");
             orderCreateSelfPage.GoodsDescription.SetValueAndWait("4");
 
             var rowArticle = orderCreateSelfPage.GetArticleRow(0);
@@ -50,6 +50,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateSelfPage.SendOrderButton.Click();
             var orderCourirsPage = orderCreateSelfPage.GoTo<OrderPage>();
+            
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");
             orderCourirsPage.BackOrders.Click();
             var ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
