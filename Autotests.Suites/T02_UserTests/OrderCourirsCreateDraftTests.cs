@@ -33,7 +33,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
 
-            orderCreateCourirsPage.PaymentPrice.WaitValue("0");
+            orderCreateCourirsPage.PaymentPrice.SetValueAndWait("1500");
             orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("Хороший товар,годный");
 
@@ -60,7 +60,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.PickupCompany.WaitText("FSD забор");
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
-            orderCourirsPage.TablePrice.PaymentPrice.WaitText("0.00 руб.");
+            orderCourirsPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
             orderCourirsPage.TablePrice.DeclaredPrice.WaitText("10.10 руб.");
             orderCourirsPage.TablePrice.Insurance.WaitText("0.00 руб.");
             orderCourirsPage.TablePrice.DeliveryPrice.WaitText("41.00 руб.");

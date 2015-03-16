@@ -19,6 +19,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
 
             AdminСompanies = new Link(By.LinkText("Компании"));
             Сompanies = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li"));
+            PaymentPrice = new Link(By.LinkText("Наложенный платеж"));
             DeliveryPoints = new Link(By.LinkText("Пункты выдачи"));
             Prices = new Link(By.LinkText("Цены"));
             PricesPickup = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(9) > ul > li:nth-child(1)"));
@@ -43,6 +44,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
 
         public Link AdminСompanies { get; set; }
         public Link Сompanies { get; set; }
+        public Link PaymentPrice { get; set; }
         public Link DeliveryPoints { get; set; }
         public Link Prices { get; set; }
         public Link PricesSelf { get; set; }

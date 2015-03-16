@@ -35,7 +35,7 @@ namespace Autotests.WebPages.Pages.PageUser
             BuyerPhone = new TextInput(By.Name("to_phone"));
             BuyerEmail = new TextInput(By.Name("to_email"));
 
-            PaymentPrice = new StaticText(By.Name("payment_price"));
+            PaymentPrice = new TextInput(By.Name("payment_price"));
             OrderNumber = new TextInput(By.Name("shop_refnum"));
             GoodsDescription = new TextInput(By.Name("goods_description"));
 
@@ -107,7 +107,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput BuyerName { get; set; }
         public TextInput BuyerPhone { get; set; }
         public TextInput BuyerEmail { get; set; }
-        public StaticText PaymentPrice { get; set; }
+        public TextInput PaymentPrice { get; set; }
         public TextInput OrderNumber { get; set; }
         public TextInput GoodsDescription { get; set; }
 

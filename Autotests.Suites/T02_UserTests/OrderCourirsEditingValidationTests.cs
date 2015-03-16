@@ -34,7 +34,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
 
-            orderCreateCourirsPage.PaymentPrice.WaitValue("0");
+            orderCreateCourirsPage.PaymentPrice.SetValueAndWait("1500");
             orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("Хороший товар,годный");
 

@@ -49,5 +49,34 @@ namespace Autotests.Tests.T01_StartSettingTests
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");
         }
+
+        [Test, Description("Создания наложенного платежа")]
+        public void CreatePaymentPriceTest()
+        {
+            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
+            adminPage.AdminСompanies.Click();
+            adminPage.PaymentPrice.Click();
+            var рaymentPricePage = adminPage.GoTo<PaymentPricePage>();
+            рaymentPricePage.Table.RowSearch.CompanyName.SetValue(companyName);
+            рaymentPricePage = рaymentPricePage.SeachButtonRowClickAndGo();
+
+            while (рaymentPricePage.Table.GetRow(0).Name.IsPresent)
+            {
+                рaymentPricePage.Table.GetRow(0).ActionsDelete.Click();
+                рaymentPricePage = рaymentPricePage.GoTo<PaymentPricePage>();
+                рaymentPricePage.Table.RowSearch.CompanyName.SetValue(companyName);
+                рaymentPricePage = рaymentPricePage.SeachButtonRowClickAndGo();
+            }
+            рaymentPricePage.CompanyCreate.Click();
+            var рaymentPriceCreatePage = рaymentPricePage.GoTo<PaymentPriceCreatePage>();
+            рaymentPriceCreatePage.Company.SetFirstValueSelect(companyName);
+            рaymentPriceCreatePage.City.SetFirstValueSelect("Москва");
+            рaymentPriceCreatePage.SaveButton.Click();
+            рaymentPricePage = рaymentPriceCreatePage.GoTo<PaymentPricePage>();
+
+            рaymentPricePage.Table.RowSearch.CompanyName.SetValue(companyName);
+            рaymentPricePage = рaymentPricePage.SeachButtonRowClickAndGo();
+            рaymentPricePage.Table.GetRow(0).Name.WaitText(companyName);
+        }
     }
 }

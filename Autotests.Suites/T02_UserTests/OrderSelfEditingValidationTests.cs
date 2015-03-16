@@ -3,10 +3,10 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T02_UserTests
 {
-    public class OrdeSelfEditingValidationTests : ConstVariablesTestBase
+    public class OrderSelfEditingValidationTests : ConstVariablesTestBase
     {
         [Test, Description("Создание черновика заказа, проверка валидации при редактировании")]
-        public void OrdeSelfEditingValidationTest()
+        public void OrderSelfEditingValidationTest()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.OrderNew.Click();
