@@ -4,11 +4,12 @@ using OpenQA.Selenium;
 namespace Autotests.WebPages.Pages.PageUser.Controls
 {
     public class TimeWorkRowControl
-        : BaseRowControl
+        : HtmlControl
     {
 
         public TimeWorkRowControl(int index)
-            : base(index)
+            : base(By.ClassName("control-group"), null)
+
         {
             FromHour = new TextInput(By.Id(string.Format("from_hour_{0}", index)));
             ToHour = new TextInput(By.Id(string.Format("to_hour_{0}", index)));

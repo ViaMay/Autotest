@@ -148,6 +148,7 @@
     <Compile Include="Pages\PageUser\OrdersListPage.cs" />
     <Compile Include="Pages\PageUser\OrderPage.cs" />
     <Compile Include="Pages\PageUser\OrderCourirsCreatePage.cs" />
+    <Compile Include="Pages\PageUser\DocumentsPreparedPage.cs" />
     <Compile Include="Pages\PageUser\СalculatorPage.cs" />
     <Compile Include="Pages\PageUser\UserWarehouseCreatePage.cs" />
     <Compile Include="Pages\PageUser\UserShopCreatePage.cs" />

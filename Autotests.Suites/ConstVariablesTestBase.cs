@@ -4,16 +4,14 @@ namespace Autotests.Tests
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
-        protected override string ApplicationBaseUrl { get { return "dev.ddelivery.ru"; } }
-//        protected override string ApplicationBaseUrl { get { return "sprint.dev.ddelivery.ru"; } }
-//        protected override string ApplicationBaseUrl { get { return "stage.ddelivery.ru/"; } }
+        protected override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
         public override void SetUp()
         {
             base.SetUp();
-
-            adminName = "tester@ddelivery.ru";
-            adminPass = "tester@ddelivery.ru";
+            
+            adminName = "v.e@ddelivery.ru";
+            adminPass = "LbREWCnpHa";
 
             legalEntityName = "test_legalEntity";
             companyName = "test_via";

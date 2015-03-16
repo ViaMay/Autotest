@@ -9,6 +9,9 @@ namespace Autotests.WebPages.Pages.PageUser
     {
         public UserWarehouseCreatePage()
         {
+            
+            LabelDirectory = new StaticText(By.CssSelector("legend"));
+            Name = new TextInput(By.Name("name"));
             Name = new TextInput(By.Name("name"));
             Street = new TextInput(By.Name("street"));
             House = new TextInput(By.Name("house"));
@@ -21,6 +24,8 @@ namespace Autotests.WebPages.Pages.PageUser
 
             CreateButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
             WarehousesBack = new Link(By.Name("freshlogic_id"));
+
+            ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"));
         }
 
         public TimeWorkRowControl GetDay(int index)
@@ -49,5 +54,8 @@ namespace Autotests.WebPages.Pages.PageUser
 
         public ButtonInput CreateButton { get; set; }
         public Link WarehousesBack { get; set; }
+
+        public ErrorTextControl ErrorText { get; set; }
+        public StaticText LabelDirectory { get; set; }
     }
 }

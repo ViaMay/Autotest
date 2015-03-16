@@ -151,6 +151,11 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             Waiter.Wait(() => GetText() == expectedText, description);
         }
 
+        public void WaitValue(string value)
+        {
+            string description = FormatWithLocator(string.Format("Ожидание value '{0}' в элементе", value));
+            Waiter.Wait(() => GetAttributeValue("value") == value, description);
+        }
         public void WaitTextStartsWith(string expectedText)
         {
             string description =

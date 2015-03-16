@@ -10,8 +10,8 @@ namespace Autotests.WebPages.Pages.PageUser.Controls
         public WarehousesRowControl(int index)
             : base(By.XPath(string.Format("//tbody")))
         {
-            Name = new Link(By.XPath(string.Format("//tbody/tr[{0}]/td[1]", index)));
-            Documents = new Link(By.XPath(string.Format("//tbody/tr[{0}]/td[2]", index)));
+            Name = new Link(By.XPath(string.Format("//tbody/tr[{0}]/td[1]/a", index)));
+            Documents = new Link(By.XPath(string.Format("//tbody/tr[{0}]/td[2]/a", index)));
             City = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[3]", index)));
             Address = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[4]", index)));
             Contact = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[5]", index)));

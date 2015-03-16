@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using Autotests.Utilities.WebTestCore.TestSystem;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 
 namespace Autotests.Utilities.WebTestCore.SystemControls
 {
@@ -24,6 +24,14 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
         {
             return selectedText.GetText();
         }
+
+        public override void WaitText(string expectedText)
+        {
+            string description =
+                FormatWithLocator(string.Format("Ожидание появления текста '{0}' в элементе", expectedText));
+            Waiter.Wait(() => selectedText.GetText() == expectedText, description);
+        }
+
 
         public void SelectValue(string value)
         {
@@ -109,14 +117,14 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
                 return ((object)stringBuilder).ToString();
             }
             else if (toEscape.IndexOf("\"", StringComparison.OrdinalIgnoreCase) > -1)
-                return string.Format((IFormatProvider)CultureInfo.InvariantCulture, "'{0}'", new object[1]
+                return string.Format(CultureInfo.InvariantCulture, "'{0}'", new object[1]
         {
-          (object) toEscape
+           toEscape
         });
             else
-                return string.Format((IFormatProvider)CultureInfo.InvariantCulture, "\"{0}\"", new object[1]
+                return string.Format(CultureInfo.InvariantCulture, "\"{0}\"", new object[1]
         {
-          (object) toEscape
+          toEscape
         });
         }
 
