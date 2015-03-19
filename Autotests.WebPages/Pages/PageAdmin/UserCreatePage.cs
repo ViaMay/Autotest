@@ -10,6 +10,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
         {
             UserEmail = new TextInput(By.Name("username"));
             UserPassword = new TextInput(By.Name("password"));
+            Key = new TextInput(By.Name("public_key"));
             OfficialName = new TextInput(By.Name("official_name"));
 
             UserGroups = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 0));
@@ -20,6 +21,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
 
         public TextInput UserEmail { get; set; }
         public TextInput UserPassword { get; set; }
+        public TextInput Key { get; set; }
         public TextInput OfficialName { get; set; }
 
         public AutocompleteControl UserGroups { get; set; }

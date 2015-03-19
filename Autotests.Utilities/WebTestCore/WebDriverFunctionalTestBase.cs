@@ -63,7 +63,6 @@ namespace Autotests.Utilities.WebTestCore
 
         protected TPage LoadPage<TPage>(string localPath) where TPage : PageBase, new()
         {
-//            return PageBase.GoToUri<TPage>(new Uri(new Uri("http://dev.ddelivery.ru/"), localPath));
             return PageBase.GoToUri<TPage>(new Uri(new Uri(string.Format("http://{0}/", ApplicationBaseUrl)), localPath));
         }
 

@@ -79,6 +79,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -95,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiTestCore\Api.cs" />
     <Compile Include="WebTestCore\Pages\PageBase.cs" />
     <Compile Include="WebTestCore\Pages\Timing\DefaultPageTimeStatistics.cs" />
     <Compile Include="WebTestCore\Pages\Timing\IPageTimeStatistics.cs" />
