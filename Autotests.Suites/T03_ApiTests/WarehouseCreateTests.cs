@@ -1,16 +1,17 @@
 ﻿using System.Collections.Specialized;
 using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages.Pages.PageAdmin;
+using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ApiTests
 {
-    public class CreateWarehouseTests : ConstVariablesTestBase
+    public class WarehouseCreateTests : ConstVariablesTestBase
     {
         [Test, Description("Создание склада")]
-        public void Test()
+        public void WarehouseCreateTest()
         {
-            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
+            var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
             adminPage.Users.Click();
             var usersPage = adminPage.GoTo<UsersPage>();
@@ -48,11 +49,18 @@ namespace Autotests.Tests.T03_ApiTests
                 }
                 );
             Assert.IsTrue(response.Success, "Ожидался ответ true на отправленный запрос POST по API" );
-            usersPage.UsersWarehouses.Click();
-            var warehousesPage = usersPage.GoTo<UsersWarehousesPage>();
-            warehousesPage.Table.RowSearch.Name.SetValue(userWarehouses + "_Api");
-            warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
-            warehousesPage.Table.GetRow(0).Name.WaitText(userWarehouses + "_Api");
+
+            var defaultPage = userEdiringPage.LoginOut();
+            var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
+            userPage.UseProfile.Click();
+            userPage.UserWarehouses.Click();
+            var warehousesListPage = userPage.GoTo<UserWarehousesPage>();
+            var row = warehousesListPage.Table.FindRowByName(userWarehouses + "_Api");
+            row.Name.WaitText(userWarehouses + "_Api");
+            row.City.WaitText("Томск");
+            row.Address.WaitText("street, house 138");
+            row.Contact.WaitText("contact_person (contact_phone tester@user.ru)");
+            row.TimeWork.WaitText("10:00-19:00,10:00-19:00,10:00-19:00,10:00-19:00,10:00-19:00,Выходной,Выходной");
         }
         private string userId;
     }

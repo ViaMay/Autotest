@@ -71,7 +71,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
 
         public DefaultPage LoginOut()
         {
-            DDeliveryLink.Click();
             UserLogOut.Click();
             return GoTo<DefaultPage>();
         }

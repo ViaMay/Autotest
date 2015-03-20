@@ -114,7 +114,7 @@
     <Compile Include="T02_UserTests\WarehouseDocumentsShowTests.cs" />
     <Compile Include="T02_UserTests\WarehouseEditingTests.cs" />
     <Compile Include="T02_UserTests\WarehouseValidationTests.cs" />
-    <Compile Include="T03_ApiTests\CreateWarehouseTests.cs" />
+    <Compile Include="T03_ApiTests\WarehouseCreateTests.cs" />
     <Compile Include="T04_ClearTests\ClearTest.cs" />
     <Compile Include="T01_StartSettingTests\T02_UserRegistrationTest.cs" />
     <Compile Include="T01_StartSettingTests\T05_CreateDeliveryPointTests.cs" />
