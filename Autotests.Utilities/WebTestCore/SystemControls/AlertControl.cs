@@ -1,6 +1,4 @@
-﻿using System.Threading;
-using Autotests.Utilities.WebTestCore.TestSystem;
-using OpenQA.Selenium;
+﻿using Autotests.Utilities.WebTestCore.TestSystem;
 
 namespace Autotests.Utilities.WebTestCore.SystemControls
 {

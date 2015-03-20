@@ -9,7 +9,13 @@ namespace Autotests.Utilities.ApiTestCore
 {
     public class Api
     {
-        public static string GET(string url, string data)
+        public Api(string value)
+        {
+            ApplicationBaseUrl = value;
+        }
+        private readonly string ApplicationBaseUrl;
+
+        public string GET(string url, string data)
         {
             using (var client = new WebClient())
             {
@@ -17,12 +23,12 @@ namespace Autotests.Utilities.ApiTestCore
             }
         }
 
-        public static Response POST(string url, NameValueCollection data)
+        public Response POST(string url, NameValueCollection data)
         {
             using (var client = new WebClient())
             {
-                var responseJson = client.UploadValues("http://" + "stage.ddelivery.ru" + ":80/api/v1/" + url, data);
-                return ParseBtn_Click(Encoding.UTF8.GetString(responseJson));
+                var responseJson = client.UploadValues("http://" + ApplicationBaseUrl + ":80/api/v1/" + url, data);
+                return JsonSerializer(Encoding.UTF8.GetString(responseJson));
             }
         }
 
@@ -50,7 +56,7 @@ namespace Autotests.Utilities.ApiTestCore
             public string City { get; set; }
         }
 
-        private static Response ParseBtn_Click(string value)
+        private static Response JsonSerializer(string value)
         {
             var json = new DataContractJsonSerializer(typeof(Response));
             return (Response)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));

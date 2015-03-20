@@ -5,7 +5,13 @@ namespace Autotests.Tests.T02_UserTests
 {
     public class Shop : ConstVariablesTestBase
     {
-        [Test, Description("Создания магазина для тестов на калькулятор")]
+//        "test_userShops_via_Api\r\nAPI ключ для модуля: 1a82a2953f2800fa43a7424c41b797dd"
+//"Квебек"
+//"Удалить"
+//"Редактировать"
+//"Доставка курьером до двери"
+//"Доставка до пункта самовывоза"
+        [Test, Description("Создания магазина"), Ignore]
         public void T02_CreateShopTest()
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);

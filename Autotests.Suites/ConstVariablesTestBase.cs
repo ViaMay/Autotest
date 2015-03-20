@@ -1,10 +1,11 @@
-﻿using Autotests.WebPages.Pages;
+﻿using Autotests.Utilities.ApiTestCore;
+using Autotests.WebPages.Pages;
 
 namespace Autotests.Tests
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
-        protected override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
+        public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
         public override void SetUp()
         {
@@ -36,6 +37,8 @@ namespace Autotests.Tests
             deliveryPointAddress = "Ленинский проспект 127";
             deliveryPointLongitude = "37.477078814299";
             deliveryPointLatitude = "55.645872547535";
+
+            apiPostRequest = new Api(ApplicationBaseUrl);
         }
 
         public string adminName;
@@ -64,5 +67,7 @@ namespace Autotests.Tests
         public string deliveryPointAddress;
         public string deliveryPointLongitude;
         public string deliveryPointLatitude;
+
+        public Api apiPostRequest;
     }
 }

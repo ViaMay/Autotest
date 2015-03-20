@@ -6,10 +6,10 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ApiTests
 {
-    public class WarehouseCreateTests : ConstVariablesTestBase
+    public class ShopCreateTests : ConstVariablesTestBase
     {
-        [Test, Description("Создание склада")]
-        public void WarehouseCreateTest()
+        [Test, Description("Создание магазина")]
+        public void ShopCreateTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
@@ -37,21 +37,7 @@ namespace Autotests.Tests.T03_ApiTests
             var userEdiringPage = usersPage.GoTo<UserCreatePage>();
             userId = userEdiringPage.Key.GetAttributeValue("value");
 
-//            удаление скалад если он был до этого
-            userEdiringPage.AdminUsers.Click();
-            userEdiringPage.UsersWarehouses.Click();
-            var warehousesPage = userEdiringPage.GoTo<UsersWarehousesPage>();
-            warehousesPage.Table.RowSearch.Name.SetValue(userWarehouses + "_Api");
-            warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
-            while (warehousesPage.Table.GetRow(0).Name.IsPresent)
-            {
-                warehousesPage.Table.GetRow(0).ActionsDelete.Click();
-                warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
-                warehousesPage.Table.RowSearch.Name.SetValue(userWarehouses + "_Api");
-                warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
-            }
-
-            var response = apiPostRequest.POST("cabinet/" + userId + "/warehouse_create.json",
+            var responseWarehouse = apiPostRequest.POST("cabinet/" + userId + "/warehouse_create.json",
                 new NameValueCollection
                 {
                     {"name", userWarehouses + "_Api"},
@@ -65,19 +51,40 @@ namespace Autotests.Tests.T03_ApiTests
                     {"house", "house"}
                 }
                 );
-            Assert.IsTrue(response.Success, "Ожидался ответ true на отправленный запрос POST по API" );
+            Assert.IsTrue(responseWarehouse.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
-            var defaultPage = warehousesPage.LoginOut();
+//            удаление магазинов если они были
+            userEdiringPage.AdminUsers.Click();
+            userEdiringPage.UsersShops.Click();
+            var shopsPage = userEdiringPage.GoTo<UsersShopsPage>();
+            shopsPage.Table.RowSearch.Name.SetValue(userShops + "_Api");
+            shopsPage = shopsPage.SeachButtonRowClickAndGo();
+            while (shopsPage.Table.GetRow(0).Name.IsPresent)
+            {
+                shopsPage.Table.GetRow(0).ActionsDelete.Click();
+                shopsPage = shopsPage.GoTo<UsersShopsPage>();
+                shopsPage.Table.RowSearch.Name.SetValue(userShops + "_Api");
+                shopsPage = shopsPage.SeachButtonRowClickAndGo();
+            }
+
+            var responseShop = apiPostRequest.POST("cabinet/" + userId + "/shop_create.json",
+                new NameValueCollection
+                {
+                    {"name", userShops + "_Api"},
+                    {"warehouse", responseWarehouse.ResponseMessage.Id},
+                    {"address", "Квебек"}
+                }
+                );
+            Assert.IsTrue(responseShop.Success, "Ожидался ответ true на отправленный запрос POST по API");
+
+            var defaultPage = shopsPage.LoginOut();
             var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.UseProfile.Click();
-            userPage.UserWarehouses.Click();
-            var warehousesListPage = userPage.GoTo<UserWarehousesPage>();
-            var row = warehousesListPage.Table.FindRowByName(userWarehouses + "_Api");
-            row.Name.WaitText(userWarehouses + "_Api");
-            row.City.WaitText("Томск");
-            row.Address.WaitText("street, house 138");
-            row.Contact.WaitText("contact_person (contact_phone tester@user.ru)");
-            row.TimeWork.WaitText("10:00-19:00,10:00-19:00,10:00-19:00,10:00-19:00,10:00-19:00,Выходной,Выходной");
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            var row = shopsListPage.Table.FindRowByName(userShops + "_Api");
+            row.Name.WaitTextContains(userShops + "_Api\r\nAPI ключ для модуля:");
+            row.Address.WaitTextContains("Квебек");
         }
         private string userId;
     }
