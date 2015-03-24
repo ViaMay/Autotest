@@ -12,7 +12,7 @@ namespace Autotests.Tests.T02_UserTests
             userPage.Calculator.Click();
             var calculatorPage = userPage.GoTo<СalculatorPage>();
             calculatorPage.CityFrom.SetFirstValueSelect("Москва");
-            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.Shop.SetFirstValueSelect(userShopName);
             calculatorPage.CityTo.SetFirstValueSelect("Москва");
             calculatorPage.Weight.SetValueAndWait("3");
             calculatorPage.СountedButton.Click();
@@ -50,7 +50,7 @@ namespace Autotests.Tests.T02_UserTests
             userPage.Calculator.Click();
             var calculatorPage = userPage.GoTo<СalculatorPage>();
             calculatorPage.CityFrom.SetFirstValueSelect("Москва");
-            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.Shop.SetFirstValueSelect(userShopName);
             calculatorPage.CityTo.SetFirstValueSelect("Москва");
 
             calculatorPage.DeclaredPrice.WaitValue("1500");
@@ -75,7 +75,7 @@ namespace Autotests.Tests.T02_UserTests
             userPage.Calculator.Click();
             var calculatorPage = userPage.GoTo<СalculatorPage>();
             calculatorPage.CityFrom.SetFirstValueSelect("Москва");
-            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.Shop.SetFirstValueSelect(userShopName);
             calculatorPage.CityTo.SetFirstValueSelect("Москва");
 
             calculatorPage.DeclaredPrice.SetValueAndWait("15,1200");

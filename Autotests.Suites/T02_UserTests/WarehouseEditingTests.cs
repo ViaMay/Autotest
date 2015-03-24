@@ -16,7 +16,7 @@ namespace Autotests.Tests.T02_UserTests
             var warehouseCreatePage = warehousesListPage.GoTo<UserWarehouseCreatePage>();
 
             warehouseCreatePage.LabelDirectory.WaitText("Создание склада");
-            warehouseCreatePage.Name.SetValueAndWait(userWarehouses + "2");
+            warehouseCreatePage.Name.SetValueAndWait(userWarehouseName + "2");
             warehouseCreatePage.Street.SetValueAndWait("Улица");
             warehouseCreatePage.House.SetValueAndWait("Дом");
             warehouseCreatePage.Flat.SetValueAndWait("Квартира");
@@ -35,8 +35,8 @@ namespace Autotests.Tests.T02_UserTests
             warehouseCreatePage.CreateButton.Click();
             warehousesListPage = warehouseCreatePage.GoTo<UserWarehousesPage>();
 
-            var row = warehousesListPage.Table.FindRowByName(userWarehouses + "2");
-            row.Name.WaitText(userWarehouses + "2");
+            var row = warehousesListPage.Table.FindRowByName(userWarehouseName + "2");
+            row.Name.WaitText(userWarehouseName + "2");
             row.City.WaitText("Москва");
             row.Address.WaitText("Улица, Дом Квартира");
             row.Contact.WaitText("test_legalEntity (+7 (111)111-1111 tester@user.ru)");
@@ -46,7 +46,7 @@ namespace Autotests.Tests.T02_UserTests
             warehouseCreatePage = warehousesListPage.GoTo<UserWarehouseCreatePage>();
 
             warehouseCreatePage.LabelDirectory.WaitText("Редактирование склада");
-            warehouseCreatePage.Name.SetValueAndWait(userWarehouses + "3");
+            warehouseCreatePage.Name.SetValueAndWait(userWarehouseName + "3");
             warehouseCreatePage.Street.SetValueAndWait("Улица2");
             warehouseCreatePage.House.SetValueAndWait("Дом2");
             warehouseCreatePage.Flat.SetValueAndWait("Квартира2");
@@ -67,8 +67,8 @@ namespace Autotests.Tests.T02_UserTests
             warehouseCreatePage.CreateButton.Click();
             warehousesListPage = warehouseCreatePage.GoTo<UserWarehousesPage>();
 
-            row = warehousesListPage.Table.FindRowByName(userWarehouses + "3");
-            row.Name.WaitText(userWarehouses + "3");
+            row = warehousesListPage.Table.FindRowByName(userWarehouseName + "3");
+            row.Name.WaitText(userWarehouseName + "3");
             row.City.WaitText("Санкт-Петербург");
             row.Address.WaitText("Улица2, Дом2 Квартира2");
             row.Contact.WaitText("test_legalEntity2 (+7 (222)222-2222 2tester@user.ru)");

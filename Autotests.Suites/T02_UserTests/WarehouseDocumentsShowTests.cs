@@ -13,8 +13,8 @@ namespace Autotests.Tests.T02_UserTests
             userPage.UserWarehouses.Click();
             var warehousesListPage = userPage.GoTo<UserWarehousesPage>();
             
-            var row = warehousesListPage.Table.FindRowByName(userWarehouses);
-            row.Name.WaitText(userWarehouses);
+            var row = warehousesListPage.Table.FindRowByName(userWarehouseName);
+            row.Name.WaitText(userWarehouseName);
             row.City.WaitText("Москва");
             row.Address.WaitText("Улица, Дом Квартира");
             row.Contact.WaitText("test_legalEntity (+7 (111)111-1111 tester@user.ru)");
@@ -24,7 +24,7 @@ namespace Autotests.Tests.T02_UserTests
             row.Documents.Click();
 
             var documentsPreparedPage = warehousesListPage.GoTo<DocumentsPreparedPage>();
-            documentsPreparedPage.WarehouseSelect.WaitText(userWarehouses);
+            documentsPreparedPage.WarehouseSelect.WaitText(userWarehouseName);
             documentsPreparedPage.InstructionsForUse.WaitText("Инструкция по использованию");
             documentsPreparedPage.Stickers.WaitText("Наклейки");
             documentsPreparedPage.TextAlert.WaitText("Примечание Передача заказов без наклеек не допускается.");

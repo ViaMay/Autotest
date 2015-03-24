@@ -1,5 +1,6 @@
 ﻿using System.Collections.Specialized;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
@@ -9,45 +10,70 @@ namespace Autotests.Utilities.ApiTestCore
 {
     public class Api
     {
+        private readonly string ApplicationBaseUrl;
+
         public Api(string value)
         {
             ApplicationBaseUrl = value;
         }
-        private readonly string ApplicationBaseUrl;
 
-        public string GET(string url, string data)
+        public TResponse GET(string url, NameValueCollection data)
         {
             using (var client = new WebClient())
             {
-                return client.DownloadString(url + "?" + data);
+                string dataString = "";
+                foreach (string key in data.Keys)
+                {
+                    dataString = dataString + key + "=" + data[key] + "&";
+                }
+                dataString = dataString.Remove(dataString.Count() - 1);
+                string response = client.DownloadString("http://" + ApplicationBaseUrl + ":80/" + url + "?" + dataString);
+                return JsonSerializer(response);
             }
         }
 
-        public Response POST(string url, NameValueCollection data)
+        public TResponse POST(string url, NameValueCollection data)
         {
             using (var client = new WebClient())
             {
-                var responseJson = client.UploadValues("http://" + ApplicationBaseUrl + ":80/api/v1/" + url, data);
+                byte[] responseJson = client.UploadValues("http://" + ApplicationBaseUrl + ":80/api/v1/" + url, data);
                 return JsonSerializer(Encoding.UTF8.GetString(responseJson));
             }
         }
 
-        [DataContract]
-        public class Response
+        private static TResponse JsonSerializer(string value)
         {
-            [DataMember(Name = "success")]
-            public bool Success { get; set; }
-            [DataMember(Name = "response")]
-            public ResponseMessage ResponseMessage { get; set; }
+//            если тег response множественный то это идет рачте калькулятора 
+            if (value.Contains(@"response"":["))
+            {
+                var json = new DataContractJsonSerializer(typeof (ResponseCalculation));
+                return (ResponseCalculation) json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+            var json2 = new DataContractJsonSerializer(typeof (ResponseAddObject));
+            return (ResponseAddObject) json2.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
         }
+
         [DataContract]
-        public class ResponseMessage
+        public class AddMessage
         {
-            [DataMember(Name = "message")]
-            public MessageErrore MessageErrore { get; set; }
             [DataMember(Name = "_id")]
             public string Id { get; set; }
+
+            [DataMember(Name = "key")]
+            public string Key { get; set; }
         }
+
+        [DataContract]
+        public class MessageCalculation
+        {
+            [DataMember(Name = "delivery_company_name")]
+            public string DeliveryCompanyName { get; set; }
+        }
+
+//            [DataMember(Name = "message")]
+//            public MessageErrore MessageErrore { get; set; }
+//            [DataMember(Name = "message")]
+//            public string Message { get; set; }
 
         [DataContract]
         public class MessageErrore
@@ -56,10 +82,25 @@ namespace Autotests.Utilities.ApiTestCore
             public string City { get; set; }
         }
 
-        private static Response JsonSerializer(string value)
+        [DataContract]
+        public class ResponseAddObject : TResponse
         {
-            var json = new DataContractJsonSerializer(typeof(Response));
-            return (Response)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
-        }  
+            [DataMember(Name = "response")]
+            public AddMessage ResponseMessage { get; set; }
+        }
+
+        [DataContract]
+        public class ResponseCalculation : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageCalculation[] MessageCalculation { get; set; }
+        }
+
+        [DataContract]
+        public class TResponse
+        {
+            [DataMember(Name = "success")]
+            public bool Success { get; set; }
+        }
     }
 }

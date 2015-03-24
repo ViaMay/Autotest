@@ -8,7 +8,7 @@ namespace Autotests.Tests.T01_StartSettingTests
         [Test, Description("Создания юредического лица для Компании")]
         public void CreateLegalEntityTest()
         {
-            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
+            var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminReference.Click();
             adminPage.LegalEntities.Click();
             var legalEntitiesPage = adminPage.GoTo<LegalEntitiesPage>();

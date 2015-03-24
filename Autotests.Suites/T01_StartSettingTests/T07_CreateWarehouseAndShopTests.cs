@@ -17,7 +17,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             {
                 warehousesListPage.WarehousesCreate.Click();
                 var warehouseCreatePage = warehousesListPage.GoTo<UserWarehouseCreatePage>();
-                warehouseCreatePage.Name.SetValueAndWait(userWarehouses);
+                warehouseCreatePage.Name.SetValueAndWait(userWarehouseName);
                 warehouseCreatePage.Street.SetValueAndWait("Улица");
                 warehouseCreatePage.House.SetValueAndWait("Дом");
                 warehouseCreatePage.Flat.SetValueAndWait("Квартира");
@@ -56,9 +56,9 @@ namespace Autotests.Tests.T01_StartSettingTests
 
             shopsListPage.ShopsCreate.Click();
             var shopCreatePage = shopsListPage.GoTo<UserShopCreatePage>();
-            shopCreatePage.Name.SetValueAndWait(userShops);
+            shopCreatePage.Name.SetValueAndWait(userShopName);
             shopCreatePage.Address.SetValueAndWait("Москва");
-            shopCreatePage.Warehouse.SelectValue(userWarehouses);
+            shopCreatePage.Warehouse.SelectValue(userWarehouseName);
             shopCreatePage.CreateButton.Click();
             shopsListPage = shopCreatePage.GoTo<UserShopsPage>();
             shopsListPage.Table.GetRow(0).Name.WaitPresence();

@@ -29,9 +29,9 @@ namespace Autotests.Tests.T02_UserTests
 
             shopsListPage.ShopsCreate.Click();
             var shopCreatePage = shopsListPage.GoTo<UserShopCreatePage>();
-            shopCreatePage.Name.SetValueAndWait(userShops);
+            shopCreatePage.Name.SetValueAndWait(userShopName);
             shopCreatePage.Address.SetValueAndWait("Москва");
-            shopCreatePage.Warehouse.SelectValue(userWarehouses);
+            shopCreatePage.Warehouse.SelectValue(userWarehouseName);
             shopCreatePage.CreateButton.Click();
             shopsListPage = shopCreatePage.GoTo<UserShopsPage>();
             shopsListPage.Table.GetRow(0).Name.WaitPresence();

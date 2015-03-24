@@ -1,5 +1,4 @@
 ﻿using System.Collections.Specialized;
-using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages.Pages.PageAdmin;
 using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
@@ -41,20 +40,20 @@ namespace Autotests.Tests.T03_ApiTests
             userEdiringPage.AdminUsers.Click();
             userEdiringPage.UsersWarehouses.Click();
             var warehousesPage = userEdiringPage.GoTo<UsersWarehousesPage>();
-            warehousesPage.Table.RowSearch.Name.SetValue(userWarehouses + "_Api");
+            warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_Api");
             warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
-                warehousesPage.Table.RowSearch.Name.SetValue(userWarehouses + "_Api");
+                warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_Api");
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             }
 
-            var response = apiPostRequest.POST("cabinet/" + userId + "/warehouse_create.json",
+            var response = apiRequest.POST("cabinet/" + userId + "/warehouse_create.json",
                 new NameValueCollection
                 {
-                    {"name", userWarehouses + "_Api"},
+                    {"name", userWarehouseName + "_Api"},
                     {"flat", "138"},
                     {"city", "416"},
                     {"contact_person", "contact_person"},
@@ -72,8 +71,8 @@ namespace Autotests.Tests.T03_ApiTests
             userPage.UseProfile.Click();
             userPage.UserWarehouses.Click();
             var warehousesListPage = userPage.GoTo<UserWarehousesPage>();
-            var row = warehousesListPage.Table.FindRowByName(userWarehouses + "_Api");
-            row.Name.WaitText(userWarehouses + "_Api");
+            var row = warehousesListPage.Table.FindRowByName(userWarehouseName + "_Api");
+            row.Name.WaitText(userWarehouseName + "_Api");
             row.City.WaitText("Томск");
             row.Address.WaitText("street, house 138");
             row.Contact.WaitText("contact_person (contact_phone tester@user.ru)");

@@ -43,7 +43,7 @@ namespace Autotests.Tests.T02_UserTests
             warehouseCreatePage.ErrorText[5].WaitText(@"в поле ""График работы"" должен быть заполнен хотя бы один рабочий день");
             warehouseCreatePage.ErrorText[6].WaitText("Город обязательно к заполнению");
 
-            warehouseCreatePage.Name.SetValueAndWait(userWarehouses + "1");
+            warehouseCreatePage.Name.SetValueAndWait(userWarehouseName + "1");
             warehouseCreatePage.Street.SetValueAndWait("улица");
 //            warehouseCreatePage.CreateButton.ClickAndWaitTextError();
 //            warehouseCreatePage.ErrorText[0].WaitText("Дом обязательно к заполнению");
@@ -88,7 +88,7 @@ namespace Autotests.Tests.T02_UserTests
             warehouseCreatePage.CreateButton.Click();
             warehousesListPage = warehouseCreatePage.GoTo<UserWarehousesPage>();
 
-            warehousesListPage.Table.FindRowByName(userWarehouses + "1").Name.WaitText(userWarehouses + "1");
+            warehousesListPage.Table.FindRowByName(userWarehouseName + "1").Name.WaitText(userWarehouseName + "1");
         }
 
     }

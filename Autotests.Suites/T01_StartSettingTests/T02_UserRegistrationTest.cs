@@ -41,13 +41,13 @@ namespace Autotests.Tests.T01_StartSettingTests
             usersPage.AdminUsers.Click();
             usersPage.UsersWarehouses.Click();
             var warehousesPage = usersPage.GoTo<UsersWarehousesPage>();
-            warehousesPage.Table.RowSearch.Name.SetValue(userWarehouses);
+            warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName);
             warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
-                warehousesPage.Table.RowSearch.Name.SetValue(userWarehouses);
+                warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName);
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             }
 
@@ -55,13 +55,13 @@ namespace Autotests.Tests.T01_StartSettingTests
             warehousesPage.AdminUsers.Click();
             warehousesPage.UsersShops.Click();
             var shopsPage = warehousesPage.GoTo<UsersShopsPage>();
-            shopsPage.Table.RowSearch.Name.SetValue(userShops);
+            shopsPage.Table.RowSearch.Name.SetValue(userShopName);
             shopsPage = shopsPage.SeachButtonRowClickAndGo();
             while (shopsPage.Table.GetRow(0).Name.IsPresent)
             {
                 shopsPage.Table.GetRow(0).ActionsDelete.Click();
                 shopsPage = shopsPage.GoTo<UsersShopsPage>();
-                shopsPage.Table.RowSearch.Name.SetValue(userShops);
+                shopsPage.Table.RowSearch.Name.SetValue(userShopName);
                 shopsPage = shopsPage.SeachButtonRowClickAndGo();
             }
         }

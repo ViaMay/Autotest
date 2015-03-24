@@ -19,8 +19,8 @@ namespace Autotests.Tests
             deliveryPointName = "test_deliverypoint";
 
             userNameAndPass = "tester@user.ru";
-            userWarehouses = "test_userWarehouses_via";
-            userShops = "test_userShops_via";
+            userWarehouseName = "test_userWarehouses_via";
+            userShopName = "test_userShops_via";
 
             weightName = "test_via_Weight";
             weightMin = 2;
@@ -38,15 +38,15 @@ namespace Autotests.Tests
             deliveryPointLongitude = "37.477078814299";
             deliveryPointLatitude = "55.645872547535";
 
-            apiPostRequest = new Api(ApplicationBaseUrl);
+            apiRequest = new Api(ApplicationBaseUrl);
         }
 
         public string adminName;
         public string adminPass;
 
         public string userNameAndPass;
-        public string userWarehouses;
-        public string userShops;
+        public string userWarehouseName;
+        public string userShopName;
 
         public string legalEntityName;
         public string companyName;
@@ -68,6 +68,6 @@ namespace Autotests.Tests
         public string deliveryPointLongitude;
         public string deliveryPointLatitude;
 
-        public Api apiPostRequest;
+        public Api apiRequest;
     }
 }

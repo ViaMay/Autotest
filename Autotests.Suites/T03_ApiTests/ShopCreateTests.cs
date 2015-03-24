@@ -37,10 +37,10 @@ namespace Autotests.Tests.T03_ApiTests
             var userEdiringPage = usersPage.GoTo<UserCreatePage>();
             userId = userEdiringPage.Key.GetAttributeValue("value");
 
-            var responseWarehouse = apiPostRequest.POST("cabinet/" + userId + "/warehouse_create.json",
+            var responseWarehouse = (Api.ResponseAddObject)apiRequest.POST("cabinet/" + userId + "/warehouse_create.json",
                 new NameValueCollection
                 {
-                    {"name", userWarehouses + "_Api"},
+                    {"name", userWarehouseName + "_Api"},
                     {"flat", "138"},
                     {"city", "416"},
                     {"contact_person", "contact_person"},
@@ -57,20 +57,20 @@ namespace Autotests.Tests.T03_ApiTests
             userEdiringPage.AdminUsers.Click();
             userEdiringPage.UsersShops.Click();
             var shopsPage = userEdiringPage.GoTo<UsersShopsPage>();
-            shopsPage.Table.RowSearch.Name.SetValue(userShops + "_Api");
+            shopsPage.Table.RowSearch.Name.SetValue(userShopName + "_Api");
             shopsPage = shopsPage.SeachButtonRowClickAndGo();
             while (shopsPage.Table.GetRow(0).Name.IsPresent)
             {
                 shopsPage.Table.GetRow(0).ActionsDelete.Click();
                 shopsPage = shopsPage.GoTo<UsersShopsPage>();
-                shopsPage.Table.RowSearch.Name.SetValue(userShops + "_Api");
+                shopsPage.Table.RowSearch.Name.SetValue(userShopName + "_Api");
                 shopsPage = shopsPage.SeachButtonRowClickAndGo();
             }
 
-            var responseShop = apiPostRequest.POST("cabinet/" + userId + "/shop_create.json",
+            var responseShop = apiRequest.POST("cabinet/" + userId + "/shop_create.json",
                 new NameValueCollection
                 {
-                    {"name", userShops + "_Api"},
+                    {"name", userShopName + "_Api"},
                     {"warehouse", responseWarehouse.ResponseMessage.Id},
                     {"address", "Квебек"}
                 }
@@ -82,8 +82,8 @@ namespace Autotests.Tests.T03_ApiTests
             userPage.UseProfile.Click();
             userPage.UserShops.Click();
             var shopsListPage = userPage.GoTo<UserShopsPage>();
-            var row = shopsListPage.Table.FindRowByName(userShops + "_Api");
-            row.Name.WaitTextContains(userShops + "_Api\r\nAPI ключ для модуля:");
+            var row = shopsListPage.Table.FindRowByName(userShopName + "_Api");
+            row.Name.WaitTextContains(userShopName + "_Api\r\nAPI ключ для модуля:");
             row.Address.WaitTextContains("Квебек");
         }
         private string userId;

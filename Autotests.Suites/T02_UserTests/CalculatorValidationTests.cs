@@ -36,7 +36,7 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.ActionErrorText[1].WaitText("Город отправления обязательно к заполнению");
             calculatorPage.ActionErrorText[2].WaitAbsence();
 
-            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.Shop.SetFirstValueSelect(userShopName);
             calculatorPage.СountedButton.ClickAndWaitTextError();
             calculatorPage.ActionErrorText[0].WaitText("Город отправления обязательно к заполнению");
             calculatorPage.ActionErrorText[1].WaitAbsence();
@@ -51,7 +51,7 @@ namespace Autotests.Tests.T02_UserTests
 
             calculatorPage.CityFrom.SetFirstValueSelect("Москва");
             calculatorPage.CityTo.SetFirstValueSelect("Москва");
-            calculatorPage.Shop.SetFirstValueSelect(userShops);
+            calculatorPage.Shop.SetFirstValueSelect(userShopName);
             calculatorPage.DeclaredPrice.SetValueAndWait("");
             calculatorPage.Weight.SetValueAndWait("");
             calculatorPage.Width.SetValueAndWait("");
