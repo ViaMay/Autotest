@@ -114,7 +114,9 @@
     <Compile Include="T02_UserTests\WarehouseDocumentsShowTests.cs" />
     <Compile Include="T02_UserTests\WarehouseEditingTests.cs" />
     <Compile Include="T02_UserTests\WarehouseValidationTests.cs" />
-    <Compile Include="T03_ApiTests\CalculatorTests.cs" />
+    <Compile Include="T03_ApiTests\CalculatorPriceCourirsTests.cs" />
+    <Compile Include="T03_ApiTests\CheckApiKeyTestsTests.cs" />
+    <Compile Include="T03_ApiTests\CalculatorPriceSelfTests.cs" />
     <Compile Include="T03_ApiTests\ShopCreateTests.cs" />
     <Compile Include="T03_ApiTests\WarehouseCreateTests.cs" />
     <Compile Include="T04_ClearTests\ClearTest.cs" />
