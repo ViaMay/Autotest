@@ -23,7 +23,7 @@ namespace Autotests.Tests.T03_ApiTests
 
  //            Не заполен город city_to. Расчитать цену самомвывоза (по пункут выдачи)
             var responseCalculator =
-                (Api.ResponseCalculation) apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseCalculation) apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                     new NameValueCollection
                     {
                         {"type", "1"},
@@ -41,7 +41,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            Заполены все значения. Расчитать цену самомвывоза (по городу доставки)
             responseCalculator =
-                (Api.ResponseCalculation) apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseCalculation)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                     new NameValueCollection
                     {
                         {"type", "1"},
@@ -59,7 +59,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            delivery_point пустое. Расчитать цену самомвывоза (по городу доставки)
             responseCalculator =
-                (Api.ResponseCalculation)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseCalculation)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                     new NameValueCollection
                     {
                         {"type", "1"},
@@ -77,7 +77,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            Заполены все значения, Город заполнен текстом. Расчитать цену самомвывоза (по городу доставки)
             responseCalculator =
-                (Api.ResponseCalculation)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseCalculation)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                     new NameValueCollection
                     {
                         {"type", "1"},
@@ -95,7 +95,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            Одна из сторон равна нулю. Возврат ошибки
             var responseFailCalculator =
-                (Api.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                 new NameValueCollection
                     {
                         {"type", "1"},
@@ -114,7 +114,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //           declared_price равна нулю. Возврат ошибки
             responseFailCalculator =
-                (Api.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                 new NameValueCollection
                     {
                         {"type", "1"},
@@ -131,7 +131,7 @@ namespace Autotests.Tests.T03_ApiTests
 
  //           payment_price равна нулю. Расчитываем стоимость.
             responseCalculator =
-                 (Api.ResponseCalculation) apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                 (ApiResponse.ResponseCalculation)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                new NameValueCollection
                     {
                         {"type", "1"},
@@ -149,7 +149,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //           Проверка корректного to_city, не корректый город. Возврат ошибки
            responseFailCalculator =
-               (Api.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+               (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                new NameValueCollection
                     {
                         {"type", "1"},

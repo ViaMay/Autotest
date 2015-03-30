@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
 using System.Web;
+using Autotests.Utilities.WebTestCore.SystemControls;
 using Microsoft.Win32;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -106,7 +107,7 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             {
                 return driver.SwitchTo().Alert();
             }
-            catch (NoAlertPresentException e)
+            catch (NoAlertPresentException)
             {
                 Thread.Sleep(1000);
             }
@@ -163,7 +164,7 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
                 screenshot.SaveAsFile(saveLocation, ImageFormat.Png);
                 Console.WriteLine("Screenshot saved to:\r\n{0}", saveLocation);
             }
-            catch (IOException e)
+            catch (IOException)
             {
 
             }

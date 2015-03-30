@@ -96,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiTestCore\ApiResponse.cs" />
     <Compile Include="ApiTestCore\Api.cs" />
     <Compile Include="WebTestCore\Pages\PageBase.cs" />
     <Compile Include="WebTestCore\Pages\Timing\DefaultPageTimeStatistics.cs" />

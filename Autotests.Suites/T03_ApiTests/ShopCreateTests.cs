@@ -37,7 +37,7 @@ namespace Autotests.Tests.T03_ApiTests
             var userEdiringPage = usersPage.GoTo<UserCreatePage>();
             userId = userEdiringPage.Key.GetAttributeValue("value");
 
-            var responseWarehouse = (Api.ResponseAddObject)apiRequest.POST("cabinet/" + userId + "/warehouse_create.json",
+            var responseWarehouse = (ApiResponse.ResponseAddObject)apiRequest.POST("cabinet/" + userId + "/warehouse_create.json",
                 new NameValueCollection
                 {
                     {"name", userWarehouseName + "_Api"},

@@ -13,6 +13,11 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             WebDriverCache.WebDriver.Alert().Accept();
         }
 
+        public void AcceptTextInput(string value)
+        {
+            WebDriverCache.WebDriver.Alert().SendKeys(value);
+        }
+
         public void Сancel()
         {
             WebDriverCache.WebDriver.Alert().Dismiss();

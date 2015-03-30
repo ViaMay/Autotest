@@ -31,7 +31,9 @@ namespace Autotests.Tests.T01_StartSettingTests
             userCreatePage.UserGroupsAddButton.Click();
             userCreatePage.OfficialName.SetValueAndWait(legalEntityName);
             userCreatePage.SaveButton.Click();
-            usersPage = userCreatePage.GoTo<UsersPage>();
+            userCreatePage.AdminUsers.Click();
+            userCreatePage.Users.Click();
+            usersPage = adminPage.GoTo<UsersPage>();
 
             usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
             usersPage = usersPage.SeachButtonRowClickAndGo();

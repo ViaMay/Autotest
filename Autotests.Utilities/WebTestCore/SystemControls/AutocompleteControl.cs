@@ -17,7 +17,7 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             {
                 index = Int32.Parse(locator.ToString().Replace("ByNthOfClass: .ajax-combobox[", "").Replace("]", ""));
             }
-            catch (FormatException e)
+            catch (FormatException)
             {
                 index = 0;
             }

@@ -19,7 +19,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            Все поля заполнены. Расчитать цену курьерки
             var responseCalculator =
-                (Api.ResponseCalculation) apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseCalculation)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                     new NameValueCollection
                     {
                         {"type", "2"},
@@ -36,7 +36,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //          city_to заполнен некорректно. Возврат ошибки
             var responseFailCalculator =
-                (Api.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                 new NameValueCollection
                     {
                         {"type", "2"},
@@ -53,7 +53,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            Одна из сторон в запросе равна нулю. Возврат ошибки
             responseFailCalculator =
-                (Api.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                 new NameValueCollection
                     {
                         {"type", "2"},
@@ -70,7 +70,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //          Проверка сторон по справочнику, ввод не корретной стороны. Возврат ошибки
             responseFailCalculator =
-                (Api.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                 new NameValueCollection
                     {
                         {"type", "2"},
@@ -87,7 +87,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //          Превышение веса. Возврат Ошибки
             responseFailCalculator =
-                (Api.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                 new NameValueCollection
                     {
                         {"type", "2"},
@@ -104,7 +104,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //          Проверка отсутстие declared_price. Возврат ошибки
             responseFailCalculator =
-                (Api.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
+                (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                 new NameValueCollection
                     {
                         {"type", "2"},
