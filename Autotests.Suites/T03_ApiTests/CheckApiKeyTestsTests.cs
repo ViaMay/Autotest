@@ -6,8 +6,6 @@ namespace Autotests.Tests.T03_ApiTests
 {
     public class CheckApiKeyTests : ConstVariablesTestBase
     {
-        private string userId;
-
         [Test, Description("проверка api-key. Возврат ошибки"), Ignore]
         public void Test()
         {
@@ -34,7 +32,8 @@ namespace Autotests.Tests.T03_ApiTests
                         {"payment_price", "1000"}
                     });
            Assert.IsFalse(responseFailCalculator.Success);
-           Assert.AreEqual(responseFailCalculator.ResponseMessage.Message, "Превышены возможные размеры или вес отправления для данного ПВЗ");
+           Assert.AreEqual(responseFailCalculator.Message.Message, "Превышены возможные размеры или вес отправления для данного ПВЗ");
+//       точно такой же тест для заявок насамовывоз и курьерских
         }
     }
 }

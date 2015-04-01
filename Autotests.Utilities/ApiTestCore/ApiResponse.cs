@@ -15,44 +15,57 @@ namespace Autotests.Utilities.ApiTestCore
         public class ResponseFail : Response
         {
             [DataMember(Name = "response")]
-            public FailMessage ResponseMessage { get; set; }
+            public FailMessage Message { get; set; }
+        }
+
+        [DataContract]
+        public class ResponseFailOrder : Response
+        {
+            [DataMember(Name = "response")]
+            public FailOrderMessage Message { get; set; }
         }
 
         [DataContract]
         public class ResponseAddObject : Response
         {
             [DataMember(Name = "response")]
-            public AddMessage ResponseMessage { get; set; }
+            public AddMessage Message { get; set; }
         }
 
         [DataContract]
         public class ResponseAddOrder : Response
         {
             [DataMember(Name = "response")]
-            public AddOrderMessage ResponseMessage { get; set; }
+            public AddOrderMessage Message { get; set; }
         }
 
         [DataContract]
         public class ResponseCalculation : Response
         {
             [DataMember(Name = "response")]
-            public MessageCalculation[] MessageCalculation { get; set; }
+            public MessageCalculation[] Message { get; set; }
         }
 
         [DataContract]
         public class ResponseStatus : Response
         {
             [DataMember(Name = "response")]
-            public MessageStatus MessageStatus { get; set; }
+            public MessageStatus Message { get; set; }
         }
 
         [DataContract]
         public class ResponseOrderInfo : Response
         {
             [DataMember(Name = "response")]
-            public MessageOrderInfo MessageOrderInfo { get; set; }
+            public MessageOrderInfo Message { get; set; }
         }
 
+        [DataContract]
+        public class ResponseTrueCancel : Response
+        {
+            [DataMember(Name = "response")]
+            public MessageTrueCancal Message { get; set; }
+        }
        [DataContract]
         public class AddMessage
         {
@@ -138,9 +151,6 @@ namespace Autotests.Utilities.ApiTestCore
             public string PickupDate { get; set; }
         }
 
-//            [DataMember(Name = "message")]
-//            public MessageErrore MessageErrore { get; set; }
-
         [DataContract]
         public class MessageErrore
         {
@@ -205,6 +215,42 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "dimension_side3")]
             public string DimensionSide3 { get; set; }
+        }
+
+        [DataContract]
+        public class MessageTrueCancal
+        {
+            [DataMember(Name = "order_id")]
+            public string OrderId { get; set; }
+
+            [DataMember(Name = "ticket_id")]
+            public string TicketId { get; set; }
+        }
+
+        [DataContract]
+        public class FailOrderMessage
+        {
+            [DataMember(Name = "message")]
+            public ErrorMessage Error { get; set; }
+        }
+
+        [DataContract]
+        public class ErrorMessage
+        {
+        [DataMember(Name = "to_city")]
+        public string ToCity { get; set; }
+
+        [DataMember(Name = "delivery_point")]
+        public string DeliveryPoint { get; set; }
+
+        [DataMember(Name = "delivery_company")]
+        public string DeliveryCompany { get; set; }
+
+        [DataMember(Name = "dimension_side1")]
+        public string DimensionSide1 { get; set; }
+
+        [DataMember(Name = "calculate_order")]
+        public string CalculateOrder { get; set; }
         }
     }
 }

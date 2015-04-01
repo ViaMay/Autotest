@@ -8,9 +8,7 @@ namespace Autotests.Tests.T03_ApiTests
 {
     public class OrderSelfCreateAndSendTests : ConstVariablesTestBase
     {
-        private string userId;
-
-        [Test, Description("Создание заказа на самовывоз")]
+        [Test, Description("Создание заказа на самовывоз, запрос статусов, информации, подтверждения и отмена заявки")]
         public void OrderSelfTest()
         {
             LoginAsAdmin(adminName, adminPass);
@@ -52,7 +50,7 @@ namespace Autotests.Tests.T03_ApiTests
             var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Orders.Click();
             var ordersPage = userPage.GoTo<OrdersListPage>();
-            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.ResponseMessage.OrderId);
+            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Message.OrderId);
             ordersPage.Table.GetRow(0).Type.WaitText("Самовывоз");
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
             ordersPage.Table.GetRow(0).Route.WaitText("Москва - Москва");
@@ -64,13 +62,13 @@ namespace Autotests.Tests.T03_ApiTests
                 new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
-                {"order", responseCreateOrders.ResponseMessage.OrderId},
+                {"order", responseCreateOrders.Message.OrderId},
                 });
             Assert.IsTrue(responseConfirmationOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
             ordersPage.Orders.Click();
             ordersPage = ordersPage.GoTo<OrdersListPage>();
-            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.ResponseMessage.OrderId);
+            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Message.OrderId);
             ordersPage.Table.GetRow(0).Status.WaitText("Подтверждена");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Отменить");
             ordersPage.Table.GetRow(0).Edit.WaitText("Редактировать");
@@ -79,25 +77,52 @@ namespace Autotests.Tests.T03_ApiTests
             var responseOrderStatus = (ApiResponse.ResponseStatus)apiRequest.GET("api/v1/" + keyShopPublic + "/order_status.json",
                 new NameValueCollection
                 {
-                {"order", responseCreateOrders.ResponseMessage.OrderId}
+                {"order", responseCreateOrders.Message.OrderId}
                 });
-            Assert.AreEqual(responseOrderStatus.MessageStatus.StatusDescription, "Подтверждена");
+            Assert.AreEqual(responseOrderStatus.Message.StatusDescription, "Подтверждена");
 
-//           Инфо Ордера
+//           Инфо заявки 
             var responseOrderInfo = (ApiResponse.ResponseOrderInfo)apiRequest.GET("api/v1/" + keyShopPublic
-                + "/order_info/" + responseCreateOrders.ResponseMessage.OrderId + ".json",
+                + "/order_info/" + responseCreateOrders.Message.OrderId + ".json",
                 new NameValueCollection {});
-            Assert.AreEqual(responseOrderInfo.MessageOrderInfo.ToEmail, userNameAndPass);
-            Assert.AreEqual(responseOrderInfo.MessageOrderInfo.ToName, "Ургудан Рабат Мантов");
-	        							        
+            Assert.AreEqual(responseOrderInfo.Message.ToEmail, userNameAndPass);
+            Assert.AreEqual(responseOrderInfo.Message.ToName, "Ургудан Рабат Мантов");
 							        
-//         Отмена ордера
-            var responseOrderCancel = apiRequest.GET("api/v1/" + keyShopPublic + "/order_cancel.json",
+//         Отмена ордера (неудачная)
+            var responseOrderCancelFail = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/order_cancel.json",
                 new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
-                {"order", responseCreateOrders.ResponseMessage.OrderId}
+                {"order", responseCreateOrders.Message.OrderId}
                 });
+            Assert.AreEqual(responseOrderCancelFail.Message.Message, "This order can not be canceled");
+
+            defaultPage = ordersPage.LoginOut();
+            var adminPage = defaultPage.LoginAsAdmin(adminName, adminPass);
+            var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/process_i_orders");
+            defaultPage = adminMaintenancePage.LoginOut();
+            userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
+            userPage.Orders.Click();
+            ordersPage = userPage.GoTo<OrdersListPage>();
+            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Message.OrderId);
+            ordersPage.Table.GetRow(0).Status.WaitText("На складе ИМ");
+            ordersPage.Table.GetRow(0).Сonfirm.WaitText("Отменить");
+            ordersPage.Table.GetRow(0).Edit.WaitText("Редактировать");
+            var responseOrderCancel = (ApiResponse.ResponseTrueCancel)apiRequest.GET("api/v1/" + keyShopPublic + "/order_cancel.json",
+                new NameValueCollection
+                {
+                {"api_key", keyShopPublic},
+                {"order", responseCreateOrders.Message.OrderId}
+                });
+            Assert.AreEqual(responseOrderCancel.Message.OrderId, responseCreateOrders.Message.OrderId);
+            
+            ordersPage.Support.Click();
+            ordersPage.SupportList.Click();
+            var supportListPage = userPage.GoTo<SupportListPage>();
+            supportListPage.Table.GetRow(0).TicketId.WaitText(responseOrderCancel.Message.TicketId);
+            supportListPage.Table.GetRow(0).TicketText.WaitText("Изменение заявок");
+            supportListPage.Table.GetRow(0).Content.WaitText("Отмена заказа");
+            supportListPage.Table.GetRow(0).Status.WaitText("Открыт");
         }
     }
 }

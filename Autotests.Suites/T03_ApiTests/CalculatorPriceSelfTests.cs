@@ -8,8 +8,6 @@ namespace Autotests.Tests.T03_ApiTests
 {
     public class CalculatorPriceSelfTests : ConstVariablesTestBase
     {
-        private string userId;
-
         [Test, Description("Расчитать цену самовывоза")]
         public void CalculatorPriceSelfTest()
         {
@@ -36,8 +34,8 @@ namespace Autotests.Tests.T03_ApiTests
                         {"declared_price", "1000"},
                         {"payment_price", "1000"}
                     });
-            Assert.AreEqual(responseCalculator.MessageCalculation.Count(), 1);
-            Assert.AreEqual(responseCalculator.MessageCalculation[0].DeliveryCompanyName, companyName);
+            Assert.AreEqual(responseCalculator.Message.Count(), 1);
+            Assert.AreEqual(responseCalculator.Message[0].DeliveryCompanyName, companyName);
 
 //            Заполены все значения. Расчитать цену самомвывоза (по городу доставки)
             responseCalculator =
@@ -54,8 +52,8 @@ namespace Autotests.Tests.T03_ApiTests
                         {"declared_price", "1000"},
                         {"payment_price", "1000"}
                     });
-            Assert.AreEqual(responseCalculator.MessageCalculation.Count(), 6);
-            Assert.AreEqual(responseCalculator.MessageCalculation[0].DeliveryCompanyName, companyName);
+            Assert.AreEqual(responseCalculator.Message.Count(), 6);
+            Assert.AreEqual(responseCalculator.Message[0].DeliveryCompanyName, companyName);
 
 //            delivery_point пустое. Расчитать цену самомвывоза (по городу доставки)
             responseCalculator =
@@ -72,8 +70,8 @@ namespace Autotests.Tests.T03_ApiTests
                         {"declared_price", "1000"},
                         {"payment_price", "1000"}
                     });
-            Assert.AreEqual(responseCalculator.MessageCalculation.Count(), 6);
-            Assert.AreEqual(responseCalculator.MessageCalculation[0].DeliveryCompanyName, companyName);
+            Assert.AreEqual(responseCalculator.Message.Count(), 6);
+            Assert.AreEqual(responseCalculator.Message[0].DeliveryCompanyName, companyName);
 
 //            Заполены все значения, Город заполнен текстом. Расчитать цену самомвывоза (по городу доставки)
             responseCalculator =
@@ -90,8 +88,8 @@ namespace Autotests.Tests.T03_ApiTests
                         {"declared_price", "1000"},
                         {"payment_price", "1000"}
                     });
-            Assert.AreEqual(responseCalculator.MessageCalculation.Count(), 6);
-            Assert.AreEqual(responseCalculator.MessageCalculation[0].DeliveryCompanyName, companyName);
+            Assert.AreEqual(responseCalculator.Message.Count(), 6);
+            Assert.AreEqual(responseCalculator.Message[0].DeliveryCompanyName, companyName);
 
 //            Одна из сторон равна нулю. Возврат ошибки
             var responseFailCalculator =
@@ -110,7 +108,7 @@ namespace Autotests.Tests.T03_ApiTests
                     });
 
             Assert.IsFalse(responseFailCalculator.Success);
-            Assert.AreEqual(responseFailCalculator.ResponseMessage.Message, "Превышены возможные размеры или вес отправления для данного ПВЗ");
+            Assert.AreEqual(responseFailCalculator.Message.Message, "Превышены возможные размеры или вес отправления для данного ПВЗ");
 
 //           declared_price равна нулю. Возврат ошибки
             responseFailCalculator =
@@ -127,7 +125,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"payment_price", "1000"}
                     });
             Assert.IsFalse(responseFailCalculator.Success);
-            Assert.AreEqual(responseFailCalculator.ResponseMessage.Message, "declared price обязательно к заполнению");
+            Assert.AreEqual(responseFailCalculator.Message.Message, "declared price обязательно к заполнению");
 
  //           payment_price равна нулю. Расчитываем стоимость.
             responseCalculator =
@@ -144,8 +142,8 @@ namespace Autotests.Tests.T03_ApiTests
                         {"declared_price", ""},
                         {"payment_price", "1000"}
                     });
-           Assert.AreEqual(responseCalculator.MessageCalculation.Count(), 6);
-           Assert.AreEqual(responseCalculator.MessageCalculation[0].DeliveryCompanyName, companyName);
+           Assert.AreEqual(responseCalculator.Message.Count(), 6);
+           Assert.AreEqual(responseCalculator.Message[0].DeliveryCompanyName, companyName);
 
 //           Проверка корректного to_city, не корректый город. Возврат ошибки
            responseFailCalculator =
@@ -163,7 +161,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"payment_price", "1000"}
                     });
            Assert.IsFalse(responseFailCalculator.Success);
-           Assert.AreEqual(responseFailCalculator.ResponseMessage.Message, "City not found (city to)");
+           Assert.AreEqual(responseFailCalculator.Message.Message, "City not found (city to)");
         }
     }
 }

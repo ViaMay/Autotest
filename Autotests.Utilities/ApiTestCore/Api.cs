@@ -58,7 +58,13 @@ namespace Autotests.Utilities.ApiTestCore
                 return (ApiResponse.ResponseFail)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
 
-            if (value.Contains(@"success"":true,""response"":{""order"))
+            if (value.Contains(@"{""success"":false,""response"":{""message"":{"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseFailOrder));
+                return (ApiResponse.ResponseFailOrder)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+
+            if (value.Contains(@"success"":true,""response"":{""order"":"))
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseAddOrder));
                 return (ApiResponse.ResponseAddOrder)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
@@ -74,11 +80,15 @@ namespace Autotests.Utilities.ApiTestCore
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseStatus));
                 return (ApiResponse.ResponseStatus)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
-
             if (value.Contains(@"to_name") && value.Contains(@"to_phone"))
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseOrderInfo));
                 return (ApiResponse.ResponseOrderInfo)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+            if (value.Contains(@"success"":true,""response"":{""order_id") && value.Contains(@"ticket_id"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseTrueCancel));
+                return (ApiResponse.ResponseTrueCancel)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
             var json2 = new DataContractJsonSerializer(typeof (ApiResponse.Response));
             return (ApiResponse.Response) json2.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));

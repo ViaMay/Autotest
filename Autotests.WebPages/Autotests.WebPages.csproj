@@ -135,6 +135,8 @@
     <Compile Include="Pages\PageAdmin\СompaniesPage.cs" />
     <Compile Include="Pages\PageAdmin\AdminHomePage.cs" />
     <Compile Include="Pages\PageAdmin\AdminPageBase.cs" />
+    <Compile Include="Pages\PageUser\Controls\SupportRowControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\SupportListControl.cs" />
     <Compile Include="Pages\PageUser\Controls\OrdersListControl.cs" />
     <Compile Include="Pages\PageUser\Controls\OrdersRowControl.cs" />
     <Compile Include="Pages\PageUser\Controls\ShopsRowControl.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Pages\PageUser\OrderSelfEditingPage.cs" />
     <Compile Include="Pages\PageUser\OrderCourirsEditingPage.cs" />
     <Compile Include="Pages\PageUser\OrderSelfCreatePage.cs" />
+    <Compile Include="Pages\PageUser\SupportListPage.cs" />
     <Compile Include="Pages\PageUser\OrdersListPage.cs" />
     <Compile Include="Pages\PageUser\OrderPage.cs" />
     <Compile Include="Pages\PageUser\OrderCourirsCreatePage.cs" />

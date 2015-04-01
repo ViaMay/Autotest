@@ -30,8 +30,8 @@ namespace Autotests.WebPages.Pages.PageUser
             Calculator = new Link(By.LinkText("Калькулятор"));
 
             Support = new Link(By.LinkText("Поддержка"));
-//            SupportCreate = new Link("");
-//            SupportList = new Link("");
+            SupportCreate = new Link(By.LinkText("Создать запрос"));
+            SupportList = new Link(By.LinkText("Мои запросы"));
 
             Loader = new LoaderControl();
         }
