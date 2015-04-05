@@ -29,7 +29,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"declared_price", "1000"},
                         {"payment_price", "1000"}
                     });
-            Assert.AreEqual(responseCalculator.Message.Count(), 8);
+            Assert.AreEqual(responseCalculator.Message.Count(), 1);
             Assert.AreEqual(responseCalculator.Message[0].DeliveryCompanyName, companyName);
 
 //          city_to заполнен некорректно. Возврат ошибки

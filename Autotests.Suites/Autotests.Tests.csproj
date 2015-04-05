@@ -93,9 +93,14 @@
     <Compile Include="T01_StartSettingTests\T01_CreateLegalEntityTest.cs" />
     <Compile Include="T01_StartSettingTests\T03_CreateSizeTests.cs" />
     <Compile Include="T01_StartSettingTests\T04_CreateCompanyTests.cs" />
+    <Compile Include="T01_StartSettingTests\T07_CreateTimesTests.cs" />
     <Compile Include="T01_StartSettingTests\T06_CreatePriceTests.cs" />
-    <Compile Include="T01_StartSettingTests\T07_CreateWarehouseAndShopTests.cs" />
+    <Compile Include="T01_StartSettingTests\T08_CreateWarehouseAndShopTests.cs" />
     <Compile Include="T02_UserTests\CalculatorOverSizeTests.cs" />
+    <Compile Include="T04_AdminTests\DateTransferCDCkeckInputOutputTests.cs" />
+    <Compile Include="T04_AdminTests\AdminBasePage.cs" />
+    <Compile Include="T04_AdminTests\DateTransferCDDriverTests.cs" />
+    <Compile Include="T04_AdminTests\DateTransferCDCountTests.cs" />
     <Compile Include="T02_UserTests\CalculatorValidationTests.cs" />
     <Compile Include="T02_UserTests\OrderCourirsEditingValidationTests.cs" />
     <Compile Include="T02_UserTests\OrderSelfEditingValidationTests.cs" />
@@ -115,6 +120,8 @@
     <Compile Include="T02_UserTests\WarehouseEditingTests.cs" />
     <Compile Include="T02_UserTests\WarehouseValidationTests.cs" />
     <Compile Include="T03_ApiTests\CalculatorPriceCourirsTests.cs" />
+    <Compile Include="T03_ApiTests\CalculatorPickupDateTests.cs" />
+    <Compile Include="T03_ApiTests\OrderCourirsErrorTests.cs" />
     <Compile Include="T03_ApiTests\OrderCourirsCreateTests.cs" />
     <Compile Include="T03_ApiTests\OrderSelfErrorTests.cs" />
     <Compile Include="T03_ApiTests\OrderSelfCreateAndSendTests.cs" />
@@ -122,7 +129,7 @@
     <Compile Include="T03_ApiTests\CalculatorPriceSelfTests.cs" />
     <Compile Include="T03_ApiTests\ShopCreateTests.cs" />
     <Compile Include="T03_ApiTests\WarehouseCreateTests.cs" />
-    <Compile Include="T04_ClearTests\ClearTest.cs" />
+    <Compile Include="T05_ClearTests\ClearTest.cs" />
     <Compile Include="T01_StartSettingTests\T02_UserRegistrationTest.cs" />
     <Compile Include="T01_StartSettingTests\T05_CreateDeliveryPointTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

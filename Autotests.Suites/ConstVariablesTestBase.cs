@@ -1,4 +1,6 @@
-﻿using Autotests.Utilities.ApiTestCore;
+﻿using System;
+using System.Globalization;
+using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages.Pages;
 
 namespace Autotests.Tests
@@ -40,6 +42,8 @@ namespace Autotests.Tests
             deliveryPointLatitude = "55.645872547535";
 
             apiRequest = new Api(ApplicationBaseUrl);
+
+            nowDate = DateTime.Now;
         }
 
         public string adminName;
@@ -70,5 +74,6 @@ namespace Autotests.Tests
         public string deliveryPointLatitude;
 
         public Api apiRequest;
+        public DateTime nowDate;
     }
 }

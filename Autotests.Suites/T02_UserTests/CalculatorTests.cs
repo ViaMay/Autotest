@@ -21,12 +21,12 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.TableFirst.GetRow(0).Company.WaitText(companyName);
 //            calculatorPage.TableFirst.GetRow(0).TimeDelivery.WaitText("1 - 2");
             calculatorPage.TableFirst.GetRow(0).PriceDelivery.WaitText("24.00");
-            calculatorPage.TableFirst.GetRow(0).PricePickup.WaitText("200");
+            calculatorPage.TableFirst.GetRow(0).PricePickup.WaitText("10");
 
             calculatorPage.TableSecond.GetRow(0).Company.WaitText(companyName);
 //            calculatorPage.TableSecond.GetRow(0).TimeDelivery.WaitText("1 - 2");
             calculatorPage.TableSecond.GetRow(0).PriceDelivery.WaitText("20.00");
-            calculatorPage.TableSecond.GetRow(0).PricePickup.WaitText("200");
+            calculatorPage.TableSecond.GetRow(0).PricePickup.WaitText("10");
 
             calculatorPage.Weight.SetValueAndWait("9.1");
             calculatorPage.СountedButton.Click();
@@ -35,12 +35,12 @@ namespace Autotests.Tests.T02_UserTests
             calculatorPage.TableFirst.GetRow(0).Company.WaitText(companyName);
 //            calculatorPage.TableFirst.GetRow(0).TimeDelivery.WaitText("1 - 2");
             calculatorPage.TableFirst.GetRow(0).PriceDelivery.WaitText("52.00");
-            calculatorPage.TableFirst.GetRow(0).PricePickup.WaitText("200");
+            calculatorPage.TableFirst.GetRow(0).PricePickup.WaitText("10");
 
             calculatorPage.TableSecond.GetRow(0).Company.WaitText(companyName);
 //            calculatorPage.TableSecond.GetRow(0).TimeDelivery.WaitText("1 - 2");
             calculatorPage.TableSecond.GetRow(0).PriceDelivery.WaitText("41.00");
-            calculatorPage.TableSecond.GetRow(0).PricePickup.WaitText("200");
+            calculatorPage.TableSecond.GetRow(0).PricePickup.WaitText("10");
         }
 
         [Test, Description("Проверяем автозаполнение полей стоимости и веса")]

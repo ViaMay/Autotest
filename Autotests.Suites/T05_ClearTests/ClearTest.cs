@@ -1,7 +1,7 @@
 ﻿using Autotests.WebPages.Pages.PageAdmin;
 using NUnit.Framework;
 
-namespace Autotests.Tests.T04_ClearTests
+namespace Autotests.Tests.T05_ClearTests
 {
     public class ClearTestTest : ConstVariablesTestBase
     {
@@ -116,6 +116,7 @@ namespace Autotests.Tests.T04_ClearTests
                 deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
             }
         }
+
         [Test, Description("Создания веса")]
         public void T07_DeleteWeightTest()
         {
@@ -137,7 +138,7 @@ namespace Autotests.Tests.T04_ClearTests
         }
 
         [Test, Description("Удаление размера")]
-        public void T01_DeleteSizeTest()
+        public void T08_DeleteSizeTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminReference.Click();
@@ -153,6 +154,24 @@ namespace Autotests.Tests.T04_ClearTests
                 intervalsSizePage = intervalsSizePage.GoTo<IntervalsSidePage>();
                 intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
                 intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
+            }
+        }
+
+        [Test, Description("Удаление заявок")]
+        public void T09_DeleteOrdersTest()
+        {
+            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
+            adminPage.Orders.Click();
+            adminPage.OrderInput.Click();
+            var оrdersInputPage = adminPage.GoTo<OrdersInputPage>();
+            оrdersInputPage.Table.RowSearch.ShopName.SetValue(userShopName);
+            оrdersInputPage = оrdersInputPage.SeachButtonRowClickAndGo();
+            while (оrdersInputPage.Table.GetRow(0).ID.IsPresent)
+            {
+                var id = оrdersInputPage.Table.GetRow(0).ID.GetText();
+                оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders/delete/" + id);
+                оrdersInputPage.Table.RowSearch.ShopName.SetValue(userShopName);
+                оrdersInputPage = оrdersInputPage.SeachButtonRowClickAndGo();
             }
         }
     }

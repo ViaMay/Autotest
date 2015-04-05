@@ -23,6 +23,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {
                 {"api_key", keyShopPublic},
 		        {"type", "2"},
+		        {"source", "1"},
 		        {"to_city", "151184"},
 		        {"delivery_company", "" + deliveriCompanyId},
 		        {"shop_refnum", userShopName},

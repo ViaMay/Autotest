@@ -12,6 +12,7 @@ namespace Autotests.WebPages.Pages
  //TODO     Важно! на страницы поиcка компании использовать Name а не CompanyName для поиска по имени компании
             Name = new TextInput(By.Name("name"));
             CompanyName = new TextInput(By.Name("company"));
+            ShopName = new TextInput(By.Name("shop"));
 
             SeachButton = new ButtonInput(By.XPath(@"//*[@id=""filter_column__id""]/div/div/i"));
         }
@@ -20,5 +21,6 @@ namespace Autotests.WebPages.Pages
         public TextInput ID { get; private set; }
         public TextInput Name { get; private set; }
         public TextInput CompanyName { get; private set; }
+        public TextInput ShopName { get; private set; }
     }
 }

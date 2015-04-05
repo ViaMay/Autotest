@@ -57,14 +57,14 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.Email.WaitText(userNameAndPass);
             orderCourirsPage.TableRecipient.Phone.WaitText("+7 (111)111-1111");
             orderCourirsPage.TableRecipient.Issue.WaitText("Ручная");
-            orderCourirsPage.TableRecipient.PickupCompany.WaitText("FSD забор");
+            orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyName);
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
             orderCourirsPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
             orderCourirsPage.TablePrice.DeclaredPrice.WaitText("10.10 руб.");
             orderCourirsPage.TablePrice.Insurance.WaitText("0.00 руб.");
             orderCourirsPage.TablePrice.DeliveryPrice.WaitText("41.00 руб.");
-            orderCourirsPage.TablePrice.PickupPrice.WaitText("200.00 руб.");
+            orderCourirsPage.TablePrice.PickupPrice.WaitText("10.00 руб.");
 
             orderCourirsPage.TableSize.Width.WaitText("10 см");
             orderCourirsPage.TableSize.Height.WaitText("11 см");

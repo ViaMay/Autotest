@@ -105,14 +105,14 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
             orderCourirsPage.TableRecipient.Phone.WaitText("+7 (222)222-2222");
             orderCourirsPage.TableRecipient.Issue.WaitText("Ручная");
-            orderCourirsPage.TableRecipient.PickupCompany.WaitText("FSD забор");
+            orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyName);
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
             orderCourirsPage.TablePrice.PaymentPrice.WaitText("1600.00 руб.");
             orderCourirsPage.TablePrice.DeclaredPrice.WaitText("10.20 руб.");
             orderCourirsPage.TablePrice.Insurance.WaitText("0.00 руб.");
             orderCourirsPage.TablePrice.DeliveryPrice.WaitText("41.00 руб.");
-            orderCourirsPage.TablePrice.PickupPrice.WaitText("200.00 руб.");
+            orderCourirsPage.TablePrice.PickupPrice.WaitText("10.00 руб.");
 
             orderCourirsPage.TableSize.Width.WaitText("11 см");
             orderCourirsPage.TableSize.Height.WaitText("12 см");
@@ -224,14 +224,14 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
             orderCourirsPage.TableRecipient.Phone.WaitText("+7 (222)222-2222");
             orderCourirsPage.TableRecipient.Issue.WaitText("Ручная");
-            orderCourirsPage.TableRecipient.PickupCompany.WaitText("FSD забор");
+            orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyName);
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
             orderCourirsPage.TablePrice.PaymentPrice.WaitText("1600.00 руб.");
             orderCourirsPage.TablePrice.DeclaredPrice.WaitText("10.20 руб.");
             orderCourirsPage.TablePrice.Insurance.WaitText("0.00 руб.");
             orderCourirsPage.TablePrice.DeliveryPrice.WaitText("41.00 руб.");
-            orderCourirsPage.TablePrice.PickupPrice.WaitText("200.00 руб.");
+            orderCourirsPage.TablePrice.PickupPrice.WaitText("10.00 руб.");
 
             orderCourirsPage.TableSize.Width.WaitText("11 см");
             orderCourirsPage.TableSize.Height.WaitText("12 см");

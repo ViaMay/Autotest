@@ -34,11 +34,6 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateSelfPage.MapOrders.SwitchToFrame();
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(1).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(2).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(3).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(4).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(5).Name.Click();
             orderCreateSelfPage.MapOrders.ImageLocator.Click();
             orderCreateSelfPage.MapOrders.TakeHere.Click();
             orderCreateSelfPage.MapOrders.SwitchToDefaultContent();

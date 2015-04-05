@@ -27,14 +27,15 @@ namespace Autotests.Tests.T01_StartSettingTests
             companyCreatePage.Name.SetValueAndWait(companyName);
             companyCreatePage.CompanyDriver.SelectValue("Boxberry");
             companyCreatePage.CompanyAddress.SetValueAndWait("Address");
-            companyCreatePage.CompanyPickup.SetFirstValueSelect("FSD забор");
-            companyCreatePage.CompanyPickupAddButton.Click();
-            companyCreatePage.CompanyPickup.SetFirstValueSelect("Lenod");
-            companyCreatePage.CompanyPickupAddButton.Click();
             companyCreatePage.ManagersLegalEntity.SetFirstValueSelect(legalEntityName);
             companyCreatePage.SaveButton.Click();
             companiesPage = companyCreatePage.GoTo<СompaniesPage>();
+            var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
+            adminMaintenancePage.AlertText.WaitText("Cache flushed!");
 
+            adminMaintenancePage.AdminСompanies.Click();
+            adminMaintenancePage.Сompanies.Click();
+            companiesPage = adminPage.GoTo<СompaniesPage>();
             companiesPage.Table.RowSearch.Name.SetValue(companyName);
             companiesPage = companiesPage.SeachButtonRowClickAndGo();
             companiesPage.Table.GetRow(0).Name.WaitText(companyName);
@@ -46,7 +47,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             companyCreatePage.SaveButton.Click();
             companyCreatePage.GoTo<СompaniesPage>();
 
-            var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
+            adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");
         }
 
@@ -77,6 +78,36 @@ namespace Autotests.Tests.T01_StartSettingTests
             рaymentPricePage.Table.RowSearch.CompanyName.SetValue(companyName);
             рaymentPricePage = рaymentPricePage.SeachButtonRowClickAndGo();
             рaymentPricePage.Table.GetRow(0).Name.WaitText(companyName);
+        }
+
+        [Test, Description("Создания наложенного платежа")]
+        public void PickupTimetableTest()
+        {
+            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
+            adminPage.AdminСompanies.Click();
+            adminPage.PickupTimetable.Click();
+            var pickupTimetablePage = adminPage.GoTo<PickupTimetablePage>();
+            pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
+            pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
+
+            while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
+            {
+                pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
+                pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
+                pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
+                pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
+            }
+            pickupTimetablePage.Create.Click();
+            var pickupTimetableCreatePage = pickupTimetablePage.GoTo<PickupTimetableCreatePage>();
+            pickupTimetableCreatePage.Company.SetFirstValueSelect(companyName);
+            pickupTimetableCreatePage.PickupTime.SelectByText("23:45");
+            pickupTimetableCreatePage.PickupPeriod.SelectByText("Сегодня");
+            pickupTimetableCreatePage.SaveButton.Click();
+            pickupTimetablePage = pickupTimetableCreatePage.GoTo<PickupTimetablePage>();
+
+            pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
+            pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
+            pickupTimetablePage.Table.GetRow(0).Name.WaitText(companyName);
         }
     }
 }

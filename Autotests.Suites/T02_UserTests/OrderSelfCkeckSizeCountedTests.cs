@@ -26,7 +26,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateSelfPage.MapOrders.SwitchToFrame();
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(0).Name.WaitTextNotContains(companyName);
+            orderCreateSelfPage.MapOrders.GetMapCompanyRow(0).Name.WaitAbsence();
             orderCreateSelfPage.MapOrders.SwitchToDefaultContent();
 
             orderCreateSelfPage.Width.SetValueAndWait((side3Min + 0.01).ToString());
@@ -50,7 +50,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.Length.SetValueAndWait((side3Max + 0.01).ToString());
             orderCreateSelfPage.СountedButton.Click();
             orderCreateSelfPage.MapOrders.SwitchToFrame();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(0).Name.WaitTextNotContains(companyName);
+            orderCreateSelfPage.MapOrders.GetMapCompanyRow(0).Name.WaitAbsence();
         }
 
         [Test, Description("Проверка что нашей компании нету при привешении допустимых размеров")]
@@ -73,7 +73,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.СountedButton.Click();
             orderCreateSelfPage.MapOrders.SwitchToFrame();
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(0).Name.WaitTextNotContains(companyName);
+            orderCreateSelfPage.MapOrders.GetMapCompanyRow(0).Name.WaitAbsence();
             orderCreateSelfPage.MapOrders.SwitchToDefaultContent();
             
             orderCreateSelfPage.Weight.SetValueAndWait((weightMin + 0.1).ToString());
@@ -91,7 +91,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.Weight.SetValueAndWait((weightMax + 0.1).ToString());
             orderCreateSelfPage.СountedButton.Click();
             orderCreateSelfPage.MapOrders.SwitchToFrame();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(0).Name.WaitTextNotContains(companyName);
+            orderCreateSelfPage.MapOrders.GetMapCompanyRow(0).Name.WaitAbsence();
         }
     }
 }

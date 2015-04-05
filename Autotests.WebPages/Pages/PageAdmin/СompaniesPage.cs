@@ -11,7 +11,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
             LabelDirectoryCompanies = new StaticText(By.CssSelector("legend"));
             CompanyCreate = new Link(By.LinkText("Создать"));
 
-            Table = new BaseTableListControl(By.ClassName("table"));
+            Table = new CompaniesListControl(By.ClassName("table"));
         }
 
         
@@ -23,7 +23,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
 
         public StaticText LabelDirectoryCompanies { get; set; }
         public Link CompanyCreate { get; set; }
-        public BaseTableListControl Table { get; set; }
+        public CompaniesListControl Table { get; set; }
         
         public override void BrowseWaitVisible()
         {

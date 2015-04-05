@@ -35,11 +35,6 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
 
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(1).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(2).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(3).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(4).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(5).Name.Click();
             orderCreateSelfPage.MapOrders.ImageLocator.Click();
             orderCreateSelfPage.MapOrders.TakeHere.Click();
             orderCreateSelfPage.MapOrders.SwitchToDefaultContent();
@@ -64,14 +59,14 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableRecipient.Email.WaitText(userNameAndPass);
             orderPage.TableRecipient.Phone.WaitText("+7 (111)111-1111");
             orderPage.TableRecipient.Issue.WaitText("Ручная");
-            orderPage.TableRecipient.PickupCompany.WaitText("FSD забор");
+            orderPage.TableRecipient.PickupCompany.WaitText(companyName);
             orderPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
             orderPage.TablePrice.PaymentPrice.WaitText("4.00 руб.");
             orderPage.TablePrice.DeclaredPrice.WaitText("4.00 руб.");
             orderPage.TablePrice.Insurance.WaitText("0.00 руб.");
             orderPage.TablePrice.DeliveryPrice.WaitText("28.00 руб.");
-            orderPage.TablePrice.PickupPrice.WaitText("200.00 руб.");
+            orderPage.TablePrice.PickupPrice.WaitText("10.00 руб.");
 
             orderPage.TableSize.Width.WaitText("4 см");
             orderPage.TableSize.Height.WaitText("4 см");
@@ -112,14 +107,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.MapOrders.SwitchToFrame();
 
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
-
-            orderCreateSelfPage.MapOrders.HasFittingRoom.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(1).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(2).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(3).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(4).Name.Click();
-            orderCreateSelfPage.MapOrders.GetMapCompanyRow(5).Name.Click();
-
             orderCreateSelfPage.MapOrders.ImageLocator.Click();
             orderCreateSelfPage.MapOrders.TakeHere.Click();
 

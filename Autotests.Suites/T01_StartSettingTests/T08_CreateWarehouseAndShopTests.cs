@@ -1,9 +1,10 @@
-﻿using Autotests.WebPages.Pages.PageUser;
+﻿using Autotests.WebPages.Pages.PageAdmin;
+using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
 
 namespace Autotests.Tests.T01_StartSettingTests
 {
-    public class T07CreateWarehouseAndShopTests : ConstVariablesTestBase
+    public class T08CreateWarehouseAndShopTests : ConstVariablesTestBase
     {
         [Test, Description("Создания Склада для тестов на калькулятор")]
         public void T01_CreateWarehouseTest()
@@ -41,27 +42,37 @@ namespace Autotests.Tests.T01_StartSettingTests
         [Test, Description("Создания магазина для тестов на калькулятор")]
         public void T02_CreateShopTest()
         {
-            UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.UseProfile.Click();
-            userPage.UserShops.Click();
-            var shopsListPage = userPage.GoTo<UserShopsPage>();
-
-            while (shopsListPage.Table.GetRow(0).Name.IsPresent)
+            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
+            adminPage.AdminUsers.Click();
+            adminPage.UsersShops.Click();
+            var shopsPage = adminPage.GoTo<UsersShopsPage>();
+            shopsPage.Table.RowSearch.Name.SetValue(userShopName);
+            shopsPage = shopsPage.SeachButtonRowClickAndGo();
+            while (shopsPage.Table.GetRow(0).Name.IsPresent)
             {
-                shopsListPage.Table.GetRow(0).ActionsDelete.Click();
-                shopsListPage.AletrDelete.WaitText("Вы действительно хотите удалить магазин?");
-                shopsListPage.AletrDelete.Accept();
-                shopsListPage = shopsListPage.GoTo<UserShopsPage>();
+                shopsPage.Table.GetRow(0).ActionsDelete.Click();
+                shopsPage = shopsPage.GoTo<UsersShopsPage>();
+                shopsPage.Table.RowSearch.Name.SetValue(userShopName);
+                shopsPage = shopsPage.SeachButtonRowClickAndGo();
             }
-
-            shopsListPage.ShopsCreate.Click();
-            var shopCreatePage = shopsListPage.GoTo<UserShopCreatePage>();
+            shopsPage.ShopsCreate.Click();
+            var shopCreatePage = shopsPage.GoTo<UserAdminShopCreatePage>();
             shopCreatePage.Name.SetValueAndWait(userShopName);
             shopCreatePage.Address.SetValueAndWait("Москва");
-            shopCreatePage.Warehouse.SelectValue(userWarehouseName);
+            shopCreatePage.CompanyPickup.SetFirstValueSelect(companyName);
+            shopCreatePage.Warehouse.SetFirstValueSelect(userWarehouseName);
+            shopCreatePage.ManagersLegalEntity.SetFirstValueSelect(legalEntityName);
             shopCreatePage.CreateButton.Click();
-            shopsListPage = shopCreatePage.GoTo<UserShopsPage>();
-            shopsListPage.Table.GetRow(0).Name.WaitPresence();
+            shopsPage = shopCreatePage.GoTo<UsersShopsPage>();
+            shopsPage.Table.RowSearch.Name.SetValue(userShopName);
+            shopsPage = shopsPage.SeachButtonRowClickAndGo();
+            shopsPage.Table.GetRow(0).Name.WaitPresence();
+            shopsPage.Table.GetRow(0).ActionsEdit.Click();
+
+            shopCreatePage = shopsPage.GoTo<UserAdminShopCreatePage>();
+            shopCreatePage.CompanyPickup.SetFirstValueSelect(companyName);
+            shopCreatePage.CreateButton.Click();
+            shopsPage = shopCreatePage.GoTo<UsersShopsPage>();
         }
     }
 }

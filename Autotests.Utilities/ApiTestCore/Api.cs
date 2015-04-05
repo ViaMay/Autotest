@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
+using System.Web;
 
 namespace Autotests.Utilities.ApiTestCore
 {
@@ -21,6 +22,7 @@ namespace Autotests.Utilities.ApiTestCore
         {
             using (var client = new WebClient())
             {
+            
                 string dataString = "";
                 foreach (string key in data.Keys)
                 {
@@ -28,10 +30,14 @@ namespace Autotests.Utilities.ApiTestCore
                 }
                 if (dataString.Count()!= 0) dataString = dataString.Remove(dataString.Count() - 1);
 
-//                client.Headers.Add("Authorization" + "dev:nersowterr");
-//               string response = client.DownloadString("http://" + ApplicationBaseUrl + ":80/" + url + "?" + "login=dev&pass=nersowterr&" + dataString);
-               string response = client.DownloadString("http://" + ApplicationBaseUrl + ":80/" + url + "?" + dataString);
-               return JsonSerializer(response);
+                if (ApplicationBaseUrl.Contains("@"))
+                {
+                    string[] words = ApplicationBaseUrl.Split(new char[] { ':', '@' });
+                    client.Credentials = new NetworkCredential(words[0], words[1]);
+                }
+                string response = client.DownloadString("http://" + ApplicationBaseUrl + "/" + url + "?" + dataString);
+
+                return JsonSerializer(response);
             }
         }
 
@@ -39,6 +45,11 @@ namespace Autotests.Utilities.ApiTestCore
         {
             using (var client = new WebClient())
             {
+                if (ApplicationBaseUrl.Contains("@"))
+                {
+                    string[] words = ApplicationBaseUrl.Split(new char[] { ':', '@' });
+                    client.Credentials = new NetworkCredential(words[0], words[1]);
+                }
                 byte[] responseJson = client.UploadValues("http://" + ApplicationBaseUrl + ":80/api/v1/" + url, data);
                 return JsonSerializer(Encoding.UTF8.GetString(responseJson));
             }

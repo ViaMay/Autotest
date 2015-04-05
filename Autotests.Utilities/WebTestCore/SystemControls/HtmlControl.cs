@@ -290,7 +290,12 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
         {
             return element.Text.Trim();
         }
-
+        
+        public virtual string GetValue()
+        {
+            return element.GetAttribute("value");
+        }
+        
         public string GetAttributeValue(string attributeName)
         {
             return element.GetAttribute(attributeName);

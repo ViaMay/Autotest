@@ -251,6 +251,9 @@ namespace Autotests.Utilities.ApiTestCore
 
         [DataMember(Name = "calculate_order")]
         public string CalculateOrder { get; set; }
+
+        [DataMember(Name = "weight")]
+        public string Weight { get; set; }
         }
     }
 }

@@ -32,28 +32,24 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateCourirsPage.Weight.SetValueAndWait("20.1");
             orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(companyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitAbsence();
             
             orderCreateCourirsPage.BuyerPostalCode.WaitValue("101000");
 
             orderCreateCourirsPage.Weight.SetValueAndWait("10");
             orderCreateCourirsPage.CityTo.SetFirstValueSelect("Санкт-Петербург");
             orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(companyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitAbsence();
             orderCreateCourirsPage.BuyerPostalCode.WaitValue("190000");
 
             orderCreateCourirsPage.CityTo.SetFirstValueSelect("Екатеринбург");
             orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(companyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitAbsence();
             orderCreateCourirsPage.BuyerPostalCode.WaitValue("620000");
 
             orderCreateCourirsPage.CityTo.SetFirstValueSelect("Питеримка");
             orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextNotContains(companyName);
+            orderCreateCourirsPage.DeliveryList[0].WaitAbsence();
             orderCreateCourirsPage.BuyerPostalCode.WaitValue("162035");
         }
     }
