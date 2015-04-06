@@ -8,10 +8,12 @@ namespace Autotests.Tests.T02_UserTests
         [Test, Description("Проверка что нашей компании нету при привешении допустимых размеров")]
         public void OrderCreateSelfCheckOverSideTest()
         {
-            UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateSelf.Click();
-            var orderCreateSelfPage = userPage.GoTo<OrderSelfCreatePage>();
+            var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
+            var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
             orderCreateSelfPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateSelfPage.GoodsDescription.SetValueAndWait("ok");
@@ -56,10 +58,12 @@ namespace Autotests.Tests.T02_UserTests
         [Test, Description("Проверка что нашей компании нету при привешении допустимых размеров")]
         public void OrderCreateSelfCheckOverWeightTest()
         {
-            UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateSelf.Click();
-            var orderCreateSelfPage = userPage.GoTo<OrderSelfCreatePage>();
+            var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
+            var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
             orderCreateSelfPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateSelfPage.GoodsDescription.SetValueAndWait("ok");

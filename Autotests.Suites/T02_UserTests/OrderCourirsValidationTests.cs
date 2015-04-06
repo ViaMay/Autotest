@@ -9,9 +9,11 @@ namespace Autotests.Tests.T02_UserTests
         public void TestAlertValidationСounted()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateCourirs.Click();
-            var orderCreateCourirsPage = userPage.GoTo<OrderCourirsCreatePage>();
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.Table.FindRowByName(userShopName).OrdersCreateCourier.Click();
+            var orderCreateCourirsPage = shopsListPage.GoTo<OrderCourirsCreatePage>();
 
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
@@ -70,9 +72,11 @@ namespace Autotests.Tests.T02_UserTests
         public void TestValidationBuyer()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateCourirs.Click();
-            var orderCreateCourirsPage = userPage.GoTo<OrderCourirsCreatePage>();
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.Table.FindRowByName(userShopName).OrdersCreateCourier.Click();
+            var orderCreateCourirsPage = shopsListPage.GoTo<OrderCourirsCreatePage>();
             orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
             orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
             orderCreateCourirsPage.Width.SetValueAndWait("10.1");
@@ -110,9 +114,11 @@ namespace Autotests.Tests.T02_UserTests
         public void TestValidationRouter()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateCourirs.Click();
-            var orderCreateCourirsPage = userPage.GoTo<OrderCourirsCreatePage>();
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.Table.FindRowByName(userShopName).OrdersCreateCourier.Click();
+            var orderCreateCourirsPage = shopsListPage.GoTo<OrderCourirsCreatePage>();
             orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
             orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
             orderCreateCourirsPage.Width.SetValueAndWait("10.1");

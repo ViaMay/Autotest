@@ -45,7 +45,21 @@ namespace Autotests.Tests.T01_StartSettingTests
             companyCreatePage.CompanyPickup.SetFirstValueSelect(companyName);
             companyCreatePage.CompanyPickupAddButton.Click();
             companyCreatePage.SaveButton.Click();
-            companyCreatePage.GoTo<СompaniesPage>();
+            companiesPage = companyCreatePage.GoTo<СompaniesPage>();
+            
+//            удаление календаря если он был
+            companiesPage.AdminСompanies.Click();
+            companiesPage.Calendars.Click();
+            var calendarsPage = companyCreatePage.GoTo<CalendarsPage>();
+            calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+            calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
+            while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
+            {
+                calendarsPage.Table.GetRow(0).ActionsDelete.Click();
+                calendarsPage = calendarsPage.GoTo<CalendarsPage>();
+                calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+                calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
+            }
 
             adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");

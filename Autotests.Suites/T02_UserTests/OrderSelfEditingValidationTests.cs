@@ -9,9 +9,11 @@ namespace Autotests.Tests.T02_UserTests
         public void OrderSelfEditingValidationTest()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateSelf.Click();
-            var orderCreateSelfPage = userPage.GoTo<OrderSelfCreatePage>();
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
+            var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
             orderCreateSelfPage.Width.SetValueAndWait("4");
             orderCreateSelfPage.Height.SetValueAndWait("4");
             orderCreateSelfPage.Length.SetValueAndWait("4");

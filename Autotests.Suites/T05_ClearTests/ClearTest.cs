@@ -174,5 +174,24 @@ namespace Autotests.Tests.T05_ClearTests
                 оrdersInputPage = оrdersInputPage.SeachButtonRowClickAndGo();
             }
         }
+
+        [Test, Description("Удаление календаря")]
+        public void T09_DeleteCalendarsTest()
+        {
+            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
+            //            удаление календаря если он был
+            adminPage.AdminСompanies.Click();
+            adminPage.Calendars.Click();
+            var calendarsPage = adminPage.GoTo<CalendarsPage>();
+            calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+            calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
+            while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
+            {
+                calendarsPage.Table.GetRow(0).ActionsDelete.Click();
+                calendarsPage = calendarsPage.GoTo<CalendarsPage>();
+                calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+                calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
+            }
+        }
     }
 }

@@ -9,9 +9,11 @@ namespace Autotests.Tests.T02_UserTests
         public void TestAlertValidationСounted()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateSelf.Click();
-            var orderCreateSelfPage = userPage.GoTo<OrderSelfCreatePage>();
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
+            var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
 
             orderCreateSelfPage.СountedButton.Click();
             orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и наложенный платеж");
@@ -59,9 +61,11 @@ namespace Autotests.Tests.T02_UserTests
         public void TestValidationSend()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateSelf.Click();
-            var orderCreateSelfPage = userPage.GoTo<OrderSelfCreatePage>();
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
+            var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
 
             orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError();
             orderCreateSelfPage.ErrorText[0].WaitText("ФИО получателя обязательно к заполнению");

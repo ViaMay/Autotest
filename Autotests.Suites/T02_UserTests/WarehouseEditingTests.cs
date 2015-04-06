@@ -5,7 +5,7 @@ namespace Autotests.Tests.T02_UserTests
 {
     public class WarehouseEditingTests : ConstVariablesTestBase
     {
-        [Test, Description("Создание склада. Проверка валидации полей")]
+        [Test, Description("Редактирование параметров склада")]
         public void WarehouseEditingTest()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);

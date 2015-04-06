@@ -9,9 +9,11 @@ namespace Autotests.Tests.T02_UserTests
         public void OrderCreateCourirsCheckOverWeightTest()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateCourirs.Click();
-            var orderCreateCourirsPage = userPage.GoTo<OrderCourirsCreatePage>();
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.Table.FindRowByName(userShopName).OrdersCreateCourier.Click();
+            var orderCreateCourirsPage = shopsListPage.GoTo<OrderCourirsCreatePage>();
             orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
             orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
             orderCreateCourirsPage.Width.SetValueAndWait("10.1");
@@ -46,9 +48,11 @@ namespace Autotests.Tests.T02_UserTests
         public void OrderCreateCourirsCheckOverSideTest()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.OrderNew.Click();
-            userPage.OrderCreateCourirs.Click();
-            var orderCreateCourirsPage = userPage.GoTo<OrderCourirsCreatePage>();
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.Table.FindRowByName(userShopName).OrdersCreateCourier.Click();
+            var orderCreateCourirsPage = shopsListPage.GoTo<OrderCourirsCreatePage>();
             orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
             orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
             orderCreateCourirsPage.Width.SetValueAndWait("10.1");
