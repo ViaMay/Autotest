@@ -94,7 +94,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             рaymentPricePage.Table.GetRow(0).Name.WaitText(companyName);
         }
 
-        [Test, Description("Создания наложенного платежа")]
+        [Test, Description("Создание графика забора")]
         public void PickupTimetableTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);

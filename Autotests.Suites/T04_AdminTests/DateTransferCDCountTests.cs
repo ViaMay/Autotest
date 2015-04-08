@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T04_AdminTests
 {
-    public class DateTransferCDCountTests : AdminBasePage
+    public class DateTransferCDCountTests : SendOrdersBasePage
     {
         [Test, Description("Проверяем расчет даты передачи в КД если не стоит галочка Единый забор у компании доставки")
         ]
@@ -31,7 +31,7 @@ namespace Autotests.Tests.T04_AdminTests
             }
             companiesPage.Table.GetRow(0).SinglePickup.WaitText("No");
 
-            string[] ordersID = SendOrersRequest();
+            string[] ordersID = SendOrdersRequest();
             var оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders/");
             оrdersInputPage.Table.RowSearch.ID.SetValue(ordersID[0]);
             оrdersInputPage = оrdersInputPage.SeachButtonRowClickAndGo();
@@ -100,7 +100,7 @@ namespace Autotests.Tests.T04_AdminTests
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             }
 
-            string[] ordersID = SendOrersRequest();
+            string[] ordersID = SendOrdersRequest();
             var оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders/");
             оrdersInputPage.Table.RowSearch.ID.SetValue(ordersID[0]);
             оrdersInputPage = оrdersInputPage.SeachButtonRowClickAndGo();
@@ -185,7 +185,7 @@ namespace Autotests.Tests.T04_AdminTests
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             calendarsPage.Table.GetRow(0).ColumnThree.WaitText(companyName);
 
-            string[] ordersID = SendOrersRequest();
+            string[] ordersID = SendOrdersRequest();
             var оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders/");
             оrdersInputPage.Table.RowSearch.ID.SetValue(ordersID[0]);
             оrdersInputPage = оrdersInputPage.SeachButtonRowClickAndGo();
@@ -270,7 +270,7 @@ namespace Autotests.Tests.T04_AdminTests
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             calendarsPage.Table.GetRow(0).ColumnThree.WaitText(companyName);
 
-            string[] ordersID = SendOrersRequest();
+            string[] ordersID = SendOrdersRequest();
             var оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders/");
             оrdersInputPage.Table.RowSearch.ID.SetValue(ordersID[0]);
             оrdersInputPage = оrdersInputPage.SeachButtonRowClickAndGo();

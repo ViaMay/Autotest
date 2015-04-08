@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T04_AdminTests
 {
-    public class DateTransferCDDriverTests : AdminBasePage
+    public class DateTransferCDDriverTests : SendOrdersBasePage
     {
         [Test, Description("Для разных драйверов"), Ignore]
         [TestCase("Aplix_child")]
@@ -42,7 +42,7 @@ namespace Autotests.Tests.T04_AdminTests
         public void Test(string driver)
         {
             LoginAsAdmin(adminName, adminPass);
-            string[] ordersID = SendOrersRequest();
+            string[] ordersID = SendOrdersRequest();
 
             //            Создание исходщих завок
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/process_i_orders");

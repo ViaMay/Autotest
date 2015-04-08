@@ -4,13 +4,13 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T04_AdminTests
 {
-    public class DateTransferCDCkeckInputOutputTests : AdminBasePage
+    public class DateTransferCDCkeckOutOrderTests : SendOrdersBasePage
     {
         [Test, Description("Проверяем пернос даты из входящей завки в исходящию")]
         public void CkeckEqualInputOutputDatesTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            string[] ordersID = SendOrersRequest();
+            string[] ordersID = SendOrdersRequest();
 
 //            Создание исходщих завок
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/process_i_orders");

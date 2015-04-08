@@ -37,7 +37,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             timesPickupPage.Table.GetRow(0).Name.WaitText(companyName);
         }
 
-        [Test, Description("Создания цены курьера")]
+        [Test, Description("Создания сроков курьера")]
         public void CreatePriceCourierTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
@@ -69,7 +69,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             timesCourierPage.Table.GetRow(0).ColumnThree.WaitText(companyName);
         }
 
-        [Test, Description("Создания цены самовывоза")]
+        [Test, Description("Создания сроков самовывоза")]
         public void CreateSelfPriceTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);

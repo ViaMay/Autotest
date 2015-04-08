@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages.Pages;
 
@@ -7,8 +6,8 @@ namespace Autotests.Tests
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
-//        public override string ApplicationBaseUrl { get { return "dev:nersowterr@dev.ddelivery.ru"; } }
-        public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
+        public override string ApplicationBaseUrl { get { return "dev:nersowterr@dev.ddelivery.ru"; } }
+//        public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
         public override void SetUp()
         {

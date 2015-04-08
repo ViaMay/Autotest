@@ -13,10 +13,6 @@ namespace Autotests.Tests.T03_ApiTests
         [Test, Description("Расчитать цену самовывоза c датой предполагаемого забора таска 732"), Ignore ]
         public void CalculatorPickupDateTest()
         {
-            var nowDate = DateTime.Now.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture);
-            var plan_pickup_date =nowDate+"%20"+"10:00";
-           
-            
             LoginAsAdmin(adminName, adminPass);
             var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
@@ -24,7 +20,6 @@ namespace Autotests.Tests.T03_ApiTests
             var deliveryPointsPage =
                 LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
             string deliveriPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
-
 
 //            Заполены все значения. Расчитать цену самомвывоза (по городу доставки)
             var responseCalculator =
