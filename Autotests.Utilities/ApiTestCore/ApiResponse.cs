@@ -145,7 +145,7 @@ namespace Autotests.Utilities.ApiTestCore
             public string DeliveryDate { get; set; }
 
             [DataMember(Name = "confirm_date")]
-            public string Confirmdate { get; set; }
+            public string ConfirmDate { get; set; }
 
             [DataMember(Name = "pickup_date")]
             public string PickupDate { get; set; }
