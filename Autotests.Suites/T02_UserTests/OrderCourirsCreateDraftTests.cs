@@ -54,6 +54,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSender.Delivery.WaitText("Курьерская");
 
             orderCourirsPage.TableRecipient.City.WaitText("Москва");
+            orderCourirsPage.TableRecipient.PostCode.WaitText("123123");
             orderCourirsPage.TableRecipient.Address.WaitText("ул.Улица, дом Дом, офис(квартира) Квартира");
             orderCourirsPage.TableRecipient.Name.WaitText("Фамилия Имя Очество");
             orderCourirsPage.TableRecipient.Email.WaitText(userNameAndPass);

@@ -68,7 +68,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCourirsEditingPage.PaymentPrice.SetValue("");
 
-            orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError();
+            orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError(1);
             orderCourirsEditingPage.ErrorText[0].WaitText("Значение поля «Сторона 1» должно быть положительным числом");
             orderCourirsEditingPage.ErrorText[1].WaitText("Значение поля «Сторона 2» должно быть положительным числом");
             orderCourirsEditingPage.ErrorText[2].WaitText("Значение поля «Сторона 3» должно быть положительным числом");

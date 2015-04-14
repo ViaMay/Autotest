@@ -27,7 +27,9 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             WaitPresenceWithRetries();
             if (GetAttributeValue("title").Contains(value))
                 return;
-            element.SendKeys(value + Keys.Tab + Keys.Enter);
+            element.SendKeys(value);
+            Thread.Sleep(1000);
+            element.SendKeys(Keys.Tab + Keys.Enter);
             var clickelement = new LinkMap(By.XPath("//div[3]/div[3]/h2"));
             var second = 0;
             Link:

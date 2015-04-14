@@ -37,15 +37,16 @@ namespace Autotests.Tests.T03_ApiTests
                     });
             Assert.AreEqual(responseCalculator.Message.Count(), 1);
             Assert.AreEqual(responseCalculator.Message[0].DeliveryCompanyName, companyName);
-//            на два дня вперед от PickupDate
-            Assert.AreEqual(responseCalculator.Message[0].DeliveryDate,
-                nowDate.AddDays(2).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
-//            близайщая от даты забора к PickupDate
+
+//            подтвердить до сегоднешего вечера
             Assert.AreEqual(responseCalculator.Message[0].ConfirmDate,
-                nowDate.AddDays(-1).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture) + " 23:45");
-//            возвращается текущая дата
+                nowDate.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture) + " 23:45");
+//            зата забора следующий день
             Assert.AreEqual(responseCalculator.Message[0].PickupDate,
-                nowDate.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+                nowDate.AddDays(1).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+//           дата доставки на два дня вперед от PickupDate
+            Assert.AreEqual(responseCalculator.Message[0].DeliveryDate,
+                nowDate.AddDays(3).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
 
 //            поле pickup_date - заполненно текущей датой
             var pickupDate = nowDate;
@@ -65,16 +66,15 @@ namespace Autotests.Tests.T03_ApiTests
                         {"pickup_date", pickupDate.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture)}
                     });
             Assert.AreEqual(responseCalculator.Message.Count(), 1);
-//            на два дня вперед от PickupDate
-            Assert.AreEqual(responseCalculator.Message[0].DeliveryCompanyName, companyName);
-            Assert.AreEqual(responseCalculator.Message[0].DeliveryDate,
-                pickupDate.AddDays(2).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
-//            близайщая от даты забора к PickupDate
+//            подтвердить до сегоднешего вечера
             Assert.AreEqual(responseCalculator.Message[0].ConfirmDate,
-                pickupDate.AddDays(-1).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture) + " 23:45");
-//            возвращается текущая PickupDate
+                nowDate.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture) + " 23:45");
+//            зата забора следующий день
             Assert.AreEqual(responseCalculator.Message[0].PickupDate,
-                pickupDate.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+                nowDate.AddDays(1).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+//           дата доставки на два дня вперед от PickupDate
+            Assert.AreEqual(responseCalculator.Message[0].DeliveryDate,
+                nowDate.AddDays(3).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
 
 //            поле pickup_date - заполненно на два дня вперед
             pickupDate = nowDate.AddDays(2);

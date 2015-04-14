@@ -67,15 +67,17 @@ namespace Autotests.WebPages.Pages.PageUser
             locator = className.ToString().Replace("By.XPath: ", "");
 
             City = new StaticText(By.XPath(string.Format("{0}/tbody/tr[1]/td", locator)));
-            Address = new StaticText(By.XPath(string.Format("{0}/tbody/tr[2]/td", locator)));
-            Name = new StaticText(By.XPath(string.Format("{0}/tbody/tr[3]/td", locator)));
-            Email = new StaticText(By.XPath(string.Format("{0}/tbody/tr[4]/td", locator)));
-            Phone = new StaticText(By.XPath(string.Format("{0}/tbody/tr[5]/td", locator)));
-            Issue = new StaticText(By.XPath(string.Format("{0}/tbody/tr[6]/td", locator)));
-            PickupCompany = new StaticText(By.XPath(string.Format("{0}/tbody/tr[7]/td", locator)));
-            DeliveryCompany = new StaticText(By.XPath(string.Format("{0}/tbody/tr[8]/td", locator)));
+            PostCode = new StaticText(By.XPath(string.Format("{0}/tbody/tr[2]/td", locator)));
+            Address = new StaticText(By.XPath(string.Format("{0}/tbody/tr[3]/td", locator)));
+            Name = new StaticText(By.XPath(string.Format("{0}/tbody/tr[4]/td", locator)));
+            Email = new StaticText(By.XPath(string.Format("{0}/tbody/tr[5]/td", locator)));
+            Phone = new StaticText(By.XPath(string.Format("{0}/tbody/tr[6]/td", locator)));
+            Issue = new StaticText(By.XPath(string.Format("{0}/tbody/tr[7]/td", locator)));
+            PickupCompany = new StaticText(By.XPath(string.Format("{0}/tbody/tr[8]/td", locator)));
+            DeliveryCompany = new StaticText(By.XPath(string.Format("{0}/tbody/tr[9]/td", locator)));
         }
         public StaticText City { get; private set; }
+        public StaticText PostCode { get; private set; }
         public StaticText Address { get; private set; }
         public StaticText Name { get; private set; }
         public StaticText Email { get; private set; }

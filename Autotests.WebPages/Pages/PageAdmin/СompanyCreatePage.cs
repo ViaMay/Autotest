@@ -18,7 +18,10 @@ namespace Autotests.WebPages.Pages.PageAdmin
             ManagersPickup = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 2));
             ManagersLegalEntity = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 3));
 
+            Term = new TextInput(By.Name("term"));
             SinglePickup = new CheckBox(By.Name("single_pickup"));
+            Prolongation = new CheckBox(By.Name("prolongation"));
+
             SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
 
@@ -32,7 +35,10 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public AutocompleteControl ManagersPickup { get; set; }
         public AutocompleteControl ManagersLegalEntity { get; set; }
 
+        public CheckBox Prolongation { get; set; }
         public CheckBox SinglePickup { get; set; }
+        public TextInput Term { get; set; }
+
         public ButtonInput SaveButton { get; set; }
 
         public override void BrowseWaitVisible()

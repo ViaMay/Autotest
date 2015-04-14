@@ -67,7 +67,7 @@ namespace Autotests.Tests.T02_UserTests
             shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
             var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
 
-            orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError();
+            orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError(1);
             orderCreateSelfPage.ErrorText[0].WaitText("ФИО получателя обязательно к заполнению");
             orderCreateSelfPage.ErrorText[1].WaitText("Телефон получателя обязательно к заполнению");
             orderCreateSelfPage.ErrorText[2].WaitText("Описание посылки обязательно к заполнению");
@@ -94,7 +94,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.ActionErrorText[1].WaitText("Компания доставки обязательно к заполнению");
             orderCreateSelfPage.ActionErrorText[2].WaitText("Не выбран пункт выдачи");
             orderCreateSelfPage.ActionErrorText[3].WaitText("Город получения обязательно к заполнению");
-            orderCreateSelfPage.ErrorText[0].WaitAbsence();
+            orderCreateSelfPage.ErrorText[0].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
 
             orderCreateSelfPage.MapOrders.SwitchToFrame();
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");

@@ -18,7 +18,7 @@ namespace Autotests.WebPages.Pages.PageUser
             CanceledButton = new ButtonInput(By.CssSelector("div.form-actions > input.btn.btn-primary.btn-success"));
             SaveChangeButton = new ButtonInput(By.CssSelector("div.form-actions > input.btn.btn-primary.pull-right"));
 
-            BuyerPostalCode = new StaticText(By.Name("to_postal_code"));
+            BuyerPostalCode = new TextInput(By.Name("to_postal_code"));
             BuyerStreet = new TextInput(By.Name("to_street"));
             BuyerHouse = new TextInput(By.Name("to_house"));
             BuyerFlat = new TextInput(By.Name("to_flat"));
@@ -56,7 +56,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public ButtonInput CanceledButton { get; set; }
         public ButtonInput SaveChangeButton { get; set; }
 
-        public StaticText BuyerPostalCode { get; set; }
+        public TextInput BuyerPostalCode { get; set; }
         public TextInput BuyerStreet { get; set; }
         public TextInput BuyerHouse { get; set; }
         public TextInput BuyerFlat { get; set; }

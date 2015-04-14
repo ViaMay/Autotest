@@ -56,18 +56,19 @@ namespace Autotests.Tests.T03_ApiTests
                 });
 //            доставка равна на два дня вперед от pickup_date
             Assert.AreEqual(responseOrderStatus.Message.DeliveryDate,
-                nowDate.AddDays(2).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
-//            pickup_date проставилась текущая дата
+                nowDate.AddDays(3).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+//            pickup_date проставилась следующий день
             Assert.AreEqual(responseOrderStatus.Message.PickupDate,
-                nowDate.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+                nowDate.AddDays(1).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
 
 //            отправляем новый запрос в нем указываем pickup_date равную после завтра nowDate.AddDays(2)
+            var pickupDate = nowDate.AddDays(2);
             responseCreateOrders = (ApiResponse.ResponseAddOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
                 new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
 		        {"type", "1"},
-                {"pickup_date", nowDate.AddDays(2).ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture)},
+                {"pickup_date", pickupDate.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture)},
 		        {"delivery_point", deliveriPoinId},
 		        {"to_city", "151184"},
 		        {"delivery_company", "" + deliveriCompanyId},
@@ -95,10 +96,10 @@ namespace Autotests.Tests.T03_ApiTests
                 });
 //            доставка равна на два дня вперед от pickup_date
             Assert.AreEqual(responseOrderStatus.Message.DeliveryDate,
-                nowDate.AddDays(4).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+                pickupDate.AddDays(2).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
 //            pickup_date равна отправляемой pickup_date в заявке
             Assert.AreEqual(responseOrderStatus.Message.PickupDate,
-                nowDate.AddDays(2).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
+                pickupDate.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
         }
     }
 }

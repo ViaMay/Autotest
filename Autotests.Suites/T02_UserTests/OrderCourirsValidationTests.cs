@@ -95,7 +95,8 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.ErrorText[2].WaitText("Квартира получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[3].WaitText("ФИО получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[4].WaitText("Телефон получателя обязательно к заполнению");
-            orderCreateCourirsPage.ErrorText[5].WaitText("Описание посылки обязательно к заполнению");
+            orderCreateCourirsPage.ErrorText[5].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
+            orderCreateCourirsPage.ErrorText[6].WaitText("Описание посылки обязательно к заполнению");
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
             orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
@@ -140,7 +141,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("ok");
 
-            orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError();
+            orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError(1);
             orderCreateCourirsPage.ActionErrorText[0].WaitText("Ошибка просчета цены, или маршрут недоступен");
             orderCreateCourirsPage.ActionErrorText[1].WaitText("Город получения обязательно к заполнению");
 

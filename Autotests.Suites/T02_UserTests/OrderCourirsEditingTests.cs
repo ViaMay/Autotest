@@ -83,6 +83,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.Length.SetValue("13.2");
             orderCourirsEditingPage.Weight.SetValue("9.2");
 
+            orderCourirsEditingPage.BuyerPostalCode.SetValue("123456");
             orderCourirsEditingPage.BuyerStreet.SetValue("Улица2");
             orderCourirsEditingPage.BuyerHouse.SetValue("Дом2");
             orderCourirsEditingPage.BuyerFlat.SetValue("Квартира2");
@@ -102,6 +103,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSender.Delivery.WaitText("Курьерская");
 
             orderCourirsPage.TableRecipient.City.WaitText("Москва");
+            orderCourirsPage.TableRecipient.PostCode.WaitText("123456");
             orderCourirsPage.TableRecipient.Address.WaitText("ул.Улица2, дом Дом2, офис(квартира) Квартира2");
             orderCourirsPage.TableRecipient.Name.WaitText("Фамилия2 Имя2 Очество2");
             orderCourirsPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
@@ -204,6 +206,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.Length.SetValue("13.2");
             orderCourirsEditingPage.Weight.SetValue("9.2");
 
+            orderCourirsEditingPage.BuyerPostalCode.SetValue("123456");
             orderCourirsEditingPage.BuyerStreet.SetValue("Улица2");
             orderCourirsEditingPage.BuyerHouse.SetValue("Дом2");
             orderCourirsEditingPage.BuyerFlat.SetValue("Квартира2");
@@ -223,6 +226,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSender.Delivery.WaitText("Курьерская");
 
             orderCourirsPage.TableRecipient.City.WaitText("Москва");
+            orderCourirsPage.TableRecipient.PostCode.WaitText("123456");
             orderCourirsPage.TableRecipient.Address.WaitText("ул.Улица2, дом Дом2, офис(квартира) Квартира2");
             orderCourirsPage.TableRecipient.Name.WaitText("Фамилия2 Имя2 Очество2");
             orderCourirsPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
