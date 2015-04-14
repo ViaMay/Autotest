@@ -66,6 +66,14 @@ namespace Autotests.Utilities.ApiTestCore
             [DataMember(Name = "response")]
             public MessageTrueCancal Message { get; set; }
         }
+
+        [DataContract]
+        public class ResponseCompanyTerm : Response
+        {
+            [DataMember(Name = "response")]
+            public MessageCompanyTerm Message { get; set; }
+        }
+
        [DataContract]
         public class AddMessage
         {
@@ -74,6 +82,19 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "key")]
             public string Key { get; set; }
+        } 
+        
+        [DataContract]
+       public class MessageCompanyTerm
+        {
+            [DataMember(Name = "_id")]
+            public string Id { get; set; }
+
+            [DataMember(Name = "term")]
+            public string Term { get; set; }
+
+            [DataMember(Name = "prolongation")]
+            public bool Prolongation { get; set; }
         }
 
         [DataContract]
