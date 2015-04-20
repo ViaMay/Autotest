@@ -27,16 +27,16 @@ namespace Autotests.Tests.T03_ApiTests
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");
 
 //            Term  = 0, возвращаем 0 и false
-            var responseCalculator =
+            var responseCompanyTerm =
                (ApiResponse.ResponseCompanyTerm)apiRequest.GET("api/v1/" + keyShopPublic + "/company_term.json",
                    new NameValueCollection
                     {
                         {"company", companyId}
                     });
-            Assert.IsTrue(responseCalculator.Success);
-            Assert.AreEqual(responseCalculator.Message.Id, companyId);
-            Assert.AreEqual(responseCalculator.Message.Term, "0");
-            Assert.AreEqual(responseCalculator.Message.Prolongation, false);
+            Assert.IsTrue(responseCompanyTerm.Success);
+            Assert.AreEqual(responseCompanyTerm.Response.Id, companyId);
+            Assert.AreEqual(responseCompanyTerm.Response.Term, "0");
+            Assert.AreEqual(responseCompanyTerm.Response.Prolongation, false);
 
             companyEditPage =
                 LoadPage<СompanyCreatePage>("admin/companies/edit/" + companyId);
@@ -48,16 +48,34 @@ namespace Autotests.Tests.T03_ApiTests
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");
 
             //            Term  = 12, возвращаем 12 и true
-            responseCalculator =
+            responseCompanyTerm =
                (ApiResponse.ResponseCompanyTerm)apiRequest.GET("api/v1/" + keyShopPublic + "/company_term.json",
                    new NameValueCollection
                     {
                         {"company", companyId}
                     });
-            Assert.IsTrue(responseCalculator.Success);
-            Assert.AreEqual(responseCalculator.Message.Id, companyId);
-            Assert.AreEqual(responseCalculator.Message.Term, "12");
-            Assert.AreEqual(responseCalculator.Message.Prolongation, true);
+            Assert.IsTrue(responseCompanyTerm.Success);
+            Assert.AreEqual(responseCompanyTerm.Response.Id, companyId);
+            Assert.AreEqual(responseCompanyTerm.Response.Term, "12");
+            Assert.AreEqual(responseCompanyTerm.Response.Prolongation, true);
+        }
+
+        [Test, Description("Получить информацию о сроке хранения на ПВЗ для определенной компании")]
+        public void CompanyTermErrorTest()
+        {
+            LoginAsAdmin(adminName, adminPass);
+            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
+
+            var responseFail =
+               (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/company_term.json",
+                   new NameValueCollection
+                    {
+                        {"company", "company"}
+                    });
+            Assert.IsFalse(responseFail.Success);
+            Assert.AreEqual(responseFail.Response.Message, "Company not found");
+
         }
     }
 }

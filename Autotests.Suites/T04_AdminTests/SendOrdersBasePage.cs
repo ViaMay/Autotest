@@ -12,13 +12,13 @@ namespace Autotests.Tests.T04_AdminTests
         public string[] SendOrdersRequest()
         {
             var companiesPage = LoadPage<СompaniesPage>("admin/companies/?&filters[name]=" + companyName);
-            var deliveriCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
+            var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
             var shopsPage = LoadPage<ShopsPage>("admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
                  LoadPage<DeliveryPointsPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);
-            var deliveriPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
+            var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
 
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");
@@ -29,7 +29,7 @@ namespace Autotests.Tests.T04_AdminTests
                 {"api_key", keyShopPublic},
 		        {"type", "2"},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveriCompanyId},
+		        {"delivery_company", "" + deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},
@@ -54,9 +54,9 @@ namespace Autotests.Tests.T04_AdminTests
                 {
                 {"api_key", keyShopPublic},
 		        {"type", "1"},
-		        {"delivery_point", deliveriPoinId},
+		        {"delivery_point", deliveryPoinId},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveriCompanyId},
+		        {"delivery_company", "" + deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},
@@ -79,13 +79,13 @@ namespace Autotests.Tests.T04_AdminTests
         public string SendOrderCourirsRequest(DateTime pickupDate = default(DateTime))
         {
             var companiesPage = LoadPage<СompaniesPage>("admin/companies/?&filters[name]=" + companyName);
-            var deliveriCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
+            var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
             var shopsPage = LoadPage<ShopsPage>("admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
                  LoadPage<DeliveryPointsPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);
-            var deliveriPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
+            var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
 
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");
@@ -97,7 +97,7 @@ namespace Autotests.Tests.T04_AdminTests
                 {"pickup_date", pickupDate.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture)},
 		        {"type", "2"},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveriCompanyId},
+		        {"delivery_company", "" + deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},
@@ -123,13 +123,13 @@ namespace Autotests.Tests.T04_AdminTests
         public string SendOrderSelfRequest(DateTime pickupDate = default(DateTime))
         {
             var companiesPage = LoadPage<СompaniesPage>("admin/companies/?&filters[name]=" + companyName);
-            var deliveriCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
+            var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
             var shopsPage = LoadPage<ShopsPage>("admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
                  LoadPage<DeliveryPointsPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);
-            var deliveriPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
+            var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
 
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");
@@ -140,9 +140,9 @@ namespace Autotests.Tests.T04_AdminTests
                 {"api_key", keyShopPublic},
                 {"pickup_date", pickupDate.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture)},
 		        {"type", "1"},
-		        {"delivery_point", deliveriPoinId},
+		        {"delivery_point", deliveryPoinId},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveriCompanyId},
+		        {"delivery_company", "" + deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},

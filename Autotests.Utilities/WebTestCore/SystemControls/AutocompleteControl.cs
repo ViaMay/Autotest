@@ -8,7 +8,6 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
 {
     public class AutocompleteControl : TextInput
     {
-
         public readonly int index;
         public AutocompleteControl(By locator, HtmlControl container = null)
             : base(locator, container)
@@ -52,7 +51,7 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
                     WebDriverCache.WebDriver.WaitForAjax();
                 }
                 Assert.AreEqual(false, true, string.Format(
-                    "Время ожидание завершено.не найден элемент {0} в AutocompleteControl", value));
+                    "Время ожидание завершено. Не найден элемент {0} в AutocompleteControl", value));
                 link1:
                 ;
             }

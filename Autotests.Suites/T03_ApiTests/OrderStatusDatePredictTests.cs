@@ -16,10 +16,10 @@ namespace Autotests.Tests.T03_ApiTests
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
                 LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
-            var deliveriPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
+            var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
             var deliveryCompaniesPage =
                 LoadPage<СompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
-            var deliveriCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
+            var deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
 
 //            не указана pickup_date то есть текущая дата
             var responseCreateOrders = (ApiResponse.ResponseAddOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
@@ -28,7 +28,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {"api_key", keyShopPublic},
 		        {"type", "2"},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveriCompanyId},
+		        {"delivery_company", "" + deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},
@@ -55,10 +55,10 @@ namespace Autotests.Tests.T03_ApiTests
                 {"order", responseCreateOrders.Message.OrderId}
                 });
 //            доставка равна на два дня вперед от pickup_date
-            Assert.AreEqual(responseOrderStatus.Message.DeliveryDate,
+            Assert.AreEqual(responseOrderStatus.Response.DeliveryDate,
                 nowDate.AddDays(3).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
 //            pickup_date проставилась следующий день
-            Assert.AreEqual(responseOrderStatus.Message.PickupDate,
+            Assert.AreEqual(responseOrderStatus.Response.PickupDate,
                 nowDate.AddDays(1).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
 
 //            отправляем новый запрос в нем указываем pickup_date равную после завтра nowDate.AddDays(2)
@@ -69,9 +69,9 @@ namespace Autotests.Tests.T03_ApiTests
                 {"api_key", keyShopPublic},
 		        {"type", "1"},
                 {"pickup_date", pickupDate.ToString("dd.MM.yyyy HH:mm:ss", CultureInfo.InvariantCulture)},
-		        {"delivery_point", deliveriPoinId},
+		        {"delivery_point", deliveryPoinId},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveriCompanyId},
+		        {"delivery_company", "" + deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},
@@ -95,10 +95,10 @@ namespace Autotests.Tests.T03_ApiTests
                 {"order", responseCreateOrders.Message.OrderId}
                 });
 //            доставка равна на два дня вперед от pickup_date
-            Assert.AreEqual(responseOrderStatus.Message.DeliveryDate,
+            Assert.AreEqual(responseOrderStatus.Response.DeliveryDate,
                 pickupDate.AddDays(2).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
 //            pickup_date равна отправляемой pickup_date в заявке
-            Assert.AreEqual(responseOrderStatus.Message.PickupDate,
+            Assert.AreEqual(responseOrderStatus.Response.PickupDate,
                 pickupDate.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
         }
     }

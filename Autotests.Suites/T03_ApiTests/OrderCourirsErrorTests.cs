@@ -15,7 +15,7 @@ namespace Autotests.Tests.T03_ApiTests
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryCompaniesPage =
                 LoadPage<СompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
-            string deliveriCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
+            string deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
 
 //            delivery_company = ""
             var responseCreateFailOrder = (ApiResponse.ResponseFailOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
@@ -43,7 +43,7 @@ namespace Autotests.Tests.T03_ApiTests
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"}
                 });
             Assert.IsFalse(responseCreateFailOrder.Success, "Ожидался ответ Fail на отправленный запрос POST по API");
-            Assert.AreEqual(responseCreateFailOrder.Message.Error.DeliveryCompany, "Компания доставки обязательно к заполнению");
+            Assert.AreEqual(responseCreateFailOrder.Response.Error.DeliveryCompany, "Компания доставки обязательно к заполнению");
             
 //            Вес пустой weight=0
             responseCreateFailOrder = (ApiResponse.ResponseFailOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
@@ -52,7 +52,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {"api_key", keyShopPublic},
 		        {"type", "2"},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveriCompanyId},
+		        {"delivery_company", "" + deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},
@@ -71,8 +71,8 @@ namespace Autotests.Tests.T03_ApiTests
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"}
                 });
             Assert.IsFalse(responseCreateFailOrder.Success, "Ожидался ответ Fail на отправленный запрос POST по API");
-            Assert.AreEqual(responseCreateFailOrder.Message.Error.CalculateOrder, "Ошибка просчета цены, или маршрут недоступен");
-            Assert.AreEqual(responseCreateFailOrder.Message.Error.Weight, "Вес обязательно к заполнению");
+            Assert.AreEqual(responseCreateFailOrder.Response.Error.CalculateOrder, "Ошибка просчета цены, или маршрут недоступен");
+            Assert.AreEqual(responseCreateFailOrder.Response.Error.Weight, "Вес обязательно к заполнению");
         
 //            to_city=""
             responseCreateFailOrder = (ApiResponse.ResponseFailOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
@@ -81,7 +81,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {"api_key", keyShopPublic},
 		        {"type", "2"},
 		        {"to_city", ""},
-		        {"delivery_company", "" + deliveriCompanyId},
+		        {"delivery_company", "" + deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},
@@ -100,8 +100,8 @@ namespace Autotests.Tests.T03_ApiTests
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"}
                 });
             Assert.IsFalse(responseCreateFailOrder.Success, "Ожидался ответ Fail на отправленный запрос POST по API");
-            Assert.AreEqual(responseCreateFailOrder.Message.Error.CalculateOrder, "Ошибка просчета цены, или маршрут недоступен");
-            Assert.AreEqual(responseCreateFailOrder.Message.Error.ToCity, "Город получения обязательно к заполнению");
+            Assert.AreEqual(responseCreateFailOrder.Response.Error.CalculateOrder, "Ошибка просчета цены, или маршрут недоступен");
+            Assert.AreEqual(responseCreateFailOrder.Response.Error.ToCity, "Город получения обязательно к заполнению");
         }
     }
 }

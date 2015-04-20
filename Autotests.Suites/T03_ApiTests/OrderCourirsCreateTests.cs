@@ -16,7 +16,7 @@ namespace Autotests.Tests.T03_ApiTests
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryCompaniesPage =
                 LoadPage<СompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
-            string deliveriCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
+            string deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
 
            var responseCreateOrders = (ApiResponse.ResponseAddOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
                 new NameValueCollection
@@ -24,7 +24,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {"api_key", keyShopPublic},
 		        {"type", "2"},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveriCompanyId},
+		        {"delivery_company", "" + deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},

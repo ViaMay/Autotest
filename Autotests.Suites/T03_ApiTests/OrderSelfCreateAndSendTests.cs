@@ -16,19 +16,19 @@ namespace Autotests.Tests.T03_ApiTests
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
                 LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
-            var deliveriPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
+            var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
             var deliveryCompaniesPage =
                 LoadPage<СompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
-            var deliveriCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
+            var deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
 
             var responseCreateOrders = (ApiResponse.ResponseAddOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
                 new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
 		        {"type", "1"},
-		        {"delivery_point", deliveriPoinId},
+		        {"delivery_point", deliveryPoinId},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveriCompanyId},
+		        {"delivery_company", "" + deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},
@@ -78,14 +78,14 @@ namespace Autotests.Tests.T03_ApiTests
                 {
                 {"order", responseCreateOrders.Message.OrderId}
                 });
-            Assert.AreEqual(responseOrderStatus.Message.StatusDescription, "Подтверждена");
+            Assert.AreEqual(responseOrderStatus.Response.StatusDescription, "Подтверждена");
 
 //           Инфо заявки 
             var responseOrderInfo = (ApiResponse.ResponseOrderInfo)apiRequest.GET("api/v1/" + keyShopPublic
                 + "/order_info/" + responseCreateOrders.Message.OrderId + ".json",
                 new NameValueCollection {});
-            Assert.AreEqual(responseOrderInfo.Message.ToEmail, userNameAndPass);
-            Assert.AreEqual(responseOrderInfo.Message.ToName, "Ургудан Рабат Мантов");
+            Assert.AreEqual(responseOrderInfo.Response.ToEmail, userNameAndPass);
+            Assert.AreEqual(responseOrderInfo.Response.ToName, "Ургудан Рабат Мантов");
 							        
 //         Отмена ордера (неудачная)
             var responseOrderCancelFail = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/order_cancel.json",
@@ -94,7 +94,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {"api_key", keyShopPublic},
                 {"order", responseCreateOrders.Message.OrderId}
                 });
-            Assert.AreEqual(responseOrderCancelFail.Message.Message, "This order can not be canceled");
+            Assert.AreEqual(responseOrderCancelFail.Response.Message, "This order can not be canceled");
 
             defaultPage = ordersPage.LoginOut();
             var adminPage = defaultPage.LoginAsAdmin(adminName, adminPass);
@@ -113,12 +113,12 @@ namespace Autotests.Tests.T03_ApiTests
                 {"api_key", keyShopPublic},
                 {"order", responseCreateOrders.Message.OrderId}
                 });
-            Assert.AreEqual(responseOrderCancel.Message.OrderId, responseCreateOrders.Message.OrderId);
+            Assert.AreEqual(responseOrderCancel.Response.OrderId, responseCreateOrders.Message.OrderId);
             
             ordersPage.Support.Click();
             ordersPage.SupportList.Click();
             var supportListPage = userPage.GoTo<SupportListPage>();
-            supportListPage.Table.GetRow(0).TicketId.WaitText(responseOrderCancel.Message.TicketId);
+            supportListPage.Table.GetRow(0).TicketId.WaitText(responseOrderCancel.Response.TicketId);
             supportListPage.Table.GetRow(0).TicketText.WaitText("Изменение заявок");
             supportListPage.Table.GetRow(0).Content.WaitText("Отмена заказа");
             supportListPage.Table.GetRow(0).Status.WaitText("Открыт");

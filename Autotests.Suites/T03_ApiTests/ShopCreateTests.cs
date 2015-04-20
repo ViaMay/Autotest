@@ -71,7 +71,7 @@ namespace Autotests.Tests.T03_ApiTests
                 new NameValueCollection
                 {
                     {"name", userShopName + "_Api"},
-                    {"warehouse", responseWarehouse.Message.Id},
+                    {"warehouse", responseWarehouse.Response.Id},
                     {"address", "Квебек"}
                 }
                 );
