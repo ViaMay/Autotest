@@ -12,8 +12,7 @@ namespace Autotests.Tests.T02_UserTests
             userPage.UseProfile.Click();
             userPage.UserShops.Click();
             var shopsListPage = userPage.GoTo<UserShopsPage>();
-
-
+            
             for (var i = 0; i < shopsListPage.Table.Count; i++)
             {
                 if (!shopsListPage.Table.GetRow(i).Name.GetText().Contains(userShopName + "_2") &&

@@ -60,7 +60,7 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.DeclaredPrice.SetValue("");
             orderSelfEditingPage.PaymentPrice.SetValue("");
 
-            orderSelfEditingPage.SaveChangeButton.ClickAndWaitTextError();
+            orderSelfEditingPage.SaveChangeButton.ClickAndWaitTextError(1);
             orderSelfEditingPage.ErrorText[0].WaitText("ФИО получателя обязательно к заполнению");
             orderSelfEditingPage.ErrorText[1].WaitText("Телефон получателя обязательно к заполнению");
             orderSelfEditingPage.ErrorText[2].WaitText("Значение поля «Сторона 1» должно быть положительным числом");

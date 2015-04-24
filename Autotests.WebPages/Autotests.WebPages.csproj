@@ -152,6 +152,7 @@
     <Compile Include="Pages\PageAdmin\СompaniesPage.cs" />
     <Compile Include="Pages\PageAdmin\AdminHomePage.cs" />
     <Compile Include="Pages\PageAdmin\AdminPageBase.cs" />
+    <Compile Include="Pages\PageUser\Controls\DocumentsPreparedRowControl.cs" />
     <Compile Include="Pages\PageUser\Controls\SupportRowControl.cs" />
     <Compile Include="Pages\PageUser\Controls\SupportListControl.cs" />
     <Compile Include="Pages\PageUser\Controls\OrdersListControl.cs" />

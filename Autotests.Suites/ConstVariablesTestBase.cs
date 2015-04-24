@@ -6,8 +6,8 @@ namespace Autotests.Tests
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
-//        public override string ApplicationBaseUrl { get { return "dev:nersowterr@dev.ddelivery.ru"; } }
-        public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
+        public override string ApplicationBaseUrl { get { return "dev:adept2frost_late@dev.ddelivery.ru"; } }
+//        public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
         public override void SetUp()
         {
@@ -37,12 +37,13 @@ namespace Autotests.Tests
             side3Max = 60;
 
             deliveryPointAddress = "Ленинский проспект 127";
-            deliveryPointLongitude = "37.477078814299";
-            deliveryPointLatitude = "55.645872547535";
+            deliveryPointLongitude = "37.477079";
+            deliveryPointLatitude = "55.645873";
 
             apiRequest = new Api(ApplicationBaseUrl);
-
-            nowDate = DateTime.Now;
+            TimeZoneInfo moscowTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Russian Standard Time");
+            DateTime moscowDateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, moscowTimeZone);
+            nowDate = moscowDateTime;
         }
 
         public string adminName;

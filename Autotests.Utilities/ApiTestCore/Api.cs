@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
-using System.Web;
 
 namespace Autotests.Utilities.ApiTestCore
 {
@@ -18,7 +16,7 @@ namespace Autotests.Utilities.ApiTestCore
             ApplicationBaseUrl = value;
         }
 
-        public ApiResponse.Response GET(string url, NameValueCollection data)
+        public ApiResponse.TResponse GET(string url, NameValueCollection data)
         {
             using (var client = new WebClient())
             {
@@ -30,21 +28,22 @@ namespace Autotests.Utilities.ApiTestCore
                 }
                 if (dataString.Count()!= 0) dataString = dataString.Remove(dataString.Count() - 1);
 
+//                Авторизация на сервере если в имени урла есть @
                 if (ApplicationBaseUrl.Contains("@"))
                 {
                     string[] words = ApplicationBaseUrl.Split(new char[] { ':', '@' });
                     client.Credentials = new NetworkCredential(words[0], words[1]);
                 }
                 string response = client.DownloadString("http://" + ApplicationBaseUrl + "/" + url + "?" + dataString);
-
                 return JsonSerializer(response);
             }
         }
 
-        public ApiResponse.Response POST(string url, NameValueCollection data)
+        public ApiResponse.TResponse POST(string url, NameValueCollection data)
         {
             using (var client = new WebClient())
             {
+//                Авторизация на сервере если в имени урла есть @
                 if (ApplicationBaseUrl.Contains("@"))
                 {
                     string[] words = ApplicationBaseUrl.Split(new char[] { ':', '@' });
@@ -55,13 +54,26 @@ namespace Autotests.Utilities.ApiTestCore
             }
         }
 
-        private static ApiResponse.Response JsonSerializer(string value)
+        private static ApiResponse.TResponse JsonSerializer(string value)
         {
-//            ResponseCalculation если тег response множественный то это идет рачте калькулятора 
-            if (value.Contains(@"response"":["))
+//            ResponseDocumentsRequest если тег response есть completed и не 
+            if (value.Contains(@"response"":{""completed"""))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDocumentsRequest));
+                return (ApiResponse.ResponseDocumentsRequest)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+
+//            ResponseCalculation если тег response множественный то это идет калькулятора 
+            if (value.Contains(@"response"":[") && value.Contains(@"delivery_company_name"))
             {
                 var json = new DataContractJsonSerializer(typeof (ApiResponse.ResponseCalculation));
                 return (ApiResponse.ResponseCalculation) json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+//            ResponseDeliveryPoints если тег response множественный то это идет точки доставки
+            if (value.Contains(@"response"":[") && value.Contains(@"has_fitting_room"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeliveryPoints));
+                return (ApiResponse.ResponseDeliveryPoints)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
 //            ResponseFail
             if (value.Contains(@"success"":false,""response"":{""message"":""") )
@@ -111,8 +123,8 @@ namespace Autotests.Utilities.ApiTestCore
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseAddObject));
                 return (ApiResponse.ResponseAddObject)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
-            var json2 = new DataContractJsonSerializer(typeof (ApiResponse.Response));
-            return (ApiResponse.Response) json2.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            var json2 = new DataContractJsonSerializer(typeof (ApiResponse.TResponse));
+            return (ApiResponse.TResponse) json2.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
         }
     }
 }

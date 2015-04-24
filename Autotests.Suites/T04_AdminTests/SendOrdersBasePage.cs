@@ -72,7 +72,7 @@ namespace Autotests.Tests.T04_AdminTests
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"}
                 });
             Assert.IsTrue(responseCreateOrder2.Success, "Ожидался ответ true на отправленный запрос POST по API");
-            return new[] {responseCreateOrder1.Message.OrderId, responseCreateOrder2.Message.OrderId};
+            return new[] {responseCreateOrder1.Response.OrderId, responseCreateOrder2.Response.OrderId};
         }
 
         //        "dd.MM.yyyy" формат pickupDate
@@ -116,7 +116,7 @@ namespace Autotests.Tests.T04_AdminTests
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"}
                 });
             Assert.IsTrue(responseCreateOrder.Success, "Ожидался ответ true на отправленный запрос POST по API");
-            return responseCreateOrder.Message.OrderId;
+            return responseCreateOrder.Response.OrderId;
         }
 
         //        "dd.MM.yyyy" формат pickupDate
@@ -158,7 +158,7 @@ namespace Autotests.Tests.T04_AdminTests
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"}
                 });
             Assert.IsTrue(responseCreateOrder.Success, "Ожидался ответ true на отправленный запрос POST по API");
-            return responseCreateOrder.Message.OrderId;
+            return responseCreateOrder.Response.OrderId;
         }
     }
 }

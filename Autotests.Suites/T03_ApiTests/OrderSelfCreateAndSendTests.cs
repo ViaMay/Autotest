@@ -49,7 +49,7 @@ namespace Autotests.Tests.T03_ApiTests
             var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Orders.Click();
             var ordersPage = userPage.GoTo<OrdersListPage>();
-            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Message.OrderId);
+            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Type.WaitText("Самовывоз");
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
             ordersPage.Table.GetRow(0).Route.WaitText("Москва - Москва");
@@ -61,13 +61,13 @@ namespace Autotests.Tests.T03_ApiTests
                 new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
-                {"order", responseCreateOrders.Message.OrderId},
+                {"order", responseCreateOrders.Response.OrderId},
                 });
             Assert.IsTrue(responseConfirmationOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
             ordersPage.Orders.Click();
             ordersPage = ordersPage.GoTo<OrdersListPage>();
-            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Message.OrderId);
+            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Status.WaitText("Подтверждена");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Отменить");
             ordersPage.Table.GetRow(0).Edit.WaitText("Редактировать");
@@ -76,13 +76,13 @@ namespace Autotests.Tests.T03_ApiTests
             var responseOrderStatus = (ApiResponse.ResponseStatus)apiRequest.GET("api/v1/" + keyShopPublic + "/order_status.json",
                 new NameValueCollection
                 {
-                {"order", responseCreateOrders.Message.OrderId}
+                {"order", responseCreateOrders.Response.OrderId}
                 });
             Assert.AreEqual(responseOrderStatus.Response.StatusDescription, "Подтверждена");
 
 //           Инфо заявки 
             var responseOrderInfo = (ApiResponse.ResponseOrderInfo)apiRequest.GET("api/v1/" + keyShopPublic
-                + "/order_info/" + responseCreateOrders.Message.OrderId + ".json",
+                + "/order_info/" + responseCreateOrders.Response.OrderId + ".json",
                 new NameValueCollection {});
             Assert.AreEqual(responseOrderInfo.Response.ToEmail, userNameAndPass);
             Assert.AreEqual(responseOrderInfo.Response.ToName, "Ургудан Рабат Мантов");
@@ -92,7 +92,7 @@ namespace Autotests.Tests.T03_ApiTests
                 new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
-                {"order", responseCreateOrders.Message.OrderId}
+                {"order", responseCreateOrders.Response.OrderId}
                 });
             Assert.AreEqual(responseOrderCancelFail.Response.Message, "This order can not be canceled");
 
@@ -103,7 +103,7 @@ namespace Autotests.Tests.T03_ApiTests
             userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Orders.Click();
             ordersPage = userPage.GoTo<OrdersListPage>();
-            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Message.OrderId);
+            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Status.WaitText("На складе ИМ");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Отменить");
             ordersPage.Table.GetRow(0).Edit.WaitText("Редактировать");
@@ -111,9 +111,9 @@ namespace Autotests.Tests.T03_ApiTests
                 new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
-                {"order", responseCreateOrders.Message.OrderId}
+                {"order", responseCreateOrders.Response.OrderId}
                 });
-            Assert.AreEqual(responseOrderCancel.Response.OrderId, responseCreateOrders.Message.OrderId);
+            Assert.AreEqual(responseOrderCancel.Response.OrderId, responseCreateOrders.Response.OrderId);
             
             ordersPage.Support.Click();
             ordersPage.SupportList.Click();

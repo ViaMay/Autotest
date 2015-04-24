@@ -5,76 +5,6 @@ namespace Autotests.Utilities.ApiTestCore
     public class ApiResponse
     {
         [DataContract]
-        public class Response
-        {
-            [DataMember(Name = "success")]
-            public bool Success { get; set; }
-        }
-
-        [DataContract]
-        public class ResponseFail : Response
-        {
-            [DataMember(Name = "response")]
-            public FailMessage Message { get; set; }
-        }
-
-        [DataContract]
-        public class ResponseFailOrder : Response
-        {
-            [DataMember(Name = "response")]
-            public FailOrderMessage Message { get; set; }
-        }
-
-        [DataContract]
-        public class ResponseAddObject : Response
-        {
-            [DataMember(Name = "response")]
-            public AddMessage Message { get; set; }
-        }
-
-        [DataContract]
-        public class ResponseAddOrder : Response
-        {
-            [DataMember(Name = "response")]
-            public AddOrderMessage Message { get; set; }
-        }
-
-        [DataContract]
-        public class ResponseCalculation : Response
-        {
-            [DataMember(Name = "response")]
-            public MessageCalculation[] Message { get; set; }
-        }
-
-        [DataContract]
-        public class ResponseStatus : Response
-        {
-            [DataMember(Name = "response")]
-            public MessageStatus Message { get; set; }
-        }
-
-        [DataContract]
-        public class ResponseOrderInfo : Response
-        {
-            [DataMember(Name = "response")]
-            public MessageOrderInfo Message { get; set; }
-        }
-
-        [DataContract]
-        public class ResponseTrueCancel : Response
-        {
-            [DataMember(Name = "response")]
-            public MessageTrueCancal Message { get; set; }
-        }
-
-        [DataContract]
-        public class ResponseCompanyTerm : Response
-        {
-            [DataMember(Name = "response")]
-            public MessageCompanyTerm Message { get; set; }
-        }
-
-       [DataContract]
         public class AddMessage
         {
             [DataMember(Name = "_id")]
@@ -82,19 +12,6 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "key")]
             public string Key { get; set; }
-        } 
-        
-        [DataContract]
-       public class MessageCompanyTerm
-        {
-            [DataMember(Name = "_id")]
-            public string Id { get; set; }
-
-            [DataMember(Name = "term")]
-            public string Term { get; set; }
-
-            [DataMember(Name = "prolongation")]
-            public bool Prolongation { get; set; }
         }
 
         [DataContract]
@@ -105,10 +22,42 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class ErrorMessage
+        {
+            [DataMember(Name = "to_city")]
+            public string ToCity { get; set; }
+
+            [DataMember(Name = "delivery_point")]
+            public string DeliveryPoint { get; set; }
+
+            [DataMember(Name = "delivery_company")]
+            public string DeliveryCompany { get; set; }
+
+            [DataMember(Name = "dimension_side1")]
+            public string DimensionSide1 { get; set; }
+
+            [DataMember(Name = "calculate_order")]
+            public string CalculateOrder { get; set; }
+
+            [DataMember(Name = "weight")]
+            public string Weight { get; set; }
+
+            [DataMember(Name = "to_email")]
+            public string Email { get; set; }
+        }
+
+        [DataContract]
         public class FailMessage
         {
             [DataMember(Name = "message")]
             public string Message { get; set; }
+        }
+
+        [DataContract]
+        public class FailOrderMessage
+        {
+            [DataMember(Name = "message")]
+            public ErrorMessage Error { get; set; }
         }
 
         [DataContract]
@@ -173,29 +122,88 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class MessageCompanyTerm
+        {
+            [DataMember(Name = "_id")]
+            public string Id { get; set; }
+
+            [DataMember(Name = "term")]
+            public string Term { get; set; }
+
+            [DataMember(Name = "prolongation")]
+            public bool Prolongation { get; set; }
+        }
+
+        [DataContract]
+        public class MessageDeliveryPoint
+        {
+            [DataMember(Name = "_id")]
+            public string Id { get; set; }
+
+            [DataMember(Name = "city")]
+            public City City { get; set; }
+
+            [DataMember(Name = "name")]
+            public string Name { get; set; }
+
+            [DataMember(Name = "address")]
+            public string Address { get; set; }
+
+            [DataMember(Name = "schedule")]
+            public string Schedule { get; set; }
+
+            [DataMember(Name = "has_fitting_room")]
+            public bool HasFittingRoom { get; set; }
+
+            [DataMember(Name = "is_cash")]
+            public bool IsCash { get; set; }
+
+            [DataMember(Name = "is_card")]
+            public bool IsCard { get; set; }
+
+            [DataMember(Name = "longitude")]
+            public string Longitude { get; set; }
+
+            [DataMember(Name = "latitude")]
+            public string Latitude { get; set; }
+
+            [DataMember(Name = "metro")]
+            public string Metro { get; set; }
+
+            [DataMember(Name = "description_in")]
+            public string DescriptionIn { get; set; }
+
+            [DataMember(Name = "description_out")]
+            public string DescriptionOut { get; set; }
+
+            [DataMember(Name = "indoor_place")]
+            public string IndoorPlace { get; set; }
+
+            [DataMember(Name = "type")]
+            public string Type { get; set; }
+
+            [DataMember(Name = "company")]
+            public string Company { get; set; }
+
+            [DataMember(Name = "company_code")]
+            public string CompanyCode { get; set; }
+        }
+
+        [DataContract]
+        public class City
+        {
+            [DataMember(Name = "_id")]
+            public string Id { get; set; }
+
+            [DataMember(Name = "name")]
+            public string Name { get; set; }
+        }
+
+        [DataContract]
         public class MessageErrore
         {
             [DataMember(Name = "city")]
             public string City { get; set; }
-        }
-
-        [DataContract]
-        public class MessageStatus
-        {
-            [DataMember(Name = "status")]
-            public string Status { get; set; }
-
-            [DataMember(Name = "status_description")]
-            public string StatusDescription { get; set; }
-
-            [DataMember(Name = "status_message")]
-            public string StatusMessage { get; set; }
-
-            [DataMember(Name = "pickup_date")]
-            public string PickupDate { get; set; }
-
-            [DataMember(Name = "delivery_date")]
-            public string DeliveryDate { get; set; }
         }
 
         [DataContract]
@@ -239,6 +247,25 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class MessageStatus
+        {
+            [DataMember(Name = "status")]
+            public string Status { get; set; }
+
+            [DataMember(Name = "status_description")]
+            public string StatusDescription { get; set; }
+
+            [DataMember(Name = "status_message")]
+            public string StatusMessage { get; set; }
+
+            [DataMember(Name = "pickup_date")]
+            public string PickupDate { get; set; }
+
+            [DataMember(Name = "delivery_date")]
+            public string DeliveryDate { get; set; }
+        }
+
+        [DataContract]
         public class MessageTrueCancal
         {
             [DataMember(Name = "order_id")]
@@ -247,34 +274,121 @@ namespace Autotests.Utilities.ApiTestCore
             [DataMember(Name = "ticket_id")]
             public string TicketId { get; set; }
         }
-
+        
         [DataContract]
-        public class FailOrderMessage
+        public class MessageDocumentsRequest
         {
-            [DataMember(Name = "message")]
-            public ErrorMessage Error { get; set; }
+            [DataMember(Name = "completed")]
+            public bool Completed { get; set; }
+
+            [DataMember(Name = "request_id")]
+            public string RequestId { get; set; }
+
+            [DataMember(Name = "documents")]
+            public Documents[] Documents { get; set; }
+        }
+        
+        [DataContract]
+        public class Documents
+        {
+            [DataMember(Name = "type")]
+            public string type { get; set; }
+
+            [DataMember(Name = "warehouse")]
+            public string Warehouse { get; set; }
+
+            [DataMember(Name = "pickup_company")]
+            public string PickupCompany { get; set; }
+
+            [DataMember(Name = "delivery_company")]
+            public string DeliveryCompany { get; set; }
+
+            [DataMember(Name = "url")]
+            public string Url { get; set; }
         }
 
         [DataContract]
-        public class ErrorMessage
+        public class ResponseAddObject : TResponse
         {
-        [DataMember(Name = "to_city")]
-        public string ToCity { get; set; }
+            [DataMember(Name = "response")]
+            public AddMessage Response { get; set; }
+        }
 
-        [DataMember(Name = "delivery_point")]
-        public string DeliveryPoint { get; set; }
+        [DataContract]
+        public class ResponseAddOrder : TResponse
+        {
+            [DataMember(Name = "response")]
+            public AddOrderMessage Response { get; set; }
+        }
 
-        [DataMember(Name = "delivery_company")]
-        public string DeliveryCompany { get; set; }
+        [DataContract]
+        public class ResponseCalculation : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageCalculation[] Response { get; set; }
+        }
 
-        [DataMember(Name = "dimension_side1")]
-        public string DimensionSide1 { get; set; }
+        [DataContract]
+        public class ResponseCompanyTerm : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageCompanyTerm Response { get; set; }
+        }
 
-        [DataMember(Name = "calculate_order")]
-        public string CalculateOrder { get; set; }
+        [DataContract]
+        public class ResponseDeliveryPoints : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageDeliveryPoint[] Response { get; set; }
+        }
 
-        [DataMember(Name = "weight")]
-        public string Weight { get; set; }
+        [DataContract]
+        public class ResponseFail : TResponse
+        {
+            [DataMember(Name = "response")]
+            public FailMessage Response { get; set; }
+        }
+
+        [DataContract]
+        public class ResponseFailOrder : TResponse
+        {
+            [DataMember(Name = "response")]
+            public FailOrderMessage Response { get; set; }
+        }
+
+        [DataContract]
+        public class ResponseOrderInfo : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageOrderInfo Response { get; set; }
+        }
+
+        [DataContract]
+        public class ResponseStatus : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageStatus Response { get; set; }
+        }
+
+        [DataContract]
+        public class ResponseTrueCancel : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageTrueCancal Response { get; set; }
+        }
+        
+        [DataContract]
+        public class ResponseDocumentsRequest : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageDocumentsRequest Response { get; set; }
+        }
+
+        [DataContract]
+        public class TResponse
+        {
+            [DataMember(Name = "success")]
+            public bool Success { get; set; }
         }
     }
 }

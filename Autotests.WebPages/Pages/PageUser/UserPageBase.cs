@@ -24,8 +24,8 @@ namespace Autotests.WebPages.Pages.PageUser
             OrderCreateCourirs = new Link(By.LinkText("Курьерская доставка"));
 
             Documents = new Link(By.LinkText("Документы"));
-//            DocumentsCreate = new Link("");
-//            DocumentsList = new Link("");
+            DocumentsCreate = new Link(By.LinkText("Подготовить"));
+            DocumentsList = new Link(By.LinkText("Подготовленные"));
 
             Calculator = new Link(By.LinkText("Калькулятор"));
 

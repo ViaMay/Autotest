@@ -52,7 +52,7 @@ namespace Autotests.Tests.T03_ApiTests
             var responseOrderStatus = (ApiResponse.ResponseStatus)apiRequest.GET("api/v1/" + keyShopPublic + "/order_status.json",
                 new NameValueCollection
                 {
-                {"order", responseCreateOrders.Message.OrderId}
+                {"order", responseCreateOrders.Response.OrderId}
                 });
 //            доставка равна на два дня вперед от pickup_date
             Assert.AreEqual(responseOrderStatus.Response.DeliveryDate,
@@ -92,7 +92,7 @@ namespace Autotests.Tests.T03_ApiTests
              responseOrderStatus = (ApiResponse.ResponseStatus)apiRequest.GET("api/v1/" + keyShopPublic + "/order_status.json",
                 new NameValueCollection
                 {
-                {"order", responseCreateOrders.Message.OrderId}
+                {"order", responseCreateOrders.Response.OrderId}
                 });
 //            доставка равна на два дня вперед от pickup_date
             Assert.AreEqual(responseOrderStatus.Response.DeliveryDate,

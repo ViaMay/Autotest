@@ -67,24 +67,37 @@ namespace Autotests.Tests.T01_StartSettingTests
                 shopsPage.Table.RowSearch.Name.SetValue(userShopName);
                 shopsPage = shopsPage.SeachButtonRowClickAndGo();
             }
-            shopsPage.ShopsCreate.Click();
-            var shopCreatePage = shopsPage.GoTo<UserAdminShopCreatePage>();
+            var defaultPage = shopsPage.LoginOut();
+            var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.ShopsCreate.Click();
+            var shopCreatePage = shopsListPage.GoTo<UserShopCreatePage>();
             shopCreatePage.Name.SetValueAndWait(userShopName);
             shopCreatePage.Address.SetValueAndWait("Москва");
-            shopCreatePage.CompanyPickup.SetFirstValueSelect(companyName);
-            shopCreatePage.Warehouse.SetFirstValueSelect(userWarehouseName);
-            shopCreatePage.ManagersLegalEntity.SetFirstValueSelect(legalEntityName);
+            shopCreatePage.Warehouse.SelectValue(userWarehouseName);
             shopCreatePage.CreateButton.Click();
+            shopsListPage = shopCreatePage.GoTo<UserShopsPage>();
+            var row = shopsListPage.Table.FindRowByName(userShopName);
+
+            defaultPage = shopsListPage.LoginOut();
+            adminPage = defaultPage.LoginAsAdmin(adminName, adminPass);
+            adminPage.AdminUsers.Click();
+            adminPage.UsersShops.Click();
+            shopsPage = adminPage.GoTo<UsersShopsPage>();
             shopsPage = shopCreatePage.GoTo<UsersShopsPage>();
             shopsPage.Table.RowSearch.Name.SetValue(userShopName);
             shopsPage = shopsPage.SeachButtonRowClickAndGo();
             shopsPage.Table.GetRow(0).Name.WaitPresence();
             shopsPage.Table.GetRow(0).ActionsEdit.Click();
 
-            shopCreatePage = shopsPage.GoTo<UserAdminShopCreatePage>();
-            shopCreatePage.CompanyPickup.SetFirstValueSelect(companyName);
-            shopCreatePage.CreateButton.Click();
-            shopsPage = shopCreatePage.GoTo<UsersShopsPage>();
+            var shopEditPage = shopsPage.GoTo<UserAdminShopCreatePage>();
+            shopEditPage.CompanyPickup.SetFirstValueSelect(companyName);
+            shopEditPage.CreateButton.Click();
+            shopsPage = shopEditPage.GoTo<UsersShopsPage>();
+            var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
+            adminMaintenancePage.AlertText.WaitText("Cache flushed!");
         }
     }
 }

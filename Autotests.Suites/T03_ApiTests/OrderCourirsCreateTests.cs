@@ -48,7 +48,7 @@ namespace Autotests.Tests.T03_ApiTests
             var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Orders.Click();
             var ordersPage = userPage.GoTo<OrdersListPage>();
-            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Message.OrderId);
+            ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Type.WaitText("Курьерская");
             ordersPage.Table.GetRow(0).Number.WaitText(userShopName);
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
