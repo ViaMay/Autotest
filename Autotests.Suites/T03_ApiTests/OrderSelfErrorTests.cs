@@ -22,7 +22,7 @@ namespace Autotests.Tests.T03_ApiTests
             string deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
 
             // ошибка в delivery_point
-            var responseCreateFailOrder = (ApiResponse.ResponseFailOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
+            var responseCreateFailOrder = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_create.json",
                 new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
@@ -50,7 +50,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseCreateFailOrder.Response.Error.DeliveryCompany, "Компания доставки обязательно к заполнению");
 
             // ошибка в dimension_side1 = 0
-            responseCreateFailOrder = (ApiResponse.ResponseFailOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
+            responseCreateFailOrder = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_create.json",
                 new NameValueCollection
                 {
                 {"api_key", keyShopPublic},

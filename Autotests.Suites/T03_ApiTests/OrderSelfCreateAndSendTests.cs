@@ -94,7 +94,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {"api_key", keyShopPublic},
                 {"order", responseCreateOrders.Response.OrderId}
                 });
-            Assert.AreEqual(responseOrderCancelFail.Response.Message, "This order can not be canceled");
+            Assert.AreEqual(responseOrderCancelFail.Response.ErrorText, "This order can not be canceled");
 
             defaultPage = ordersPage.LoginOut();
             var adminPage = defaultPage.LoginAsAdmin(adminName, adminPass);

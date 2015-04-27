@@ -108,7 +108,7 @@ namespace Autotests.Tests.T03_ApiTests
                     });
 
             Assert.IsFalse(responseFailCalculator.Success);
-            Assert.AreEqual(responseFailCalculator.Response.Message, "Превышены возможные размеры или вес отправления для данного ПВЗ");
+            Assert.AreEqual(responseFailCalculator.Response.ErrorText, "Превышены возможные размеры или вес отправления для данного ПВЗ");
 
 //           declared_price равна нулю. Возврат ошибки
             responseFailCalculator =
@@ -125,7 +125,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"payment_price", "1000"}
                     });
             Assert.IsFalse(responseFailCalculator.Success);
-            Assert.AreEqual(responseFailCalculator.Response.Message, "declared price обязательно к заполнению");
+            Assert.AreEqual(responseFailCalculator.Response.ErrorText, "declared price обязательно к заполнению");
 
  //           payment_price равна нулю. Расчитываем стоимость.
             responseCalculator =
@@ -161,7 +161,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"payment_price", "1000"}
                     });
            Assert.IsFalse(responseFailCalculator.Success);
-           Assert.AreEqual(responseFailCalculator.Response.Message, "City not found (city to)");
+           Assert.AreEqual(responseFailCalculator.Response.ErrorText, "City not found (city to)");
         }
     }
 }

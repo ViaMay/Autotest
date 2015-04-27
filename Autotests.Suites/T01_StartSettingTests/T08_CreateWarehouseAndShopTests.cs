@@ -49,6 +49,11 @@ namespace Autotests.Tests.T01_StartSettingTests
             warehousesListPage = warehouseCreatePage.GoTo<UserWarehousesPage>();
 
             warehousesListPage.Table.GetRow(0).Name.WaitPresence();
+
+            var defaultPage = warehousesListPage.LoginOut();
+            adminPage = defaultPage.LoginAsAdmin(adminName, adminPass);
+            var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
+            adminMaintenancePage.AlertText.WaitText("Cache flushed!");
         }
 
         [Test, Description("Создания магазина для тестов на калькулятор")]

@@ -9,7 +9,7 @@ namespace Autotests.Tests.T03_ApiTests
 {
     public class OrderEditingTests : ConstVariablesTestBase
     {
-        [Test, Description("Создание заказа курьерской и редактирование")]
+        [Test, Description("Создание заказа курьерски и редактирование")]
         public void OrderCourirsEditingTest()
         {
             LoginAsAdmin(adminName, adminPass);
@@ -56,7 +56,6 @@ namespace Autotests.Tests.T03_ApiTests
                     {"dimension_side1", "5"},
                     {"dimension_side2", "5"},
                     {"dimension_side3", "5"},
-                    {"confirmed", "false"},
                     {"weight", "5"},
                     {"declared_price", "1100"},
                     {"payment_price", "1300"},
@@ -150,7 +149,6 @@ namespace Autotests.Tests.T03_ApiTests
                     {"dimension_side1", "5"},
                     {"dimension_side2", "5"},
                     {"dimension_side3", "5"},
-                    {"confirmed", "false"},
                     {"weight", "5"},
                     {"declared_price", "1100"},
                     {"payment_price", "1300"},
@@ -193,7 +191,7 @@ namespace Autotests.Tests.T03_ApiTests
             orderSelfEditingPage.GoodsDescription.WaitValue("goods_description");
         }
 
-        [Test, Description("Создание заказа самовывоза и редактирование")]
+        [Test, Description("Создание заказа курьерски и редактирование не корректное")]
         public void OrderErrorEditingTest()
         {
             LoginAsAdmin(adminName, adminPass);
@@ -240,7 +238,6 @@ namespace Autotests.Tests.T03_ApiTests
                     {"dimension_side1", "5"},
                     {"dimension_side2", "5"},
                     {"dimension_side3", "5"},
-                    {"confirmed", "false"},
                     {"weight", "5"},
                     {"declared_price", "1100"},
                     {"payment_price", "1300"},
@@ -253,9 +250,9 @@ namespace Autotests.Tests.T03_ApiTests
                     {"to_email", userNameAndPass}
                 });
             Assert.IsFalse(responseFail.Success, "Ожидался ответ false на отправленный запрос POST по API");
-            Assert.AreEqual(responseFail.Response.Message, "Order not found");
+            Assert.AreEqual(responseFail.Response.ErrorText, "Order not found");
 
-            var responseOrderFail = (ApiResponse.ResponseFailOrder) apiRequest.POST(keyShopPublic + "/order_update/" +
+            var responseOrderFail = (ApiResponse.ResponseFailObject) apiRequest.POST(keyShopPublic + "/order_update/" +
                                                                       responseCreateOrders.Response.OrderId
                                                                       + ".json",
                 new NameValueCollection
@@ -277,7 +274,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsFalse(responseOrderFail.Success, "Ожидался ответ false на отправленный запрос POST по API");
             Assert.AreEqual(responseOrderFail.Response.Error.Email, "Email должно быть корректным адресом электронной почты");
 
-            responseOrderFail = (ApiResponse.ResponseFailOrder)apiRequest.POST(keyShopPublic + "/order_update/" +
+            responseOrderFail = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_update/" +
                                                           responseCreateOrders.Response.OrderId
                                                           + ".json",
                                                           new NameValueCollection

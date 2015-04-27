@@ -125,7 +125,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {"order_id", "123456" }
                 });
             Assert.IsFalse(responseDocumentsError.Success, "Ожидался ответ false на отправленный запрос Get по API");
-            Assert.AreEqual(responseDocumentsError.Response.Message, "Order not found");
+            Assert.AreEqual(responseDocumentsError.Response.ErrorText, "Order not found");
 
             //            проверка статуса документа с неправильным id RequestId
             var responseDocumentsStatus =

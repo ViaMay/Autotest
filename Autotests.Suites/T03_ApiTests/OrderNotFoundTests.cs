@@ -22,7 +22,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {"order", orderErrorId},
                 });
             Assert.IsFalse(responseFail.Success, "Ожидался ответ false на отправленный запрос POST по API");
-            Assert.AreEqual(responseFail.Response.Message, "Order not found!");
+            Assert.AreEqual(responseFail.Response.ErrorText, "Order not found!");
 
             //           Порверка статуса заявки id заявки
             responseFail = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/order_status.json",
@@ -31,14 +31,14 @@ namespace Autotests.Tests.T03_ApiTests
                 {"order",  orderErrorId}
                 });
             Assert.IsFalse(responseFail.Success, "Ожидался ответ false на отправленный запрос POST по API");
-            Assert.AreEqual(responseFail.Response.Message, "Order not found");
+            Assert.AreEqual(responseFail.Response.ErrorText, "Order not found");
 
             //           Инфо заявки id заявки
             responseFail = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic
                 + "/order_info/" + orderErrorId + ".json",
                 new NameValueCollection { });
             Assert.IsFalse(responseFail.Success, "Ожидался ответ false на отправленный запрос POST по API");
-            Assert.AreEqual(responseFail.Response.Message, "Order not found");
+            Assert.AreEqual(responseFail.Response.ErrorText, "Order not found");
 
             //         Отмена ордера id заявки
             responseFail = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/order_cancel.json",
@@ -48,7 +48,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {"order", orderErrorId}
                 });
             Assert.IsFalse(responseFail.Success, "Ожидался ответ false на отправленный запрос POST по API");
-            Assert.AreEqual(responseFail.Response.Message, "Order not found");
+            Assert.AreEqual(responseFail.Response.ErrorText, "Order not found");
         }
     }
 }

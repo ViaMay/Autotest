@@ -74,7 +74,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"company", "company"}
                     });
             Assert.IsFalse(responseFail.Success);
-            Assert.AreEqual(responseFail.Response.Message, "Company not found");
+            Assert.AreEqual(responseFail.Response.ErrorText, "Company not found");
 
         }
     }

@@ -18,7 +18,7 @@ namespace Autotests.Tests.T03_ApiTests
             string deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
 
 //            delivery_company = ""
-            var responseCreateFailOrder = (ApiResponse.ResponseFailOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
+            var responseCreateFailOrder = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_create.json",
                 new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
@@ -46,7 +46,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseCreateFailOrder.Response.Error.DeliveryCompany, "Компания доставки обязательно к заполнению");
             
 //            Вес пустой weight=0
-            responseCreateFailOrder = (ApiResponse.ResponseFailOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
+            responseCreateFailOrder = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_create.json",
                     new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
@@ -75,7 +75,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseCreateFailOrder.Response.Error.Weight, "Вес обязательно к заполнению");
         
 //            to_city=""
-            responseCreateFailOrder = (ApiResponse.ResponseFailOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
+            responseCreateFailOrder = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_create.json",
                     new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
