@@ -49,7 +49,7 @@ namespace Autotests.Utilities.ApiTestCore
                     string[] words = ApplicationBaseUrl.Split(new char[] { ':', '@' });
                     client.Credentials = new NetworkCredential(words[0], words[1]);
                 }
-                byte[] responseJson = client.UploadValues("http://" + ApplicationBaseUrl + ":80/api/v1/" + url, data);
+                byte[] responseJson = client.UploadValues("http://" + ApplicationBaseUrl + "/api/v1/" + url, data);
                 return JsonSerializer(Encoding.UTF8.GetString(responseJson));
             }
         }
@@ -84,8 +84,8 @@ namespace Autotests.Utilities.ApiTestCore
 //            ResponseFailOrder
             if (value.Contains(@"{""success"":false,""response"":{""message"":{"))
             {
-                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseFailOrder));
-                return (ApiResponse.ResponseFailOrder)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseFailObject));
+                return (ApiResponse.ResponseFailObject)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
 //            ResponseAddOrder
             if (value.Contains(@"success"":true,""response"":{""order"":"))
@@ -116,6 +116,12 @@ namespace Autotests.Utilities.ApiTestCore
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseCompanyTerm));
                 return (ApiResponse.ResponseCompanyTerm)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+//            ResponseInfoObject
+            if (value.Contains(@"success"":true,""response"":{""_id") && value.Contains(@"name"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseInfoObject));
+                return (ApiResponse.ResponseInfoObject)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
 //            ResponseAddObject
             if (value.Contains(@"success"":true,""response"":{""_id"))

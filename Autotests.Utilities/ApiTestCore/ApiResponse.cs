@@ -15,6 +15,46 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class InfoObjectMessage
+        {
+            [DataMember(Name = "_id")]
+            public string Id { get; set; }
+
+            [DataMember(Name = "name")]
+            public string Name { get; set; }
+
+            [DataMember(Name = "address")]
+            public string Address { get; set; }
+
+            [DataMember(Name = "warehouse")]
+            public string Warehouse { get; set; }
+
+            [DataMember(Name = "street")]
+            public string Street { get; set; }
+
+            [DataMember(Name = "house")]
+            public string House { get; set; }
+
+            [DataMember(Name = "flat")]
+            public string Flat { get; set; }
+
+            [DataMember(Name = "city")]
+            public string City { get; set; }
+
+            [DataMember(Name = "contact_person")]
+            public string ContactPerson { get; set; }
+
+            [DataMember(Name = "contact_phone")]
+            public string ContactPhone { get; set; }
+
+            [DataMember(Name = "contact_email")]
+            public string ContactEmail { get; set; }
+
+            [DataMember(Name = "schedule")]
+            public string Schedule { get; set; }
+        }
+
+        [DataContract]
         public class AddOrderMessage
         {
             [DataMember(Name = "order")]
@@ -44,13 +84,38 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "to_email")]
             public string Email { get; set; }
+
+            [DataMember(Name = "name")]
+            public string Name { get; set; }
+
+            [DataMember(Name = "warehouse")]
+            public string Warehouse { get; set; }
+
+            [DataMember(Name = "address")]
+            public string Address { get; set; }
+
+            [DataMember(Name = "street")]
+            public string Street { get; set; }
+
+            [DataMember(Name = "house")]
+            public string House { get; set; }
+
+            [DataMember(Name = "flat")]
+            public string Flat { get; set; }
+
+            [DataMember(Name = "contact_person")]
+            public string ContactPerson { get; set; }
+
+            [DataMember(Name = "contact_phone")]
+            public string ContactPhone { get; set; }
+
         }
 
         [DataContract]
         public class FailMessage
         {
             [DataMember(Name = "message")]
-            public string Message { get; set; }
+            public string ErrorText { get; set; }
         }
 
         [DataContract]
@@ -315,6 +380,13 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class ResponseInfoObject : TResponse
+        {
+            [DataMember(Name = "response")]
+            public InfoObjectMessage Response { get; set; }
+        }
+
+        [DataContract]
         public class ResponseAddOrder : TResponse
         {
             [DataMember(Name = "response")]
@@ -350,7 +422,7 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
-        public class ResponseFailOrder : TResponse
+        public class ResponseFailObject : TResponse
         {
             [DataMember(Name = "response")]
             public FailOrderMessage Response { get; set; }
