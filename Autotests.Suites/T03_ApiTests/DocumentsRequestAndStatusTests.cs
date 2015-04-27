@@ -104,8 +104,14 @@ namespace Autotests.Tests.T03_ApiTests
 
             foreach (var document in responseDocumentsStatus.Response.Documents)
             {
-                document.DeliveryCompany.Equals(deliveryCompanyId);
-                document.PickupCompany.Equals(deliveryCompanyId);
+                if (document.Type == "1")
+                {
+                    document.PickupCompany.Equals(deliveryCompanyId);
+                }
+                if (document.Type == "3")
+                {
+                    document.DeliveryCompany.Equals(deliveryCompanyId);
+                }
                 document.Warehouse.Equals(usersWarehousId);
             }
         }

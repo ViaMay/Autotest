@@ -357,7 +357,7 @@ namespace Autotests.Utilities.ApiTestCore
         public class Documents
         {
             [DataMember(Name = "type")]
-            public string type { get; set; }
+            public string Type { get; set; }
 
             [DataMember(Name = "warehouse")]
             public string Warehouse { get; set; }
