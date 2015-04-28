@@ -102,6 +102,8 @@
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\BaseRowControl.cs" />
     <Compile Include="Pages\PageAdmin\AdminMaintenancePage.cs" />
+    <Compile Include="Pages\PageAdmin\PaymentPriceFeeCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\PaymentPriceFeePage.cs" />
     <Compile Include="Pages\PageAdmin\PickupTimetableCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\PickupTimetablePage.cs" />
     <Compile Include="Pages\PageAdmin\OrderOutputEditingPage.cs" />

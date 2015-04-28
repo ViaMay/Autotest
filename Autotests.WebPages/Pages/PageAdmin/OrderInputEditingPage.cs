@@ -13,8 +13,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
             ProcessDate = new StaticText(By.Name("process_date"));
         }
 
-
-
         public StaticText LabelDirectoryOrderInput { get; set; }
         public StaticText PickupDate { get; set; }
         public StaticText TransferCDDate { get; set; }

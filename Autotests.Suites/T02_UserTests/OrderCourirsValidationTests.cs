@@ -89,7 +89,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateCourirsPage.DeliveryList[0].WaitVisible();
 
-            orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError();
+            orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError(1);
             orderCreateCourirsPage.ErrorText[0].WaitText("Улица получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[1].WaitText("Дом получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[2].WaitText("Квартира получателя обязательно к заполнению");

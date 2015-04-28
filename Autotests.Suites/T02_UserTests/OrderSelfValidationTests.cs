@@ -16,44 +16,36 @@ namespace Autotests.Tests.T02_UserTests
             var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
 
             orderCreateSelfPage.СountedButton.Click();
-            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и наложенный платеж");
+            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
             orderCreateSelfPage.AletrError.Сancel();
 
-            orderCreateSelfPage.DeclaredPrice.SetValueAndWait("10.1");
             orderCreateSelfPage.Width.SetValueAndWait("10.1");
             orderCreateSelfPage.Height.SetValueAndWait("11.1");
             orderCreateSelfPage.Length.SetValueAndWait("20.1");
             orderCreateSelfPage.Weight.SetValueAndWait("9.1");
 
             orderCreateSelfPage.СountedButton.Click();
-            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и наложенный платеж");
-            orderCreateSelfPage.AletrError.Accept();
-
-            orderCreateSelfPage.PaymentPrice.SetValueAndWait("0");
-            orderCreateSelfPage.DeclaredPrice.SetValueAndWait("");
-
-            orderCreateSelfPage.СountedButton.Click();
-            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и наложенный платеж");
+            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
             orderCreateSelfPage.AletrError.Accept();
 
             orderCreateSelfPage.DeclaredPrice.SetValueAndWait("100");
             orderCreateSelfPage.Weight.SetValueAndWait("");
 
             orderCreateSelfPage.СountedButton.Click();
-            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и наложенный платеж");
+            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
             orderCreateSelfPage.AletrError.Accept();
 
             orderCreateSelfPage.Height.SetValueAndWait("");
             orderCreateSelfPage.Length.SetValueAndWait("");
-            orderCreateSelfPage.Weight.SetValueAndWait("");
+            orderCreateSelfPage.Width.SetValueAndWait("");
 
             orderCreateSelfPage.СountedButton.Click();
-            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и наложенный платеж");
+            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
             orderCreateSelfPage.AletrError.Accept();
 
             orderCreateSelfPage.Height.SetValueAndWait("0");
             orderCreateSelfPage.Length.SetValueAndWait("0");
-            orderCreateSelfPage.Weight.SetValueAndWait("0");
+            orderCreateSelfPage.Width.SetValueAndWait("0");
             orderCreateSelfPage.СountedButton.Click();
  }
 

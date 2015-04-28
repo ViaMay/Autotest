@@ -98,7 +98,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsFalse(responseErrorWarehouse.Success, "Ожидался ответ false на отправленный запрос POST по API");
             Assert.AreEqual(responseErrorWarehouse.Response.ErrorText, "City not found");
 
-            //            Создания склада неудачное
+            //            Создания склада неудачное все поля пустые
             var responseErrorWarehouse2 =
                 (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/warehouse_create.json",
                     new NameValueCollection

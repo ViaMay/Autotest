@@ -104,7 +104,7 @@ namespace Autotests.Tests.T03_ApiTests
 
             foreach (var document in responseDocumentsStatus.Response.Documents)
             {
-                if (document.Type == "1")
+                if (document.Type == "2")
                 {
                     document.PickupCompany.Equals(deliveryCompanyId);
                 }

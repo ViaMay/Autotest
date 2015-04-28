@@ -36,7 +36,7 @@ namespace Autotests.Tests.T03_ApiTests
         {
             for (var i = 0; i < responseDeliveryPoints.Response.Count(); i++)
             {
-                if (responseDeliveryPoints.Response[i].Name == deliveryPointName)
+                if (responseDeliveryPoints.Response[i].Name == name)
                     return responseDeliveryPoints.Response[i];
             }
             throw new Exception(string.Format("не найдена точка доставки с именем {0} в списке всех точек доставки", deliveryPointName));

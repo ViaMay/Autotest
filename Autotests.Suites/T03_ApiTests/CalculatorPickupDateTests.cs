@@ -20,7 +20,7 @@ namespace Autotests.Tests.T03_ApiTests
                 LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
             string deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
 
-//            поле pickup_date нет - считается что оно заполненно тукущей датой
+//            поле pickup_date нет - считается что оно заполненно текущей датой
             var responseCalculator =
                (ApiResponse.ResponseCalculation)apiRequest.GET("api/v1/" + keyShopPublic + "/calculator.json",
                    new NameValueCollection

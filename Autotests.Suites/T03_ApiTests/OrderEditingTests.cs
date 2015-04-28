@@ -65,7 +65,7 @@ namespace Autotests.Tests.T03_ApiTests
                     {"to_flat", "to_flat"},
                     {"to_phone", "1199999999"},
                     {"goods_description", "goods_description"},
-                    {"to_email", userNameAndPass}
+                    {"to_email", "2" + userNameAndPass}
                 });
             Assert.IsTrue(responseEditOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
             Assert.AreEqual(responseCreateOrders.Response.OrderId, responseEditOrders.Response.Id);
@@ -95,7 +95,7 @@ namespace Autotests.Tests.T03_ApiTests
             orderCourirsEditingPage.BuyerFlat.WaitValue("to_flat");
             orderCourirsEditingPage.BuyerName.WaitValue("to_name");
             orderCourirsEditingPage.BuyerPhone.WaitValue("+7 (119)999-9999");
-            orderCourirsEditingPage.BuyerEmail.WaitValue(userNameAndPass);
+            orderCourirsEditingPage.BuyerEmail.WaitValue("2" + userNameAndPass);
 
             orderCourirsEditingPage.PaymentPrice.WaitValue("1300");
             orderCourirsEditingPage.OrderNumber.WaitValue("test_userShops_via");
@@ -158,7 +158,7 @@ namespace Autotests.Tests.T03_ApiTests
                     {"to_flat", "to_flat"},
                     {"to_phone", "1199999999"},
                     {"goods_description", "goods_description"},
-                    {"to_email", userNameAndPass}
+                    {"to_email", "2" + userNameAndPass}
                 });
             Assert.IsTrue(responseEditOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
             Assert.AreEqual(responseCreateOrders.Response.OrderId, responseEditOrders.Response.Id);
@@ -184,7 +184,7 @@ namespace Autotests.Tests.T03_ApiTests
 
             orderSelfEditingPage.BuyerName.WaitValue("to_name");
             orderSelfEditingPage.BuyerPhone.WaitValue("+7 (119)999-9999");
-            orderSelfEditingPage.BuyerEmail.WaitValue(userNameAndPass);
+            orderSelfEditingPage.BuyerEmail.WaitValue("2" + userNameAndPass);
             orderSelfEditingPage.DeclaredPrice.WaitValue("1100");
             orderSelfEditingPage.PaymentPrice.WaitValue("1300");
             orderSelfEditingPage.OrderNumber.WaitValue("test_userShops_via");

@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -50,12 +51,20 @@ namespace Autotests.Utilities.ApiTestCore
                     client.Credentials = new NetworkCredential(words[0], words[1]);
                 }
                 byte[] responseJson = client.UploadValues("http://" + ApplicationBaseUrl + "/api/v1/" + url, data);
-                return JsonSerializer(Encoding.UTF8.GetString(responseJson));
+                var respons = Encoding.UTF8.GetString(responseJson);
+                return JsonSerializer(respons);
             }
         }
 
         private static ApiResponse.TResponse JsonSerializer(string value)
         {
+//            ResponseDocumentsRequest если тег response есть completed и не 
+            if (value.Contains(@"percent_card") && value.Contains(@"percent"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponsePaymentPriceFee));
+                return (ApiResponse.ResponsePaymentPriceFee)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+
 //            ResponseDocumentsRequest если тег response есть completed и не 
             if (value.Contains(@"response"":{""completed"""))
             {
@@ -75,17 +84,18 @@ namespace Autotests.Utilities.ApiTestCore
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeliveryPoints));
                 return (ApiResponse.ResponseDeliveryPoints)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
-//            ResponseFail
-            if (value.Contains(@"success"":false,""response"":{""message"":""") )
-            {
-                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseFail));
-                return (ApiResponse.ResponseFail)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
-            }
 //            ResponseFailOrder
             if (value.Contains(@"{""success"":false,""response"":{""message"":{"))
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseFailObject));
                 return (ApiResponse.ResponseFailObject)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+
+//            ResponseFail
+            if (value.Contains(@"success"":false"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseFail));
+                return (ApiResponse.ResponseFail)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
 //            ResponseAddOrder
             if (value.Contains(@"success"":true,""response"":{""order"":"))
@@ -128,6 +138,34 @@ namespace Autotests.Utilities.ApiTestCore
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseAddObject));
                 return (ApiResponse.ResponseAddObject)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+//            ResponseDeamonСities
+            if (value.Contains(@"success"":true,""options"))
+            {
+                Encoding utf8 = Encoding.GetEncoding("utf-8");
+                Encoding win1251 = Encoding.GetEncoding("windows-1251");
+                value = Encoding.GetEncoding("utf-8").GetString(Encoding.Convert(utf8, win1251, utf8.GetBytes(value)));
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeamonСities));
+                return (ApiResponse.ResponseDeamonСities)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+
+//            ResponseDeamonСity
+            if (value.Contains(@"success"":true,""result"))
+            {
+                Encoding utf8 = Encoding.GetEncoding("utf-8");
+                Encoding win1251 = Encoding.GetEncoding("windows-1251");
+                value = Encoding.GetEncoding("utf-8").GetString(Encoding.Convert(utf8, win1251, utf8.GetBytes(value)));
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeamonСity));
+                return (ApiResponse.ResponseDeamonСity)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+//            ResponseDeamonPoints
+            if (value.Contains(@"success"":true,""points"))
+            {
+                Encoding utf8 = Encoding.GetEncoding("utf-8");
+                Encoding win1251 = Encoding.GetEncoding("windows-1251");
+                value = Encoding.GetEncoding("utf-8").GetString(Encoding.Convert(utf8, win1251, utf8.GetBytes(value)));
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeamonPoints));
+                return (ApiResponse.ResponseDeamonPoints)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
             var json2 = new DataContractJsonSerializer(typeof (ApiResponse.TResponse));
             return (ApiResponse.TResponse) json2.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));

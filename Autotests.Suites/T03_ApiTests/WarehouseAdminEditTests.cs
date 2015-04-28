@@ -115,7 +115,7 @@ namespace Autotests.Tests.T03_ApiTests
                     );
             Assert.IsTrue(responseWarehouse.Success, "Ожидался ответ true на отправленный запрос POST по API");
             
-            //            Создания склада неудачное пустой город
+            //            Создания склада неудачное пустое id склада
             var responseErrorWarehouse =
                 (ApiResponse.ResponseFail)apiRequest.POST(keyShopPublic + "/warehouse_edit.json",
                     new NameValueCollection

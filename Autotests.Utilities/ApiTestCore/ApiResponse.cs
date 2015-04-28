@@ -255,6 +255,131 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class OptionsCity
+        {
+            [DataMember(Name = "_id")]
+            public string Id { get; set; }
+
+            [DataMember(Name = "name")]
+            public string Name { get; set; }
+
+            [DataMember(Name = "name_index")]
+            public string NameIndex { get; set; }
+
+            [DataMember(Name = "city_id")]
+            public string CityId { get; set; }
+
+            [DataMember(Name = "country")]
+            public string Country { get; set; }
+
+            [DataMember(Name = "city")]
+            public string City { get; set; }
+
+            [DataMember(Name = "region")]
+            public string Region { get; set; }
+
+            [DataMember(Name = "region_id")]
+            public string RegionId { get; set; }
+
+            [DataMember(Name = "postal_code")]
+            public string PostalCode { get; set; }
+
+            [DataMember(Name = "area")]
+            public string Area { get; set; }
+
+            [DataMember(Name = "kladr")]
+            public string Kladr { get; set; }
+
+            [DataMember(Name = "type")]
+            public string Type { get; set; }
+
+            [DataMember(Name = "importance")]
+            public string Importance { get; set; }
+        }
+
+        [DataContract]
+        public class OptionsPoints
+        { 
+            [DataMember(Name = "_id")]
+            public string Id { get; set; }
+
+            [DataMember(Name = "name")]
+            public string Name { get; set; }
+
+            [DataMember(Name = "city_id")]
+            public string CityId { get; set; }
+
+            [DataMember(Name = "city")]
+            public string City { get; set; }
+
+            [DataMember(Name = "region")]
+            public string Region { get; set; }
+
+            [DataMember(Name = "region_id")]
+            public string RegionId { get; set; }
+
+            [DataMember(Name = "city_type")]
+            public string CityType { get; set; }
+
+            [DataMember(Name = "postal_code")]
+            public string PostalCode { get; set; }
+
+            [DataMember(Name = "area")]
+            public string Area { get; set; }
+
+            [DataMember(Name = "kladr")]
+            public string Kladr { get; set; }
+
+            [DataMember(Name = "company")]
+            public string Company { get; set; }
+
+            [DataMember(Name = "company_id")]
+            public string CompanyId { get; set; }
+
+            [DataMember(Name = "company_code")]
+            public string CompanyCode { get; set; }
+
+            [DataMember(Name = "metro")]
+            public string Metro { get; set; }
+
+            [DataMember(Name = "description_in")]
+            public string DescriptionIn { get; set; }
+
+            [DataMember(Name = "description_out")]
+            public string DescriptionOut { get; set; }
+
+            [DataMember(Name = "indoor_place")]
+            public string IndoorPlace { get; set; }
+
+            [DataMember(Name = "address")]
+            public string Address { get; set; }
+
+            [DataMember(Name = "schedule")]
+            public string Schedule { get; set; }
+
+            [DataMember(Name = "longitude")]
+            public string Longitude { get; set; }
+
+            [DataMember(Name = "latitude")]
+            public string Latitude { get; set; }
+
+            [DataMember(Name = "has_fitting_room")]
+            public bool HasFittingRoom { get; set; }
+
+            [DataMember(Name = "is_cash")]
+            public bool IsCash { get; set; }
+
+            [DataMember(Name = "is_card")]
+            public bool IsCard { get; set; }
+            
+            [DataMember(Name = "type")]
+            public string Type { get; set; }
+
+            [DataMember(Name = "status")]
+            public string Status { get; set; }
+        }
+
+        [DataContract]
         public class City
         {
             [DataMember(Name = "_id")]
@@ -339,6 +464,22 @@ namespace Autotests.Utilities.ApiTestCore
             [DataMember(Name = "ticket_id")]
             public string TicketId { get; set; }
         }
+
+        [DataContract]
+        public class MessagePaymentPriceFee
+        {
+            [DataMember(Name = "from")]
+            public string From { get; set; }
+
+            [DataMember(Name = "min")]
+            public string Min { get; set; }
+
+            [DataMember(Name = "percent")]
+            public string Percent { get; set; }
+
+            [DataMember(Name = "percent_card")]
+            public string PercentCard { get; set; }
+        }
         
         [DataContract]
         public class MessageDocumentsRequest
@@ -370,6 +511,27 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "url")]
             public string Url { get; set; }
+        }
+
+        [DataContract]
+        public class ResponseDeamonPoints : TResponse
+        {
+            [DataMember(Name = "points")]
+            public OptionsPoints[] Points { get; set; }
+        }
+
+        [DataContract]
+        public class ResponseDeamonСities : TResponse
+        {
+            [DataMember(Name = "options")]
+            public OptionsCity[] Options { get; set; }
+        }
+
+        [DataContract]
+        public class ResponseDeamonСity : TResponse
+        {
+            [DataMember(Name = "result")]
+            public OptionsCity Result { get; set; }
         }
 
         [DataContract]
@@ -419,6 +581,9 @@ namespace Autotests.Utilities.ApiTestCore
         {
             [DataMember(Name = "response")]
             public FailMessage Response { get; set; }
+
+            [DataMember(Name = "error")]
+            public string Error { get; set; }
         }
 
         [DataContract]
@@ -454,6 +619,13 @@ namespace Autotests.Utilities.ApiTestCore
         {
             [DataMember(Name = "response")]
             public MessageDocumentsRequest Response { get; set; }
+        }       
+ 
+        [DataContract]
+        public class ResponsePaymentPriceFee : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessagePaymentPriceFee Response { get; set; }
         }
 
         [DataContract]
