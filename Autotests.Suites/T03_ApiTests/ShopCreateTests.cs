@@ -67,7 +67,7 @@ namespace Autotests.Tests.T03_ApiTests
                 shopsPage = shopsPage.SeachButtonRowClickAndGo();
             }
 
-            var responseShop = apiRequest.POST("cabinet/" + userId + "/shop_create.json",
+            var responseShop = (ApiResponse.ResponseAddObject)apiRequest.POST("cabinet/" + userId + "/shop_create.json",
                 new NameValueCollection
                 {
                     {"name", userShopName + "_Api"},
@@ -83,7 +83,7 @@ namespace Autotests.Tests.T03_ApiTests
             userPage.UserShops.Click();
             var shopsListPage = userPage.GoTo<UserShopsPage>();
             var row = shopsListPage.Table.FindRowByName(userShopName + "_Api");
-            row.Name.WaitTextContains(userShopName + "_Api\r\nAPI ключ для модуля:");
+            row.Name.WaitTextContains(userShopName + "_Api\r\nAPI ключ для модуля: " + responseShop.Response.Key);
             row.Address.WaitTextContains("Квебек");
         }
         private string userId;

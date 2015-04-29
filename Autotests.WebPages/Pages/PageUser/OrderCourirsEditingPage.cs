@@ -29,6 +29,7 @@ namespace Autotests.WebPages.Pages.PageUser
             PaymentPrice = new TextInput(By.Name("payment_price"));
             OrderNumber = new StaticText(By.Name("shop_refnum"));
             GoodsDescription = new StaticText(By.Name("goods_description"));
+            ItemsCount = new StaticText(By.Name("items_count"));
 
             ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"));
             ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"));
@@ -66,6 +67,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput PaymentPrice { get; set; }
         public StaticText OrderNumber { get; set; }
         public StaticText GoodsDescription { get; set; }
+        public StaticText ItemsCount { get; set; }
 
         public ErrorActionTextControl ActionErrorText { get; set; }
         public ErrorTextControl ErrorText { get; set; }

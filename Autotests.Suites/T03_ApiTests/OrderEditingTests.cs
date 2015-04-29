@@ -100,6 +100,7 @@ namespace Autotests.Tests.T03_ApiTests
             orderCourirsEditingPage.PaymentPrice.WaitValue("1300");
             orderCourirsEditingPage.OrderNumber.WaitValue("test_userShops_via");
             orderCourirsEditingPage.GoodsDescription.WaitValue("goods_description");
+            orderCourirsEditingPage.ItemsCount.WaitValue("1");
         }
 
         [Test, Description("Создание заказа самовывоза и редактирование")]
@@ -189,6 +190,7 @@ namespace Autotests.Tests.T03_ApiTests
             orderSelfEditingPage.PaymentPrice.WaitValue("1300");
             orderSelfEditingPage.OrderNumber.WaitValue("test_userShops_via");
             orderSelfEditingPage.GoodsDescription.WaitValue("goods_description");
+            orderSelfEditingPage.ItemsCount.WaitValue("1");
         }
 
         [Test, Description("Создание заказа курьерски и редактирование не корректное")]

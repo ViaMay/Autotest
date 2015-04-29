@@ -15,13 +15,13 @@ namespace Autotests.Tests.T02_UserTests
             
             for (var i = 0; i < shopsListPage.Table.Count; i++)
             {
-                if (shopsListPage.Table.GetRow(i).Name.GetText().Contains(userShopName + "_2") ||
-                    shopsListPage.Table.GetRow(i).Name.GetText().Contains(userShopName + "_3"))
+                if (shopsListPage.Table.GetRow(i).Name.GetText().Contains(userShopName + "_2") || shopsListPage.Table.GetRow(i).Name.GetText().Contains(userShopName + "_3"))
                 {
-                    shopsListPage.Table.GetRow(0).ActionsDelete.Click();
+                    shopsListPage.Table.GetRow(i).ActionsDelete.Click();
                     shopsListPage.AletrDelete.WaitText("Вы действительно хотите удалить магазин?");
                     shopsListPage.AletrDelete.Accept();
                     shopsListPage = shopsListPage.GoTo<UserShopsPage>();
+                    i = 0;
                 }
             }
 

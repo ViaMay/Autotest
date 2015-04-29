@@ -11,6 +11,7 @@ namespace Autotests.Tests.T03_ApiTests
         [Test, Description("Получить перечень городов по началу названия")]
         public void AutocompleteTest()
         {
+//            Вводим название москва
             var responseCities = (ApiResponse.ResponseDeamonСities)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
@@ -18,8 +19,10 @@ namespace Autotests.Tests.T03_ApiTests
                         {"q", "москва"}
                     });
             Assert.IsTrue(responseCities.Success);
+//            получаем 8 мест
             Assert.AreEqual(responseCities.Options.Count(), 8);
 
+//            ищем по id 151184 в этом списке москву
             var responseRowCity = FindRowById("151184", responseCities);
             Assert.AreEqual(responseRowCity.Area, "");
             Assert.AreEqual(responseRowCity.Name, "Москва");
@@ -31,6 +34,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseRowCity.Type, "г");
             Assert.AreEqual(responseRowCity.Kladr, "77000000000");
 
+//            потом ищем деревню
             responseRowCity = FindRowById("127859", responseCities);
             Assert.AreEqual(responseRowCity.Area, "Пеновский");
             Assert.AreEqual(responseRowCity.Name, "Москва");
@@ -42,6 +46,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseRowCity.Type, "д");
             Assert.AreEqual(responseRowCity.Kladr, "69025000073");
 
+//            вводим начало с Санкт-Петербург
             responseCities = (ApiResponse.ResponseDeamonСities)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
@@ -49,9 +54,11 @@ namespace Autotests.Tests.T03_ApiTests
                         {"q", "Санкт-Петербург"}
                     });
             Assert.IsTrue(responseCities.Success);
+//            получаем список из одного города
             Assert.AreEqual(responseCities.Options.Count(), 1);
-
-            responseRowCity = FindRowById("151185", responseCities);
+//            проверяем что данные по Санкт-петербургу
+            responseRowCity = responseCities.Options[0];
+            Assert.AreEqual(responseRowCity.Id, "151185");
             Assert.AreEqual(responseRowCity.Area, "");
             Assert.AreEqual(responseRowCity.Name, "Санкт-Петербург");
             Assert.AreEqual(responseRowCity.NameIndex, "санкт-петербург");
@@ -62,6 +69,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseRowCity.Type, "г");
             Assert.AreEqual(responseRowCity.Kladr, "78000000000");
 
+//            вводим не существующее название qwe
             responseCities = (ApiResponse.ResponseDeamonСities)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
@@ -69,8 +77,10 @@ namespace Autotests.Tests.T03_ApiTests
                         {"q", "qwe"}
                     });
             Assert.IsTrue(responseCities.Success);
+//            проверяем что количество 0
             Assert.AreEqual(responseCities.Options.Count(), 0);
 
+//            ничего не вовводим
             responseCities = (ApiResponse.ResponseDeamonСities)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
@@ -78,12 +88,14 @@ namespace Autotests.Tests.T03_ApiTests
                         {"q", ""}
                     });
             Assert.IsTrue(responseCities.Success);
+//            проверяем что количество 100
             Assert.AreEqual(responseCities.Options.Count(), 100);
         }
 
         [Test, Description("Получить город по ID (только RU)")]
         public void CityIdTest()
         {
+//            вводим id Снегири
             var responseCity = (ApiResponse.ResponseDeamonСity)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
@@ -91,6 +103,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"_id", "712"}
                     });
             Assert.IsTrue(responseCity.Success);
+//            получаем данные по этому пункту
             var responseResult = responseCity.Result;
             Assert.AreEqual(responseResult.Id, "712");
             Assert.AreEqual(responseResult.Area, "Истринский");
@@ -103,6 +116,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseResult.Type, "пгт");
             Assert.AreEqual(responseResult.Kladr, "50009031000");
 
+//            вводим не сущестующий Id
             responseCity = (ApiResponse.ResponseDeamonСity)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
@@ -110,8 +124,10 @@ namespace Autotests.Tests.T03_ApiTests
                         {"_id", "qwe"}
                     });
             Assert.IsTrue(responseCity.Success);
+//            получаем результат null
             Assert.AreEqual(responseCity.Result, null);
 
+//            вводим пустой id
             var responseFail = (ApiResponse.ResponseFail)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
@@ -119,12 +135,14 @@ namespace Autotests.Tests.T03_ApiTests
                         {"_id", ""}
                     });
             Assert.IsFalse(responseFail.Success);
+//            получаем ошибку
             Assert.AreEqual(responseFail.Error, "city _id not found");
         }
 
         [Test, Description("Получить город по IP (только RU)")]
         public void GeoIpTest()
         {
+//            вводим ip москвы
             var responseCity = (ApiResponse.ResponseDeamonСity)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
@@ -132,6 +150,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"ip", "195.239.0.254"}
                     });
             Assert.IsTrue(responseCity.Success);
+//            проверчем что город нашелся москва
             var responseResult = responseCity.Result;
             Assert.AreEqual(responseResult.CityId, "151184");
             Assert.AreEqual(responseResult.Country, "RU");
@@ -143,12 +162,14 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseResult.Type, "г");
             Assert.AreEqual(responseResult.Kladr, "77000000000");
 
+//            вводим ip Санкт-Петербурга
             responseCity = (ApiResponse.ResponseDeamonСity)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
                         {"_action", "geoip"},
                         {"ip", "195.131.50.254"}
                     });
+//            проверяем что город нашелся 
             Assert.IsTrue(responseCity.Success);
             responseResult = responseCity.Result;
             Assert.AreEqual(responseResult.CityId, "151185");
@@ -161,6 +182,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseResult.Type, "г");
             Assert.AreEqual(responseResult.Kladr, "78000000000");
 
+//            ничего неуказываем - проверяем что что то нашлось
             responseCity = (ApiResponse.ResponseDeamonСity)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
@@ -170,6 +192,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsTrue(responseCity.Success);
             Assert.AreEqual(responseResult.Country, "RU");
 
+//            ничего неуказываем - проверяем что что то нашлось
             responseCity = (ApiResponse.ResponseDeamonСity)apiRequest.GET("daemon/",
        new NameValueCollection
                     {
@@ -182,7 +205,7 @@ namespace Autotests.Tests.T03_ApiTests
         [Test, Description("Получить список пунктов самовывоза")]
         public void DeliveryPointsTest()
         {
- //            делаем список точек по Москве
+ //            запрашиваем список точек по Москве
             var responseDeliveryPoints = (ApiResponse.ResponseDeamonPoints)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
@@ -192,7 +215,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"short", ""}
                     });
             Assert.IsTrue(responseDeliveryPoints.Success);
-//            проверяем что наша точка доставки есть в списке
+//            проверяем что наша точка доставки есть в полученном списке
             var responseRowDeliveryPoint = FindRowByName(deliveryPointName, responseDeliveryPoints);
             Assert.AreEqual(responseRowDeliveryPoint.CityId, "151184");
             Assert.AreEqual(responseRowDeliveryPoint.City, "Москва");
@@ -208,7 +231,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseRowDeliveryPoint.Status, "2");
             Assert.AreEqual(responseRowDeliveryPoint.Type, "2");
 
-//            делаем список точек по Санкт-Петербургу
+//            запрашиваем список точек по Санкт-Петербургу
             responseDeliveryPoints = (ApiResponse.ResponseDeamonPoints)apiRequest.GET("daemon/",
                    new NameValueCollection
                     {
@@ -236,7 +259,6 @@ namespace Autotests.Tests.T03_ApiTests
             }
             throw new Exception(string.Format("не найдена точка доставки с именем {0} в списке всех точек доставки", name));
         }
-
         public ApiResponse.OptionsCity FindRowById(string id, ApiResponse.ResponseDeamonСities responseDeamonСities)
         {
             for (var i = 0; i < responseDeamonСities.Options.Count(); i++)

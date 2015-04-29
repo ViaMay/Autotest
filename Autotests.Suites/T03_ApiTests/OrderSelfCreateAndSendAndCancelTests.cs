@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ApiTests
 {
-    public class OrderSelfCreateAndSendTests : ConstVariablesTestBase
+    public class OrderSelfCreateAndSendAndCancelTests : ConstVariablesTestBase
     {
         [Test, Description("Создание заказа на самовывоз, запрос статусов, информации, подтверждения и отмена заявки")]
         public void OrderSelfTest()
@@ -41,7 +41,8 @@ namespace Autotests.Tests.T03_ApiTests
 		        {"to_phone", "9999999999"},
 		        {"to_email", userNameAndPass},
 		        {"goods_description", "Памперс"},
-		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"}
+		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
+		        {"items_count", "1"}
                 });
             Assert.IsTrue(responseCreateOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
@@ -55,6 +56,22 @@ namespace Autotests.Tests.T03_ApiTests
             ordersPage.Table.GetRow(0).Route.WaitText("Москва - Москва");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Подтвердить");
             ordersPage.Table.GetRow(0).Edit.WaitText("Редактировать");
+            ordersPage.Table.GetRow(0).Edit.Click();
+            var orderSelfEditingPage = ordersPage.GoTo<OrderSelfEditingPage>();
+
+            orderSelfEditingPage.Width.WaitValue("4");
+            orderSelfEditingPage.Height.WaitValue("4");
+            orderSelfEditingPage.Length.WaitValue("4");
+            orderSelfEditingPage.Weight.WaitValue("4");
+
+            orderSelfEditingPage.BuyerName.WaitValue("Ургудан Рабат Мантов");
+            orderSelfEditingPage.BuyerPhone.WaitValue("+7 (999)999-9999");
+            orderSelfEditingPage.BuyerEmail.WaitValue(userNameAndPass);
+            orderSelfEditingPage.DeclaredPrice.WaitValue("100");
+            orderSelfEditingPage.PaymentPrice.WaitValue("300");
+            orderSelfEditingPage.OrderNumber.WaitValue("test_userShops_via");
+            orderSelfEditingPage.GoodsDescription.WaitValue("Памперс");
+            orderSelfEditingPage.ItemsCount.WaitValue("1");
 
 //           Подтверждение заявки
             var responseConfirmationOrders = apiRequest.POST(keyShopPublic + "/order_confirm.json",
@@ -65,8 +82,8 @@ namespace Autotests.Tests.T03_ApiTests
                 });
             Assert.IsTrue(responseConfirmationOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
-            ordersPage.Orders.Click();
-            ordersPage = ordersPage.GoTo<OrdersListPage>();
+            orderSelfEditingPage.Orders.Click();
+            ordersPage = orderSelfEditingPage.GoTo<OrdersListPage>();
             ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Status.WaitText("Подтверждена");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Отменить");

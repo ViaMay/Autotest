@@ -138,7 +138,7 @@
     <Compile Include="T03_ApiTests\CalculatorPickupDateTests.cs" />
     <Compile Include="T03_ApiTests\OrderCourirsCreateTests.cs" />
     <Compile Include="T03_ApiTests\OrderSelfErrorTests.cs" />
-    <Compile Include="T03_ApiTests\OrderSelfCreateAndSendTests.cs" />
+    <Compile Include="T03_ApiTests\OrderSelfCreateAndSendAndCancelTests.cs" />
     <Compile Include="T03_ApiTests\CalculatorPriceSelfTests.cs" />
     <Compile Include="T03_ApiTests\ShopCreateTests.cs" />
     <Compile Include="T03_ApiTests\WarehouseCreateTests.cs" />
