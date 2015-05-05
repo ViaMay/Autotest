@@ -61,7 +61,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableRecipient.Email.WaitText(userNameAndPass);
             orderPage.TableRecipient.Phone.WaitText("+7 (111)111-1111");
             orderPage.TableRecipient.Issue.WaitText("Ручная");
-            orderPage.TableRecipient.PickupCompany.WaitText(companyName);
+            orderPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
             orderPage.TablePrice.PaymentPrice.WaitText("4.00 руб.");
@@ -74,6 +74,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableSize.Height.WaitText("4 см");
             orderPage.TableSize.Length.WaitText("4 см");
             orderPage.TableSize.Weight.WaitText("4.00 кг");
+            orderPage.TableSize.Count.WaitText("1");
 
             orderPage.TableArticle.GetRow(0).Name.WaitText("Имя1");
             orderPage.TableArticle.GetRow(0).Article.WaitText("Article1");

@@ -4,9 +4,9 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class СompaniesPage : AdminPageBase
+    public class CompaniesPage : AdminPageBase
     {
-        public СompaniesPage()
+        public CompaniesPage()
         {
             LabelDirectoryCompanies = new StaticText(By.CssSelector("legend"));
             CompanyCreate = new Link(By.LinkText("Создать"));
@@ -15,10 +15,10 @@ namespace Autotests.WebPages.Pages.PageAdmin
         }
 
         
-        public СompaniesPage SeachButtonRowClickAndGo()
+        public CompaniesPage SeachButtonRowClickAndGo()
         {
             Table.RowSearch.SeachButton.Click();
-            return GoTo<СompaniesPage>();
+            return GoTo<CompaniesPage>();
         }
 
         public StaticText LabelDirectoryCompanies { get; set; }

@@ -13,20 +13,20 @@ namespace Autotests.Tests.T04_AdminTests
         {
             //            Ставим нет (галочку) в компании нашей у поля Единый забор
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
-            adminPage.Сompanies.Click();
-            var companiesPage = adminPage.GoTo<СompaniesPage>();
-            companiesPage.Table.RowSearch.Name.SetValue(companyName);
+            adminPage.AdminCompanies.Click();
+            adminPage.Companies.Click();
+            var companiesPage = adminPage.GoTo<CompaniesPage>();
+            companiesPage.Table.RowSearch.Name.SetValue(companyPickupName);
             companiesPage = companiesPage.SeachButtonRowClickAndGo();
             string singlePickup = companiesPage.Table.GetRow(0).SinglePickup.GetText();
             if (singlePickup == "Yes")
             {
                 companiesPage.Table.GetRow(0).ActionsEdit.Click();
-                var companyCreatePage = companiesPage.GoTo<СompanyCreatePage>();
+                var companyCreatePage = companiesPage.GoTo<CompanyCreatePage>();
                 companyCreatePage.SinglePickup.Click();
                 companyCreatePage.SaveButton.Click();
-                companiesPage = companyCreatePage.GoTo<СompaniesPage>();
-                companiesPage.Table.RowSearch.Name.SetValue(companyName);
+                companiesPage = companyCreatePage.GoTo<CompaniesPage>();
+                companiesPage.Table.RowSearch.Name.SetValue(companyPickupName);
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
             }
             companiesPage.Table.GetRow(0).SinglePickup.WaitText("No");
@@ -67,27 +67,27 @@ namespace Autotests.Tests.T04_AdminTests
         {
 //            Ставим Да (галочку) в компании нашей у поля Единый забор
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
-            adminPage.Сompanies.Click();
-            var companiesPage = adminPage.GoTo<СompaniesPage>();
-            companiesPage.Table.RowSearch.Name.SetValue(companyName);
+            adminPage.AdminCompanies.Click();
+            adminPage.Companies.Click();
+            var companiesPage = adminPage.GoTo<CompaniesPage>();
+            companiesPage.Table.RowSearch.Name.SetValue(companyPickupName);
             companiesPage = companiesPage.SeachButtonRowClickAndGo();
             string singlePickup = companiesPage.Table.GetRow(0).SinglePickup.GetText();
             if (singlePickup == "No")
             {
                 companiesPage.Table.GetRow(0).ActionsEdit.Click();
-                var companyCreatePage = companiesPage.GoTo<СompanyCreatePage>();
+                var companyCreatePage = companiesPage.GoTo<CompanyCreatePage>();
                 companyCreatePage.SinglePickup.Click();
                 companyCreatePage.SaveButton.Click();
-                companiesPage = companyCreatePage.GoTo<СompaniesPage>();
-                companiesPage.Table.RowSearch.Name.SetValue(companyName);
+                companiesPage = companyCreatePage.GoTo<CompaniesPage>();
+                companiesPage.Table.RowSearch.Name.SetValue(companyPickupName);
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
             }
             companiesPage.Table.GetRow(0).SinglePickup.WaitText("Yes");
 
 //           удаляем календарь если он был
             //создаем в каледнаре выходной на завтрашнию дату у этой компании доставки
-            companiesPage.AdminСompanies.Click();
+            companiesPage.AdminCompanies.Click();
             companiesPage.Calendars.Click();
             var calendarsPage = companiesPage.GoTo<CalendarsPage>();
             calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
@@ -140,27 +140,27 @@ namespace Autotests.Tests.T04_AdminTests
         {
             //            Ставим Да (галочку) в компании нашей у поля Единый забор
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
-            adminPage.Сompanies.Click();
-            var companiesPage = adminPage.GoTo<СompaniesPage>();
-            companiesPage.Table.RowSearch.Name.SetValue(companyName);
+            adminPage.AdminCompanies.Click();
+            adminPage.Companies.Click();
+            var companiesPage = adminPage.GoTo<CompaniesPage>();
+            companiesPage.Table.RowSearch.Name.SetValue(companyPickupName);
             companiesPage = companiesPage.SeachButtonRowClickAndGo();
             string singlePickup = companiesPage.Table.GetRow(0).SinglePickup.GetText();
             if (singlePickup == "No")
             {
                 companiesPage.Table.GetRow(0).ActionsEdit.Click();
-                var companyCreatePage = companiesPage.GoTo<СompanyCreatePage>();
+                var companyCreatePage = companiesPage.GoTo<CompanyCreatePage>();
                 companyCreatePage.SinglePickup.Click();
                 companyCreatePage.SaveButton.Click();
-                companiesPage = companyCreatePage.GoTo<СompaniesPage>();
-                companiesPage.Table.RowSearch.Name.SetValue(companyName);
+                companiesPage = companyCreatePage.GoTo<CompaniesPage>();
+                companiesPage.Table.RowSearch.Name.SetValue(companyPickupName);
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
             }
             companiesPage.Table.GetRow(0).SinglePickup.WaitText("Yes");
 
             //           удаляем календарь если он был
             //создаем в каледнаре выходной на завтрашнию дату у этой компании доставки
-            companiesPage.AdminСompanies.Click();
+            companiesPage.AdminCompanies.Click();
             companiesPage.Calendars.Click();
             var calendarsPage = companiesPage.GoTo<CalendarsPage>();
             calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
@@ -225,27 +225,27 @@ namespace Autotests.Tests.T04_AdminTests
         {
             //            Ставим Да (галочку) в компании нашей у поля Единый забор
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
-            adminPage.Сompanies.Click();
-            var companiesPage = adminPage.GoTo<СompaniesPage>();
-            companiesPage.Table.RowSearch.Name.SetValue(companyName);
+            adminPage.AdminCompanies.Click();
+            adminPage.Companies.Click();
+            var companiesPage = adminPage.GoTo<CompaniesPage>();
+            companiesPage.Table.RowSearch.Name.SetValue(companyPickupName);
             companiesPage = companiesPage.SeachButtonRowClickAndGo();
             string singlePickup = companiesPage.Table.GetRow(0).SinglePickup.GetText();
             if (singlePickup == "No")
             {
                 companiesPage.Table.GetRow(0).ActionsEdit.Click();
-                var companyCreatePage = companiesPage.GoTo<СompanyCreatePage>();
+                var companyCreatePage = companiesPage.GoTo<CompanyCreatePage>();
                 companyCreatePage.SinglePickup.Click();
                 companyCreatePage.SaveButton.Click();
-                companiesPage = companyCreatePage.GoTo<СompaniesPage>();
-                companiesPage.Table.RowSearch.Name.SetValue(companyName);
+                companiesPage = companyCreatePage.GoTo<CompaniesPage>();
+                companiesPage.Table.RowSearch.Name.SetValue(companyPickupName);
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
             }
             companiesPage.Table.GetRow(0).SinglePickup.WaitText("Yes");
 
             //           удаляем календарь если он был
             //создаем в каледнаре выходной на завтрашнию дату у этой компании доставки
-            companiesPage.AdminСompanies.Click();
+            companiesPage.AdminCompanies.Click();
             companiesPage.Calendars.Click();
             var calendarsPage = companiesPage.GoTo<CalendarsPage>();
             calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);

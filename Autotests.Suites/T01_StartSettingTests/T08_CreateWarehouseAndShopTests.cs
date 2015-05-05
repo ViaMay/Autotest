@@ -98,7 +98,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             shopsPage.Table.GetRow(0).ActionsEdit.Click();
 
             var shopEditPage = shopsPage.GoTo<UserAdminShopCreatePage>();
-            shopEditPage.CompanyPickup.SetFirstValueSelect(companyName);
+            shopEditPage.CompanyPickup.SetFirstValueSelect(companyPickupName);
             shopEditPage.CreateButton.Click();
             shopsPage = shopEditPage.GoTo<UsersShopsPage>();
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");

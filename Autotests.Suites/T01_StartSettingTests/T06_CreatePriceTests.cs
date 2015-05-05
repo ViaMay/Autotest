@@ -9,23 +9,23 @@ namespace Autotests.Tests.T01_StartSettingTests
         public void CreatePricePickupTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.Prices.Mouseover();
             adminPage.PricesPickup.Click();
             var pricesPickupPage = adminPage.GoTo<PricesPickupPage>();
-            pricesPickupPage.Table.RowSearch.CompanyName.SetValue(companyName);
+            pricesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             pricesPickupPage = pricesPickupPage.SeachButtonRowClickAndGo();
 
             while (pricesPickupPage.Table.GetRow(0).CompanyName.IsPresent)
             {
                 pricesPickupPage.Table.GetRow(0).ActionsDelete.Click();
                 pricesPickupPage = pricesPickupPage.GoTo<PricesPickupPage>();
-                pricesPickupPage.Table.RowSearch.CompanyName.SetValue(companyName);
+                pricesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pricesPickupPage = pricesPickupPage.SeachButtonRowClickAndGo();
             }
             pricesPickupPage.PricePickupCreate.Click();
             var pricePickupCreatePage = pricesPickupPage.GoTo<PricePickupCreatePage>();
-            pricePickupCreatePage.CompanyName.SetFirstValueSelect(companyName);
+            pricePickupCreatePage.CompanyName.SetFirstValueSelect(companyPickupName);
             pricePickupCreatePage.City.SetFirstValueSelect("Москва");
             pricePickupCreatePage.Price.SetValueAndWait("10");
             pricePickupCreatePage.PriceOverFlow.SetValueAndWait("2");
@@ -34,16 +34,16 @@ namespace Autotests.Tests.T01_StartSettingTests
             pricePickupCreatePage.SaveButton.Click();
             pricesPickupPage = pricePickupCreatePage.GoTo<PricesPickupPage>();
 
-            pricesPickupPage.Table.RowSearch.CompanyName.SetValue(companyName);
+            pricesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             pricesPickupPage = pricesPickupPage.SeachButtonRowClickAndGo();
-            pricesPickupPage.Table.GetRow(0).CompanyName.WaitText(companyName);
+            pricesPickupPage.Table.GetRow(0).CompanyName.WaitText(companyPickupName);
         }
 
         [Test, Description("Создания цены курьера")]
         public void CreatePriceCourierTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.Prices.Mouseover();
             adminPage.PricesCourier.Click();
             var pricesCourierPage = adminPage.GoTo<PricesCourierPage>();
@@ -78,7 +78,7 @@ namespace Autotests.Tests.T01_StartSettingTests
         public void CreateSelfPriceTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.Prices.Mouseover();
             adminPage.PricesSelf.Click();
             var pricesSelfPage = adminPage.GoTo<PricesSelfPage>();

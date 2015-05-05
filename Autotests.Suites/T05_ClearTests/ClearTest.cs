@@ -57,6 +57,15 @@ namespace Autotests.Tests.T05_ClearTests
                 usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
                 usersPage = usersPage.SeachButtonRowClickAndGo();
             }
+            usersPage.UsersTable.RowSearch.UserEmail.SetValue(pickupNameAndPass);
+            usersPage = usersPage.SeachButtonRowClickAndGo();
+            while (usersPage.UsersTable.GetRow(0).UserEmail.IsPresent)
+            {
+                usersPage.UsersTable.GetRow(0).ActionsDelete.Click();
+                usersPage = usersPage.GoTo<UsersPage>();
+                usersPage.UsersTable.RowSearch.UserEmail.SetValue(pickupNameAndPass);
+                usersPage = usersPage.SeachButtonRowClickAndGo();
+            }
         }
         [Test, Description("удаление юр лица")]
         public void T04_DeleteLegalEntitiesTest()
@@ -77,14 +86,12 @@ namespace Autotests.Tests.T05_ClearTests
                 legalEntitiesPage = legalEntitiesPage.SeachButtonRowClickAndGo();
             }
         }
-
-
-
+        
         [Test, Description("удаление точки доставки")]
         public void T05_DeleteDeliveryPointTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.DeliveryPoints.Click();
             var deliveryPointsPage = adminPage.GoTo<DeliveryPointsPage>();
             deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
@@ -99,7 +106,7 @@ namespace Autotests.Tests.T05_ClearTests
             }
         }
 
-        [Test, Description("Создания веса")]
+        [Test, Description("Удаления веса")]
         public void T06_DeleteWeightTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
@@ -162,7 +169,7 @@ namespace Autotests.Tests.T05_ClearTests
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             //            удаление календаря если он был
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.Calendars.Click();
             var calendarsPage = adminPage.GoTo<CalendarsPage>();
             calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
@@ -181,12 +188,21 @@ namespace Autotests.Tests.T05_ClearTests
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             //            удаление графика забора если он был
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.PickupTimetable.Click();
             var pickupTimetablePage = adminPage.GoTo<PickupTimetablePage>();
+            pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
+            pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
+            while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
+            {
+                pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
+                pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
+                pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
+                pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
+            }
+
             pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
             pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
-            //            создаем график забора на сегоднешнею дату 23:45
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
@@ -200,16 +216,27 @@ namespace Autotests.Tests.T05_ClearTests
         public void T11_DeleteCompanyTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
-            adminPage.Сompanies.Click();
-            var companiesPage = adminPage.GoTo<СompaniesPage>();
+            adminPage.AdminCompanies.Click();
+            adminPage.Companies.Click();
+            var companiesPage = adminPage.GoTo<CompaniesPage>();
             companiesPage.Table.RowSearch.Name.SetValue(companyName);
             companiesPage = companiesPage.SeachButtonRowClickAndGo();
 
             while (companiesPage.Table.GetRow(0).Name.IsPresent)
             {
                 companiesPage.Table.GetRow(0).ActionsDelete.Click();
-                companiesPage = companiesPage.GoTo<СompaniesPage>();
+                companiesPage = companiesPage.GoTo<CompaniesPage>();
+                companiesPage.Table.RowSearch.Name.SetValue(companyName);
+                companiesPage = companiesPage.SeachButtonRowClickAndGo();
+            }
+
+            companiesPage.Table.RowSearch.Name.SetValue(companyPickupName);
+            companiesPage = companiesPage.SeachButtonRowClickAndGo();
+
+            while (companiesPage.Table.GetRow(0).Name.IsPresent)
+            {
+                companiesPage.Table.GetRow(0).ActionsDelete.Click();
+                companiesPage = companiesPage.GoTo<CompaniesPage>();
                 companiesPage.Table.RowSearch.Name.SetValue(companyName);
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
             }

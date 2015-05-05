@@ -17,8 +17,9 @@ namespace Autotests.WebPages.Pages.PageAdmin
             IntervalsWeight = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(2)> ul > li:nth-child(1)"));
             IntervalsSize = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(2)> ul > li:nth-child(2)"));
 
-            AdminСompanies = new Link(By.LinkText("Компании"));
-            Сompanies = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li"));
+            AdminCompanies = new Link(By.LinkText("Компании"));
+            Companies = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li"));
+            Managers = new Link(By.LinkText("Менеджеры"));
             Calendars = new Link(By.LinkText("Календари"));
             PickupTimetable = new Link(By.LinkText("График забора"));
             PaymentPrice = new Link(By.LinkText("Наложенный платеж"));
@@ -52,8 +53,9 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public Link IntervalsWeight { get; set; }
         public Link IntervalsSize { get; set; }
 
-        public Link AdminСompanies { get; set; }
-        public Link Сompanies { get; set; }
+        public Link AdminCompanies { get; set; }
+        public Link Companies { get; set; }
+        public Link Managers { get; set; }
         public Link PickupTimetable { get; set; }
         public Link Calendars { get; set; }
         public Link PaymentPrice { get; set; }

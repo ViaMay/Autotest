@@ -9,39 +9,39 @@ namespace Autotests.Tests.T01_StartSettingTests
         public void CreateTimesPickupTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.Times.Mouseover();
             adminPage.TimesPickup.Click();
             var timesPickupPage = adminPage.GoTo<TimesPickupPage>();
-            timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyName);
+            timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             timesPickupPage = timesPickupPage.SeachButtonRowClickAndGo();
 
             while (timesPickupPage.Table.GetRow(0).Name.IsPresent)
             {
                 timesPickupPage.Table.GetRow(0).ActionsDelete.Click();
                 timesPickupPage = timesPickupPage.GoTo<TimesPickupPage>();
-                timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyName);
+                timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 timesPickupPage = timesPickupPage.SeachButtonRowClickAndGo();
             }
             timesPickupPage.TimesPickupCreate.Click();
             var timePickupCreatePage = timesPickupPage.GoTo<TimePickupCreatePage>();
-            timePickupCreatePage.CompanyName.SetFirstValueSelect(companyName);
+            timePickupCreatePage.CompanyName.SetFirstValueSelect(companyPickupName);
             timePickupCreatePage.City.SetFirstValueSelect("Москва");
             timePickupCreatePage.MaxTime.SetValueAndWait("1");
             timePickupCreatePage.MinTime.SetValueAndWait("1");
             timePickupCreatePage.SaveButton.Click();
             timesPickupPage = timePickupCreatePage.GoTo<TimesPickupPage>();
 
-            timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyName);
+            timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             timesPickupPage = timesPickupPage.SeachButtonRowClickAndGo();
-            timesPickupPage.Table.GetRow(0).Name.WaitText(companyName);
+            timesPickupPage.Table.GetRow(0).Name.WaitText(companyPickupName);
         }
 
         [Test, Description("Создания сроков курьера")]
         public void CreatePriceCourierTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.Times.Mouseover();
             adminPage.TimesCourier.Click();
             var timesCourierPage = adminPage.GoTo<TimesPage>();
@@ -73,7 +73,7 @@ namespace Autotests.Tests.T01_StartSettingTests
         public void CreateSelfPriceTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.Times.Mouseover();
             adminPage.TimesSelf.Click();
             var timesSelfPage = adminPage.GoTo<TimesPage>();

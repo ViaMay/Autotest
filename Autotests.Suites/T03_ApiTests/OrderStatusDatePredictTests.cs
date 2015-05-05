@@ -18,7 +18,7 @@ namespace Autotests.Tests.T03_ApiTests
                 LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
             var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
             var deliveryCompaniesPage =
-                LoadPage<СompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
+                LoadPage<CompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
 
 //            не указана pickup_date то есть текущая дата

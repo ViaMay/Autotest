@@ -9,7 +9,7 @@ namespace Autotests.Tests.T01_StartSettingTests
         public void CreateDeliveryPointTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.DeliveryPoints.Click();
             var deliveryPointsPage = adminPage.GoTo<DeliveryPointsPage>();
             deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);

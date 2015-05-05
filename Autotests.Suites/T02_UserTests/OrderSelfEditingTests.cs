@@ -47,6 +47,8 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.BackOrders.Click();
             var ordersPage = orderPage.GoTo<OrdersListPage>();
 
+            ordersPage.Table.GetRow(0).Number.WaitText("14");
+            ordersPage.Table.GetRow(0).Goods.WaitText("4");
             ordersPage.Table.GetRow(0).Edit.Click();
             var orderSelfEditingPage = ordersPage.GoTo<OrderSelfEditingPage>();
 
@@ -62,6 +64,7 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.DeclaredPrice.WaitValue("0");
             orderSelfEditingPage.PaymentPrice.WaitValue("4");
             orderSelfEditingPage.GoodsDescription.WaitValue("4");
+            orderSelfEditingPage.ItemsCount.WaitValue("1");
 
             var rowArticleStatic = orderSelfEditingPage.GetArticleRow(0);
             rowArticleStatic.Name.WaitValue("Имя1");
@@ -81,6 +84,9 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.PaymentPrice.SetValue("1500");
             orderSelfEditingPage.DeclaredPrice.SetValue("1600");
 
+            orderSelfEditingPage.GoodsDescription.SetValue("24");
+            orderSelfEditingPage.OrderNumber.SetValue("44");
+
             orderSelfEditingPage.SaveChangeButton.Click();
             orderPage = orderSelfEditingPage.GoTo<OrderPage>();
 
@@ -96,7 +102,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
             orderPage.TableRecipient.Phone.WaitText("+7 (222)222-2222");
             orderPage.TableRecipient.Issue.WaitText("Ручная");
-            orderPage.TableRecipient.PickupCompany.WaitText(companyName);
+            orderPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
             orderPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
@@ -109,10 +115,16 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableSize.Height.WaitText("12 см");
             orderPage.TableSize.Length.WaitText("13 см");
             orderPage.TableSize.Weight.WaitText("9.20 кг");
+            orderPage.TableSize.Count.WaitText("1");
 
             orderPage.TableArticle.GetRow(0).Name.WaitText("Имя1");
             orderPage.TableArticle.GetRow(0).Article.WaitText("Article1");
             orderPage.TableArticle.GetRow(0).Count.WaitText("6");
+
+            orderPage.BackOrders.Click();
+            ordersPage = orderPage.GoTo<OrdersListPage>();
+            ordersPage.Table.GetRow(0).Number.WaitText("44");
+            ordersPage.Table.GetRow(0).Goods.WaitText("24");
         }
 
         [Test, Description("Отправка заказа а потом редактирование")]
@@ -156,6 +168,8 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.BackOrders.Click();
             var ordersPage = orderPage.GoTo<OrdersListPage>();
 
+            ordersPage.Table.GetRow(0).Number.WaitText("14");
+            ordersPage.Table.GetRow(0).Goods.WaitText("4");
             ordersPage.Table.GetRow(0).Edit.Click();
             var orderSelfEditingPage = ordersPage.GoTo<OrderSelfEditingPage>();
 
@@ -171,6 +185,7 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.DeclaredPrice.WaitValue("0");
             orderSelfEditingPage.PaymentPrice.WaitValue("5");
             orderSelfEditingPage.GoodsDescription.WaitValue("4");
+            orderSelfEditingPage.ItemsCount.WaitValue("1");
 
             var rowArticleStatic = orderSelfEditingPage.GetArticleRow(0);
             rowArticleStatic.Name.WaitValue("Имя1");
@@ -190,6 +205,9 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.PaymentPrice.SetValue("1500");
             orderSelfEditingPage.DeclaredPrice.SetValue("1600");
 
+            orderSelfEditingPage.GoodsDescription.SetValue("24");
+            orderSelfEditingPage.OrderNumber.SetValue("44");
+
             orderSelfEditingPage.SaveChangeButton.Click();
             orderPage = orderSelfEditingPage.GoTo<OrderPage>();
 
@@ -205,7 +223,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
             orderPage.TableRecipient.Phone.WaitText("+7 (222)222-2222");
             orderPage.TableRecipient.Issue.WaitText("Ручная");
-            orderPage.TableRecipient.PickupCompany.WaitText(companyName);
+            orderPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
             orderPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
@@ -218,10 +236,16 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableSize.Height.WaitText("12 см");
             orderPage.TableSize.Length.WaitText("13 см");
             orderPage.TableSize.Weight.WaitText("9.20 кг");
+            orderPage.TableSize.Count.WaitText("1");
 
             orderPage.TableArticle.GetRow(0).Name.WaitText("Имя1");
             orderPage.TableArticle.GetRow(0).Article.WaitText("Article1");
             orderPage.TableArticle.GetRow(0).Count.WaitText("6");
+
+            orderPage.BackOrders.Click();
+            ordersPage = orderPage.GoTo<OrdersListPage>();
+            ordersPage.Table.GetRow(0).Number.WaitText("44");
+            ordersPage.Table.GetRow(0).Goods.WaitText("24");
         }
     }
 }

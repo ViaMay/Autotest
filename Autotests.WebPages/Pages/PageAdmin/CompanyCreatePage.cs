@@ -4,9 +4,9 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class СompanyCreatePage : AdminPageBase
+    public class CompanyCreatePage : AdminPageBase
     {
-        public СompanyCreatePage()
+        public CompanyCreatePage()
         {
             Name = new TextInput(By.Name("name"));
             CompanyDriver = new Select(By.Name("driver"));

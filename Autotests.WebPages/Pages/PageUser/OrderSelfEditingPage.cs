@@ -13,14 +13,14 @@ namespace Autotests.WebPages.Pages.PageUser
             BuyerEmail = new TextInput(By.Name("to_email"));
             DeclaredPrice = new TextInput(By.Name("declared_price"));
             PaymentPrice = new TextInput(By.Name("payment_price"));
-            GoodsDescription = new StaticText(By.Name("goods_description"));
+            GoodsDescription = new TextInput(By.Name("goods_description"));
             ItemsCount = new StaticText(By.Name("items_count"));
             
             Weight = new TextInput(By.Name("weight"));
             Width = new TextInput(By.Name("dimension_side1"));
             Height = new TextInput(By.Name("dimension_side2"));
             Length = new TextInput(By.Name("dimension_side3"));
-            OrderNumber = new StaticText(By.Name("shop_refnum"));
+            OrderNumber = new TextInput(By.Name("shop_refnum"));
 
             CanceledButton = new ButtonInput(By.CssSelector("div.form-actions > input.btn.btn-primary.btn-success"));
             SaveChangeButton = new ButtonInput(By.CssSelector("div.form-actions > input.btn.btn-primary.pull-right"));
@@ -47,14 +47,14 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput BuyerEmail { get; set; }
         public TextInput PaymentPrice { get; set; }
         public TextInput DeclaredPrice { get; set; }
-        public StaticText GoodsDescription { get; set; }
+        public TextInput GoodsDescription { get; set; }
         public StaticText ItemsCount { get; set; }
 
         public TextInput Weight { get; set; }
         public TextInput Width { get; set; }
         public TextInput Height { get; set; }
         public TextInput Length { get; set; }
-        public StaticText OrderNumber { get; set; }
+        public TextInput OrderNumber { get; set; }
         public ButtonInput CanceledButton { get; set; }
         public ButtonInput SaveChangeButton { get; set; }
 

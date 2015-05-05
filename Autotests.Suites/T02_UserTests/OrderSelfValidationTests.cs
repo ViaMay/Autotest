@@ -35,6 +35,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
             orderCreateSelfPage.AletrError.Accept();
 
+            orderCreateSelfPage.Weight.SetValueAndWait("3");
             orderCreateSelfPage.Height.SetValueAndWait("");
             orderCreateSelfPage.Length.SetValueAndWait("");
             orderCreateSelfPage.Width.SetValueAndWait("");
@@ -47,6 +48,9 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.Length.SetValueAndWait("0");
             orderCreateSelfPage.Width.SetValueAndWait("0");
             orderCreateSelfPage.СountedButton.Click();
+
+            orderCreateSelfPage.MapOrders.SwitchToFrame();
+            orderCreateSelfPage.MapOrders.SwitchToDefaultContent();
  }
 
         [Test, Description("Проверка валидации при отправке")]

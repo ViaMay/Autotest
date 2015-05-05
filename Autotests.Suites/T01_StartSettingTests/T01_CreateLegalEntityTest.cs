@@ -28,11 +28,9 @@ namespace Autotests.Tests.T01_StartSettingTests
             legalEntityCreatePage.NameEntity.SetValueAndWait(legalEntityName);
             legalEntityCreatePage.SaveButton.Click();
             legalEntitiesPage = legalEntityCreatePage.GoTo<LegalEntitiesPage>();
-
             legalEntitiesPage.Table.RowSearch.Name.SetValue(legalEntityName);
             legalEntitiesPage = legalEntitiesPage.SeachButtonRowClickAndGo();
             legalEntitiesPage.Table.GetRow(0).Name.WaitText(legalEntityName);
         }
-
     }
 }

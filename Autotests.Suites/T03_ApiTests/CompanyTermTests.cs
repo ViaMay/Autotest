@@ -15,10 +15,10 @@ namespace Autotests.Tests.T03_ApiTests
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
 
             var companiesPage =
-                LoadPage<СompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
+                LoadPage<CompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
             string companyId = companiesPage.Table.GetRow(0).ID.GetText();
             var companyEditPage =
-                LoadPage<СompanyCreatePage>("admin/companies/edit/" + companyId);
+                LoadPage<CompanyCreatePage>("admin/companies/edit/" + companyId);
             companyEditPage.Term.SetValue("0");
             companyEditPage.Prolongation.UncheckAndWait();
             companyEditPage.SaveButton.Click();
@@ -39,7 +39,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseCompanyTerm.Response.Prolongation, false);
 
             companyEditPage =
-                LoadPage<СompanyCreatePage>("admin/companies/edit/" + companyId);
+                LoadPage<CompanyCreatePage>("admin/companies/edit/" + companyId);
             companyEditPage.Term.SetValue("12");
             companyEditPage.Prolongation.CheckAndWait();
             companyEditPage.SaveButton.Click();

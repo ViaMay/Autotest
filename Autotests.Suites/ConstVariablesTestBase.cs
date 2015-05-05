@@ -17,10 +17,14 @@ namespace Autotests.Tests
             adminPass = "LbREWCnpHa";
 
             legalEntityName = "test_legalEntity";
+            legalUserName = "test_legalUser";
+            legalPickupName = "test_legalPickup";
             companyName = "test_via";
+            companyPickupName = "test_Pickup";
             deliveryPointName = "test_deliverypoint";
 
             userNameAndPass = "tester@user.ru";
+            pickupNameAndPass = "tester@pickup.ru";
             userWarehouseName = "test_userWarehouses_via";
             userShopName = "test_userShops_via";
 
@@ -50,11 +54,15 @@ namespace Autotests.Tests
         public string adminPass;
 
         public string userNameAndPass;
+        public string pickupNameAndPass;
         public string userWarehouseName;
         public string userShopName;
 
         public string legalEntityName;
+        public string legalUserName;
+        public string legalPickupName;
         public string companyName;
+        public string companyPickupName;
         public string deliveryPointName;
 
         public string weightName;

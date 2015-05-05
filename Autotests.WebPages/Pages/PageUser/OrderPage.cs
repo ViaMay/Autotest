@@ -120,11 +120,13 @@ namespace Autotests.WebPages.Pages.PageUser
             Height = new StaticText(By.XPath(string.Format("{0}/tbody/tr[2]/td", locator)));
             Length = new StaticText(By.XPath(string.Format("{0}/tbody/tr[3]/td", locator)));
             Weight = new StaticText(By.XPath(string.Format("{0}/tbody/tr[4]/td", locator)));
+            Count = new StaticText(By.XPath(string.Format("{0}/tbody/tr[5]/td", locator)));
         }
         public StaticText Width { get; private set; }
         public StaticText Height { get; private set; }
         public StaticText Length { get; private set; }
         public StaticText Weight { get; private set; }
+        public StaticText Count { get; private set; }
         private readonly string locator;
     }
 

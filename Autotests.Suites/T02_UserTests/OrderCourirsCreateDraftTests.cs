@@ -60,7 +60,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.Email.WaitText(userNameAndPass);
             orderCourirsPage.TableRecipient.Phone.WaitText("+7 (111)111-1111");
             orderCourirsPage.TableRecipient.Issue.WaitText("Ручная");
-            orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyName);
+            orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
             orderCourirsPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
@@ -73,6 +73,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSize.Height.WaitText("11 см");
             orderCourirsPage.TableSize.Length.WaitText("12 см");
             orderCourirsPage.TableSize.Weight.WaitText("9.10 кг");
+            orderCourirsPage.TableSize.Count.WaitText("1");
 
             orderCourirsPage.TableArticle.GetRow(0).Name.WaitText("Имя1");
             orderCourirsPage.TableArticle.GetRow(0).Article.WaitText("Article1");

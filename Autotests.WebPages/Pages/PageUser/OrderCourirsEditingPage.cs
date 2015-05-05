@@ -27,8 +27,8 @@ namespace Autotests.WebPages.Pages.PageUser
             BuyerEmail = new TextInput(By.Name("to_email"));
 
             PaymentPrice = new TextInput(By.Name("payment_price"));
-            OrderNumber = new StaticText(By.Name("shop_refnum"));
-            GoodsDescription = new StaticText(By.Name("goods_description"));
+            OrderNumber = new TextInput(By.Name("shop_refnum"));
+            GoodsDescription = new TextInput(By.Name("goods_description"));
             ItemsCount = new StaticText(By.Name("items_count"));
 
             ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"));
@@ -65,8 +65,8 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput BuyerPhone { get; set; }
         public TextInput BuyerEmail { get; set; }
         public TextInput PaymentPrice { get; set; }
-        public StaticText OrderNumber { get; set; }
-        public StaticText GoodsDescription { get; set; }
+        public TextInput OrderNumber { get; set; }
+        public TextInput GoodsDescription { get; set; }
         public StaticText ItemsCount { get; set; }
 
         public ErrorActionTextControl ActionErrorText { get; set; }

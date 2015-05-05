@@ -18,7 +18,7 @@ namespace Autotests.Tests.T03_ApiTests
                 LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
             string deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
             var deliveryCompaniesPage =
-                LoadPage<СompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
+                LoadPage<CompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
             string deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
 
             // ошибка в delivery_point

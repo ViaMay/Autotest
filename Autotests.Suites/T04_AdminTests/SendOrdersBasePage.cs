@@ -11,7 +11,7 @@ namespace Autotests.Tests.T04_AdminTests
     {
         public string[] SendOrdersRequest()
         {
-            var companiesPage = LoadPage<СompaniesPage>("admin/companies/?&filters[name]=" + companyName);
+            var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
             var shopsPage = LoadPage<ShopsPage>("admin/shops/?&filters[name]=" + userShopName);
@@ -78,7 +78,7 @@ namespace Autotests.Tests.T04_AdminTests
         //        "dd.MM.yyyy" формат pickupDate
         public string SendOrderCourirsRequest(DateTime pickupDate = default(DateTime))
         {
-            var companiesPage = LoadPage<СompaniesPage>("admin/companies/?&filters[name]=" + companyName);
+            var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
             var shopsPage = LoadPage<ShopsPage>("admin/shops/?&filters[name]=" + userShopName);
@@ -122,7 +122,7 @@ namespace Autotests.Tests.T04_AdminTests
         //        "dd.MM.yyyy" формат pickupDate
         public string SendOrderSelfRequest(DateTime pickupDate = default(DateTime))
         {
-            var companiesPage = LoadPage<СompaniesPage>("admin/companies/?&filters[name]=" + companyName);
+            var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
             var shopsPage = LoadPage<ShopsPage>("admin/shops/?&filters[name]=" + userShopName);

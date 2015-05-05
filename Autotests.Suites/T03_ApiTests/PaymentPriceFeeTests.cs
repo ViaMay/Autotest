@@ -14,7 +14,7 @@ namespace Autotests.Tests.T03_ApiTests
             var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var companiesPage =
-                LoadPage<СompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
+                LoadPage<CompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
             string companyId = companiesPage.Table.GetRow(0).ID.GetText();
 
             var paymentPriceFeePage =

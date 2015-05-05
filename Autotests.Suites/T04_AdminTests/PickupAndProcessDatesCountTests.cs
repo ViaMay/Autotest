@@ -15,38 +15,38 @@ namespace Autotests.Tests.T04_AdminTests
         public void PickupDateNullTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.PickupTimetable.Click();
             var pickupTimetablePage = adminPage.GoTo<PickupTimetablePage>();
-            pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
+            pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
 //            создаем график забора на сегоднешнею дату 23:45
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
                 pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
-                pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
+                pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             }
             pickupTimetablePage.Create.Click();
             var pickupTimetableCreatePage = pickupTimetablePage.GoTo<PickupTimetableCreatePage>();
-            pickupTimetableCreatePage.Company.SetFirstValueSelect(companyName);
+            pickupTimetableCreatePage.Company.SetFirstValueSelect(companyPickupName);
             pickupTimetableCreatePage.PickupTime.SelectByText("23:45");
             pickupTimetableCreatePage.PickupPeriod.SelectByText("Сегодня");
             pickupTimetableCreatePage.SaveButton.Click();
             pickupTimetablePage = pickupTimetableCreatePage.GoTo<PickupTimetablePage>();
 
 //           удаляем календарь если он был
-            pickupTimetablePage.AdminСompanies.Click();
+            pickupTimetablePage.AdminCompanies.Click();
             pickupTimetablePage.Calendars.Click();
             var calendarsPage = pickupTimetablePage.GoTo<CalendarsPage>();
-            calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+            calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
                 calendarsPage = calendarsPage.GoTo<CalendarsPage>();
-                calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+                calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             }
 //            отправляем запрос АПИ заявку без времение PickupDate
@@ -75,37 +75,37 @@ namespace Autotests.Tests.T04_AdminTests
         public void PickupDateNotNullTest()
         {           
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.PickupTimetable.Click();
             var pickupTimetablePage = adminPage.GoTo<PickupTimetablePage>();
-            pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
+            pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             //            создаем график забора на сегоднешнею дату 23:45
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
                 pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
-                pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
+                pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             }
             pickupTimetablePage.Create.Click();
             var pickupTimetableCreatePage = pickupTimetablePage.GoTo<PickupTimetableCreatePage>();
-            pickupTimetableCreatePage.Company.SetFirstValueSelect(companyName);
+            pickupTimetableCreatePage.Company.SetFirstValueSelect(companyPickupName);
             pickupTimetableCreatePage.PickupTime.SelectByText("23:45");
             pickupTimetableCreatePage.PickupPeriod.SelectByText("Сегодня");
             pickupTimetableCreatePage.SaveButton.Click();
             pickupTimetablePage = pickupTimetableCreatePage.GoTo<PickupTimetablePage>();
             //           удаляем календарь если он был
-            pickupTimetablePage.AdminСompanies.Click();
+            pickupTimetablePage.AdminCompanies.Click();
             pickupTimetablePage.Calendars.Click();
             var calendarsPage = pickupTimetablePage.GoTo<CalendarsPage>();
-            calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+            calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
                 calendarsPage = calendarsPage.GoTo<CalendarsPage>();
-                calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+                calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             }
 //            дата забора которую передаем в запросе
@@ -133,44 +133,44 @@ namespace Autotests.Tests.T04_AdminTests
         public void PickupDateNullAndСalendarTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.PickupTimetable.Click();
             var pickupTimetablePage = adminPage.GoTo<PickupTimetablePage>();
-            pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
+            pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             //            создаем график забора на сегодняшнюю дату 23:45
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
                 pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
-                pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
+                pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             }
             pickupTimetablePage.Create.Click();
             var pickupTimetableCreatePage = pickupTimetablePage.GoTo<PickupTimetableCreatePage>();
-            pickupTimetableCreatePage.Company.SetFirstValueSelect(companyName);
+            pickupTimetableCreatePage.Company.SetFirstValueSelect(companyPickupName);
             pickupTimetableCreatePage.PickupTime.SelectByText("23:45");
             pickupTimetableCreatePage.PickupPeriod.SelectByText("Сегодня");
             pickupTimetableCreatePage.SaveButton.Click();
             pickupTimetablePage = pickupTimetableCreatePage.GoTo<PickupTimetablePage>();
             //           удаляем календарь если он был
             //          делаем выходной на сегодня
-            pickupTimetablePage.AdminСompanies.Click();
+            pickupTimetablePage.AdminCompanies.Click();
             pickupTimetablePage.Calendars.Click();
             var calendarsPage = pickupTimetablePage.GoTo<CalendarsPage>();
-            calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+            calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
                 calendarsPage = calendarsPage.GoTo<CalendarsPage>();
-                calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+                calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             }
             calendarsPage.CalendarsCreate.Click();
             var calendarCreatePage = calendarsPage.GoTo<CalendarCreatePage>();
             calendarCreatePage.Type.SelectByText("Забор");
-            calendarCreatePage.Company.SetFirstValueSelect(companyName);
+            calendarCreatePage.Company.SetFirstValueSelect(companyPickupName);
             calendarCreatePage.Date.SetValueAndWait(nowDate.AddDays(1).ToString("dd.MM.yyyy"));
             calendarCreatePage.SaveButton.Click();
             calendarsPage = calendarCreatePage.GoTo<CalendarsPage>();
@@ -202,22 +202,22 @@ namespace Autotests.Tests.T04_AdminTests
         public void PickupDateNotNullAndСalendarTest()
         {          
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminСompanies.Click();
+            adminPage.AdminCompanies.Click();
             adminPage.PickupTimetable.Click();
             var pickupTimetablePage = adminPage.GoTo<PickupTimetablePage>();
-            pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
+            pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
 
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
                 pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
-                pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
+                pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             }
             pickupTimetablePage.Create.Click();
             var pickupTimetableCreatePage = pickupTimetablePage.GoTo<PickupTimetableCreatePage>();
-            pickupTimetableCreatePage.Company.SetFirstValueSelect(companyName);
+            pickupTimetableCreatePage.Company.SetFirstValueSelect(companyPickupName);
             pickupTimetableCreatePage.PickupTime.SelectByText("23:45");
             pickupTimetableCreatePage.PickupPeriod.SelectByText("Сегодня");
             pickupTimetableCreatePage.SaveButton.Click();
@@ -225,16 +225,16 @@ namespace Autotests.Tests.T04_AdminTests
 
             //           удаляем календарь если он был
             //создаем в каледнаре выходной на дату забора
-            pickupTimetablePage.AdminСompanies.Click();
+            pickupTimetablePage.AdminCompanies.Click();
             pickupTimetablePage.Calendars.Click();
             var calendarsPage = pickupTimetablePage.GoTo<CalendarsPage>();
-            calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+            calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
                 calendarsPage = calendarsPage.GoTo<CalendarsPage>();
-                calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
+                calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             }
             calendarsPage.CalendarsCreate.Click();
@@ -242,7 +242,7 @@ namespace Autotests.Tests.T04_AdminTests
 //          делаем выходной на дату забора которую укажем в АПИ запросе
             var calendarCreatePage = calendarsPage.GoTo<CalendarCreatePage>();
             calendarCreatePage.Type.SelectByText("Забор");
-            calendarCreatePage.Company.SetFirstValueSelect(companyName);
+            calendarCreatePage.Company.SetFirstValueSelect(companyPickupName);
             calendarCreatePage.Date.SetValueAndWait(pickupDate.ToString("dd.MM.yyyy"));
             calendarCreatePage.SaveButton.Click();
             calendarsPage = calendarCreatePage.GoTo<CalendarsPage>();

@@ -102,6 +102,8 @@
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\BaseRowControl.cs" />
     <Compile Include="Pages\PageAdmin\AdminMaintenancePage.cs" />
+    <Compile Include="Pages\PageAdmin\ManagersPage.cs" />
+    <Compile Include="Pages\PageAdmin\ManagersCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\PaymentPriceFeeCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\PaymentPriceFeePage.cs" />
     <Compile Include="Pages\PageAdmin\PickupTimetableCreatePage.cs" />
@@ -150,8 +152,8 @@
     <Compile Include="Pages\PageAdmin\IntervalWeightCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\PaymentPricePage.cs" />
     <Compile Include="Pages\PageAdmin\PaymentPriceCreatePage.cs" />
-    <Compile Include="Pages\PageAdmin\СompanyCreatePage.cs" />
-    <Compile Include="Pages\PageAdmin\СompaniesPage.cs" />
+    <Compile Include="Pages\PageAdmin\CompanyCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\CompaniesPage.cs" />
     <Compile Include="Pages\PageAdmin\AdminHomePage.cs" />
     <Compile Include="Pages\PageAdmin\AdminPageBase.cs" />
     <Compile Include="Pages\PageUser\Controls\DocumentsPreparedRowControl.cs" />
