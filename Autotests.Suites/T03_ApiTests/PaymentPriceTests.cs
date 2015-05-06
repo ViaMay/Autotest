@@ -23,6 +23,7 @@ namespace Autotests.Tests.T03_ApiTests
             while (paymentPricePage.Table.GetRow(0).Name.IsPresent)
             {
                 paymentPricePage.Table.GetRow(0).ActionsDelete.Click();
+                paymentPricePage.Aletr.Accept();
                 paymentPricePage =
                 LoadPage<PaymentPricePage>("/admin/paymentprice/?&filters[company]=" + companyName + "&filters[city]=" + cityPayment);
             }
@@ -69,6 +70,7 @@ namespace Autotests.Tests.T03_ApiTests
             while (paymentPricePage.Table.GetRow(0).Name.IsPresent)
             {
                 paymentPricePage.Table.GetRow(0).ActionsDelete.Click();
+                paymentPricePage.Aletr.Accept();
                 paymentPricePage =
                 LoadPage<PaymentPricePage>("/admin/paymentprice/?&filters[company]=" + companyName + "&filters[city]=" + cityPayment);
             }

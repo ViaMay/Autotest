@@ -18,6 +18,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
+                warehousesPage.Aletr.Accept();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName);
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
@@ -68,6 +69,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (shopsPage.Table.GetRow(0).Name.IsPresent)
             {
                 shopsPage.Table.GetRow(0).ActionsDelete.Click();
+                shopsPage.Aletr.Accept();
                 shopsPage = shopsPage.GoTo<UsersShopsPage>();
                 shopsPage.Table.RowSearch.Name.SetValue(userShopName);
                 shopsPage = shopsPage.SeachButtonRowClickAndGo();

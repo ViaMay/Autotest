@@ -24,6 +24,7 @@ namespace Autotests.Tests.T04_AdminTests
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
+                pickupTimetablePage.Aletr.Accept();
                 pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
                 pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
@@ -45,6 +46,7 @@ namespace Autotests.Tests.T04_AdminTests
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
+                calendarsPage.Aletr.Accept();
                 calendarsPage = calendarsPage.GoTo<CalendarsPage>();
                 calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
@@ -84,6 +86,7 @@ namespace Autotests.Tests.T04_AdminTests
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
+                pickupTimetablePage.Aletr.Accept();
                 pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
                 pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
@@ -95,7 +98,7 @@ namespace Autotests.Tests.T04_AdminTests
             pickupTimetableCreatePage.PickupPeriod.SelectByText("Сегодня");
             pickupTimetableCreatePage.SaveButton.Click();
             pickupTimetablePage = pickupTimetableCreatePage.GoTo<PickupTimetablePage>();
-            //           удаляем календарь если он был
+//           удаляем календарь если он был
             pickupTimetablePage.AdminCompanies.Click();
             pickupTimetablePage.Calendars.Click();
             var calendarsPage = pickupTimetablePage.GoTo<CalendarsPage>();
@@ -104,6 +107,7 @@ namespace Autotests.Tests.T04_AdminTests
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
+                calendarsPage.Aletr.Accept();
                 calendarsPage = calendarsPage.GoTo<CalendarsPage>();
                 calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
@@ -142,6 +146,7 @@ namespace Autotests.Tests.T04_AdminTests
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
+                pickupTimetablePage.Aletr.Accept();
                 pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
                 pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
@@ -163,6 +168,7 @@ namespace Autotests.Tests.T04_AdminTests
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
+                calendarsPage.Aletr.Accept();
                 calendarsPage = calendarsPage.GoTo<CalendarsPage>();
                 calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
@@ -211,6 +217,7 @@ namespace Autotests.Tests.T04_AdminTests
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
+                pickupTimetablePage.Aletr.Accept();
                 pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
                 pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
@@ -233,6 +240,7 @@ namespace Autotests.Tests.T04_AdminTests
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
+                calendarsPage.Aletr.Accept();
                 calendarsPage = calendarsPage.GoTo<CalendarsPage>();
                 calendarsPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();

@@ -7,6 +7,7 @@ namespace Autotests.Tests
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
         public override string ApplicationBaseUrl { get { return "dev:adept2frost_late@dev.ddelivery.ru"; } }
+//        public override string ApplicationBaseUrl { get { return "cabinet.ddelivery.ru"; } }
 //        public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
         public override void SetUp()
@@ -30,7 +31,7 @@ namespace Autotests.Tests
 
             weightName = "test_via_Weight";
             weightMin = 2;
-            weightMax = 15;
+            weightMax = 16;
 
             sideName = "test_via_Side";
             side1Min = 1;

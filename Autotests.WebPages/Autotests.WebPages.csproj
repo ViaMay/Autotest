@@ -104,6 +104,7 @@
     <Compile Include="Pages\PageAdmin\AdminMaintenancePage.cs" />
     <Compile Include="Pages\PageAdmin\ManagersPage.cs" />
     <Compile Include="Pages\PageAdmin\ManagersCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\DocumentsPage.cs" />
     <Compile Include="Pages\PageAdmin\PaymentPriceFeeCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\PaymentPriceFeePage.cs" />
     <Compile Include="Pages\PageAdmin\PickupTimetableCreatePage.cs" />

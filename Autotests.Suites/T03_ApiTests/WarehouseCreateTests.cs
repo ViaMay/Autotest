@@ -45,6 +45,7 @@ namespace Autotests.Tests.T03_ApiTests
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
+                warehousesPage.Aletr.Accept();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_Api");
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();

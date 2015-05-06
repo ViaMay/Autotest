@@ -19,6 +19,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (intervalsWeightPage.Table.GetRow(0).Name.IsPresent)
             {
                 intervalsWeightPage.Table.GetRow(0).ActionsDelete.Click();
+                intervalsWeightPage.Aletr.Accept();
                 intervalsWeightPage = intervalsWeightPage.GoTo<IntervalsWeightPage>();
                 intervalsWeightPage.Table.RowSearch.Name.SetValue(weightName);
                 intervalsWeightPage = intervalsWeightPage.SeachButtonRowClickAndGo();
@@ -50,6 +51,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (intervalsSizePage.Table.GetRow(0).Name.IsPresent)
             {
                 intervalsSizePage.Table.GetRow(0).ActionsDelete.Click();
+                intervalsSizePage.Aletr.Accept();
                 intervalsSizePage = intervalsSizePage.GoTo<IntervalsSidePage>();
                 intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
                 intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();

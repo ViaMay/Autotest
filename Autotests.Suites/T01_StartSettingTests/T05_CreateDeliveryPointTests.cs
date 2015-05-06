@@ -18,6 +18,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (deliveryPointsPage.Table.GetRow(0).Name.IsPresent)
             {
                 deliveryPointsPage.Table.GetRow(0).ActionsDelete.Click();
+                deliveryPointsPage.Aletr.Accept();
                 deliveryPointsPage = deliveryPointsPage.GoTo<DeliveryPointsPage>();
                 deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
                 deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();

@@ -41,6 +41,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
 
             Orders = new Link(By.LinkText("Заказы"));
             OrderInput = new Link(By.LinkText("Входящие"));
+            OrderOutput = new Link(By.LinkText("Исходящие"));
 
             UserLogOut = new Link(By.LinkText("Выход"));
 
@@ -80,6 +81,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
 
         public Link Orders { get; set; }
         public Link OrderInput { get; set; }
+        public Link OrderOutput { get; set; }
 
         public Link UserLogOut { get;  set; }
 

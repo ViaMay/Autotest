@@ -21,6 +21,7 @@ namespace Autotests.Tests.T03_ApiTests
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
+                warehousesPage.Aletr.Accept();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_ApiAdmin");
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
@@ -47,6 +48,7 @@ namespace Autotests.Tests.T03_ApiTests
             while (shopsPage.Table.GetRow(0).Name.IsPresent)
             {
                 shopsPage.Table.GetRow(0).ActionsDelete.Click();
+                shopsPage.Aletr.Accept();
                 shopsPage = shopsPage.GoTo<ShopsPage>();
                 shopsPage.Table.RowSearch.Name.SetValue(userShopName + "_ApiAdmin");
                 shopsPage = shopsPage.SeachButtonRowClickAndGo();
@@ -91,6 +93,7 @@ namespace Autotests.Tests.T03_ApiTests
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
+                warehousesPage.Aletr.Accept();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_ApiAdmin");
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
@@ -138,6 +141,7 @@ namespace Autotests.Tests.T03_ApiTests
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
+                warehousesPage.Aletr.Accept();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_ApiAdmin");
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();

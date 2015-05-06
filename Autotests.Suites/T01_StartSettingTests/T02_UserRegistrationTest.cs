@@ -19,6 +19,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (usersPage.UsersTable.GetRow(0).UserEmail.IsPresent)
             {
                 usersPage.UsersTable.GetRow(0).ActionsDelete.Click();
+                usersPage.Aletr.Accept();
                 usersPage = usersPage.GoTo<UsersPage>();
                 usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
                 usersPage = usersPage.SeachButtonRowClickAndGo();
@@ -54,6 +55,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (usersPage.UsersTable.GetRow(0).UserEmail.IsPresent)
             {
                 usersPage.UsersTable.GetRow(0).ActionsDelete.Click();
+                usersPage.Aletr.Accept();
                 usersPage = usersPage.GoTo<UsersPage>();
                 usersPage.UsersTable.RowSearch.UserEmail.SetValue(pickupNameAndPass);
                 usersPage = usersPage.SeachButtonRowClickAndGo();

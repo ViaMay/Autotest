@@ -19,6 +19,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (legalEntitiesPage.Table.GetRow(0).Name.IsPresent)
             {
                 legalEntitiesPage.Table.GetRow(0).ActionsDelete.Click();
+                legalEntitiesPage.Aletr.Accept();
                 legalEntitiesPage = legalEntitiesPage.GoTo<LegalEntitiesPage>();
                 legalEntitiesPage.Table.RowSearch.Name.SetValue(legalEntityName);
                 legalEntitiesPage = legalEntitiesPage.SeachButtonRowClickAndGo();

@@ -18,6 +18,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (companiesPage.Table.GetRow(0).Name.IsPresent)
             {
                 companiesPage.Table.GetRow(0).ActionsDelete.Click();
+                companiesPage.Aletr.Accept();
                 companiesPage = companiesPage.GoTo<CompaniesPage>();
                 companiesPage.Table.RowSearch.Name.SetValue(companyPickupName);
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
@@ -48,6 +49,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (companiesPage.Table.GetRow(0).Name.IsPresent)
             {
                 companiesPage.Table.GetRow(0).ActionsDelete.Click();
+                companiesPage.Aletr.Accept();
                 companiesPage = companiesPage.GoTo<CompaniesPage>();
                 companiesPage.Table.RowSearch.Name.SetValue(companyName);
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
@@ -95,6 +97,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (рaymentPricePage.Table.GetRow(0).Name.IsPresent)
             {
                 рaymentPricePage.Table.GetRow(0).ActionsDelete.Click();
+                рaymentPricePage.Aletr.Accept();
                 рaymentPricePage = рaymentPricePage.GoTo<PaymentPricePage>();
                 рaymentPricePage.Table.RowSearch.CompanyName.SetValue(companyName);
                 рaymentPricePage = рaymentPricePage.SeachButtonRowClickAndGo();

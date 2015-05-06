@@ -8,6 +8,13 @@ namespace Autotests.Utilities.WebTestCore.Pages
 {
     public abstract class PageBase
     {
+
+        public PageBase ()
+        {
+            Aletr = new AlertControl();
+        }
+        public AlertControl Aletr { get; set; }
+
         public abstract void BrowseWaitVisible();
 
         public TPage GoTo<TPage>(int pageLoads = 1) where TPage : PageBase, new()
@@ -55,7 +62,7 @@ namespace Autotests.Utilities.WebTestCore.Pages
 
         public string GetUrl()
         {
-            return WebDriverCache.WebDriver.Url.ToString();
+            return WebDriverCache.WebDriver.Url;
         }
 
         public static TimeSpan WaitPageLoadTimeout { get { return waitPageLoadTimeout; } set { waitPageLoadTimeout = value; } }

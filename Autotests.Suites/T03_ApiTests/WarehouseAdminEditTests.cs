@@ -8,7 +8,7 @@ namespace Autotests.Tests.T03_ApiTests
 {
     public class WarehouseAdminEditTests : ConstVariablesTestBase
     {
-        [Test, Description("Редактирование склада через Api админа")]
+        [Test, Description("Редактирование склада через Api админа"), Ignore]
         public void WarehousesEditTest()
         {
             LoginAsAdmin(adminName, adminPass);
@@ -23,6 +23,7 @@ namespace Autotests.Tests.T03_ApiTests
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
+                warehousesPage.Aletr.Accept();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_ApiAdmin");
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
@@ -77,7 +78,7 @@ namespace Autotests.Tests.T03_ApiTests
             row.TimeWork.WaitText("1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23");
         }
 
-        [Test, Description("Редактирвоание склада через Api админа неудачное")]
+        [Test, Description("Редактирвоание склада через Api админа неудачное"), Ignore]
         public void WarehousesEditErrorTest()
         {
             LoginAsAdmin(adminName, adminPass);
@@ -92,6 +93,7 @@ namespace Autotests.Tests.T03_ApiTests
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
+                warehousesPage.Aletr.Accept();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_ApiAdmin");
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
