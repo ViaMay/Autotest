@@ -21,22 +21,30 @@ namespace Autotests.Utilities.ApiTestCore
         {
             using (var client = new WebClient())
             {
-            
+
                 string dataString = "";
                 foreach (string key in data.Keys)
                 {
                     dataString = dataString + key + "=" + data[key] + "&";
                 }
-                if (dataString.Count()!= 0) dataString = dataString.Remove(dataString.Count() - 1);
+                if (dataString.Count() != 0) dataString = dataString.Remove(dataString.Count() - 1);
 
 //                Авторизация на сервере если в имени урла есть @
                 if (ApplicationBaseUrl.Contains("@"))
                 {
-                    string[] words = ApplicationBaseUrl.Split(new char[] { ':', '@' });
+                    string[] words = ApplicationBaseUrl.Split(new char[] {':', '@'});
                     client.Credentials = new NetworkCredential(words[0], words[1]);
                 }
-                string response = client.DownloadString("http://" + ApplicationBaseUrl + "/" + url + "?" + dataString);
-                return JsonSerializer(response);
+//                try
+//                {
+                    var response = client.DownloadString("http://" + ApplicationBaseUrl + "/" + url + "?" + dataString);
+                    return JsonSerializer(response);
+//                }
+//                catch (WebException webException)
+//                {
+//                    Console.WriteLine(webException.Response);
+//                    return null;
+//                }
             }
         }
 
@@ -47,7 +55,7 @@ namespace Autotests.Utilities.ApiTestCore
 //                Авторизация на сервере если в имени урла есть @
                 if (ApplicationBaseUrl.Contains("@"))
                 {
-                    string[] words = ApplicationBaseUrl.Split(new char[] { ':', '@' });
+                    string[] words = ApplicationBaseUrl.Split(new [] { ':', '@' });
                     client.Credentials = new NetworkCredential(words[0], words[1]);
                 }
                 byte[] responseJson = client.UploadValues("http://" + ApplicationBaseUrl + "/api/v1/" + url, data);
@@ -64,7 +72,6 @@ namespace Autotests.Utilities.ApiTestCore
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponsePaymentPriceFee));
                 return (ApiResponse.ResponsePaymentPriceFee)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
-
 //            ResponseDocumentsRequest если тег response есть completed и не 
             if (value.Contains(@"response"":{""completed"""))
             {
@@ -90,7 +97,6 @@ namespace Autotests.Utilities.ApiTestCore
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseFailObject));
                 return (ApiResponse.ResponseFailObject)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
-
 //            ResponseFail
             if (value.Contains(@"success"":false"))
             {
@@ -148,7 +154,6 @@ namespace Autotests.Utilities.ApiTestCore
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeamonСities));
                 return (ApiResponse.ResponseDeamonСities)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
-
 //            ResponseDeamonСity
             if (value.Contains(@"success"":true,""result"))
             {
@@ -166,6 +171,30 @@ namespace Autotests.Utilities.ApiTestCore
                 value = Encoding.GetEncoding("utf-8").GetString(Encoding.Convert(utf8, win1251, utf8.GetBytes(value)));
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeamonPoints));
                 return (ApiResponse.ResponseDeamonPoints)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+//            ResponseStatusConfirm
+            if (value.Contains(@"status") && value.Contains(@"message"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseStatusConfirm));
+                return (ApiResponse.ResponseStatusConfirm)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+//            ResponseDocumentDelivery
+            if (value.Contains(@"success"":true,""response") && value.Contains(@"confirm"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDocumentPickup));
+                return (ApiResponse.ResponseDocumentPickup)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+//            ResponsePickupOrders
+            if (value.Contains(@"success"":true,""response") && value.Contains(@"delivery_company_id"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponsePickupOrders));
+                return (ApiResponse.ResponsePickupOrders)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+//            ResponsePickupCompanies
+            if (value.Contains(@"response"":[") && value.Contains(@"id"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponsePickupCompaniesOrShops));
+                return (ApiResponse.ResponsePickupCompaniesOrShops)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
             var json2 = new DataContractJsonSerializer(typeof (ApiResponse.TResponse));
             return (ApiResponse.TResponse) json2.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));

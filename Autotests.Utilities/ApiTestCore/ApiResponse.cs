@@ -108,7 +108,6 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "contact_phone")]
             public string ContactPhone { get; set; }
-
         }
 
         [DataContract]
@@ -456,6 +455,16 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class MessageStatusConfirm
+        {
+            [DataMember(Name = "status")]
+            public string Status { get; set; }
+
+            [DataMember(Name = "message")]
+            public string Message { get; set; }
+        }
+
+        [DataContract]
         public class MessageTrueCancal
         {
             [DataMember(Name = "order_id")]
@@ -480,6 +489,26 @@ namespace Autotests.Utilities.ApiTestCore
             [DataMember(Name = "percent_card")]
             public string PercentCard { get; set; }
         }
+
+        [DataContract]
+        public class MessagePickupOrders
+        {
+            [DataMember(Name = "id")]
+            public string Id { get; set; }
+
+            [DataMember(Name = "delivery_company_id")]
+            public string DeliveryCompanyId { get; set; }
+        }
+        
+        [DataContract]
+        public class MessageDocumentDelivery
+        {
+            [DataMember(Name = "view")]
+            public string View { get; set; }
+
+            [DataMember(Name = "confirm")]
+            public string Confirm { get; set; }
+        }
         
         [DataContract]
         public class MessageDocumentsRequest
@@ -492,6 +521,16 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "documents")]
             public Documents[] Documents { get; set; }
+        }
+        
+        [DataContract]
+        public class MessagePickupCompaniesOrShops
+        {
+            [DataMember(Name = "id")]
+            public string Id { get; set; }
+
+            [DataMember(Name = "name")]
+            public string Name { get; set; }
         }
         
         [DataContract]
@@ -570,6 +609,13 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class ResponsePickupCompaniesOrShops : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessagePickupCompaniesOrShops[] Response { get; set; }
+        }
+
+        [DataContract]
         public class ResponseDeliveryPoints : TResponse
         {
             [DataMember(Name = "response")]
@@ -608,6 +654,20 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class ResponseStatusConfirm : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageStatusConfirm Response { get; set; }
+        }
+
+        [DataContract]
+        public class ResponsePickupOrders : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessagePickupOrders[] Response { get; set; }
+        }
+
+        [DataContract]
         public class ResponseTrueCancel : TResponse
         {
             [DataMember(Name = "response")]
@@ -626,6 +686,13 @@ namespace Autotests.Utilities.ApiTestCore
         {
             [DataMember(Name = "response")]
             public MessagePaymentPriceFee Response { get; set; }
+        }
+
+        [DataContract]
+        public class ResponseDocumentPickup : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageDocumentDelivery Response { get; set; }
         }
 
         [DataContract]
