@@ -22,6 +22,7 @@ namespace Autotests.Tests.T03_ApiTests
             while (paymentPriceFeePage.Table.GetRow(0).Name.IsPresent)
             {
                 paymentPriceFeePage.Table.GetRow(0).ActionsDelete.Click();
+                paymentPriceFeePage.Aletr.Accept();
                 paymentPriceFeePage =
                     LoadPage<PaymentPriceFeePage>("/admin/paymentpricefee/?&filters[company]=" + companyName);
             }
@@ -52,7 +53,7 @@ namespace Autotests.Tests.T03_ApiTests
             paymentPriceFeePage =
                 LoadPage<PaymentPriceFeePage>("/admin/paymentpricefee/?&filters[company]=" + companyName);
             paymentPriceFeePage.Table.GetRow(0).ActionsDelete.Click();
-
+            paymentPriceFeePage.Aletr.Accept();
             //            запрос на компанию у которой нет коммисии
             var responseError = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/payment_price_fee.json",
                 new NameValueCollection

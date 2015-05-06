@@ -19,8 +19,6 @@ namespace Autotests.Tests.T03_ApiTests
                         {"q", "москва"}
                     });
             Assert.IsTrue(responseCities.Success);
-//            получаем 8 мест
-            Assert.AreEqual(responseCities.Options.Count(), 8);
 
 //            ищем по id 151184 в этом списке москву
             var responseRowCity = FindRowById("151184", responseCities);

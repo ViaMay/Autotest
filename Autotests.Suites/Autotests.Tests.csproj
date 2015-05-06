@@ -97,6 +97,14 @@
     <Compile Include="T01_StartSettingTests\T06_CreatePriceTests.cs" />
     <Compile Include="T01_StartSettingTests\T08_CreateWarehouseAndShopTests.cs" />
     <Compile Include="T02_UserTests\CalculatorOverSizeTests.cs" />
+    <Compile Include="T03_ApiTests\PickupShopsReturnTests.cs" />
+    <Compile Include="T03_ApiTests\PickupShopsTests.cs" />
+    <Compile Include="T03_ApiTests\PickupOrdersTests.cs" />
+    <Compile Include="T03_ApiTests\PickupDocumentsReturnTests.cs" />
+    <Compile Include="T03_ApiTests\PickupDocumentsDeliveryTests.cs" />
+    <Compile Include="T03_ApiTests\PickupConfirmReturnTests.cs" />
+    <Compile Include="T03_ApiTests\PickupConfirmDeliveryTests.cs" />
+    <Compile Include="T03_ApiTests\PickupCompaniesTests.cs" />
     <Compile Include="T03_ApiTests\OrderCourirsErrorTests.cs" />
     <Compile Include="T03_ApiTests\PaymentPriceFeeTests.cs" />
     <Compile Include="T03_ApiTests\DaemonTests.cs" />
