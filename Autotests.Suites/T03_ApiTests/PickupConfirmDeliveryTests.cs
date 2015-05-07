@@ -11,6 +11,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void PickupConfirmDeliveryTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
+//            отправляем две заявки
             string[] ordersId = SendOrdersRequest();
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/process_i_orders");
             adminMaintenancePage.AlertText.WaitTextContains("Processed");
@@ -20,6 +21,7 @@ namespace Autotests.Tests.T03_ApiTests
             var userEdiringPage = usersPage.GoTo<UserCreatePage>();
             var pickupId = userEdiringPage.Key.GetValue();
 
+//            шлем запрос потверить их
             var responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
                 new NameValueCollection
                 {
@@ -52,7 +54,9 @@ namespace Autotests.Tests.T03_ApiTests
             usersPage.UsersTable.GetRow(0).ActionsEdit.Click();
             var userEdiringPage = usersPage.GoTo<UserCreatePage>();
             var pickupId = userEdiringPage.Key.GetValue();
-            var errorOrderId = "dd-123456"; 
+            var errorOrderId = "dd-123456";
+
+//            отправляем запрос на подтверждение с некорректным номером заявки
             var responseConfirmDelivery = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
                new NameValueCollection
                 {
@@ -62,6 +66,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsFalse(responseConfirmDelivery.Success);
             Assert.AreEqual(responseConfirmDelivery.Response.ErrorText, "Заказ не найден. Сверьте номер на штрих-коде, соответствует ли он коду " + errorOrderId);
 
+//            отправляем запрос с пустым номером заявки
             responseConfirmDelivery = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
                new NameValueCollection
                 {}

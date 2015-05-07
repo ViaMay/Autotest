@@ -35,7 +35,7 @@ namespace Autotests.Tests.T03_ApiTests
                 + " невозможно вернуть. Заказ еще не отправлялся и находится на складе интернет-магазина");
             Assert.AreEqual(responseConfirmReturn.Response.Status, "10");
 
-//            подтверждаем что заказ на складе  - ошибка
+//            подтверждаем что заказ на складе
             var responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
                 new NameValueCollection{{"barcode", "dd-" + ordersId[0] },});
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
@@ -45,7 +45,7 @@ namespace Autotests.Tests.T03_ApiTests
                 );
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
-//            снова проверяем статус
+//            снова проверяем статус   - ошибка
             responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
                 new NameValueCollection{{"barcode", "dd-" + ordersId[0] },});
             Assert.IsTrue(responseConfirmReturn.Success);

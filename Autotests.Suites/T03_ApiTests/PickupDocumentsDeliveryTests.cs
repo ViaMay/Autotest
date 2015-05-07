@@ -38,7 +38,7 @@ namespace Autotests.Tests.T03_ApiTests
                 " подтвержден. Заказ подтвержден у вас на складе и ожидает отправки в транспортную компанию");
             Assert.AreEqual(responseConfirmDelivery.Response.Status, "20");
 
-//            формирование документо еще раз
+//            формирование документов
             var responseDocumentsDelivery = (ApiResponse.ResponseDocumentPickup)apiRequest.GET("api/v1/pickup/" + pickupId + "/documents_delivery.json",
                 new NameValueCollection { { "delivery_company_id", deliveryCompanyId }, });
             Assert.IsTrue(responseDocumentsDelivery.Success);

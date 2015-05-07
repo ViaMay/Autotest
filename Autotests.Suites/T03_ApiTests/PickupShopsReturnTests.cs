@@ -48,7 +48,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsTrue(responseConfirmReturn.Success);
             Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
 
-//            снова запрашиваем магазины 
+//            запрашиваем магазины 
             var responsePickupShop =
                 (ApiResponse.ResponsePickupCompaniesOrShops)apiRequest.GET("api/v1/pickup/" + pickupId + "/shops_return.json",
                     new NameValueCollection {});
@@ -58,6 +58,17 @@ namespace Autotests.Tests.T03_ApiTests
             var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string shopId = shopsPage.Table.GetRow(0).ID.GetText();
             Assert.AreEqual(responsePickupShop.Response[0].Id, shopId);
+
+//            формируем  документы на возврат
+            var responseDocumentsReturn = (ApiResponse.ResponseDocumentPickup)apiRequest.GET("api/v1/pickup/" + pickupId + "/documents_return.json",
+               new NameValueCollection { { "shop_id", shopId }, });
+            Assert.IsTrue(responseDocumentsReturn.Success);
+
+//            снова запрашиваем магазин когда нет никого
+            var responseError = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/pickup/" + pickupId + "/shops_return.json",
+                new NameValueCollection { });
+            Assert.IsFalse(responseError.Success);
+            Assert.AreEqual(responseError.Response.ErrorText, "Заказы не найдены");
         }
     }
 }

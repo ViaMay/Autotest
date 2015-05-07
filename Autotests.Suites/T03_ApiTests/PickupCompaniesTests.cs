@@ -81,12 +81,14 @@ namespace Autotests.Tests.T03_ApiTests
             var userEdiringPage = usersPage.GoTo<UserCreatePage>();
             var pickupId = userEdiringPage.Key.GetValue();
 
-//            Заказы не найден
+
             var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 //            формируем документы чтобы не было списка заказов 
             var responseDocumentsDeliveryError = apiRequest.GET("api/v1/pickup/" + pickupId + "/documents_delivery.json",
                new NameValueCollection { { "delivery_company_id", deliveryCompanyId }, });
+
+//            Заказы не найден
             var responsePickupCompaniesError = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/pickup/" + pickupId + "/companies.json",
                 new NameValueCollection {});
             Assert.IsFalse(responsePickupCompaniesError.Success);

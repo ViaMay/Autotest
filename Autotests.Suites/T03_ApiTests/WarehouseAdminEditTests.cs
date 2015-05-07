@@ -62,7 +62,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"street", "street2"},
                         {"house", "house2"}
                     }
-        );
+                    );
             Assert.IsTrue(responseEditWarehouse.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
             var defaultPage = warehousesPage.LoginOut();
