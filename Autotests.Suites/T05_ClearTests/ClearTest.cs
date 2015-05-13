@@ -158,29 +158,20 @@ namespace Autotests.Tests.T05_ClearTests
         public void T08_DeleteOrdersTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.Orders.Click();
-            adminPage.OrderInput.Click();
-            var оrdersInputPage = adminPage.GoTo<OrdersInputPage>();
-            оrdersInputPage.Table.RowSearch.ShopName.SetValue(userShopName);
-            оrdersInputPage = оrdersInputPage.SeachButtonRowClickAndGo();
+            var оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders?&filters[shop]=" + userShopName);
             while (оrdersInputPage.Table.GetRow(0).ID.IsPresent)
             {
                 var id = оrdersInputPage.Table.GetRow(0).ID.GetText();
                 оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders/delete/" + id);
-                оrdersInputPage.Table.RowSearch.ShopName.SetValue(userShopName);
-                оrdersInputPage = оrdersInputPage.SeachButtonRowClickAndGo();
+                оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders?&filters[shop]=" + userShopName);
             }
-            оrdersInputPage.Orders.Click();
-            оrdersInputPage.OrderOutput.Click();
-            var оrdersOutputPage = оrdersInputPage.GoTo<OrdersOutputPage>();
-            оrdersOutputPage.Table.RowSearch.CompanyName.SetValue(companyName);
-            оrdersOutputPage = оrdersOutputPage.SeachButtonRowClickAndGo();
+            
+            var оrdersOutputPage = LoadPage<OrdersOutputPage>("admin/outgoingorders?&filters[company]=" + companyName);
             while (оrdersOutputPage.Table.GetRow(0).ID.IsPresent)
             {
                 var id = оrdersOutputPage.Table.GetRow(0).ID.GetText();
                 оrdersOutputPage = LoadPage<OrdersOutputPage>("admin/outgoingorders/delete/" + id);
-                оrdersOutputPage.Table.RowSearch.CompanyName.SetValue(companyName);
-                оrdersOutputPage = оrdersOutputPage.SeachButtonRowClickAndGo();
+                оrdersOutputPage = LoadPage<OrdersOutputPage>("admin/outgoingorders?&filters[company]=" + companyName);
             }
         }
 

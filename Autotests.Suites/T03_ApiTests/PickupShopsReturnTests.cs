@@ -66,7 +66,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            снова запрашиваем магазин когда нет никого
             var responseError = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/pickup/" + pickupId + "/shops_return.json",
-                new NameValueCollection { });
+                new NameValueCollection {});
             Assert.IsFalse(responseError.Success);
             Assert.AreEqual(responseError.Response.ErrorText, "Заказы не найдены");
         }

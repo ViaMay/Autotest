@@ -6,18 +6,41 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ApiTests
 {
-    public class WarehouseAdminEditTests : ConstVariablesTestBase
+    public class WarehouseEditTests : ConstVariablesTestBase
     {
-        [Test, Description("Редактирование склада через Api админа"), Ignore]
+        [Test, Description("Редактирование склада через Api")]
         public void WarehousesEditTest()
         {
-            LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
-            string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
+            var adminPage = LoginAsAdmin(adminName, adminPass);
+            adminPage.AdminUsers.Click();
+            adminPage.Users.Click();
+            var usersPage = adminPage.GoTo<UsersPage>();
+            usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
+            usersPage = usersPage.SeachButtonRowClickAndGo();
 
-            shopsPage.AdminUsers.Click();
-            shopsPage.UsersWarehouses.Click();
-            var warehousesPage = shopsPage.GoTo<UsersWarehousesPage>();
+            if (!usersPage.UsersTable.GetRow(0).UserEmail.IsPresent)
+            {
+                usersPage.UsersCreate.Click();
+                var userCreatePage = usersPage.GoTo<UserCreatePage>();
+                userCreatePage.UserEmail.SetValueAndWait(userNameAndPass);
+                userCreatePage.UserPassword.SetValueAndWait(userNameAndPass);
+                userCreatePage.UserGroups.SetFirstValueSelect("user");
+                userCreatePage.UserGroupsAddButton.Click();
+                userCreatePage.OfficialName.SetValueAndWait(legalEntityName);
+                userCreatePage.SaveButton.Click();
+                usersPage = userCreatePage.GoTo<UsersPage>();
+                usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
+                usersPage = usersPage.SeachButtonRowClickAndGo();
+            }
+            usersPage.UsersTable.GetRow(0).UserEmail.WaitText(userNameAndPass);
+            usersPage.UsersTable.GetRow(0).ActionsEdit.Click();
+            var userEdiringPage = usersPage.GoTo<UserCreatePage>();
+            var userId = userEdiringPage.Key.GetAttributeValue("value");
+            
+//            удаление скалад если он был до этого
+            userEdiringPage.AdminUsers.Click();
+            userEdiringPage.UsersWarehouses.Click();
+            var warehousesPage = userEdiringPage.GoTo<UsersWarehousesPage>();
             warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_Api");
             warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
@@ -25,16 +48,16 @@ namespace Autotests.Tests.T03_ApiTests
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
                 warehousesPage.Aletr.Accept();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
-                warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_ApiAdmin");
+                warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_Api");
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             }
 
             //            Создания склада
             var responseWarehouse =
-                (ApiResponse.ResponseAddObject)apiRequest.POST(keyShopPublic + "/warehouse_create.json",
+                (ApiResponse.ResponseAddObject)apiRequest.POST("cabinet/" + userId + "/warehouse_create.json",
                     new NameValueCollection
                     {
-                        {"name", userWarehouseName + "_ApiAdmin"},
+                        {"name", userWarehouseName + "_Api"},
                         {"flat", "138"},
                         {"city", "416"},
                         {"contact_person", "contact_person"},
@@ -48,11 +71,11 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsTrue(responseWarehouse.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
             var responseEditWarehouse =
-                (ApiResponse.ResponseAddObject)apiRequest.POST(keyShopPublic + "/warehouse_edit.json",
+                (ApiResponse.ResponseAddObject)apiRequest.POST("cabinet/" + userId + "/warehouse_edit/"
+                + responseWarehouse.Response.Id+".json",
                 new NameValueCollection
                     {
-                        {"_id", responseWarehouse.Response.Id},
-                        {"name", userWarehouseName + "_ApiAdmin2"},
+                        {"name", userWarehouseName + "_Api2"},
                         {"flat", "flat139"},
                         {"city", "417"},
                         {"contact_person", "contact_person2"},
@@ -70,24 +93,47 @@ namespace Autotests.Tests.T03_ApiTests
             userPage.UseProfile.Click();
             userPage.UserWarehouses.Click();
             var warehousesListPage = userPage.GoTo<UserWarehousesPage>();
-            var row = warehousesListPage.Table.FindRowByName(userWarehouseName + "_ApiAdmin2");
-            row.Name.WaitText(userWarehouseName + "_ApiAdmin2");
+            var row = warehousesListPage.Table.FindRowByName(userWarehouseName + "_Api2");
+            row.Name.WaitText(userWarehouseName + "_Api2");
             row.City.WaitText("Кедровый");
             row.Address.WaitText("street2, house2 flat139");
             row.Contact.WaitText("contact_person2 (contact_phone2 tester@user.ru)");
             row.TimeWork.WaitText("1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23");
         }
 
-        [Test, Description("Редактирвоание склада через Api админа неудачное"), Ignore]
+        [Test, Description("Редактирвоание склада через Api неудачное")]
         public void WarehousesEditErrorTest()
         {
-            LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
-            string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
+            var adminPage = LoginAsAdmin(adminName, adminPass);
+            adminPage.AdminUsers.Click();
+            adminPage.Users.Click();
+            var usersPage = adminPage.GoTo<UsersPage>();
+            usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
+            usersPage = usersPage.SeachButtonRowClickAndGo();
 
-            shopsPage.AdminUsers.Click();
-            shopsPage.UsersWarehouses.Click();
-            var warehousesPage = shopsPage.GoTo<UsersWarehousesPage>();
+            if (!usersPage.UsersTable.GetRow(0).UserEmail.IsPresent)
+            {
+                usersPage.UsersCreate.Click();
+                var userCreatePage = usersPage.GoTo<UserCreatePage>();
+                userCreatePage.UserEmail.SetValueAndWait(userNameAndPass);
+                userCreatePage.UserPassword.SetValueAndWait(userNameAndPass);
+                userCreatePage.UserGroups.SetFirstValueSelect("user");
+                userCreatePage.UserGroupsAddButton.Click();
+                userCreatePage.OfficialName.SetValueAndWait(legalEntityName);
+                userCreatePage.SaveButton.Click();
+                usersPage = userCreatePage.GoTo<UsersPage>();
+                usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
+                usersPage = usersPage.SeachButtonRowClickAndGo();
+            }
+            usersPage.UsersTable.GetRow(0).UserEmail.WaitText(userNameAndPass);
+            usersPage.UsersTable.GetRow(0).ActionsEdit.Click();
+            var userEdiringPage = usersPage.GoTo<UserCreatePage>();
+            var userId = userEdiringPage.Key.GetAttributeValue("value");
+
+//            удаление скалад если он был до этого           
+            userEdiringPage.AdminUsers.Click();
+            userEdiringPage.UsersWarehouses.Click();
+            var warehousesPage = userEdiringPage.GoTo<UsersWarehousesPage>();
             warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_Api");
             warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
@@ -95,16 +141,16 @@ namespace Autotests.Tests.T03_ApiTests
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
                 warehousesPage.Aletr.Accept();
                 warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
-                warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_ApiAdmin");
+                warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_Api");
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             }
 
-            //            Создания склада
+//            Создания склада
             var responseWarehouse =
-                (ApiResponse.ResponseAddObject)apiRequest.POST(keyShopPublic + "/warehouse_create.json",
+                (ApiResponse.ResponseAddObject)apiRequest.POST("cabinet/" + userId + "/warehouse_create.json",
                     new NameValueCollection
                     {
-                        {"name", userWarehouseName + "_ApiAdmin"},
+                        {"name", userWarehouseName + "_Api"},
                         {"flat", "138"},
                         {"city", "416"},
                         {"contact_person", "contact_person"},
@@ -117,12 +163,12 @@ namespace Autotests.Tests.T03_ApiTests
                     );
             Assert.IsTrue(responseWarehouse.Success, "Ожидался ответ true на отправленный запрос POST по API");
             
-            //            Создания склада неудачное пустое id склада
+//            Редктирование склада неудачное пустое id склада
             var responseErrorWarehouse =
-                (ApiResponse.ResponseFail)apiRequest.POST(keyShopPublic + "/warehouse_edit.json",
+                (ApiResponse.ResponseFail)apiRequest.POST("cabinet/" + userId + "/warehouse_edit.json",
                     new NameValueCollection
                     {
-                        {"name", userWarehouseName + "_ApiAdmin"},
+                        {"name", userWarehouseName + "_Api"},
                         {"flat", ""},
                         {"city", ""},
                         {"contact_person", "contact_person"},
@@ -136,12 +182,13 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsFalse(responseErrorWarehouse.Success, "Ожидался ответ false на отправленный запрос POST по API");
             Assert.AreEqual(responseErrorWarehouse.Response.ErrorText, "Warehouse not found");
 
+//            Редктирование склада неудачное
             responseErrorWarehouse =
-                (ApiResponse.ResponseFail)apiRequest.POST(keyShopPublic + "/warehouse_edit.json",
+                (ApiResponse.ResponseFail)apiRequest.POST("cabinet/" + userId + "/warehouse_edit/"
+                + responseWarehouse.Response.Id + ".json",
                     new NameValueCollection
                     {
-                        {"_id", responseWarehouse.Response.Id},
-                        {"name", userWarehouseName + "_ApiAdmin"},
+                        {"name", userWarehouseName + "_Api"},
                         {"flat", ""},
                         {"city", ""},
                         {"contact_person", "contact_person"},
@@ -155,9 +202,10 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsFalse(responseErrorWarehouse.Success, "Ожидался ответ false на отправленный запрос POST по API");
             Assert.AreEqual(responseErrorWarehouse.Response.ErrorText, "City not found");
 
-//            Создания склада неудачное
+//            Редктирование склада неудачное
             var responseErrorWarehouse2 =
-                (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/warehouse_edit.json",
+                (ApiResponse.ResponseFailObject)apiRequest.POST("cabinet/" + userId + "/warehouse_edit/"
+                + responseWarehouse.Response.Id + ".json",
                     new NameValueCollection
                     {
                         {"_id", responseWarehouse.Response.Id},

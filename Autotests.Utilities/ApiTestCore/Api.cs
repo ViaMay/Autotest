@@ -110,7 +110,7 @@ namespace Autotests.Utilities.ApiTestCore
                 return (ApiResponse.ResponseAddOrder)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
 //            ResponseStatus
-            if (value.Contains(@"status") && value.Contains(@"status_description"))
+            if ((value.Contains(@"status") && value.Contains(@"status_description")) || value.Contains(@"delivery_company_order_number"))
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseStatus));
                 return (ApiResponse.ResponseStatus)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));

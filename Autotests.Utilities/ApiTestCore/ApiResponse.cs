@@ -452,6 +452,15 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "delivery_date")]
             public string DeliveryDate { get; set; }
+
+            [DataMember(Name = "delivery_company_order_number")]
+            public string DeliveryCompanyOderNumber { get; set; }
+
+            [DataMember(Name = "post_track")]
+            public string PostTrack { get; set; }
+
+            [DataMember(Name = "order_status")]
+            public OrderStatus[] OrderStatus { get; set; }
         }
 
         [DataContract]
@@ -531,6 +540,19 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "name")]
             public string Name { get; set; }
+        }
+        
+        [DataContract]
+        public class OrderStatus
+        {
+            [DataMember(Name = "date")]
+            public string Date { get; set; }
+
+            [DataMember(Name = "company_status")]
+            public string CompanStatus { get; set; }
+
+            [DataMember(Name = "company_status_description")]
+            public string CompanyStatusDescription { get; set; }
         }
         
         [DataContract]
