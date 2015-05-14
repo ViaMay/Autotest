@@ -15,7 +15,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void DocumentsTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var usersWarehousesPage = LoadPage<UsersWarehousesPage>("/admin/warehouses?&filters[name]=" + userWarehouseName);
             var usersWarehousId = usersWarehousesPage.Table.GetRow(0).ID.GetText();
@@ -120,7 +120,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void DocumentsErrorTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
 
             //            генерация документов с не правильным Id заказа

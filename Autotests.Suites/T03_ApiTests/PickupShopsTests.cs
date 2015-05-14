@@ -34,12 +34,12 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            запрашиваем магазины
             var responsePickupShop =
-                (ApiResponse.ResponsePickupCompaniesOrShops)apiRequest.GET("api/v1/pickup/" + pickupId + "/shops.json",
+                (ApiResponse.ResponseCompaniesOrShops)apiRequest.GET("api/v1/pickup/" + pickupId + "/shops.json",
                     new NameValueCollection {});
             Assert.IsTrue(responsePickupShop.Success);
             Assert.AreEqual(responsePickupShop.Response.Count(), 1);
             Assert.AreEqual(responsePickupShop.Response[0].Name, userShopName);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string shopId = shopsPage.Table.GetRow(0).ID.GetText();
             Assert.AreEqual(responsePickupShop.Response[0].Id, shopId);
 

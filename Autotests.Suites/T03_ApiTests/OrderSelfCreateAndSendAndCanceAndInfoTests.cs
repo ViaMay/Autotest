@@ -6,13 +6,13 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ApiTests
 {
-    public class OrderSelfCreateAndSendAndCancelTests : ConstVariablesTestBase
+    public class OrderSelfCreateAndSendAndCanceAndInfoTests : ConstVariablesTestBase
     {
         [Test, Description("Создание заказа на самовывоз, запрос статусов, информации, подтверждения и отмена заявки")]
         public void OrderSelfTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
                 LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
@@ -103,6 +103,7 @@ namespace Autotests.Tests.T03_ApiTests
                 new NameValueCollection {});
             Assert.AreEqual(responseOrderInfo.Response.ToEmail, userNameAndPass);
             Assert.AreEqual(responseOrderInfo.Response.ToName, "Ургудан Рабат Мантов");
+//            Assert.AreEqual(responseOrderInfo.Response.ToCity, "151184");
 							        
 //         Отмена ордера (неудачная)
             var responseOrderCancelFail = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/order_cancel.json",

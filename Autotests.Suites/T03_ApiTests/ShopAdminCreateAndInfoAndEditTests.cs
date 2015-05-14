@@ -12,7 +12,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void ShopCreateAndInfoAndEditTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
 
             var responseWarehouse =
@@ -38,7 +38,7 @@ namespace Autotests.Tests.T03_ApiTests
             {
                 shopsPage.Table.GetRow(0).ActionsDelete.Click();
                 shopsPage.Aletr.Accept();
-                shopsPage = shopsPage.GoTo<ShopsPage>();
+                shopsPage = shopsPage.GoTo<UsersShopsPage>();
                 shopsPage.Table.RowSearch.Name.SetValue(userShopName + "_ApiAdmin");
                 shopsPage = shopsPage.SeachButtonRowClickAndGo();
             }
@@ -109,7 +109,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void ShopCreateErrorTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
 
             var responseWarehouse =
@@ -167,7 +167,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void ShopEditErrorTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             string shopId = shopsPage.Table.GetRow(0).ID.GetText();
 

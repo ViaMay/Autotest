@@ -8,15 +8,12 @@ namespace Autotests.Tests.T03_ApiTests
 {
     public class OrderStatusFullTests : ConstVariablesTestBase
     {
-        [Test, Description("Передача планируемой даты доставки от ТК при запросе статуса 754")]
+        [Test]
         public void OrderStatusFullTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
-            var deliveryPointsPage =
-                LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
-            var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
             var deliveryCompaniesPage =
                 LoadPage<CompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
@@ -58,6 +55,7 @@ namespace Autotests.Tests.T03_ApiTests
                 nowDate.AddDays(3).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
             Assert.AreEqual(responseOrderStatus.Response.DeliveryCompanyOderNumber, "");
             Assert.AreEqual(responseOrderStatus.Response.PostTrack, "");
+            Assert.AreEqual(responseOrderStatus.Response.DeliveryCompany, "");
 
 //            формирование исходящей заявки
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/process_i_orders");
@@ -73,6 +71,7 @@ namespace Autotests.Tests.T03_ApiTests
                 nowDate.AddDays(3).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
             Assert.AreEqual(responseOrderStatus.Response.DeliveryCompanyOderNumber, "");
             Assert.AreEqual(responseOrderStatus.Response.PostTrack, "");
+            Assert.AreEqual(responseOrderStatus.Response.DeliveryCompany, deliveryCompanyId);
         }
     }
 }

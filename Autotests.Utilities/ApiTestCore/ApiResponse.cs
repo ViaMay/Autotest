@@ -404,6 +404,9 @@ namespace Autotests.Utilities.ApiTestCore
             [DataMember(Name = "payment_price")]
             public string PaymentPrice { get; set; }
 
+            [DataMember(Name = "to_city")]
+            public string ToCity { get; set; }
+
             [DataMember(Name = "to_name")]
             public string ToName { get; set; }
 
@@ -455,6 +458,9 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "delivery_company_order_number")]
             public string DeliveryCompanyOderNumber { get; set; }
+
+            [DataMember(Name = "delivery_company")]
+            public string DeliveryCompany { get; set; }
 
             [DataMember(Name = "post_track")]
             public string PostTrack { get; set; }
@@ -533,7 +539,7 @@ namespace Autotests.Utilities.ApiTestCore
         }
         
         [DataContract]
-        public class MessagePickupCompaniesOrShops
+        public class MessageCompaniesOrShops
         {
             [DataMember(Name = "id")]
             public string Id { get; set; }
@@ -631,10 +637,17 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
-        public class ResponsePickupCompaniesOrShops : TResponse
+        public class ResponseCompaniesOrShops : TResponse
         {
             [DataMember(Name = "response")]
-            public MessagePickupCompaniesOrShops[] Response { get; set; }
+            public MessageCompaniesOrShops[] Response { get; set; }
+        }
+
+        [DataContract]
+        public class ResponsePickupCompany : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageCompaniesOrShops Response { get; set; }
         }
 
         [DataContract]

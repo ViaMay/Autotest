@@ -12,7 +12,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void WarehousesCreateTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
 
             shopsPage.AdminUsers.Click();
@@ -64,7 +64,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void WarehousesCreateErrorTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
 
             shopsPage.AdminUsers.Click();

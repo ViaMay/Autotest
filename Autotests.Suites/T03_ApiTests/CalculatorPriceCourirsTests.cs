@@ -12,7 +12,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void CalculatorPriceSelfTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
 
 //            Все поля заполнены. Расчитать цену курьерки

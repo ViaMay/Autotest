@@ -11,7 +11,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void PickupCompaniesTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var usersPage =
                 LoadPage<UsersPage>("/admin/users/?&filters[username]=" + pickupNameAndPass);
@@ -24,7 +24,7 @@ namespace Autotests.Tests.T03_ApiTests
             var companyId = companiesPage.Table.GetRow(0).ID.GetText();
             
             var responseCreateOrder =
-                (ApiResponse.ResponseAddOrder) apiRequest.POST(keyShopPublic + "/order_create.json",
+                (ApiResponse.ResponseAddOrder)apiRequest.POST(keyShopPublic + "/order_create.json",
                     new NameValueCollection
                     {
                         {"api_key", keyShopPublic},
@@ -62,7 +62,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
             var responsePickupCompanies =
-                (ApiResponse.ResponsePickupCompaniesOrShops) apiRequest.GET("api/v1/pickup/" + pickupId + "/companies.json",
+                (ApiResponse.ResponseCompaniesOrShops) apiRequest.GET("api/v1/pickup/" + pickupId + "/companies.json",
                     new NameValueCollection {});
             Assert.IsTrue(responsePickupCompanies.Success);
             Assert.AreEqual(responsePickupCompanies.Response[0].Id, companyId);
@@ -73,7 +73,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void PickupCompaniesErrorTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var usersPage =
                 LoadPage<UsersPage>("/admin/users/?&filters[username]=" + pickupNameAndPass);

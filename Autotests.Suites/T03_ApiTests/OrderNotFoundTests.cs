@@ -12,7 +12,7 @@ namespace Autotests.Tests.T03_ApiTests
         {
             var orderErrorId = "123123";
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             //           Подтверждение заявки c неправильным id заявки
             var responseFail = (ApiResponse.ResponseFail)apiRequest.POST(keyShopPublic + "/order_confirm.json",

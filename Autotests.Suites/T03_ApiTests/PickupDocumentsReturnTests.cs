@@ -48,7 +48,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
 
 //            формируем документы на возврат
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string shopId = shopsPage.Table.GetRow(0).ID.GetText();
             var responseDocumentsReturn = (ApiResponse.ResponseDocumentPickup)apiRequest.GET("api/v1/pickup/" + pickupId + "/documents_return.json",
                new NameValueCollection { { "shop_id", shopId }, });

@@ -11,7 +11,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
             LabelDirectoryShops = new StaticText(By.CssSelector("legend"));
             ShopsCreate = new Link(By.LinkText("Создать"));
 
-            Table = new BaseTableListControl(By.ClassName("table"));
+            Table = new ShopsListControl(By.ClassName("table"));
         }
 
 
@@ -23,7 +23,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
 
         public StaticText LabelDirectoryShops { get; set; }
         public Link ShopsCreate { get; set; }
-        public BaseTableListControl Table { get; set; }
+        public ShopsListControl Table { get; set; }
         
         public override void BrowseWaitVisible()
         {

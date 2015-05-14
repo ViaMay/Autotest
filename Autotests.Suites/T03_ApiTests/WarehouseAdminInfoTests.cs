@@ -11,7 +11,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void WarehousesInfoTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             shopsPage.AdminUsers.Click();
             shopsPage.UsersWarehouses.Click();
@@ -44,12 +44,12 @@ namespace Autotests.Tests.T03_ApiTests
                     );
             Assert.IsTrue(responseWarehouse.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
-            shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName + "_ApiAdmin");
+            shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName + "_ApiAdmin");
             while (shopsPage.Table.GetRow(0).Name.IsPresent)
             {
                 shopsPage.Table.GetRow(0).ActionsDelete.Click();
                 shopsPage.Aletr.Accept();
-                shopsPage = shopsPage.GoTo<ShopsPage>();
+                shopsPage = shopsPage.GoTo<UsersShopsPage>();
                 shopsPage.Table.RowSearch.Name.SetValue(userShopName + "_ApiAdmin");
                 shopsPage = shopsPage.SeachButtonRowClickAndGo();
             }
@@ -83,7 +83,7 @@ namespace Autotests.Tests.T03_ApiTests
         public void WarehousesInfoErrorTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             shopsPage.AdminUsers.Click();
             shopsPage.UsersWarehouses.Click();
@@ -115,11 +115,11 @@ namespace Autotests.Tests.T03_ApiTests
                     }
                     );
             Assert.IsTrue(responseWarehouse.Success, "Ожидался ответ true на отправленный запрос POST по API");
-            shopsPage = LoadPage<ShopsPage>("/admin/shops/?&filters[name]=" + userShopName + "_ApiAdmin");
+            shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName + "_ApiAdmin");
             while (shopsPage.Table.GetRow(0).Name.IsPresent)
             {
                 shopsPage.Table.GetRow(0).ActionsDelete.Click();
-                shopsPage = shopsPage.GoTo<ShopsPage>();
+                shopsPage = shopsPage.GoTo<UsersShopsPage>();
                 shopsPage.Table.RowSearch.Name.SetValue(userShopName + "_ApiAdmin");
                 shopsPage = shopsPage.SeachButtonRowClickAndGo();
             }

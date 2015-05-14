@@ -14,7 +14,7 @@ namespace Autotests.Tests.T04_AdminTests
             var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
-            var shopsPage = LoadPage<ShopsPage>("admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
                  LoadPage<DeliveryPointsPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);
@@ -81,7 +81,7 @@ namespace Autotests.Tests.T04_AdminTests
             var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
-            var shopsPage = LoadPage<ShopsPage>("admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
                  LoadPage<DeliveryPointsPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);
@@ -125,7 +125,7 @@ namespace Autotests.Tests.T04_AdminTests
             var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
-            var shopsPage = LoadPage<ShopsPage>("admin/shops/?&filters[name]=" + userShopName);
+            var shopsPage = LoadPage<UsersShopsPage>("admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
                  LoadPage<DeliveryPointsPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);

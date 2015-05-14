@@ -190,11 +190,17 @@ namespace Autotests.Utilities.ApiTestCore
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponsePickupOrders));
                 return (ApiResponse.ResponsePickupOrders)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
-//            ResponsePickupCompanies
+//            ResponsePickupCompaniesOrShops
             if (value.Contains(@"response"":[") && value.Contains(@"id"))
             {
-                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponsePickupCompaniesOrShops));
-                return (ApiResponse.ResponsePickupCompaniesOrShops)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseCompaniesOrShops));
+                return (ApiResponse.ResponseCompaniesOrShops)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+//            ResponsePickupCompany
+            if (value.Contains(@"response"":") && value.Contains(@"id") && value.Contains(@"name"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponsePickupCompany));
+                return (ApiResponse.ResponsePickupCompany)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
             var json2 = new DataContractJsonSerializer(typeof (ApiResponse.TResponse));
             return (ApiResponse.TResponse) json2.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
