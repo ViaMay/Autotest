@@ -119,6 +119,7 @@ namespace Autotests.Tests.T03_ApiTests
             while (shopsPage.Table.GetRow(0).Name.IsPresent)
             {
                 shopsPage.Table.GetRow(0).ActionsDelete.Click();
+                shopsPage.Aletr.Accept();
                 shopsPage = shopsPage.GoTo<UsersShopsPage>();
                 shopsPage.Table.RowSearch.Name.SetValue(userShopName + "_ApiAdmin");
                 shopsPage = shopsPage.SeachButtonRowClickAndGo();

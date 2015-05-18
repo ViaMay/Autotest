@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Specialized;
-using System.Globalization;
 using System.Linq;
 using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages.Pages.PageAdmin;
-using Autotests.WebPages.Pages.PageUser.Controls;
 using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ApiTests
@@ -21,7 +19,7 @@ namespace Autotests.Tests.T03_ApiTests
                 LoadPage<CompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
             var companyId = companiesPage.Table.GetRow(0).ID.GetText();
 
-//           Порверка если компания забора указана
+//           Проверка если компания забора указана
             var responseDeliveryCompanу = (ApiResponse.ResponseCompaniesOrShops)apiRequest.GET("api/v1/" + keyShopPublic + "/shop_delivery_companies.json",
                 new NameValueCollection { });
             Assert.IsTrue(responseDeliveryCompanу.Success);
@@ -133,7 +131,7 @@ namespace Autotests.Tests.T03_ApiTests
                 pricesPickupPage = pricesPickupPage.GoTo<PricesPickupPage>();
                 pricesPickupPage = LoadPage<PricesPickupPage>("/admin/pickupprices/?&filters[company]=" + companyName);
             }
-//            отправляем запрос так что в магазин с пустой компанией забора
+//            Отправляем запрос указываем магазин у которого у компании забора не указаны цены забора
             var responseDeliveryCompanу = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + responseShop.Response.Key + "/shop_delivery_companies.json",
                 new NameValueCollection { });
             Assert.IsFalse(responseDeliveryCompanу.Success, "Ожидался ответ false на отправленный запрос POST по API");
@@ -151,7 +149,7 @@ namespace Autotests.Tests.T03_ApiTests
             pricePickupCreatePage.SaveButton.Click();
             pricesPickupPage = pricePickupCreatePage.GoTo<PricesPickupPage>();
 
-            //            отправляем запрос так что в магазин с пустой компанией забора
+//            Оправляем запрос указывая магазин у которого есть компания забора с ценами но нет ни одной компании доставки к которой она привязана.
             responseDeliveryCompanу = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + responseShop.Response.Key + "/shop_delivery_companies.json",
                 new NameValueCollection { });
             Assert.IsFalse(responseDeliveryCompanу.Success, "Ожидался ответ false на отправленный запрос POST по API");
@@ -160,8 +158,8 @@ namespace Autotests.Tests.T03_ApiTests
 //            удаление склада
             var warehousesPage = LoadPage<UsersWarehousesPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName + "_Api");
 
-            warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_Api");
-            warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
+
+            warehousesPage = LoadPage<UsersWarehousesPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName + "_Api");
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
@@ -173,6 +171,7 @@ namespace Autotests.Tests.T03_ApiTests
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");
 
+//            Отправляем запрос указываем магазин у которого удален склад.
             responseDeliveryCompanу = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + responseShop.Response.Key + "/shop_delivery_companies.json",
                 new NameValueCollection { });
             Assert.IsFalse(responseDeliveryCompanу.Success, "Ожидался ответ false на отправленный запрос POST по API");

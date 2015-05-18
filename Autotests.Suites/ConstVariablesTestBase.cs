@@ -6,9 +6,10 @@ namespace Autotests.Tests
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
-        public override string ApplicationBaseUrl { get { return "dev:adept2frost_late@dev.ddelivery.ru"; } }
+//        public override string ApplicationBaseUrl { get { return "dev:adept2frost_late@dev.ddelivery.ru"; } }
+        public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
+
 //        public override string ApplicationBaseUrl { get { return "cabinet.ddelivery.ru"; } }
-//        public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
         public override void SetUp()
         {

@@ -8,7 +8,7 @@ namespace Autotests.Tests.T03_ApiTests
 {
     public class OrderStatusFullTests : ConstVariablesTestBase
     {
-        [Test]
+        [Test, Description("Получить развернутое состояние заказа")]
         public void OrderStatusFullTest()
         {
             LoginAsAdmin(adminName, adminPass);
@@ -55,7 +55,7 @@ namespace Autotests.Tests.T03_ApiTests
                 nowDate.AddDays(3).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture));
             Assert.AreEqual(responseOrderStatus.Response.DeliveryCompanyOderNumber, "");
             Assert.AreEqual(responseOrderStatus.Response.PostTrack, "");
-            Assert.AreEqual(responseOrderStatus.Response.DeliveryCompany, "");
+            Assert.AreEqual(responseOrderStatus.Response.DeliveryCompany, deliveryCompanyId);
 
 //            формирование исходящей заявки
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/process_i_orders");

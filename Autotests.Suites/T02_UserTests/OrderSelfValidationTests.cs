@@ -84,6 +84,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.Height.SetValueAndWait("4");
             orderCreateSelfPage.Length.SetValueAndWait("4");
             orderCreateSelfPage.Weight.SetValueAndWait("4");
+            orderCreateSelfPage.DeclaredPrice.SetValueAndWait("4");
 
             orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError();
             orderCreateSelfPage.ActionErrorText[0].WaitText("Ошибка просчета цены, или маршрут недоступен");

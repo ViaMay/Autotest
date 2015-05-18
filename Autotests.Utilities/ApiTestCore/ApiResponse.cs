@@ -404,7 +404,7 @@ namespace Autotests.Utilities.ApiTestCore
             [DataMember(Name = "payment_price")]
             public string PaymentPrice { get; set; }
 
-            [DataMember(Name = "to_city")]
+            [DataMember(Name = "city_to")]
             public string ToCity { get; set; }
 
             [DataMember(Name = "to_name")]

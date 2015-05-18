@@ -103,7 +103,7 @@ namespace Autotests.Tests.T03_ApiTests
                 new NameValueCollection {});
             Assert.AreEqual(responseOrderInfo.Response.ToEmail, userNameAndPass);
             Assert.AreEqual(responseOrderInfo.Response.ToName, "Ургудан Рабат Мантов");
-//            Assert.AreEqual(responseOrderInfo.Response.ToCity, "151184");
+            Assert.AreEqual(responseOrderInfo.Response.ToCity, "151184");
 							        
 //         Отмена ордера (неудачная)
             var responseOrderCancelFail = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/order_cancel.json",
