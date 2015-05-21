@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ApiTests
 {
-    public class ShopCreateTests : ConstVariablesTestBase
+    public class UserCreateShopTests : ConstVariablesTestBase
     {
         [Test, Description("Создание магазина")]
         public void ShopCreateTest()

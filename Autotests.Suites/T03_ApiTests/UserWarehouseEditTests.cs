@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ApiTests
 {
-    public class WarehouseEditTests : ConstVariablesTestBase
+    public class UserWarehouseEditTests : ConstVariablesTestBase
     {
         [Test, Description("Редактирование склада через Api")]
         public void WarehousesEditTest()

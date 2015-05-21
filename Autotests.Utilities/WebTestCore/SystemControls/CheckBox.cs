@@ -1,4 +1,5 @@
 ﻿using System;
+using Autotests.Utilities.WebTestCore.TestSystem;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
@@ -30,6 +31,20 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
         {
             if (Checked)
                 element.Click();
+        }
+
+        public virtual void WaitChecked()
+        {
+            string description =
+                FormatWithLocator(string.Format("Ожидание Checked в элементе"));
+            Waiter.Wait(() => Checked == true, description);
+        }
+
+        public virtual void WaitUnchecked()
+        {
+            string description =
+                FormatWithLocator(string.Format("Ожидание Checked в элементе"));
+            Waiter.Wait(() => Checked == false, description);
         }
     }
 }

@@ -118,10 +118,11 @@
     <Compile Include="T03_ApiTests\OrderEditingTests.cs" />
     <Compile Include="T03_ApiTests\OrderNotFoundTests.cs" />
     <Compile Include="T03_ApiTests\OrderStatusDatePredictTests.cs" />
-    <Compile Include="T03_ApiTests\WarehouseEditTests.cs" />
-    <Compile Include="T03_ApiTests\WarehouseAdminInfoTests.cs" />
-    <Compile Include="T03_ApiTests\WarehouseAdminCreateTests.cs" />
-    <Compile Include="T03_ApiTests\ShopAdminCreateAndInfoAndEditTests.cs" />
+    <Compile Include="T03_ApiTests\UserCreateUserTests.cs" />
+    <Compile Include="T03_ApiTests\UserWarehouseEditTests.cs" />
+    <Compile Include="T03_ApiTests\WarehouseInfoTests.cs" />
+    <Compile Include="T03_ApiTests\WarehouseCreateTests.cs" />
+    <Compile Include="T03_ApiTests\ShopCreateAndInfoAndEditTests.cs" />
     <Compile Include="T04_AdminTests\DateTransferCDCkeckOutOrderTests.cs" />
     <Compile Include="T04_AdminTests\SendOrdersBasePage.cs" />
     <Compile Include="T04_AdminTests\PickupAndProcessDatesCountTests.cs" />
@@ -151,8 +152,8 @@
     <Compile Include="T03_ApiTests\OrderSelfErrorTests.cs" />
     <Compile Include="T03_ApiTests\OrderSelfCreateAndSendAndCanceAndInfoTests.cs" />
     <Compile Include="T03_ApiTests\CalculatorPriceSelfTests.cs" />
-    <Compile Include="T03_ApiTests\ShopCreateTests.cs" />
-    <Compile Include="T03_ApiTests\WarehouseCreateTests.cs" />
+    <Compile Include="T03_ApiTests\UserCreateShopTests.cs" />
+    <Compile Include="T03_ApiTests\UserWarehouseCreateTests.cs" />
     <Compile Include="T05_ClearTests\ClearTest.cs" />
     <Compile Include="T01_StartSettingTests\T02_UserRegistrationTest.cs" />
     <Compile Include="T01_StartSettingTests\T05_CreateDeliveryPointTests.cs" />

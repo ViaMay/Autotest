@@ -126,6 +126,7 @@ namespace Autotests.Tests.T05_ClearTests
             while (timesPickupPage.Table.GetRow(0).Name.IsPresent)
             {
                 timesPickupPage.Table.GetRow(0).ActionsDelete.Click();
+                timesPickupPage.Aletr.Accept();
                 timesPickupPage = timesPickupPage.GoTo<TimesPickupPage>();
                 timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 timesPickupPage = timesPickupPage.SeachButtonRowClickAndGo();
@@ -141,6 +142,7 @@ namespace Autotests.Tests.T05_ClearTests
             while (timesCourierPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 timesCourierPage.Table.GetRow(0).ActionsDelete.Click();
+                timesPickupPage.Aletr.Accept();
                 timesCourierPage = timesCourierPage.GoTo<TimesPage>();
                 timesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 timesCourierPage = timesCourierPage.SeachButtonRowClickAndGo();
@@ -155,6 +157,7 @@ namespace Autotests.Tests.T05_ClearTests
             while (timesSelfPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 timesSelfPage.Table.GetRow(0).ActionsDelete.Click();
+                timesPickupPage.Aletr.Accept();
                 timesSelfPage = timesSelfPage.GoTo<TimesPage>();
                 timesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 timesSelfPage = timesSelfPage.SeachButtonRowClickAndGo();

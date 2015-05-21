@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ApiTests
 {
-    public class WarehouseAdminInfoTests : ConstVariablesTestBase
+    public class WarehouseInfoTests : ConstVariablesTestBase
     {
         [Test, Description("Получить информацию о текущем складе магазина Api админа")]
         public void WarehousesInfoTest()

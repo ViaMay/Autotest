@@ -21,6 +21,7 @@ namespace Autotests.WebPages.Pages.PageUser.Controls
             Status = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[10]", index)));
             Сonfirm = new ButtonInput(By.XPath(string.Format("//tbody/tr[{0}]/td[11]/form/button", index)));
             Undo = new ButtonInput(By.XPath(string.Format("//tbody/tr[{0}]/td[11]/form/button", index)));
+            Delete = new ButtonInput(By.XPath(string.Format("//tbody/tr[{0}]/td[11]/a[2]", index)));
             Edit = new ButtonInput(By.XPath(string.Format("//tbody/tr[{0}]/td[11]/a", index)));
         }
 
@@ -35,6 +36,7 @@ namespace Autotests.WebPages.Pages.PageUser.Controls
         public StaticText Delivery { get; private set; }
         public StaticText Status { get; private set; }
         public ButtonInput Сonfirm { get; private set; }
+        public ButtonInput Delete { get; private set; }
         public ButtonInput Undo { get; private set; }
         public ButtonInput Edit { get; private set; }
     }

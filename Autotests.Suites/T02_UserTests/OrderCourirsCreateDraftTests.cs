@@ -114,6 +114,7 @@ namespace Autotests.Tests.T02_UserTests
             var ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Подтвердить");
+            ordersPage.Table.GetRow(0).Delete.WaitText("Удалить");
             ordersPage.Table.GetRow(0).ID.Click();
             orderCourirsPage = ordersPage.GoTo<OrderPage>();
 
@@ -124,7 +125,10 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.BackOrders.Click();
             ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
             ordersPage.Table.GetRow(0).Status.WaitText("Подтверждена");
-            ordersPage.Table.GetRow(0).Сonfirm.WaitText("Отменить");
+            ordersPage.Table.GetRow(0).Undo.WaitText("Отменить");
+            ordersPage.Table.GetRow(0).Delete.WaitAbsence();
+
+            var orderId = ordersPage.Table.GetRow(0).ID.GetText();
             ordersPage.Table.GetRow(0).ID.Click();
             orderCourirsPage = ordersPage.GoTo<OrderPage>();
 
@@ -136,6 +140,14 @@ namespace Autotests.Tests.T02_UserTests
             ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Подтвердить");
+            ordersPage.Table.GetRow(0).Delete.WaitText("Удалить");
+
+            ordersPage.Table.GetRow(0).Delete.Click();
+            ordersPage.Aletr.WaitText("Удалить заказ?");
+            ordersPage.Aletr.Accept();
+
+            ordersPage = ordersPage.GoTo<OrdersListPage>();
+            ordersPage.Table.GetRow(0).ID.WaitTextNotContains(orderId);
         }
     }
 }

@@ -108,6 +108,9 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "contact_phone")]
             public string ContactPhone { get; set; }
+
+            [DataMember(Name = "username")]
+            public string Username { get; set; }
         }
 
         [DataContract]

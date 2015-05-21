@@ -25,14 +25,14 @@ namespace Autotests.WebPages.Pages.PageAdmin
             PaymentPrice = new Link(By.LinkText("Наложенный платеж"));
             DeliveryPoints = new Link(By.LinkText("Пункты выдачи"));
             Prices = new Link(By.LinkText("Цены"));
-            PricesPickup = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(9) > ul > li:nth-child(1)"));
-            PricesSelf = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(9) ul > li:nth-child(2)"));
-            PricesCourier = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(9) ul > li:nth-child(3)"));
+            PricesPickup = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(10) > ul > li:nth-child(1)"));
+            PricesSelf = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(10) ul > li:nth-child(2)"));
+            PricesCourier = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(10) ul > li:nth-child(3)"));
 
             Times = new Link(By.LinkText("Сроки"));
-            TimesPickup = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(8) > ul > li:nth-child(1)"));
-            TimesSelf = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(8) ul > li:nth-child(2)"));
-            TimesCourier = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(8) ul > li:nth-child(3)"));
+            TimesPickup = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(9) > ul > li:nth-child(1)"));
+            TimesSelf = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(9) ul > li:nth-child(2)"));
+            TimesCourier = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(9) ul > li:nth-child(3)"));
 
             AdminUsers = new Link(By.LinkText("Пользователи"));
             Users = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li"));
