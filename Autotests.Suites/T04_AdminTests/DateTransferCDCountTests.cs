@@ -95,6 +95,7 @@ namespace Autotests.Tests.T04_AdminTests
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
+                calendarsPage.Aletr.Accept();
                 calendarsPage = calendarsPage.GoTo<CalendarsPage>();
                 calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();

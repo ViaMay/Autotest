@@ -20,7 +20,7 @@ namespace Autotests.WebPages.Pages
         public override void BrowseWaitVisible()
         {
             LoginButton.WaitVisible();
-            CalculatorButton.WaitVisible();
+//            CalculatorButton.WaitVisible();
         }
 
         public LoginPage LoginButtonClickAndGo()
