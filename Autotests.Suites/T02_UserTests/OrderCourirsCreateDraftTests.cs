@@ -38,6 +38,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.PaymentPrice.SetValueAndWait("1500");
             orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("Хороший товар,годный");
+            orderCreateCourirsPage.OrderComment.SetValueAndWait("OrderNumber");
 
             var rowArticle = orderCreateCourirsPage.GetArticleRow(0);
                 rowArticle.Name.SetValueAndWait("Имя1");
@@ -52,6 +53,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSender.Name.WaitText(legalEntityName);
             orderCourirsPage.TableSender.Phone.WaitText("+7 (111)111-1111");
             orderCourirsPage.TableSender.Delivery.WaitText("Курьерская");
+            orderCourirsPage.TableSender.OrderComment.WaitText("OrderNumber");
 
             orderCourirsPage.TableRecipient.City.WaitText("Москва");
             orderCourirsPage.TableRecipient.PostCode.WaitText("123123");

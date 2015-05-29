@@ -50,12 +50,14 @@ namespace Autotests.WebPages.Pages.PageUser
             Name = new StaticText(By.XPath(string.Format("{0}/tbody/tr[3]/td", locator)));
             Phone = new StaticText(By.XPath(string.Format("{0}/tbody/tr[4]/td", locator)));
             Delivery = new StaticText(By.XPath(string.Format("{0}/tbody/tr[5]/td", locator)));
+            OrderComment = new StaticText(By.XPath(string.Format("{0}/tbody/tr[6]/td", locator)));
         }
         public StaticText City { get; private set; }
         public StaticText Address { get; private set; }
         public StaticText Name { get; private set; }
         public StaticText Phone { get; private set; }
         public StaticText Delivery { get; private set; }
+        public StaticText OrderComment { get; private set; }
         private readonly string locator;
     }
 

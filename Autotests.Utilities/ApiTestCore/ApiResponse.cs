@@ -111,6 +111,9 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "username")]
             public string Username { get; set; }
+
+            [DataMember(Name = "order_comment")]
+            public string OrderComment { get; set; }
         }
 
         [DataContract]

@@ -170,7 +170,7 @@ namespace Autotests.Tests.T05_ClearTests
             adminPage.AdminCompanies.Click();
             adminPage.DeliveryPoints.Click();
             var deliveryPointsPage = adminPage.GoTo<DeliveryPointsPage>();
-            deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
+            deliveryPointsPage.Table.RowSearch.CompanyName.SetValue(companyName);
             deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
 
             while (deliveryPointsPage.Table.GetRow(0).Name.IsPresent)
@@ -178,7 +178,7 @@ namespace Autotests.Tests.T05_ClearTests
                 deliveryPointsPage.Table.GetRow(0).ActionsDelete.Click();
                 deliveryPointsPage.Aletr.Accept();
                 deliveryPointsPage = deliveryPointsPage.GoTo<DeliveryPointsPage>();
-                deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
+                deliveryPointsPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
             }
         }

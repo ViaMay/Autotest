@@ -38,6 +38,7 @@ namespace Autotests.WebPages.Pages.PageUser
             PaymentPrice = new TextInput(By.Name("payment_price"));
             OrderNumber = new TextInput(By.Name("shop_refnum"));
             GoodsDescription = new TextInput(By.Name("goods_description"));
+            OrderComment = new TextInput(By.Name("order_comment"));
 
             Countedloader = new StaticControl(By.CssSelector("#radio_div > div > imj"));
 
@@ -110,6 +111,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput PaymentPrice { get; set; }
         public TextInput OrderNumber { get; set; }
         public TextInput GoodsDescription { get; set; }
+        public TextInput OrderComment { get; set; }
 
         private StaticControl Countedloader { get; set; }
         public ErrorActionTextControl ActionErrorText { get; set; }

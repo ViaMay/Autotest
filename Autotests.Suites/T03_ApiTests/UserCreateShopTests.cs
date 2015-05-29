@@ -28,7 +28,9 @@ namespace Autotests.Tests.T03_ApiTests
                 userCreatePage.UserGroupsAddButton.Click();
                 userCreatePage.OfficialName.SetValueAndWait(legalEntityName);
                 userCreatePage.SaveButton.Click();
-                usersPage = userCreatePage.GoTo<UsersPage>();
+                userCreatePage.AdminUsers.Click();
+                userCreatePage.Users.Click();
+                usersPage = adminPage.GoTo<UsersPage>();
                 usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
                 usersPage = usersPage.SeachButtonRowClickAndGo();
             }
@@ -86,6 +88,17 @@ namespace Autotests.Tests.T03_ApiTests
             var row = shopsListPage.Table.FindRowByName(userShopName + "_Api");
             row.Name.WaitTextContains(userShopName + "_Api\r\nAPI ключ для модуля: " + responseShop.Response.Key);
             row.Address.WaitTextContains("Квебек");
+
+//            повторное создание магазина
+            responseShop = (ApiResponse.ResponseAddObject)apiRequest.POST("cabinet/" + userId + "/shop_create.json",
+                new NameValueCollection
+                {
+                    {"name", userShopName + "_Api2"},
+                    {"warehouse", responseWarehouse.Response.Id},
+                    {"address", "Квебек2"}
+                }
+                );
+            Assert.IsTrue(responseShop.Success, "Ожидался ответ true на отправленный запрос POST по API");
         }
         private string userId;
     }

@@ -42,7 +42,8 @@ namespace Autotests.Tests.T03_ApiTests
                         {"to_phone", "9999999999"},
                         {"to_email", userNameAndPass},
                         {"goods_description", "Памперс"},
-                        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"}
+                        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
+                        {"order_comment", "order_comment"}
                     });
             Assert.IsTrue(responseCreateOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
@@ -65,7 +66,8 @@ namespace Autotests.Tests.T03_ApiTests
                     {"to_flat", "to_flat"},
                     {"to_phone", "1199999999"},
                     {"goods_description", "goods_description"},
-                    {"to_email", "2" + userNameAndPass}
+                    {"to_email", "2" + userNameAndPass},
+                    {"order_comment", "order_comment2"}
                 });
             Assert.IsTrue(responseEditOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
             Assert.AreEqual(responseCreateOrders.Response.OrderId, responseEditOrders.Response.Id);
@@ -100,6 +102,7 @@ namespace Autotests.Tests.T03_ApiTests
             orderCourirsEditingPage.PaymentPrice.WaitValue("1300");
             orderCourirsEditingPage.OrderNumber.WaitValue("test_userShops_via");
             orderCourirsEditingPage.GoodsDescription.WaitValue("goods_description");
+            orderCourirsEditingPage.OrderComment.WaitValue("order_comment2");
             orderCourirsEditingPage.ItemsCount.WaitValue("1");
         }
 
@@ -136,11 +139,12 @@ namespace Autotests.Tests.T03_ApiTests
                         {"to_phone", "9999999999"},
                         {"to_email", userNameAndPass},
                         {"goods_description", "Памперс"},
-                        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"}
+                        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
+                        {"order_comment", "order_comment"}
                     });
             Assert.IsTrue(responseCreateOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
-            var responseEditOrders = (ApiResponse.ResponseAddObject)apiRequest.POST(keyShopPublic + "/order_update/" +
+         var responseEditOrders = (ApiResponse.ResponseAddObject)apiRequest.POST(keyShopPublic + "/order_update/" +
                                                                                      responseCreateOrders.Response
                                                                                          .OrderId + ".json",
                 new NameValueCollection
@@ -159,7 +163,8 @@ namespace Autotests.Tests.T03_ApiTests
                     {"to_flat", "to_flat"},
                     {"to_phone", "1199999999"},
                     {"goods_description", "goods_description"},
-                    {"to_email", "2" + userNameAndPass}
+                    {"to_email", "2" + userNameAndPass},
+                    {"order_comment", "order_comment2"}
                 });
             Assert.IsTrue(responseEditOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
             Assert.AreEqual(responseCreateOrders.Response.OrderId, responseEditOrders.Response.Id);

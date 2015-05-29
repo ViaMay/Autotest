@@ -32,6 +32,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
 
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("ok");
+            orderCreateCourirsPage.OrderComment.SetValueAndWait("OrderComment");
             orderCreateCourirsPage.SendOrderButton.Click();
             var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");

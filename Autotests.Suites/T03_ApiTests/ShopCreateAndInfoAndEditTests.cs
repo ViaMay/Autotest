@@ -103,6 +103,17 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseShopInfo.Response.Name, userShopName + "_ApiAdmin2");
             Assert.AreEqual(responseShopInfo.Response.Warehouse, responseWarehouse.Response.Id);
             Assert.AreEqual(responseShopInfo.Response.Address, "Санкт-Питербург");
+
+ //            повторное создание магазина
+            responseShop = (ApiResponse.ResponseAddObject)apiRequest.POST(keyShopPublic + "/shop_create.json",
+                new NameValueCollection
+                {
+                    {"_id", responseShop.Response.Id},
+                    {"name", userShopName + "_ApiAdmin3"},
+                    {"address", "Санкт-Питербург"}
+                }
+                );
+            Assert.IsTrue(responseShop.Success, "Ожидался ответ true на отправленный запрос POST по API");
         }
 
         [Test, Description("Создание магазина через Api админа неудачное")]
@@ -161,6 +172,18 @@ namespace Autotests.Tests.T03_ApiTests
                 );
             Assert.IsFalse(responseShop.Success, "Ожидался ответ false на отправленный запрос POST по API");
             Assert.AreEqual(responseShop.Response.Error.Name, "Название обязательно к заполнению");
+
+//            такое имя уже было
+            responseShop = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/shop_create.json",
+                new NameValueCollection
+                {
+                    {"name", userShopName},
+                    {"warehouse", responseWarehouse.Response.Id},
+                    {"address", "Санкт-Питербург"}
+                }
+                );
+            Assert.IsFalse(responseShop.Success, "Ожидался ответ false на отправленный запрос POST по API");
+            Assert.AreEqual(responseShop.Response.Error.Name, "Такое имя уже существует");
         }
 
         [Test, Description("Редактирвоание магазина через Api админа неудачное")]
