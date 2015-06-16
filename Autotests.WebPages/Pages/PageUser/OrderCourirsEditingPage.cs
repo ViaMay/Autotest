@@ -29,6 +29,7 @@ namespace Autotests.WebPages.Pages.PageUser
             PaymentPrice = new TextInput(By.Name("payment_price"));
             OrderNumber = new TextInput(By.Name("shop_refnum"));
             GoodsDescription = new TextInput(By.Name("goods_description"));
+            DeliveryDate = new TextInput(By.Name("delivery_date_new"));
             OrderComment = new TextInput(By.Name("order_comment"));
             ItemsCount = new StaticText(By.Name("items_count"));
 
@@ -68,6 +69,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput PaymentPrice { get; set; }
         public TextInput OrderNumber { get; set; }
         public TextInput GoodsDescription { get; set; }
+        public TextInput DeliveryDate { get; set; }
         public TextInput OrderComment { get; set; }
         public StaticText ItemsCount { get; set; }
 

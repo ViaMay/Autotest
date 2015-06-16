@@ -130,7 +130,7 @@ namespace Autotests.Tests.T03_ApiTests
 		        {"order_comment", "123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890order_comment"}
                 });
             Assert.IsFalse(responseCreateFailOrder.Success, "Ожидался ответ Fail на отправленный запрос POST по API");
-            Assert.AreEqual(responseCreateFailOrder.Response.Error.OrderComment, "Длинна поля &laquo;Комментарий к заказу&raquo; должна быть не более 300 символов");
+            Assert.AreEqual(responseCreateFailOrder.Response.Error.OrderComment, "Длина поля &laquo;Комментарий к заказу&raquo; должна быть не более 300 символов");
         }
     }
 }

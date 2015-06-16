@@ -89,14 +89,15 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateCourirsPage.DeliveryList[0].WaitVisible();
 
-            orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError(1);
+            orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError(2);
             orderCreateCourirsPage.ErrorText[0].WaitText("Улица получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[1].WaitText("Дом получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[2].WaitText("Квартира получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[3].WaitText("ФИО получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[4].WaitText("Телефон получателя обязательно к заполнению");
-            orderCreateCourirsPage.ErrorText[5].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
-            orderCreateCourirsPage.ErrorText[6].WaitText("Описание посылки обязательно к заполнению");
+            orderCreateCourirsPage.ErrorText[5].WaitText("Максимальное количество мест - 1");
+            orderCreateCourirsPage.ErrorText[6].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
+            orderCreateCourirsPage.ErrorText[7].WaitText("Описание посылки обязательно к заполнению");
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
             orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");

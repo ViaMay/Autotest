@@ -5,7 +5,6 @@ namespace Autotests.Tests.T05_ClearTests
 {
     public class ClearTestTest : ConstVariablesTestBase
     {
-
         [Test, Description("Удаление документов")]
         public void T01_DeleteDocumentsTest()
         {
@@ -48,7 +47,7 @@ namespace Autotests.Tests.T05_ClearTests
             }
         }
 
-        [Test, Description("Удаляем склады ценны")]
+        [Test, Description("Удаляем склады")]
         public void T03_DeletePriceTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
@@ -163,6 +162,7 @@ namespace Autotests.Tests.T05_ClearTests
                 timesSelfPage = timesSelfPage.SeachButtonRowClickAndGo();
             }
         }
+
         [Test, Description("удаление точки доставки")]
         public void T05_DeleteDeliveryPointTest()
         {
@@ -232,7 +232,6 @@ namespace Autotests.Tests.T05_ClearTests
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             }
         }
-
 
         [Test, Description("Удаления веса")]
         public void T08_DeleteWeightTest()
@@ -307,6 +306,7 @@ namespace Autotests.Tests.T05_ClearTests
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
             }
         }
+
         [Test, Description("Удаляем магазины usera")]
         public void T11_DeleteUserShopTest()
         {
