@@ -36,7 +36,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.MapOrders.SwitchToFrame();
 
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
-
             orderCreateSelfPage.MapOrders.ImageLocator.Click();
             orderCreateSelfPage.MapOrders.TakeHere.Click();
             orderCreateSelfPage.MapOrders.SwitchToDefaultContent();
@@ -44,7 +43,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.PointDeliveryName.WaitText("Пункт выдачи: " + deliveryPointName);
             orderCreateSelfPage.PointDeliveryAddress.WaitText("Адрес: " + deliveryPointAddress);
             orderCreateSelfPage.PointDeliveryCompany.WaitText("Компания: " + companyName);
-            orderCreateSelfPage.PointDeliveryPrice.WaitText("Цена: 28");
+            orderCreateSelfPage.PointDeliveryPrice.WaitText("Цена: 41");
 
             orderCreateSelfPage.SaveDraftButton.Click();
             var orderPage = orderCreateSelfPage.GoTo<OrderPage>();
@@ -67,8 +66,8 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TablePrice.PaymentPrice.WaitText("4.00 руб.");
             orderPage.TablePrice.DeclaredPrice.WaitText("4.00 руб.");
             orderPage.TablePrice.Insurance.WaitText("0.00 руб.");
-            orderPage.TablePrice.DeliveryPrice.WaitText("28.00 руб.");
-            orderPage.TablePrice.PickupPrice.WaitText("10.00 руб.");
+            orderPage.TablePrice.DeliveryPrice.WaitText("41.00 руб.");
+            orderPage.TablePrice.PickupPrice.WaitText("21.00 руб.");
 
             orderPage.TableSize.Width.WaitText("4 см");
             orderPage.TableSize.Height.WaitText("4 см");
@@ -109,17 +108,17 @@ namespace Autotests.Tests.T02_UserTests
             rowArticle.Count.SetValueAndWait("6");
 
             orderCreateSelfPage.СountedButton.Click();
-            orderCreateSelfPage.MapOrders.SwitchToFrame();
 
+            orderCreateSelfPage.MapOrders.SwitchToFrame();
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
             orderCreateSelfPage.MapOrders.ImageLocator.Click();
             orderCreateSelfPage.MapOrders.TakeHere.Click();
-
             orderCreateSelfPage.MapOrders.SwitchToDefaultContent();
+
             orderCreateSelfPage.PointDeliveryName.WaitText("Пункт выдачи: " + deliveryPointName);
             orderCreateSelfPage.PointDeliveryAddress.WaitText("Адрес: " + deliveryPointAddress);
             orderCreateSelfPage.PointDeliveryCompany.WaitText("Компания: " + companyName);
-            orderCreateSelfPage.PointDeliveryPrice.WaitText("Цена: 28");
+            orderCreateSelfPage.PointDeliveryPrice.WaitText("Цена: 41");
 
             orderCreateSelfPage.SaveDraftButton.Click();
             var orderPage = orderCreateSelfPage.GoTo<OrderPage>();
@@ -136,7 +135,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage = orderPage.GoTo<OrderPage>();
             orderPage.StatusOrder.WaitText("Подтверждена");
 
-            orderPage.BackOrders.Click();
+            orderPage.Orders.Click();
             ordersPage = orderPage.GoTo<OrdersListPage>();
             ordersPage.Table.GetRow(0).Status.WaitText("Подтверждена");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Отменить");

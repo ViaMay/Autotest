@@ -23,7 +23,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 20.00 руб");
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 32.00 руб");
 
             orderCreateCourirsPage.Weight.SetValueAndWait(weightMin.ToString());
             orderCreateCourirsPage.СountedButton.Click();

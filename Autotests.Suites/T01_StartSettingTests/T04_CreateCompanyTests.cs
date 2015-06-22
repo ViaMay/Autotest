@@ -84,6 +84,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");
         }
+
         [Test, Description("Создания наложенного платежа")]
         public void CreatePaymentPriceTest()
         {

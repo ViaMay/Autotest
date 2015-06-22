@@ -24,7 +24,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
 
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 41.00 руб");
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 53.00 руб");
             orderCreateCourirsPage.DeliveryList[0].Click();
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
@@ -68,8 +68,8 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
             orderCourirsPage.TablePrice.DeclaredPrice.WaitText("10.10 руб.");
             orderCourirsPage.TablePrice.Insurance.WaitText("0.00 руб.");
-            orderCourirsPage.TablePrice.DeliveryPrice.WaitText("41.00 руб.");
-            orderCourirsPage.TablePrice.PickupPrice.WaitText("10.00 руб.");
+            orderCourirsPage.TablePrice.DeliveryPrice.WaitText("53.00 руб.");
+            orderCourirsPage.TablePrice.PickupPrice.WaitText("21.00 руб.");
 
             orderCourirsPage.TableSize.Width.WaitText("10 см");
             orderCourirsPage.TableSize.Height.WaitText("11 см");
@@ -124,7 +124,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage = orderCourirsPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");
 
-            orderCourirsPage.BackOrders.Click();
+            orderCourirsPage.Orders.Click();
             ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
             ordersPage.Table.GetRow(0).Status.WaitText("Подтверждена");
             ordersPage.Table.GetRow(0).Undo.WaitText("Отменить");

@@ -24,13 +24,13 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Weight.SetValueAndWait("3.0");
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 20.00 руб");
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 32.00 руб");
             orderCreateCourirsPage.BuyerPostalCode.WaitValue("101000");
 
             orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 41.00 руб");
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 53.00 руб");
             orderCreateCourirsPage.BuyerPostalCode.WaitValue("101000");
 
             orderCreateCourirsPage.Weight.SetValueAndWait("20.1");

@@ -25,7 +25,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
 
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 41.00 руб");
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 53.00 руб");
             orderCreateCourirsPage.DeliveryList[0].Click();
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");

@@ -1,4 +1,5 @@
-﻿using Autotests.WebPages.Pages.PageUser;
+﻿using System.Globalization;
+using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
 
 namespace Autotests.Tests.T02_UserTests
@@ -24,7 +25,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
 
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 41.00 руб");
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 53.00 руб");
             orderCreateCourirsPage.DeliveryList[0].Click();
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
@@ -119,8 +120,8 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TablePrice.PaymentPrice.WaitText("1600.00 руб.");
             orderCourirsPage.TablePrice.DeclaredPrice.WaitText("10.20 руб.");
             orderCourirsPage.TablePrice.Insurance.WaitText("0.00 руб.");
-            orderCourirsPage.TablePrice.DeliveryPrice.WaitText("41.00 руб.");
-            orderCourirsPage.TablePrice.PickupPrice.WaitText("10.00 руб.");
+            orderCourirsPage.TablePrice.DeliveryPrice.WaitText("53.00 руб.");
+            orderCourirsPage.TablePrice.PickupPrice.WaitText("21.00 руб.");
 
             orderCourirsPage.TableSize.Width.WaitText("11 см");
             orderCourirsPage.TableSize.Height.WaitText("12 см");
@@ -138,7 +139,7 @@ namespace Autotests.Tests.T02_UserTests
             ordersPage.Table.GetRow(0).Goods.WaitText("Хороший товар,годный 2");
         }
 
-        [Test, Description("Отправка заказа а потом редактирование")]
+        [Test, Description("Отправка заказа, а потом редактирование")]
         public void OrderCourirsSendEditingTest()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
@@ -157,7 +158,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
 
-            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 41.00 руб");
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 53.00 руб");
             orderCreateCourirsPage.DeliveryList[0].Click();
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
@@ -180,11 +181,13 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.SendOrderButton.Click();
             var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");
+            var dateDelivery = orderCourirsPage.DeliveryDate.GetText();
             orderCourirsPage.BackOrders.Click();
             var ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
 
             ordersPage.Table.GetRow(0).Number.WaitText("OrderNumber");
             ordersPage.Table.GetRow(0).Goods.WaitText("Хороший товар,годный");
+            
             ordersPage.Table.GetRow(0).Edit.Click();
             var orderCourirsEditingPage = ordersPage.GoTo<OrderCourirsEditingPage>();
 
@@ -207,6 +210,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.PaymentPrice.WaitValue("1500");
             orderCourirsEditingPage.OrderNumber.WaitValue("OrderNumber");
             orderCourirsEditingPage.GoodsDescription.WaitValue("Хороший товар,годный");
+            orderCourirsEditingPage.DeliveryDate.WaitValue(dateDelivery);
 
             var rowArticleStatic = orderCourirsEditingPage.GetArticleRow(0);
             rowArticleStatic.Name.WaitValue("Имя1");
@@ -229,6 +233,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCourirsEditingPage.PaymentPrice.SetValue("1600");
             orderCourirsEditingPage.OrderNumber.SetValue("OrderNumber2");
+//            orderCourirsEditingPage.DeliveryDate.SetValueAndWait(nowDate.AddDays(5).ToString("dd-MM-yyyy", CultureInfo.InvariantCulture));
             orderCourirsEditingPage.GoodsDescription.SetValue("Хороший товар,годный2");
 
             orderCourirsEditingPage.SaveChangeButton.Click();
@@ -250,11 +255,13 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
+//            orderCourirsPage.DeliveryDate.WaitText(nowDate.AddDays(5).ToString("dd-MM-yyyy", CultureInfo.InvariantCulture));
+
             orderCourirsPage.TablePrice.PaymentPrice.WaitText("1600.00 руб.");
             orderCourirsPage.TablePrice.DeclaredPrice.WaitText("10.20 руб.");
             orderCourirsPage.TablePrice.Insurance.WaitText("0.00 руб.");
-            orderCourirsPage.TablePrice.DeliveryPrice.WaitText("41.00 руб.");
-            orderCourirsPage.TablePrice.PickupPrice.WaitText("10.00 руб.");
+            orderCourirsPage.TablePrice.DeliveryPrice.WaitText("53.00 руб.");
+            orderCourirsPage.TablePrice.PickupPrice.WaitText("21.00 руб.");
 
             orderCourirsPage.TableSize.Width.WaitText("11 см");
             orderCourirsPage.TableSize.Height.WaitText("12 см");

@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T01_StartSettingTests
 {
-    public class T08CreateWarehouseAndShopTests : ConstVariablesTestBase
+    public class T09CreateWarehouseAndShopTests : ConstVariablesTestBase
     {
         [Test, Description("Создания Склада для тестов на калькулятор")]
         public void T01_CreateWarehouseTest()

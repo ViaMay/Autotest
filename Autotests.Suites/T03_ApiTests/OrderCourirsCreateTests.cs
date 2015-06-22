@@ -37,7 +37,7 @@ namespace Autotests.Tests.T03_ApiTests
 		        {"to_street", "Барна"},
 		        {"to_house", "3a"},
 		        {"to_flat", "12"},
-		        {"to_phone", "9999999999"},
+		        {"to_phone", "79999999999"},
 		        {"to_email", userNameAndPass},
 		        {"goods_description", "Памперс"},
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},

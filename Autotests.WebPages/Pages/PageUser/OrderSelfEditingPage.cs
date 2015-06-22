@@ -14,6 +14,7 @@ namespace Autotests.WebPages.Pages.PageUser
             DeclaredPrice = new TextInput(By.Name("declared_price"));
             PaymentPrice = new TextInput(By.Name("payment_price"));
             GoodsDescription = new TextInput(By.Name("goods_description"));
+            DeliveryDate = new TextInput(By.Name("delivery_date_new"));
             ItemsCount = new StaticText(By.Name("items_count"));
             
             Weight = new TextInput(By.Name("weight"));
@@ -48,6 +49,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput PaymentPrice { get; set; }
         public TextInput DeclaredPrice { get; set; }
         public TextInput GoodsDescription { get; set; }
+        public TextInput DeliveryDate { get; set; }
         public StaticText ItemsCount { get; set; }
 
         public TextInput Weight { get; set; }

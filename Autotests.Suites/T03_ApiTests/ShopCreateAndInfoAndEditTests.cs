@@ -108,9 +108,9 @@ namespace Autotests.Tests.T03_ApiTests
             responseShop = (ApiResponse.ResponseAddObject)apiRequest.POST(keyShopPublic + "/shop_create.json",
                 new NameValueCollection
                 {
-                    {"_id", responseShop.Response.Id},
-                    {"name", userShopName + "_ApiAdmin3"},
-                    {"address", "Санкт-Питербург"}
+                    {"name", userShopName + "_ApiAdmin5"},
+                    {"warehouse", responseWarehouse.Response.Id},
+                    {"address", "Москва"}
                 }
                 );
             Assert.IsTrue(responseShop.Success, "Ожидался ответ true на отправленный запрос POST по API");

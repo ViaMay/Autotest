@@ -275,8 +275,28 @@ namespace Autotests.Tests.T05_ClearTests
             }
         }
 
+        [Test, Description("Удаление шаблона")]
+        public void T10_DeletуOrderedIttemplatesTest()
+        {
+            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
+            adminPage.AdminCompanies.Click();
+            adminPage.OrderedIttemplates.Click();
+            var orderedIttemplatesPage = adminPage.GoTo<OrderedIttemplatesPage>();
+
+            orderedIttemplatesPage.Table.RowSearch.CompanyName.SetValue(companyName);
+            orderedIttemplatesPage = orderedIttemplatesPage.SeachButtonRowClickAndGo();
+
+            while (orderedIttemplatesPage.Table.GetRow(0).Name.IsPresent)
+            {
+                orderedIttemplatesPage.Table.GetRow(0).ActionsDelete.Click();
+                orderedIttemplatesPage.Aletr.Accept();
+                orderedIttemplatesPage = orderedIttemplatesPage.GoTo<OrderedIttemplatesPage>();
+                orderedIttemplatesPage.Table.RowSearch.CompanyName.SetValue(companyName);
+                orderedIttemplatesPage = orderedIttemplatesPage.SeachButtonRowClickAndGo();
+            }
+        }
         [Test, Description("удаление компании")]
-        public void T10_DeleteCompanyTest()
+        public void T11_DeleteCompanyTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminCompanies.Click();
@@ -308,7 +328,7 @@ namespace Autotests.Tests.T05_ClearTests
         }
 
         [Test, Description("Удаляем магазины usera")]
-        public void T11_DeleteUserShopTest()
+        public void T12_DeleteUserShopTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
@@ -327,7 +347,7 @@ namespace Autotests.Tests.T05_ClearTests
         }
 
         [Test, Description("Удаляем склады usera")]
-        public void T12_DeleteUserWarehouseTest()
+        public void T13_DeleteUserWarehouseTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
@@ -346,7 +366,7 @@ namespace Autotests.Tests.T05_ClearTests
         }
         
         [Test, Description("Удаляем usera")]
-        public void T13_DeleteUserTest()
+        public void T14_DeleteUserTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
@@ -375,7 +395,7 @@ namespace Autotests.Tests.T05_ClearTests
         }
 
         [Test, Description("удаление юр лица")]
-        public void T14_DeleteLegalEntitiesTest()
+        public void T15_DeleteLegalEntitiesTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminReference.Click();

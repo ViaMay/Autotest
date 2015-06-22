@@ -105,6 +105,9 @@
     <Compile Include="Pages\PageAdmin\ManagersPage.cs" />
     <Compile Include="Pages\PageAdmin\ManagersCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\DocumentsPage.cs" />
+    <Compile Include="Pages\PageAdmin\OrderedIttemplatesCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\MarginsValueCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\OrderedIttemplatesPage.cs" />
     <Compile Include="Pages\PageAdmin\OrdersPickupPage.cs" />
     <Compile Include="Pages\PageAdmin\PaymentPriceFeeCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\PaymentPriceFeePage.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="Pages\PageAdmin\TimeCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\TimePickupCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\TimesPage.cs" />
+    <Compile Include="Pages\PageAdmin\MarginsValuePage.cs" />
     <Compile Include="Pages\PageAdmin\TimesPickupPage.cs" />
     <Compile Include="Pages\PageAdmin\IntervalsSidePage.cs" />
     <Compile Include="Pages\PageAdmin\IntervalsWeightPage.cs" />

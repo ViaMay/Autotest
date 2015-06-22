@@ -34,6 +34,12 @@ namespace Autotests.WebPages.Pages.PageAdmin
             TimesSelf = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(10) ul > li:nth-child(2)"));
             TimesCourier = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(10) ul > li:nth-child(3)"));
 
+            Margins = new Link(By.LinkText("Наценки"));
+            MarginsValue = new Link(By.LinkText("Значения"));
+            MargindisCounts = new Link(By.LinkText("Скидки"));
+
+            OrderedIttemplates = new Link(By.LinkText("Редактирование заявок"));
+
             AdminUsers = new Link(By.LinkText("Пользователи"));
             Users = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li"));
             UsersWarehouses = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(5)"));
@@ -70,6 +76,12 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public Link TimesSelf { get; set; }
         public Link TimesPickup { get; set; }
         public Link TimesCourier { get; set; }
+
+        public Link Margins { get; set; }
+        public Link MarginsValue { get; set; }
+        public Link MargindisCounts { get; set; }
+
+        public Link OrderedIttemplates { get; set; }
 
         public Link AdminReference { get; set; }
         public Link LegalEntities { get; set; }

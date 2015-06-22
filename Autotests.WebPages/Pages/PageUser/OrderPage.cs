@@ -8,14 +8,16 @@ namespace Autotests.WebPages.Pages.PageUser
         public OrderPage()
         {
             StatusOrder = new StaticText(By.CssSelector("legend > span.label"));
-            BackOrders = new ButtonInput(By.LinkText("Вернутся к списку"));
+            BackOrders = new ButtonInput(By.CssSelector("body > div.container > div > div.span3 > div > ul > li:nth-child(3) > a > i"));
 
             TableSender = new SenderListControl(By.XPath("//div[@class='span5']/table[1]"));
             TableRecipient = new RecipientListControl(By.XPath("//div[@class='span4']/table[1]"));
-            TablePrice = new PriceListControl(By.XPath("//div[@class='span6']/table[1]"));
+            DeliveryDate = new StaticText(By.XPath("//div[@class='span6']/table[1]/tbody/tr/td"));
+            TablePrice = new PriceListControl(By.XPath("//div[4]/div[@class='span6']/table[1]"));
+
             TableSize = new SizeListControl(By.XPath("//div[@class='span3']/table[1]"));
-            TableArticle = new ArticelListControl(By.XPath("//div[@class='span6'][2]/table[1]"));
-            TableArticle = new ArticelListControl(By.XPath("//div[5]/div[@class='span6']/table[1]"));
+//            TableArticle = new ArticelListControl(By.XPath("//div[@class='span6'][3]/table[1]"));
+            TableArticle = new ArticelListControl(By.XPath("//div[6]/div[@class='span6']/table[1]"));
 
             СonfirmButton = new ButtonInput(By.CssSelector("div.form-actions > form > button"));
             UndoButton = new ButtonInput(By.CssSelector("div.form-actions > form > button"));
@@ -27,6 +29,7 @@ namespace Autotests.WebPages.Pages.PageUser
             СonfirmButton.WaitVisibleWithRetries(1000);
         }
         public StaticText StatusOrder { get; set; }
+        public StaticText DeliveryDate { get; set; }
         public ButtonInput BackOrders { get; set; }
         public ButtonInput UndoButton { get; set; }
         public ButtonInput СonfirmButton { get; set; }

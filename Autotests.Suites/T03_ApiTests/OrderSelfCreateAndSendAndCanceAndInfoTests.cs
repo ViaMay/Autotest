@@ -134,9 +134,7 @@ namespace Autotests.Tests.T03_ApiTests
                 });
             Assert.AreEqual(responseOrderCancel.Response.OrderId, responseCreateOrders.Response.OrderId);
             
-            ordersPage.Support.Click();
-            ordersPage.SupportList.Click();
-            var supportListPage = userPage.GoTo<SupportListPage>();
+            var supportListPage = LoadPage<SupportListPage>("user/support");
             supportListPage.Table.GetRow(0).TicketId.WaitText(responseOrderCancel.Response.TicketId);
             supportListPage.Table.GetRow(0).TicketText.WaitText("Изменение заявок");
             supportListPage.Table.GetRow(0).Content.WaitText("Отмена заказа");

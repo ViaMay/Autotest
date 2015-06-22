@@ -6,10 +6,10 @@ namespace Autotests.Tests
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
-//        public override string ApplicationBaseUrl { get { return "dev:adept2frost_late@dev.ddelivery.ru"; } }
+        public override string ApplicationBaseUrl { get { return "dev:adept2frost_late@dev.ddelivery.ru"; } }
 //        public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
-        public override string ApplicationBaseUrl { get { return "cabinet.ddelivery.ru"; } }
+//        public override string ApplicationBaseUrl { get { return "cabinet.ddelivery.ru"; } }
 
         public override void SetUp()
         {
@@ -41,6 +41,10 @@ namespace Autotests.Tests
             side1Max = 40;
             side2Max = 50;
             side3Max = 60;
+
+            marginsPickup = 11;
+            marginsCourirs = 12;
+            marginsSelf = 13;
 
             deliveryPointAddress = "Ленинский проспект 127";
             deliveryPointLongitude = "37.477079";
@@ -82,6 +86,10 @@ namespace Autotests.Tests
         public string deliveryPointAddress;
         public string deliveryPointLongitude;
         public string deliveryPointLatitude;
+
+        public int marginsPickup;
+        public int marginsCourirs;
+        public int marginsSelf;
 
         public Api apiRequest;
         public DateTime nowDate;
