@@ -217,6 +217,9 @@ namespace Autotests.Tests.T02_UserTests
             rowArticleStatic.Article.WaitValue("Article1");
             rowArticleStatic.Count.WaitValue("6");
 
+            orderCourirsEditingPage.DeliveryDate.
+                SetValueAndWait(nowDate.AddDays(5).ToString("dd-MM-yyyy", CultureInfo.InvariantCulture));
+           
             orderCourirsEditingPage.DeclaredPrice.SetValue("10.2");
             orderCourirsEditingPage.Width.SetValue("11.2");
             orderCourirsEditingPage.Height.SetValue("12.2");
@@ -233,7 +236,6 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCourirsEditingPage.PaymentPrice.SetValue("1600");
             orderCourirsEditingPage.OrderNumber.SetValue("OrderNumber2");
-//            orderCourirsEditingPage.DeliveryDate.SetValueAndWait(nowDate.AddDays(5).ToString("dd-MM-yyyy", CultureInfo.InvariantCulture));
             orderCourirsEditingPage.GoodsDescription.SetValue("Хороший товар,годный2");
 
             orderCourirsEditingPage.SaveChangeButton.Click();

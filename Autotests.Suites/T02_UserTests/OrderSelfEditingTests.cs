@@ -108,8 +108,8 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
             orderPage.TablePrice.DeclaredPrice.WaitText("1600.00 руб.");
             orderPage.TablePrice.Insurance.WaitText("0.00 руб.");
-            orderPage.TablePrice.DeliveryPrice.WaitText("52.00 руб.");
-            orderPage.TablePrice.PickupPrice.WaitText("10.00 руб.");
+            orderPage.TablePrice.DeliveryPrice.WaitText("65.00 руб.");
+            orderPage.TablePrice.PickupPrice.WaitText("21.00 руб.");
 
             orderPage.TableSize.Width.WaitText("11 см");
             orderPage.TableSize.Height.WaitText("12 см");
@@ -229,8 +229,8 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
             orderPage.TablePrice.DeclaredPrice.WaitText("1600.00 руб.");
             orderPage.TablePrice.Insurance.WaitText("0.00 руб.");
-            orderPage.TablePrice.DeliveryPrice.WaitText("52.00 руб.");
-            orderPage.TablePrice.PickupPrice.WaitText("10.00 руб.");
+            orderPage.TablePrice.DeliveryPrice.WaitText("65.00 руб.");
+            orderPage.TablePrice.PickupPrice.WaitText("21.00 руб.");
 
             orderPage.TableSize.Width.WaitText("11 см");
             orderPage.TableSize.Height.WaitText("12 см");
