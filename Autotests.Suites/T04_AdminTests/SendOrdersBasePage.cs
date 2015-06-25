@@ -11,13 +11,13 @@ namespace Autotests.Tests.T04_AdminTests
     {
         public string[] SendOrdersRequest()
         {
-            var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
+            var companiesPage = LoadPage<AdminBaseListPage>("admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
             var shopsPage = LoadPage<UsersShopsPage>("admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
-                 LoadPage<DeliveryPointsPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);
+                 LoadPage<AdminBaseListPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);
             var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
 
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
@@ -78,13 +78,13 @@ namespace Autotests.Tests.T04_AdminTests
         //        "dd.MM.yyyy" формат pickupDate
         public string SendOrderCourirsRequest(DateTime pickupDate = default(DateTime))
         {
-            var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
+            var companiesPage = LoadPage<AdminBaseListPage>("admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
             var shopsPage = LoadPage<UsersShopsPage>("admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
-                 LoadPage<DeliveryPointsPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);
+                 LoadPage<AdminBaseListPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);
             var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
 
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
@@ -122,13 +122,13 @@ namespace Autotests.Tests.T04_AdminTests
         //        "dd.MM.yyyy" формат pickupDate
         public string SendOrderSelfRequest(DateTime pickupDate = default(DateTime))
         {
-            var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
+            var companiesPage = LoadPage<AdminBaseListPage>("admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
 
             var shopsPage = LoadPage<UsersShopsPage>("admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
-                 LoadPage<DeliveryPointsPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);
+                 LoadPage<AdminBaseListPage>("admin/deliverypoints/?&filters[name]=" + deliveryPointName);
             var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
 
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");

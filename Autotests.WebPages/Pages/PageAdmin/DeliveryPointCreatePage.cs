@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class DeliveryPointCreatePage : AdminPageBase
+    public class DeliveryPointCreatePage : AdminBaseListCreatePage
     {
         public DeliveryPointCreatePage()
         {
@@ -19,8 +19,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
             HasFittingRoom = new CheckBox(By.Name("has_fitting_room"));
             IsCash = new CheckBox(By.Name("is_cash"));
             IsCard = new CheckBox(By.Name("is_card"));
-
-            SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
 
         public AutocompleteControl City { get; set; }
@@ -33,8 +31,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public CheckBox HasFittingRoom { get; set; }
         public CheckBox IsCash { get; set; }
         public CheckBox IsCard { get; set; }
-
-        public ButtonInput SaveButton { get; set; }
 
         public override void BrowseWaitVisible()
         {

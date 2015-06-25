@@ -92,6 +92,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\BaseRowControl.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Pages\MapControl.cs" />
     <Compile Include="Pages\ErrorTextControl.cs" />
     <Compile Include="Pages\ErrorActionTextControl.cs" />
@@ -100,11 +103,14 @@
     <Compile Include="Pages\ComboboxControl.cs" />
     <Compile Include="Pages\DefaultPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
-    <Compile Include="Pages\BaseRowControl.cs" />
+    <Compile Include="Pages\SupportFreshDeskPage.cs" />
+    <Compile Include="Pages\PageAdmin\СalculatorPage.cs" />
+    <Compile Include="Pages\PageAdmin\SupportAdminListPage.cs" />
     <Compile Include="Pages\PageAdmin\AdminMaintenancePage.cs" />
-    <Compile Include="Pages\PageAdmin\ManagersPage.cs" />
+    <Compile Include="Pages\PageAdmin\AdminBaseListPage.cs" />
+    <Compile Include="Pages\PageAdmin\AdminBaseListCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\CompaniesPage.cs" />
     <Compile Include="Pages\PageAdmin\ManagersCreatePage.cs" />
-    <Compile Include="Pages\PageAdmin\DocumentsPage.cs" />
     <Compile Include="Pages\PageAdmin\OrderedIttemplatesCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\MarginsValueCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\OrderedIttemplatesPage.cs" />
@@ -112,7 +118,6 @@
     <Compile Include="Pages\PageAdmin\PaymentPriceFeeCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\PaymentPriceFeePage.cs" />
     <Compile Include="Pages\PageAdmin\PickupTimetableCreatePage.cs" />
-    <Compile Include="Pages\PageAdmin\PickupTimetablePage.cs" />
     <Compile Include="Pages\PageAdmin\OrderOutputEditingPage.cs" />
     <Compile Include="Pages\PageAdmin\OrdersOutputPage.cs" />
     <Compile Include="Pages\PageAdmin\Controls\OrdersInputRowControl.cs" />
@@ -128,37 +133,26 @@
     <Compile Include="Pages\PageAdmin\Controls\UsersListControl.cs" />
     <Compile Include="Pages\PageAdmin\Controls\UsersRowControl.cs" />
     <Compile Include="Pages\PageAdmin\Controls\UsersRowSearchControl.cs" />
-    <Compile Include="Pages\PageAdmin\CalendarsPage.cs" />
     <Compile Include="Pages\PageAdmin\CalendarCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\OrderInputEditingPage.cs" />
     <Compile Include="Pages\PageAdmin\OrdersInputPage.cs" />
     <Compile Include="Pages\PageAdmin\TimeCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\TimePickupCreatePage.cs" />
-    <Compile Include="Pages\PageAdmin\TimesPage.cs" />
     <Compile Include="Pages\PageAdmin\MarginsValuePage.cs" />
-    <Compile Include="Pages\PageAdmin\TimesPickupPage.cs" />
-    <Compile Include="Pages\PageAdmin\IntervalsSidePage.cs" />
-    <Compile Include="Pages\PageAdmin\IntervalsWeightPage.cs" />
     <Compile Include="Pages\PageAdmin\IntervalSideCreatePage.cs" />
-    <Compile Include="Pages\PageAdmin\PricesCourierPage.cs" />
+    <Compile Include="Pages\PageAdmin\PricesPage.cs" />
     <Compile Include="Pages\PageAdmin\PricesPickupPage.cs" />
     <Compile Include="Pages\PageAdmin\UserAdminShopCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\UsersShopsPage.cs" />
-    <Compile Include="Pages\PageAdmin\UsersWarehousesPage.cs" />
-    <Compile Include="Pages\PageAdmin\PricesSelfPage.cs" />
-    <Compile Include="Pages\PageAdmin\LegalEntitiesPage.cs" />
     <Compile Include="Pages\PageAdmin\LegalEntityCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\PricePickupCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\PriceCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\UsersPage.cs" />
     <Compile Include="Pages\PageAdmin\UserCreatePage.cs" />
-    <Compile Include="Pages\PageAdmin\DeliveryPointsPage.cs" />
     <Compile Include="Pages\PageAdmin\DeliveryPointCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\IntervalWeightCreatePage.cs" />
-    <Compile Include="Pages\PageAdmin\PaymentPricePage.cs" />
     <Compile Include="Pages\PageAdmin\PaymentPriceCreatePage.cs" />
     <Compile Include="Pages\PageAdmin\CompanyCreatePage.cs" />
-    <Compile Include="Pages\PageAdmin\CompaniesPage.cs" />
     <Compile Include="Pages\PageAdmin\AdminHomePage.cs" />
     <Compile Include="Pages\PageAdmin\AdminPageBase.cs" />
     <Compile Include="Pages\PageUser\Controls\DocumentsPreparedRowControl.cs" />
