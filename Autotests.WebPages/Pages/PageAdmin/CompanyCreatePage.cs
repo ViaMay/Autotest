@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class CompanyCreatePage : AdminPageBase
+    public class CompanyCreatePage : AdminBaseListCreatePage
     {
         public CompanyCreatePage()
         {
@@ -21,8 +21,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
             Term = new TextInput(By.Name("term"));
             SinglePickup = new CheckBox(By.Name("single_pickup"));
             Prolongation = new CheckBox(By.Name("prolongation"));
-
-            SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
 
         public TextInput Name { get; set; }
@@ -38,8 +36,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public CheckBox Prolongation { get; set; }
         public CheckBox SinglePickup { get; set; }
         public TextInput Term { get; set; }
-
-        public ButtonInput SaveButton { get; set; }
 
         public override void BrowseWaitVisible()
         {

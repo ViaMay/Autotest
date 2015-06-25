@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class IntervalSideCreatePage : AdminPageBase
+    public class IntervalSideCreatePage : AdminBaseListCreatePage
     {
         public IntervalSideCreatePage()
         {
@@ -18,8 +18,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
             Side3Max = new TextInput(By.Name("side3_max"));
             SidesSumMax = new TextInput(By.Name("sides_sum_max"));
             VolumeMax = new TextInput(By.Name("volume_max"));
-
-            SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
         public TextInput Name { get; set; }
         public TextInput Side1Min { get; set; }
@@ -32,8 +30,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public TextInput Side3Max { get; set; }
         public TextInput SidesSumMax { get; set; }
         public TextInput VolumeMax { get; set; }
-
-        public ButtonInput SaveButton { get; set; }
 
         public override void BrowseWaitVisible()
         {

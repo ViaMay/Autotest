@@ -24,7 +24,7 @@ namespace Autotests.Tests.T01_StartSettingTests
                 usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
                 usersPage = usersPage.SeachButtonRowClickAndGo();
             }
-            usersPage.UsersCreate.Click();
+            usersPage.Create.Click();
             var userCreatePage = usersPage.GoTo<UserCreatePage>();
             userCreatePage.UserEmail.SetValueAndWait(userNameAndPass);
             userCreatePage.UserPassword.SetValueAndWait(userNameAndPass);
@@ -60,7 +60,7 @@ namespace Autotests.Tests.T01_StartSettingTests
                 usersPage.UsersTable.RowSearch.UserEmail.SetValue(pickupNameAndPass);
                 usersPage = usersPage.SeachButtonRowClickAndGo();
             }
-            usersPage.UsersCreate.Click();
+            usersPage.Create.Click();
             var userCreatePage = usersPage.GoTo<UserCreatePage>();
             userCreatePage.UserEmail.SetValueAndWait(pickupNameAndPass);
             userCreatePage.UserPassword.SetValueAndWait(pickupNameAndPass);

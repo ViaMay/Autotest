@@ -20,7 +20,7 @@ namespace Autotests.Tests.T03_ApiTests
 
             if (!usersPage.UsersTable.GetRow(0).UserEmail.IsPresent)
             {
-                usersPage.UsersCreate.Click();
+                usersPage.Create.Click();
                 var userCreatePage = usersPage.GoTo<UserCreatePage>();
                 userCreatePage.UserEmail.SetValueAndWait(userNameAndPass);
                 userCreatePage.UserPassword.SetValueAndWait(userNameAndPass);

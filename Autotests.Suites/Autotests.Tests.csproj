@@ -126,6 +126,7 @@
     <Compile Include="T03_ApiTests\WarehouseCreateTests.cs" />
     <Compile Include="T03_ApiTests\ShopCreateAndInfoAndEditTests.cs" />
     <Compile Include="T04_AdminTests\DateTransferCDCkeckOutOrderTests.cs" />
+    <Compile Include="T04_AdminTests\ClickAllAdminPagesTests.cs" />
     <Compile Include="T04_AdminTests\SendOrdersBasePage.cs" />
     <Compile Include="T04_AdminTests\PickupAndProcessDatesCountTests.cs" />
     <Compile Include="T04_AdminTests\DateTransferCDDriverTests.cs" />

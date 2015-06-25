@@ -13,11 +13,11 @@ namespace Autotests.WebPages.Pages.PageAdmin
             Table = new BaseTableListControl(By.ClassName("table"));
         }
 
-        
-        public PaymentPricePage SeachButtonRowClickAndGo()
+
+        public PaymentPriceFeePage SeachButtonRowClickAndGo()
         {
             Table.RowSearch.SeachButton.Click();
-            return GoTo<PaymentPricePage>();
+            return GoTo<PaymentPriceFeePage>();
         }
 
         public StaticText LabelDirectory { get; set; }

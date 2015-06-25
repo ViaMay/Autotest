@@ -1,16 +1,12 @@
-﻿using Autotests.Utilities.WebTestCore.SystemControls;
-using Autotests.WebPages.Pages.PageAdmin.Controls;
+﻿using Autotests.WebPages.Pages.PageAdmin.Controls;
 using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class CompaniesPage : AdminPageBase
+    public class CompaniesPage : AdminBaseListPage
     {
         public CompaniesPage()
         {
-            LabelDirectoryCompanies = new StaticText(By.CssSelector("legend"));
-            CompanyCreate = new Link(By.LinkText("Создать"));
-
             Table = new CompaniesListControl(By.ClassName("table"));
         }
 
@@ -21,15 +17,12 @@ namespace Autotests.WebPages.Pages.PageAdmin
             return GoTo<CompaniesPage>();
         }
 
-        public StaticText LabelDirectoryCompanies { get; set; }
-        public Link CompanyCreate { get; set; }
         public CompaniesListControl Table { get; set; }
         
         public override void BrowseWaitVisible()
         {
             base.BrowseWaitVisible();
-            LabelDirectoryCompanies.WaitText(@"Справочник ""Компании""");
-            CompanyCreate.WaitVisible();
+            Create.WaitVisible();
         }
     }
 }

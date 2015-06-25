@@ -89,14 +89,14 @@ namespace Autotests.Tests.T04_AdminTests
             //создаем в каледнаре выходной на завтрашнию дату у этой компании доставки
             companiesPage.AdminCompanies.Click();
             companiesPage.Calendars.Click();
-            var calendarsPage = companiesPage.GoTo<CalendarsPage>();
+            var calendarsPage = companiesPage.GoTo<AdminBaseListPage>();
             calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
                 calendarsPage.Aletr.Accept();
-                calendarsPage = calendarsPage.GoTo<CalendarsPage>();
+                calendarsPage = calendarsPage.GoTo<AdminBaseListPage>();
                 calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             }
@@ -163,18 +163,18 @@ namespace Autotests.Tests.T04_AdminTests
             //создаем в каледнаре выходной на завтрашнию дату у этой компании доставки
             companiesPage.AdminCompanies.Click();
             companiesPage.Calendars.Click();
-            var calendarsPage = companiesPage.GoTo<CalendarsPage>();
+            var calendarsPage = companiesPage.GoTo<AdminBaseListPage>();
             calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
                 calendarsPage.Aletr.Accept();
-                calendarsPage = calendarsPage.GoTo<CalendarsPage>();
+                calendarsPage = calendarsPage.GoTo<AdminBaseListPage>();
                 calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             }
-            calendarsPage.CalendarsCreate.Click();
+            calendarsPage.Create.Click();
 //                        текущий день плюс два деня в формате "dd.MM.yyyy" так как следующий день- день забора
             string nowDateString = nowDate.AddDays(2).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture);
             var calendarCreatePage = calendarsPage.GoTo<CalendarCreatePage>();
@@ -182,7 +182,7 @@ namespace Autotests.Tests.T04_AdminTests
             calendarCreatePage.Company.SetFirstValueSelect(companyName);
             calendarCreatePage.Date.SetValueAndWait(nowDateString);
             calendarCreatePage.SaveButton.Click();
-            calendarsPage = calendarCreatePage.GoTo<CalendarsPage>();
+            calendarsPage = calendarCreatePage.GoTo<AdminBaseListPage>();
             calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             calendarsPage.Table.GetRow(0).ColumnThree.WaitText(companyName);
@@ -249,18 +249,18 @@ namespace Autotests.Tests.T04_AdminTests
             //создаем в каледнаре выходной на завтрашнию дату у этой компании доставки
             companiesPage.AdminCompanies.Click();
             companiesPage.Calendars.Click();
-            var calendarsPage = companiesPage.GoTo<CalendarsPage>();
+            var calendarsPage = companiesPage.GoTo<AdminBaseListPage>();
             calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
                 calendarsPage.Aletr.Accept();
-                calendarsPage = calendarsPage.GoTo<CalendarsPage>();
+                calendarsPage = calendarsPage.GoTo<AdminBaseListPage>();
                 calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             }
-            calendarsPage.CalendarsCreate.Click();
+            calendarsPage.Create.Click();
             //                        текущий день плюс один день в формате "dd.MM.yyyy"
             string nowDateString = nowDate.AddDays(1).ToString("dd.MM.yyyy", CultureInfo.InvariantCulture);
             var calendarCreatePage = calendarsPage.GoTo<CalendarCreatePage>();
@@ -268,7 +268,7 @@ namespace Autotests.Tests.T04_AdminTests
             calendarCreatePage.Company.SetFirstValueSelect(companyName);
             calendarCreatePage.Date.SetValueAndWait(nowDateString);
             calendarCreatePage.SaveButton.Click();
-            calendarsPage = calendarCreatePage.GoTo<CalendarsPage>();
+            calendarsPage = calendarCreatePage.GoTo<AdminBaseListPage>();
             calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             calendarsPage.Table.GetRow(0).ColumnThree.WaitText(companyName);

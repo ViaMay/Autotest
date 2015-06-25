@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class TimePickupCreatePage : AdminPageBase
+    public class TimePickupCreatePage : AdminBaseListCreatePage
     {
         public TimePickupCreatePage()
         {
@@ -12,14 +12,11 @@ namespace Autotests.WebPages.Pages.PageAdmin
             City = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 1));
             MinTime = new TextInput(By.Name("min_time"));
             MaxTime = new TextInput(By.Name("max_time"));
-
-            SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
         public TextInput MinTime { get; set; }
         public TextInput MaxTime { get; set; }
         public AutocompleteControl CompanyName { get; set; }
         public AutocompleteControl City { get; set; }
-        public ButtonInput SaveButton { get; set; }
 
         public override void BrowseWaitVisible()
         {

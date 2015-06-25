@@ -17,14 +17,14 @@ namespace Autotests.Tests.T03_ApiTests
 
             shopsPage.AdminUsers.Click();
             shopsPage.UsersWarehouses.Click();
-            var warehousesPage = shopsPage.GoTo<UsersWarehousesPage>();
+            var warehousesPage = shopsPage.GoTo<AdminBaseListPage>();
             warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_Api");
             warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
                 warehousesPage.Aletr.Accept();
-                warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
+                warehousesPage = warehousesPage.GoTo<AdminBaseListPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_ApiAdmin");
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             }
@@ -69,14 +69,14 @@ namespace Autotests.Tests.T03_ApiTests
 
             shopsPage.AdminUsers.Click();
             shopsPage.UsersWarehouses.Click();
-            var warehousesPage = shopsPage.GoTo<UsersWarehousesPage>();
+            var warehousesPage = shopsPage.GoTo<AdminBaseListPage>();
             warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_Api");
             warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
                 warehousesPage.Aletr.Accept();
-                warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
+                warehousesPage = warehousesPage.GoTo<AdminBaseListPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName + "_ApiAdmin");
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             }

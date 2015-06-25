@@ -12,14 +12,15 @@ namespace Autotests.Tests.T01_StartSettingTests
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
             adminPage.UsersWarehouses.Click();
-            var warehousesPage = adminPage.GoTo<UsersWarehousesPage>();
+            var warehousesPage = adminPage.GoTo<AdminBaseListPage>();
+            warehousesPage.LabelDirectory.WaitText(@"Справочник ""Склады""");
             warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName);
             warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
                 warehousesPage.Aletr.Accept();
-                warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
+                warehousesPage = warehousesPage.GoTo<AdminBaseListPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName);
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             }

@@ -54,7 +54,7 @@ namespace Autotests.Tests.T03_ApiTests
                 LoadPage<PaymentPriceFeePage>("/admin/paymentpricefee/?&filters[company]=" + companyName);
             paymentPriceFeePage.Table.GetRow(0).ActionsDelete.Click();
             paymentPriceFeePage.Aletr.Accept();
-            //            запрос на компанию у которой нет коммисии
+            //            запрос на компанию у которой нет комиссии
             var responseError = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/payment_price_fee.json",
                 new NameValueCollection
                 {

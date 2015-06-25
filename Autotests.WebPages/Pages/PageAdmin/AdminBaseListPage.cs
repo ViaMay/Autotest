@@ -3,19 +3,19 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class PickupTimetablePage : AdminPageBase
+    public class AdminBaseListPage : AdminPageBase
     {
-        public PickupTimetablePage()
+        public AdminBaseListPage()
         {
             LabelDirectory = new StaticText(By.CssSelector("legend"));
             Create = new Link(By.LinkText("Создать"));
             Table = new BaseTableListControl(By.ClassName("table"));
         }
 
-        public PickupTimetablePage SeachButtonRowClickAndGo()
+        public AdminBaseListPage SeachButtonRowClickAndGo()
         {
             Table.RowSearch.SeachButton.Click();
-            return GoTo<PickupTimetablePage>();
+            return GoTo<AdminBaseListPage>();
         }
 
         public StaticText LabelDirectory { get; set; }
@@ -25,8 +25,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public override void BrowseWaitVisible()
         {
             base.BrowseWaitVisible();
-            LabelDirectory.WaitText(@"Справочник ""Время отправки забора""");
-            Create.WaitVisible();
+            LabelDirectory.WaitVisible();
         }
     }
 }

@@ -9,10 +9,11 @@ namespace Autotests.Tests.T01_StartSettingTests
         public void CreateWeightTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminReference.Click();
+            adminPage.DirectoryList.Click();
             adminPage.Intervals.Mouseover();
             adminPage.IntervalsWeight.Click();
-            var intervalsWeightPage = adminPage.GoTo<IntervalsWeightPage>();
+            var intervalsWeightPage = adminPage.GoTo<AdminBaseListPage>();
+            intervalsWeightPage.LabelDirectory.WaitText(@"Справочник ""Веса""");
             intervalsWeightPage.Table.RowSearch.Name.SetValue(weightName);
             intervalsWeightPage = intervalsWeightPage.SeachButtonRowClickAndGo();
 
@@ -20,17 +21,17 @@ namespace Autotests.Tests.T01_StartSettingTests
             {
                 intervalsWeightPage.Table.GetRow(0).ActionsDelete.Click();
                 intervalsWeightPage.Aletr.Accept();
-                intervalsWeightPage = intervalsWeightPage.GoTo<IntervalsWeightPage>();
+                intervalsWeightPage = intervalsWeightPage.GoTo<AdminBaseListPage>();
                 intervalsWeightPage.Table.RowSearch.Name.SetValue(weightName);
                 intervalsWeightPage = intervalsWeightPage.SeachButtonRowClickAndGo();
             }
-            intervalsWeightPage.IntervalWeightCreate.Click();
+            intervalsWeightPage.Create.Click();
             var intervalWeightCreatePage = intervalsWeightPage.GoTo<IntervalWeightCreatePage>();
             intervalWeightCreatePage.Name.SetValueAndWait(weightName);
             intervalWeightCreatePage.Min.SetValueAndWait(weightMin.ToString());
             intervalWeightCreatePage.Max.SetValueAndWait(weightMax.ToString());
             intervalWeightCreatePage.SaveButton.Click();
-            intervalsWeightPage = intervalWeightCreatePage.GoTo<IntervalsWeightPage>();
+            intervalsWeightPage = intervalWeightCreatePage.GoTo<AdminBaseListPage>();
 
             intervalsWeightPage.Table.RowSearch.Name.SetValue(weightName);
             intervalsWeightPage = intervalsWeightPage.SeachButtonRowClickAndGo();
@@ -41,10 +42,11 @@ namespace Autotests.Tests.T01_StartSettingTests
         public void CreateSideTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminReference.Click();
+            adminPage.DirectoryList.Click();
             adminPage.Intervals.Mouseover();
             adminPage.IntervalsSize.Click();
-            var intervalsSizePage = adminPage.GoTo<IntervalsSidePage>();
+            var intervalsSizePage = adminPage.GoTo<AdminBaseListPage>();
+            intervalsSizePage.LabelDirectory.WaitText(@"Справочник ""Размеры""");
             intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
             intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
 
@@ -52,11 +54,11 @@ namespace Autotests.Tests.T01_StartSettingTests
             {
                 intervalsSizePage.Table.GetRow(0).ActionsDelete.Click();
                 intervalsSizePage.Aletr.Accept();
-                intervalsSizePage = intervalsSizePage.GoTo<IntervalsSidePage>();
+                intervalsSizePage = intervalsSizePage.GoTo<AdminBaseListPage>();
                 intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
                 intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
             }
-            intervalsSizePage.IntervalSideCreate.Click();
+            intervalsSizePage.Create.Click();
             var intervalSizeCreatePage = intervalsSizePage.GoTo<IntervalSideCreatePage>();
             intervalSizeCreatePage.Name.SetValueAndWait(sideName);
             intervalSizeCreatePage.Side1Min.SetValueAndWait(side1Min.ToString());
@@ -74,7 +76,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             intervalSizeCreatePage.SidesSumMax.SetValueAndWait("");
             intervalSizeCreatePage.VolumeMax.SetValueAndWait("");
             intervalSizeCreatePage.SaveButton.Click();
-            intervalsSizePage = intervalSizeCreatePage.GoTo<IntervalsSidePage>();
+            intervalsSizePage = intervalSizeCreatePage.GoTo<AdminBaseListPage>();
 
             intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
             intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();

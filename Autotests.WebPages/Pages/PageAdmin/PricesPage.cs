@@ -4,26 +4,25 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class PricesPickupPage : AdminBaseListPage
+    public class PricesPage : AdminBaseListPage
     {
-        public PricesPickupPage()
+        public PricesPage()
         {
-            Table = new PricesPickupListControl(By.ClassName("table"));
+            Table = new PricesListControl(By.ClassName("table"));
         }
 
 
-        public PricesPickupPage SeachButtonRowClickAndGo()
+        public PricesPage SeachButtonRowClickAndGo()
         {
             Table.RowSearch.SeachButton.Click();
-            return GoTo<PricesPickupPage>();
+            return GoTo<PricesPage>();
         }
-
-        public PricesPickupListControl Table { get; set; }
-
+        public PricesListControl Table { get; set; }
+        
         public override void BrowseWaitVisible()
         {
             base.BrowseWaitVisible();
-            LabelDirectory.WaitText(@"Справочник ""Цены забора""");
+            LabelDirectory.WaitTextContains(@"Справочник ""Цены на");
             Create.WaitVisible();
         }
     }

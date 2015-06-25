@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class OrderedIttemplatesCreatePage : AdminPageBase
+    public class OrderedIttemplatesCreatePage : AdminBaseListCreatePage
     {
         public OrderedIttemplatesCreatePage()
         {
@@ -15,8 +15,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
             ThroughEmail = new TextInput(By.Name("through_email"));
             Subject = new TextInput(By.Name("subject"));
             Message = new TextInput(By.Name("message"));
-
-            SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
 
         public AutocompleteControl CompanyName { get; set; }
@@ -25,8 +23,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public TextInput ThroughEmail { get; set; }
         public TextInput Subject { get; set; }
         public TextInput Message { get; set; }
-
-        public ButtonInput SaveButton { get; set; }
 
         public override void BrowseWaitVisible()
         {

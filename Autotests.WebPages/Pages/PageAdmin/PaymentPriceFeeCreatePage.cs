@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class PaymentPriceCreateFeePage : AdminPageBase
+    public class PaymentPriceCreateFeePage : AdminBaseListCreatePage
     {
         public PaymentPriceCreateFeePage()
         {
@@ -13,8 +13,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
             MinCommission = new TextInput(By.Name("min"));
             Percent = new TextInput(By.Name("percent"));
             PercentCard = new TextInput(By.Name("percent_card"));
-
-            SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
 
         public AutocompleteControl Company { get; set; }
@@ -22,7 +20,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public TextInput MinCommission { get; set; }
         public TextInput Percent { get; set; }
         public TextInput PercentCard { get; set; }
-        public ButtonInput SaveButton { get; set; }
 
         public override void BrowseWaitVisible()
         {

@@ -11,7 +11,8 @@ namespace Autotests.Tests.T01_StartSettingTests
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminCompanies.Click();
             adminPage.DeliveryPoints.Click();
-            var deliveryPointsPage = adminPage.GoTo<DeliveryPointsPage>();
+            var deliveryPointsPage = adminPage.GoTo<AdminBaseListPage>();
+            deliveryPointsPage.LabelDirectory.WaitText(@"Справочник ""Пункты выдачи""");
             deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
             deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
 
@@ -19,11 +20,11 @@ namespace Autotests.Tests.T01_StartSettingTests
             {
                 deliveryPointsPage.Table.GetRow(0).ActionsDelete.Click();
                 deliveryPointsPage.Aletr.Accept();
-                deliveryPointsPage = deliveryPointsPage.GoTo<DeliveryPointsPage>();
+                deliveryPointsPage = deliveryPointsPage.GoTo<AdminBaseListPage>();
                 deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
                 deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
             }
-            deliveryPointsPage.DeliveryPointCreate.Click();
+            deliveryPointsPage.Create.Click();
             var deliveryPointCreatePage = deliveryPointsPage.GoTo<DeliveryPointCreatePage>();
             deliveryPointCreatePage.City.SetFirstValueSelect("Москва");
             deliveryPointCreatePage.DeliveryPointName.SetValueAndWait(deliveryPointName);
@@ -35,7 +36,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             deliveryPointCreatePage.IsCard.Click();
             deliveryPointCreatePage.IsCash.Click();
             deliveryPointCreatePage.SaveButton.Click();
-            deliveryPointsPage = deliveryPointCreatePage.GoTo<DeliveryPointsPage>();
+            deliveryPointsPage = deliveryPointCreatePage.GoTo<AdminBaseListPage>();
 
             deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
             deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();

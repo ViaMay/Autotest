@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class UserCreatePage : AdminPageBase
+    public class UserCreatePage : AdminBaseListCreatePage
     {
         public UserCreatePage()
         {
@@ -33,8 +33,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
             BankBik = new TextInput(By.Name("bank_bik"));
             BankKs = new TextInput(By.Name("bank_ks"));
             BankRs = new TextInput(By.Name("bank_rs"));
-
-            SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
 
         public TextInput Name { get; set; }
@@ -63,7 +61,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public TextInput BankKs { get; set; }
         public TextInput BankRs { get; set; }
         
-        public ButtonInput SaveButton { get; set; }
         public override void BrowseWaitVisible()
         {
             base.BrowseWaitVisible();

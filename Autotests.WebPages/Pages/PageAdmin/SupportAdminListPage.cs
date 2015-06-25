@@ -3,19 +3,19 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class LegalEntityCreatePage : AdminBaseListCreatePage
+    public class SupportAdminListPage : AdminPageBase
     {
-        public LegalEntityCreatePage()
+        public SupportAdminListPage()
         {
-            NameEntity = new TextInput(By.Name("name"));
+            Create = new Link(By.LinkText("Создать"));
         }
-
-        public TextInput NameEntity { get; set; }
-
+        
+        public Link Create { get; set; }
+        
         public override void BrowseWaitVisible()
         {
             base.BrowseWaitVisible();
-            NameEntity.WaitVisible();
+            Create.WaitVisible();
         }
     }
 }

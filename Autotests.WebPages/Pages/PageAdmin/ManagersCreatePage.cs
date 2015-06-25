@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class ManagersCreatePage : AdminPageBase
+    public class ManagersCreatePage : AdminBaseListCreatePage
     {
         public ManagersCreatePage()
         {
@@ -14,7 +14,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
             Sign = new TextInput(By.Name("sign"));
             
             User = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 0));
-            SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
 
         public TextInput Name { get; set; }
@@ -23,8 +22,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public TextInput Sign { get; set; }
 
         public AutocompleteControl User { get; set; }
-
-        public ButtonInput SaveButton { get; set; }
 
         public override void BrowseWaitVisible()
         {

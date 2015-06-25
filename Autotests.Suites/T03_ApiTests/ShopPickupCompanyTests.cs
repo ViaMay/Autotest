@@ -15,7 +15,7 @@ namespace Autotests.Tests.T03_ApiTests
             var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var companiesPage =
-                LoadPage<CompaniesPage>("/admin/companies/?&filters[name]=" + companyPickupName);
+                LoadPage<AdminBaseListPage>("/admin/companies/?&filters[name]=" + companyPickupName);
             var companyPickupId = companiesPage.Table.GetRow(0).ID.GetText();
 
 //           Порверка если компания забора указана
@@ -27,7 +27,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            проверка если нету компании забора
             var usersWarehousesPage =
-                LoadPage<UsersWarehousesPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName);
+                LoadPage<AdminBaseListPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName);
             var warehousesId = companiesPage.Table.GetRow(0).ID.GetText();
 
             shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName + "_ApiAdmin");

@@ -3,19 +3,18 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class LegalEntityCreatePage : AdminBaseListCreatePage
+    public class СalculatorPage : AdminPageBase
     {
-        public LegalEntityCreatePage()
+        public СalculatorPage()
         {
-            NameEntity = new TextInput(By.Name("name"));
+            LabelDirectory = new StaticText(By.CssSelector("legend"));
         }
 
-        public TextInput NameEntity { get; set; }
-
+        public StaticText LabelDirectory { get; set; }
         public override void BrowseWaitVisible()
         {
             base.BrowseWaitVisible();
-            NameEntity.WaitVisible();
+            LabelDirectory.WaitVisible();
         }
     }
 }

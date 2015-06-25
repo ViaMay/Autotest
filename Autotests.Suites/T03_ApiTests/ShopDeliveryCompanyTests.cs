@@ -28,7 +28,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            проверка если нету компании забора
             var usersWarehousesPage =
-                LoadPage<UsersWarehousesPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName);
+                LoadPage<AdminBaseListPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName);
             var warehousesId = companiesPage.Table.GetRow(0).ID.GetText();
 
             shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName + "_ApiAdmin");
@@ -138,7 +138,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseDeliveryCompanу.Response.ErrorText, "У компании Забора нет забора в городе, к которому привязан склад.");
 
 //            создаем цену забора
-            pricesPickupPage.PricePickupCreate.Click();
+            pricesPickupPage.Create.Click();
             var pricePickupCreatePage = pricesPickupPage.GoTo<PricePickupCreatePage>();
             pricePickupCreatePage.CompanyName.SetFirstValueSelect(companyName);
             pricePickupCreatePage.City.SetFirstValueSelect("Москва");
@@ -156,16 +156,13 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseDeliveryCompanу.Response.ErrorText, "Компании не найдены");
 
 //            удаление склада
-            var warehousesPage = LoadPage<UsersWarehousesPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName + "_Api");
-
-
-            warehousesPage = LoadPage<UsersWarehousesPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName + "_Api");
+            var warehousesPage = LoadPage<AdminBaseListPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName + "_Api");
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
                 warehousesPage.Aletr.Accept();
-                warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
-                warehousesPage = LoadPage<UsersWarehousesPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName + "_Api");
+                warehousesPage = warehousesPage.GoTo<AdminBaseListPage>();
+                warehousesPage = LoadPage<AdminBaseListPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName + "_Api");
             }
 
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");

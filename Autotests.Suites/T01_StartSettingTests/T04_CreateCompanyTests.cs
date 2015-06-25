@@ -23,7 +23,7 @@ namespace Autotests.Tests.T01_StartSettingTests
                 companiesPage.Table.RowSearch.Name.SetValue(companyPickupName);
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
             }
-            companiesPage.CompanyCreate.Click();
+            companiesPage.Create.Click();
             var companyCreatePage = companiesPage.GoTo<CompanyCreatePage>();
             companyCreatePage.Name.SetValueAndWait(companyPickupName);
             companyCreatePage.CompanyDriver.SelectValue("Boxberry");
@@ -42,7 +42,8 @@ namespace Autotests.Tests.T01_StartSettingTests
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminCompanies.Click();
             adminPage.Companies.Click();
-            var companiesPage = adminPage.GoTo<CompaniesPage>();
+            var companiesPage = adminPage.GoTo<AdminBaseListPage>();
+            companiesPage.LabelDirectory.WaitText(@"Справочник ""Компании""");
             companiesPage.Table.RowSearch.Name.SetValue(companyName);
             companiesPage = companiesPage.SeachButtonRowClickAndGo();
 
@@ -50,11 +51,11 @@ namespace Autotests.Tests.T01_StartSettingTests
             {
                 companiesPage.Table.GetRow(0).ActionsDelete.Click();
                 companiesPage.Aletr.Accept();
-                companiesPage = companiesPage.GoTo<CompaniesPage>();
+                companiesPage = companiesPage.GoTo<AdminBaseListPage>();
                 companiesPage.Table.RowSearch.Name.SetValue(companyName);
                 companiesPage = companiesPage.SeachButtonRowClickAndGo();
             }
-            companiesPage.CompanyCreate.Click();
+            companiesPage.Create.Click();
             var companyCreatePage = companiesPage.GoTo<CompanyCreatePage>();
             companyCreatePage.Name.SetValueAndWait(companyName);
             companyCreatePage.CompanyPickup.SetFirstValueSelect(companyPickupName);
@@ -63,20 +64,21 @@ namespace Autotests.Tests.T01_StartSettingTests
             companyCreatePage.CompanyAddress.SetValueAndWait("Address");
             companyCreatePage.ManagersLegalEntity.SetFirstValueSelect(legalEntityName);
             companyCreatePage.SaveButton.Click();
-            companiesPage = companyCreatePage.GoTo<CompaniesPage>();
+            companiesPage = companyCreatePage.GoTo<AdminBaseListPage>();
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");
            
 //            удаление календаря если он был
             adminMaintenancePage.AdminCompanies.Click();
             adminMaintenancePage.Calendars.Click();
-            var calendarsPage = adminMaintenancePage.GoTo<CalendarsPage>();
+            var calendarsPage = adminMaintenancePage.GoTo<AdminBaseListPage>();
+            calendarsPage.LabelDirectory.WaitText(@"Справочник ""Календарь выходных дней компании""");
             calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
-                calendarsPage = calendarsPage.GoTo<CalendarsPage>();
+                calendarsPage = calendarsPage.GoTo<AdminBaseListPage>();
                 calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             }
@@ -91,7 +93,8 @@ namespace Autotests.Tests.T01_StartSettingTests
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminCompanies.Click();
             adminPage.PaymentPrice.Click();
-            var рaymentPricePage = adminPage.GoTo<PaymentPricePage>();
+            var рaymentPricePage = adminPage.GoTo<AdminBaseListPage>();
+            рaymentPricePage.LabelDirectory.WaitText(@"Справочник ""Возможность наложенного платежа""");
             рaymentPricePage.Table.RowSearch.CompanyName.SetValue(companyName);
             рaymentPricePage = рaymentPricePage.SeachButtonRowClickAndGo();
 
@@ -99,16 +102,16 @@ namespace Autotests.Tests.T01_StartSettingTests
             {
                 рaymentPricePage.Table.GetRow(0).ActionsDelete.Click();
                 рaymentPricePage.Aletr.Accept();
-                рaymentPricePage = рaymentPricePage.GoTo<PaymentPricePage>();
+                рaymentPricePage = рaymentPricePage.GoTo<AdminBaseListPage>();
                 рaymentPricePage.Table.RowSearch.CompanyName.SetValue(companyName);
                 рaymentPricePage = рaymentPricePage.SeachButtonRowClickAndGo();
             }
-            рaymentPricePage.CompanyCreate.Click();
+            рaymentPricePage.Create.Click();
             var рaymentPriceCreatePage = рaymentPricePage.GoTo<PaymentPriceCreatePage>();
             рaymentPriceCreatePage.Company.SetFirstValueSelect(companyName);
             рaymentPriceCreatePage.City.SetFirstValueSelect("Москва");
             рaymentPriceCreatePage.SaveButton.Click();
-            рaymentPricePage = рaymentPriceCreatePage.GoTo<PaymentPricePage>();
+            рaymentPricePage = рaymentPriceCreatePage.GoTo<AdminBaseListPage>();
 
             рaymentPricePage.Table.RowSearch.CompanyName.SetValue(companyName);
             рaymentPricePage = рaymentPricePage.SeachButtonRowClickAndGo();
@@ -121,14 +124,15 @@ namespace Autotests.Tests.T01_StartSettingTests
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminCompanies.Click();
             adminPage.PickupTimetable.Click();
-            var pickupTimetablePage = adminPage.GoTo<PickupTimetablePage>();
+            var pickupTimetablePage = adminPage.GoTo<AdminBaseListPage>();
+            pickupTimetablePage.LabelDirectory.WaitText(@"Справочник ""Время отправки забора""");
             pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
 
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
-                pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
+                pickupTimetablePage = pickupTimetablePage.GoTo<AdminBaseListPage>();
                 pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             }
@@ -138,7 +142,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
-                pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
+                pickupTimetablePage = pickupTimetablePage.GoTo<AdminBaseListPage>();
                 pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             }
@@ -149,7 +153,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             pickupTimetableCreatePage.PickupTime.SelectByText("23:45");
             pickupTimetableCreatePage.PickupPeriod.SelectByText("Сегодня");
             pickupTimetableCreatePage.SaveButton.Click();
-            pickupTimetablePage = pickupTimetableCreatePage.GoTo<PickupTimetablePage>();
+            pickupTimetablePage = pickupTimetableCreatePage.GoTo<AdminBaseListPage>();
 
             pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();

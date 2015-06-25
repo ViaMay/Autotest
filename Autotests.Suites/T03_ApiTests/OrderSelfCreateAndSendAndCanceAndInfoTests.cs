@@ -15,7 +15,7 @@ namespace Autotests.Tests.T03_ApiTests
             var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var deliveryPointsPage =
-                LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
+                LoadPage<AdminBaseListPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
             var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
             var deliveryCompaniesPage =
                 LoadPage<CompaniesPage>("/admin/companies/?&filters[name]=" + companyName);

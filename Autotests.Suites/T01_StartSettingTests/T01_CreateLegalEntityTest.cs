@@ -9,10 +9,10 @@ namespace Autotests.Tests.T01_StartSettingTests
         public void CreateLegalEntityTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminReference.Click();
+            adminPage.DirectoryList.Click();
             adminPage.LegalEntities.Click();
-            var legalEntitiesPage = adminPage.GoTo<LegalEntitiesPage>();
-
+            var legalEntitiesPage = adminPage.GoTo<AdminBaseListPage>();
+            legalEntitiesPage.LabelDirectory.WaitText(@"Справочник ""Юридическое лицо""");
             legalEntitiesPage.Table.RowSearch.Name.SetValue(legalEntityName);
             legalEntitiesPage = legalEntitiesPage.SeachButtonRowClickAndGo();
 
@@ -20,15 +20,15 @@ namespace Autotests.Tests.T01_StartSettingTests
             {
                 legalEntitiesPage.Table.GetRow(0).ActionsDelete.Click();
                 legalEntitiesPage.Aletr.Accept();
-                legalEntitiesPage = legalEntitiesPage.GoTo<LegalEntitiesPage>();
+                legalEntitiesPage = legalEntitiesPage.GoTo<AdminBaseListPage>();
                 legalEntitiesPage.Table.RowSearch.Name.SetValue(legalEntityName);
                 legalEntitiesPage = legalEntitiesPage.SeachButtonRowClickAndGo();
             }
-            legalEntitiesPage.LegalEntityCreate.Click();
+            legalEntitiesPage.Create.Click();
             var legalEntityCreatePage = legalEntitiesPage.GoTo<LegalEntityCreatePage>();
             legalEntityCreatePage.NameEntity.SetValueAndWait(legalEntityName);
             legalEntityCreatePage.SaveButton.Click();
-            legalEntitiesPage = legalEntityCreatePage.GoTo<LegalEntitiesPage>();
+            legalEntitiesPage = legalEntityCreatePage.GoTo<AdminBaseListPage>();
             legalEntitiesPage.Table.RowSearch.Name.SetValue(legalEntityName);
             legalEntitiesPage = legalEntitiesPage.SeachButtonRowClickAndGo();
             legalEntitiesPage.Table.GetRow(0).Name.WaitText(legalEntityName);

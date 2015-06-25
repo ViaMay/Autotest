@@ -4,7 +4,7 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class PriceCreatePage : AdminPageBase
+    public class PriceCreatePage : AdminBaseListCreatePage
     {
         public PriceCreatePage()
         {
@@ -14,7 +14,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
             CompanyName = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 1));
             Weight = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 2));
             Dimension = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 3));
-            SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
         
         public TextInput Price { get; set; }
@@ -23,7 +22,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public AutocompleteControl CompanyName { get; set; }
         public AutocompleteControl Weight { get; set; }
         public AutocompleteControl Dimension { get; set; }
-        public ButtonInput SaveButton { get; set; }
 
         public override void BrowseWaitVisible()
         {

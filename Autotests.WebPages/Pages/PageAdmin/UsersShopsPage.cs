@@ -4,13 +4,10 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class UsersShopsPage : AdminPageBase
+    public class UsersShopsPage : AdminBaseListPage
     {
         public UsersShopsPage()
         {
-            LabelDirectoryShops = new StaticText(By.CssSelector("legend"));
-            ShopsCreate = new Link(By.LinkText("Создать"));
-
             Table = new ShopsListControl(By.ClassName("table"));
         }
 
@@ -21,14 +18,12 @@ namespace Autotests.WebPages.Pages.PageAdmin
             return GoTo<UsersShopsPage>();
         }
 
-        public StaticText LabelDirectoryShops { get; set; }
-        public Link ShopsCreate { get; set; }
         public ShopsListControl Table { get; set; }
         
         public override void BrowseWaitVisible()
         {
             base.BrowseWaitVisible();
-            LabelDirectoryShops.WaitText(@"Справочник ""Интернет-Магазины""");
+            LabelDirectory.WaitText(@"Справочник ""Интернет-Магазины""");
         }
     }
 }

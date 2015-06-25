@@ -12,25 +12,26 @@ namespace Autotests.Tests.T01_StartSettingTests
             adminPage.AdminCompanies.Click();
             adminPage.Times.Mouseover();
             adminPage.TimesPickup.Click();
-            var timesPickupPage = adminPage.GoTo<TimesPickupPage>();
+            var timesPickupPage = adminPage.GoTo<AdminBaseListPage>();
+            timesPickupPage.LabelDirectory.WaitText(@"Справочник ""Время забора""");
             timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             timesPickupPage = timesPickupPage.SeachButtonRowClickAndGo();
 
             while (timesPickupPage.Table.GetRow(0).Name.IsPresent)
             {
                 timesPickupPage.Table.GetRow(0).ActionsDelete.Click();
-                timesPickupPage = timesPickupPage.GoTo<TimesPickupPage>();
+                timesPickupPage = timesPickupPage.GoTo<AdminBaseListPage>();
                 timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 timesPickupPage = timesPickupPage.SeachButtonRowClickAndGo();
             }
-            timesPickupPage.TimesPickupCreate.Click();
+            timesPickupPage.Create.Click();
             var timePickupCreatePage = timesPickupPage.GoTo<TimePickupCreatePage>();
             timePickupCreatePage.CompanyName.SetFirstValueSelect(companyPickupName);
             timePickupCreatePage.City.SetFirstValueSelect("Москва");
             timePickupCreatePage.MaxTime.SetValueAndWait("1");
             timePickupCreatePage.MinTime.SetValueAndWait("1");
             timePickupCreatePage.SaveButton.Click();
-            timesPickupPage = timePickupCreatePage.GoTo<TimesPickupPage>();
+            timesPickupPage = timePickupCreatePage.GoTo<AdminBaseListPage>();
 
             timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             timesPickupPage = timesPickupPage.SeachButtonRowClickAndGo();
@@ -44,25 +45,26 @@ namespace Autotests.Tests.T01_StartSettingTests
             adminPage.AdminCompanies.Click();
             adminPage.Times.Mouseover();
             adminPage.TimesCourier.Click();
-            var timesCourierPage = adminPage.GoTo<TimesPage>();
+            var timesCourierPage = adminPage.GoTo<AdminBaseListPage>();
+            timesCourierPage.LabelDirectory.WaitText(@"Справочник ""Сроки доставки курьерки""");
             timesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
             timesCourierPage = timesCourierPage.SeachButtonRowClickAndGo();
 
             while (timesCourierPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 timesCourierPage.Table.GetRow(0).ActionsDelete.Click();
-                timesCourierPage = timesCourierPage.GoTo<TimesPage>();
+                timesCourierPage = timesCourierPage.GoTo<AdminBaseListPage>();
                 timesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 timesCourierPage = timesCourierPage.SeachButtonRowClickAndGo();
             }
-            timesCourierPage.TimesCourierCreate.Click();
+            timesCourierPage.Create.Click();
             var timeCourierCreatePage = timesCourierPage.GoTo<TimeCreatePage>();
             timeCourierCreatePage.CompanyName.SetFirstValueSelect(companyName);
             timeCourierCreatePage.Route.SetFirstValueSelect("2", "г. Москва #151184 - г. Москва #151184");
             timeCourierCreatePage.MaxTime.SetValueAndWait("1");
             timeCourierCreatePage.MinTime.SetValueAndWait("1");
             timeCourierCreatePage.SaveButton.Click();
-            timesCourierPage = timeCourierCreatePage.GoTo<TimesPage>();
+            timesCourierPage = timeCourierCreatePage.GoTo<AdminBaseListPage>();
 
             timesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
             timesCourierPage = timesCourierPage.SeachButtonRowClickAndGo();
@@ -76,25 +78,26 @@ namespace Autotests.Tests.T01_StartSettingTests
             adminPage.AdminCompanies.Click();
             adminPage.Times.Mouseover();
             adminPage.TimesSelf.Click();
-            var timesSelfPage = adminPage.GoTo<TimesPage>();
+            var timesSelfPage = adminPage.GoTo<AdminBaseListPage>();
+            timesSelfPage.LabelDirectory.WaitText(@"Справочник ""Сроки доставки""");
             timesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
             timesSelfPage = timesSelfPage.SeachButtonRowClickAndGo();
 
             while (timesSelfPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 timesSelfPage.Table.GetRow(0).ActionsDelete.Click();
-                timesSelfPage = timesSelfPage.GoTo<TimesPage>();
+                timesSelfPage = timesSelfPage.GoTo<AdminBaseListPage>();
                 timesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 timesSelfPage = timesSelfPage.SeachButtonRowClickAndGo();
             }
-            timesSelfPage.TimesCourierCreate.Click();
+            timesSelfPage.Create.Click();
             var timeSelfCreatePage = timesSelfPage.GoTo<TimeCreatePage>();
             timeSelfCreatePage.CompanyName.SetFirstValueSelect(companyName);
             timeSelfCreatePage.Route.SetFirstValueSelect("2", "г. Москва #151184 - г. Москва #151184");
             timeSelfCreatePage.MaxTime.SetValueAndWait("1");
             timeSelfCreatePage.MinTime.SetValueAndWait("1");
             timeSelfCreatePage.SaveButton.Click();
-            timesSelfPage = timeSelfCreatePage.GoTo<TimesPage>();
+            timesSelfPage = timeSelfCreatePage.GoTo<AdminBaseListPage>();
 
             timesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
             timesSelfPage = timesSelfPage.SeachButtonRowClickAndGo();

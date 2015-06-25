@@ -17,10 +17,10 @@ namespace Autotests.Tests.T03_ApiTests
             LoginAsAdmin(adminName, adminPass);
             var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
-            var usersWarehousesPage = LoadPage<UsersWarehousesPage>("/admin/warehouses?&filters[name]=" + userWarehouseName);
+            var usersWarehousesPage = LoadPage<AdminBaseListPage>("/admin/warehouses?&filters[name]=" + userWarehouseName);
             var usersWarehousId = usersWarehousesPage.Table.GetRow(0).ID.GetText();
             var deliveryPointsPage =
-                LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
+                LoadPage<AdminBaseListPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
             var deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
             var deliveryCompaniesPage =
                 LoadPage<CompaniesPage>("/admin/companies/?&filters[name]=" + companyName);

@@ -116,7 +116,7 @@ namespace Autotests.Tests.T03_ApiTests
                 LoadPage<CompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
             string deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
             var deliveryPointsPage =
-                LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
+                LoadPage<AdminBaseListPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
             string deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
             var responseCreateOrders =
                 (ApiResponse.ResponseAddOrder)apiRequest.POST(keyShopPublic + "/order_create.json",

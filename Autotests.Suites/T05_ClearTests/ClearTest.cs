@@ -9,12 +9,12 @@ namespace Autotests.Tests.T05_ClearTests
         public void T01_DeleteDocumentsTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            var documentsPage = LoadPage<DocumentsPage>("admin/documents/?&filters[warehouse]=" + userWarehouseName);
+            var documentsPage = LoadPage<AdminBaseListPage>("admin/documents/?&filters[warehouse]=" + userWarehouseName);
             while (documentsPage.Table.GetRow(0).ID.IsPresent)
             {
                 var id = documentsPage.Table.GetRow(0).ID.GetText();
-                documentsPage = LoadPage<DocumentsPage>("admin/documents/delete/" + id);
-                documentsPage = LoadPage<DocumentsPage>("admin/documents/?&filters[warehouse]=" + userWarehouseName);
+                documentsPage = LoadPage<AdminBaseListPage>("admin/documents/delete/" + id);
+                documentsPage = LoadPage<AdminBaseListPage>("admin/documents/?&filters[warehouse]=" + userWarehouseName);
             }
         }
 
@@ -81,7 +81,7 @@ namespace Autotests.Tests.T05_ClearTests
             pricesPickupPage.AdminCompanies.Click();
             pricesPickupPage.Prices.Mouseover();
             pricesPickupPage.PricesCourier.Click();
-            var pricesCourierPage = adminPage.GoTo<PricesCourierPage>();
+            var pricesCourierPage = adminPage.GoTo<PricesPage>();
             pricesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesCourierPage = pricesCourierPage.SeachButtonRowClickAndGo();
 
@@ -89,7 +89,7 @@ namespace Autotests.Tests.T05_ClearTests
             {
                 pricesCourierPage.Table.GetRow(0).ActionsDelete.Click();
                 pricesCourierPage.Aletr.Accept();
-                pricesCourierPage = pricesCourierPage.GoTo<PricesCourierPage>();
+                pricesCourierPage = pricesCourierPage.GoTo<PricesPage>();
                 pricesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 pricesCourierPage = pricesCourierPage.SeachButtonRowClickAndGo();
             }
@@ -97,7 +97,7 @@ namespace Autotests.Tests.T05_ClearTests
             pricesCourierPage.AdminCompanies.Click();
             pricesCourierPage.Prices.Mouseover();
             pricesCourierPage.PricesSelf.Click();
-            var pricesSelfPage = adminPage.GoTo<PricesSelfPage>();
+            var pricesSelfPage = adminPage.GoTo<PricesPage>();
             pricesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesSelfPage = pricesSelfPage.SeachButtonRowClickAndGo();
 
@@ -105,7 +105,7 @@ namespace Autotests.Tests.T05_ClearTests
             {
                 pricesSelfPage.Table.GetRow(0).ActionsDelete.Click();
                 pricesSelfPage.Aletr.Accept();
-                pricesSelfPage = pricesSelfPage.GoTo<PricesSelfPage>();
+                pricesSelfPage = pricesSelfPage.GoTo<PricesPage>();
                 pricesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 pricesSelfPage = pricesSelfPage.SeachButtonRowClickAndGo();
             }
@@ -118,7 +118,7 @@ namespace Autotests.Tests.T05_ClearTests
             adminPage.AdminCompanies.Click();
             adminPage.Times.Mouseover();
             adminPage.TimesPickup.Click();
-            var timesPickupPage = adminPage.GoTo<TimesPickupPage>();
+            var timesPickupPage = adminPage.GoTo<AdminBaseListPage>();
             timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             timesPickupPage = timesPickupPage.SeachButtonRowClickAndGo();
 
@@ -126,7 +126,7 @@ namespace Autotests.Tests.T05_ClearTests
             {
                 timesPickupPage.Table.GetRow(0).ActionsDelete.Click();
                 timesPickupPage.Aletr.Accept();
-                timesPickupPage = timesPickupPage.GoTo<TimesPickupPage>();
+                timesPickupPage = timesPickupPage.GoTo<AdminBaseListPage>();
                 timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 timesPickupPage = timesPickupPage.SeachButtonRowClickAndGo();
             }
@@ -134,7 +134,7 @@ namespace Autotests.Tests.T05_ClearTests
             timesPickupPage.AdminCompanies.Click();
             timesPickupPage.Times.Mouseover();
             timesPickupPage.TimesCourier.Click();
-            var timesCourierPage = adminPage.GoTo<TimesPage>();
+            var timesCourierPage = adminPage.GoTo<AdminBaseListPage>();
             timesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
             timesCourierPage = timesCourierPage.SeachButtonRowClickAndGo();
 
@@ -142,14 +142,14 @@ namespace Autotests.Tests.T05_ClearTests
             {
                 timesCourierPage.Table.GetRow(0).ActionsDelete.Click();
                 timesPickupPage.Aletr.Accept();
-                timesCourierPage = timesCourierPage.GoTo<TimesPage>();
+                timesCourierPage = timesCourierPage.GoTo<AdminBaseListPage>();
                 timesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 timesCourierPage = timesCourierPage.SeachButtonRowClickAndGo();
             }
             timesCourierPage.AdminCompanies.Click();
             timesCourierPage.Times.Mouseover();
             timesCourierPage.TimesSelf.Click();
-            var timesSelfPage = adminPage.GoTo<TimesPage>();
+            var timesSelfPage = adminPage.GoTo<AdminBaseListPage>();
             timesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
             timesSelfPage = timesSelfPage.SeachButtonRowClickAndGo();
 
@@ -157,7 +157,7 @@ namespace Autotests.Tests.T05_ClearTests
             {
                 timesSelfPage.Table.GetRow(0).ActionsDelete.Click();
                 timesPickupPage.Aletr.Accept();
-                timesSelfPage = timesSelfPage.GoTo<TimesPage>();
+                timesSelfPage = timesSelfPage.GoTo<AdminBaseListPage>();
                 timesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 timesSelfPage = timesSelfPage.SeachButtonRowClickAndGo();
             }
@@ -169,7 +169,7 @@ namespace Autotests.Tests.T05_ClearTests
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminCompanies.Click();
             adminPage.DeliveryPoints.Click();
-            var deliveryPointsPage = adminPage.GoTo<DeliveryPointsPage>();
+            var deliveryPointsPage = adminPage.GoTo<AdminBaseListPage>();
             deliveryPointsPage.Table.RowSearch.CompanyName.SetValue(companyName);
             deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
 
@@ -177,7 +177,7 @@ namespace Autotests.Tests.T05_ClearTests
             {
                 deliveryPointsPage.Table.GetRow(0).ActionsDelete.Click();
                 deliveryPointsPage.Aletr.Accept();
-                deliveryPointsPage = deliveryPointsPage.GoTo<DeliveryPointsPage>();
+                deliveryPointsPage = deliveryPointsPage.GoTo<AdminBaseListPage>();
                 deliveryPointsPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
             }
@@ -190,14 +190,14 @@ namespace Autotests.Tests.T05_ClearTests
             //            удаление календаря если он был
             adminPage.AdminCompanies.Click();
             adminPage.Calendars.Click();
-            var calendarsPage = adminPage.GoTo<CalendarsPage>();
+            var calendarsPage = adminPage.GoTo<AdminBaseListPage>();
             calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
             calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             while (calendarsPage.Table.GetRow(0).ColumnThree.IsPresent)
             {
                 calendarsPage.Table.GetRow(0).ActionsDelete.Click();
                 calendarsPage.Aletr.Accept();
-                calendarsPage = calendarsPage.GoTo<CalendarsPage>();
+                calendarsPage = calendarsPage.GoTo<AdminBaseListPage>();
                 calendarsPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 calendarsPage = calendarsPage.SeachButtonRowClickAndGo();
             }
@@ -210,14 +210,14 @@ namespace Autotests.Tests.T05_ClearTests
             //            удаление графика забора если он был
             adminPage.AdminCompanies.Click();
             adminPage.PickupTimetable.Click();
-            var pickupTimetablePage = adminPage.GoTo<PickupTimetablePage>();
+            var pickupTimetablePage = adminPage.GoTo<AdminBaseListPage>();
             pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
             pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
                 pickupTimetablePage.Aletr.Accept();
-                pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
+                pickupTimetablePage = pickupTimetablePage.GoTo<AdminBaseListPage>();
                 pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             }
@@ -227,7 +227,7 @@ namespace Autotests.Tests.T05_ClearTests
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
-                pickupTimetablePage = pickupTimetablePage.GoTo<PickupTimetablePage>();
+                pickupTimetablePage = pickupTimetablePage.GoTo<AdminBaseListPage>();
                 pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
             }
@@ -237,10 +237,10 @@ namespace Autotests.Tests.T05_ClearTests
         public void T08_DeleteWeightTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminReference.Click();
+            adminPage.DirectoryList.Click();
             adminPage.Intervals.Mouseover();
             adminPage.IntervalsWeight.Click();
-            var intervalsWeightPage = adminPage.GoTo<IntervalsWeightPage>();
+            var intervalsWeightPage = adminPage.GoTo<AdminBaseListPage>();
             intervalsWeightPage.Table.RowSearch.Name.SetValue(weightName);
             intervalsWeightPage = intervalsWeightPage.SeachButtonRowClickAndGo();
 
@@ -248,7 +248,7 @@ namespace Autotests.Tests.T05_ClearTests
             {
                 intervalsWeightPage.Table.GetRow(0).ActionsDelete.Click();
                 intervalsWeightPage.Aletr.Accept();
-                intervalsWeightPage = intervalsWeightPage.GoTo<IntervalsWeightPage>();
+                intervalsWeightPage = intervalsWeightPage.GoTo<AdminBaseListPage>();
                 intervalsWeightPage.Table.RowSearch.Name.SetValue(weightName);
                 intervalsWeightPage = intervalsWeightPage.SeachButtonRowClickAndGo();
             }
@@ -258,10 +258,10 @@ namespace Autotests.Tests.T05_ClearTests
         public void T09_DeleteSizeTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminReference.Click();
+            adminPage.DirectoryList.Click();
             adminPage.Intervals.Mouseover();
             adminPage.IntervalsSize.Click();
-            var intervalsSizePage = adminPage.GoTo<IntervalsSidePage>();
+            var intervalsSizePage = adminPage.GoTo<AdminBaseListPage>();
             intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
             intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
 
@@ -269,7 +269,7 @@ namespace Autotests.Tests.T05_ClearTests
             {
                 intervalsSizePage.Table.GetRow(0).ActionsDelete.Click();
                 intervalsSizePage.Aletr.Accept();
-                intervalsSizePage = intervalsSizePage.GoTo<IntervalsSidePage>();
+                intervalsSizePage = intervalsSizePage.GoTo<AdminBaseListPage>();
                 intervalsSizePage.Table.RowSearch.Name.SetValue(sideName);
                 intervalsSizePage = intervalsSizePage.SeachButtonRowClickAndGo();
             }
@@ -295,8 +295,28 @@ namespace Autotests.Tests.T05_ClearTests
                 orderedIttemplatesPage = orderedIttemplatesPage.SeachButtonRowClickAndGo();
             }
         }
+
+        [Test, Description("Удаление наложенного платежа")]
+        public void T11_DeletуPaymentPriceTest()
+        {
+            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
+            adminPage.AdminCompanies.Click();
+            adminPage.PaymentPrice.Click();
+            var рaymentPricePage = adminPage.GoTo<AdminBaseListPage>();
+            рaymentPricePage.Table.RowSearch.CompanyName.SetValue(companyName);
+            рaymentPricePage = рaymentPricePage.SeachButtonRowClickAndGo();
+
+            while (рaymentPricePage.Table.GetRow(0).Name.IsPresent)
+            {
+                рaymentPricePage.Table.GetRow(0).ActionsDelete.Click();
+                рaymentPricePage.Aletr.Accept();
+                рaymentPricePage = рaymentPricePage.GoTo<AdminBaseListPage>();
+                рaymentPricePage.Table.RowSearch.CompanyName.SetValue(companyName);
+                рaymentPricePage = рaymentPricePage.SeachButtonRowClickAndGo();
+            }
+        }
         [Test, Description("удаление компании")]
-        public void T11_DeleteCompanyTest()
+        public void T12_DeleteCompanyTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminCompanies.Click();
@@ -328,7 +348,7 @@ namespace Autotests.Tests.T05_ClearTests
         }
 
         [Test, Description("Удаляем магазины usera")]
-        public void T12_DeleteUserShopTest()
+        public void T13_DeleteUserShopTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
@@ -347,26 +367,26 @@ namespace Autotests.Tests.T05_ClearTests
         }
 
         [Test, Description("Удаляем склады usera")]
-        public void T13_DeleteUserWarehouseTest()
+        public void T14_DeleteUserWarehouseTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
             adminPage.UsersWarehouses.Click();
-            var warehousesPage = adminPage.GoTo<UsersWarehousesPage>();
+            var warehousesPage = adminPage.GoTo<AdminBaseListPage>();
             warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName);
             warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             while (warehousesPage.Table.GetRow(0).Name.IsPresent)
             {
                 warehousesPage.Table.GetRow(0).ActionsDelete.Click();
                 warehousesPage.Aletr.Accept();
-                warehousesPage = warehousesPage.GoTo<UsersWarehousesPage>();
+                warehousesPage = warehousesPage.GoTo<AdminBaseListPage>();
                 warehousesPage.Table.RowSearch.Name.SetValue(userWarehouseName);
                 warehousesPage = warehousesPage.SeachButtonRowClickAndGo();
             }
         }
         
         [Test, Description("Удаляем usera")]
-        public void T14_DeleteUserTest()
+        public void T15_DeleteUserTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
@@ -395,12 +415,12 @@ namespace Autotests.Tests.T05_ClearTests
         }
 
         [Test, Description("удаление юр лица")]
-        public void T15_DeleteLegalEntitiesTest()
+        public void T16_DeleteLegalEntitiesTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
-            adminPage.AdminReference.Click();
+            adminPage.DirectoryList.Click();
             adminPage.LegalEntities.Click();
-            var legalEntitiesPage = adminPage.GoTo<LegalEntitiesPage>();
+            var legalEntitiesPage = adminPage.GoTo<AdminBaseListPage>();
 
             legalEntitiesPage.Table.RowSearch.Name.SetValue(legalEntityName);
             legalEntitiesPage = legalEntitiesPage.SeachButtonRowClickAndGo();
@@ -409,7 +429,7 @@ namespace Autotests.Tests.T05_ClearTests
             {
                 legalEntitiesPage.Table.GetRow(0).ActionsDelete.Click();
                 legalEntitiesPage.Aletr.Accept();
-                legalEntitiesPage = legalEntitiesPage.GoTo<LegalEntitiesPage>();
+                legalEntitiesPage = legalEntitiesPage.GoTo<AdminBaseListPage>();
                 legalEntitiesPage.Table.RowSearch.Name.SetValue(legalEntityName);
                 legalEntitiesPage = legalEntitiesPage.SeachButtonRowClickAndGo();
             }

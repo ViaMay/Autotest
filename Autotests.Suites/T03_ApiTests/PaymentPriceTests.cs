@@ -19,20 +19,20 @@ namespace Autotests.Tests.T03_ApiTests
             string companyId = companiesPage.Table.GetRow(0).ID.GetText();
             
             var paymentPricePage =
-                LoadPage<PaymentPricePage>("/admin/paymentprice/?&filters[company]=" + companyName + "&filters[city]=" + cityPayment);
+                LoadPage<AdminBaseListPage>("/admin/paymentprice/?&filters[company]=" + companyName + "&filters[city]=" + cityPayment);
             while (paymentPricePage.Table.GetRow(0).Name.IsPresent)
             {
                 paymentPricePage.Table.GetRow(0).ActionsDelete.Click();
                 paymentPricePage.Aletr.Accept();
                 paymentPricePage =
-                LoadPage<PaymentPricePage>("/admin/paymentprice/?&filters[company]=" + companyName + "&filters[city]=" + cityPayment);
+                LoadPage<AdminBaseListPage>("/admin/paymentprice/?&filters[company]=" + companyName + "&filters[city]=" + cityPayment);
             }
-            paymentPricePage.CompanyCreate.Click();
+            paymentPricePage.Create.Click();
             var рaymentPriceCreatePage = paymentPricePage.GoTo<PaymentPriceCreatePage>();
             рaymentPriceCreatePage.Company.SetFirstValueSelect(companyName);
             рaymentPriceCreatePage.City.SetFirstValueSelect("Санкт-Петербург");
             рaymentPriceCreatePage.SaveButton.Click();
-            paymentPricePage = рaymentPriceCreatePage.GoTo<PaymentPricePage>();
+            paymentPricePage = рaymentPriceCreatePage.GoTo<AdminBaseListPage>();
 
             var responsePaymentPrice = apiRequest.GET("api/v1/" + keyShopPublic + "/payment_price.json",
                    new NameValueCollection
@@ -66,13 +66,13 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            удаляем наш НП
                 paymentPricePage =
-                LoadPage<PaymentPricePage>("/admin/paymentprice/?&filters[company]=" + companyName + "&filters[city]=" + cityPayment);
+                LoadPage<AdminBaseListPage>("/admin/paymentprice/?&filters[company]=" + companyName + "&filters[city]=" + cityPayment);
             while (paymentPricePage.Table.GetRow(0).Name.IsPresent)
             {
                 paymentPricePage.Table.GetRow(0).ActionsDelete.Click();
                 paymentPricePage.Aletr.Accept();
                 paymentPricePage =
-                LoadPage<PaymentPricePage>("/admin/paymentprice/?&filters[company]=" + companyName + "&filters[city]=" + cityPayment);
+                LoadPage<AdminBaseListPage>("/admin/paymentprice/?&filters[company]=" + companyName + "&filters[city]=" + cityPayment);
             }
 //            Снова шлем запрос занашу организацию и город
             responsePaymentPrice = apiRequest.GET("api/v1/" + keyShopPublic + "/payment_price.json",

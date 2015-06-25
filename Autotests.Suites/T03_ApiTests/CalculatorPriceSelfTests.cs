@@ -16,7 +16,7 @@ namespace Autotests.Tests.T03_ApiTests
             string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
 
             var deliveryPointsPage =
-                LoadPage<DeliveryPointsPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
+                LoadPage<AdminBaseListPage>("/admin/deliverypoints/?&filters[name]=" + deliveryPointName);
             string deliveryPoinId = deliveryPointsPage.Table.GetRow(0).ID.GetText();
 
  //            Не заполен город city_to. Расчитать цену самомвывоза (по пункут выдачи)

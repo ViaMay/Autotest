@@ -3,20 +3,22 @@ using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin
 {
-    public class AdminMaintenancePage : AdminPageBase
+    public class AdminBaseListCreatePage : AdminPageBase
     {
-        public AdminMaintenancePage()
+        public AdminBaseListCreatePage()
         {
             LabelDirectory = new StaticText(By.CssSelector("legend"));
-            AlertText = new StaticText(By.CssSelector("div.container > div.alert.alert-info"));
+            SaveButton = new ButtonInput(By.CssSelector("input.btn.btn-primary"));
         }
-        
+
+        public StaticText LabelDirectory { get; set; }
+        public ButtonInput SaveButton { get; set; }
+
         public override void BrowseWaitVisible()
-        {
+        { 
             base.BrowseWaitVisible();
             LabelDirectory.WaitVisible();
+            SaveButton.WaitVisible();
         }
-        public StaticText LabelDirectory { get; set; }
-        public StaticText AlertText { get; set; }
     }
 }

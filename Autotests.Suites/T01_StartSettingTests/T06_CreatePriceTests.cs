@@ -24,7 +24,7 @@ namespace Autotests.Tests.T01_StartSettingTests
                 pricesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 pricesPickupPage = pricesPickupPage.SeachButtonRowClickAndGo();
             }
-            pricesPickupPage.PricePickupCreate.Click();
+            pricesPickupPage.Create.Click();
             var pricePickupCreatePage = pricesPickupPage.GoTo<PricePickupCreatePage>();
             pricePickupCreatePage.CompanyName.SetFirstValueSelect(companyPickupName);
             pricePickupCreatePage.City.SetFirstValueSelect("Москва");
@@ -47,7 +47,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             adminPage.AdminCompanies.Click();
             adminPage.Prices.Mouseover();
             adminPage.PricesCourier.Click();
-            var pricesCourierPage = adminPage.GoTo<PricesCourierPage>();
+            var pricesCourierPage = adminPage.GoTo<PricesPage>();
             pricesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesCourierPage = pricesCourierPage.SeachButtonRowClickAndGo();
 
@@ -55,12 +55,12 @@ namespace Autotests.Tests.T01_StartSettingTests
             {
                 pricesCourierPage.Table.GetRow(0).ActionsDelete.Click();
                 pricesCourierPage.Aletr.Accept();
-                pricesCourierPage = pricesCourierPage.GoTo<PricesCourierPage>();
+                pricesCourierPage = pricesCourierPage.GoTo<PricesPage>();
                 pricesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 pricesCourierPage = pricesCourierPage.SeachButtonRowClickAndGo();
             }
 
-            pricesCourierPage.PriceCourierCreate.Click();
+            pricesCourierPage.Create.Click();
             var priceCourierCreatePage = pricesCourierPage.GoTo<PriceCreatePage>();
             priceCourierCreatePage.Price.SetValueAndWait("11");
             priceCourierCreatePage.PriceOverFlow.SetValueAndWait("3");
@@ -69,7 +69,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             priceCourierCreatePage.Weight.SetFirstValueSelect(weightName);
             priceCourierCreatePage.Dimension.SetFirstValueSelect(sideName);
             priceCourierCreatePage.SaveButton.Click();
-            pricesCourierPage = priceCourierCreatePage.GoTo<PricesCourierPage>();
+            pricesCourierPage = priceCourierCreatePage.GoTo<PricesPage>();
 
             pricesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesCourierPage = pricesCourierPage.SeachButtonRowClickAndGo();
@@ -83,7 +83,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             adminPage.AdminCompanies.Click();
             adminPage.Prices.Mouseover();
             adminPage.PricesSelf.Click();
-            var pricesSelfPage = adminPage.GoTo<PricesSelfPage>();
+            var pricesSelfPage = adminPage.GoTo<PricesPage>();
             pricesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesSelfPage = pricesSelfPage.SeachButtonRowClickAndGo();
 
@@ -91,12 +91,12 @@ namespace Autotests.Tests.T01_StartSettingTests
             {
                 pricesSelfPage.Table.GetRow(0).ActionsDelete.Click();
                 pricesSelfPage.Aletr.Accept();
-                pricesSelfPage = pricesSelfPage.GoTo<PricesSelfPage>();
+                pricesSelfPage = pricesSelfPage.GoTo<PricesPage>();
                 pricesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
                 pricesSelfPage = pricesSelfPage.SeachButtonRowClickAndGo();
             }
 
-            pricesSelfPage.PriceSelfCreate.Click();
+            pricesSelfPage.Create.Click();
             var priceSelfCreatePage = pricesSelfPage.GoTo<PriceCreatePage>();
             priceSelfCreatePage.Price.SetValueAndWait("12");
             priceSelfCreatePage.PriceOverFlow.SetValueAndWait("4");
@@ -105,7 +105,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             priceSelfCreatePage.Weight.SetFirstValueSelect(weightName);
             priceSelfCreatePage.Dimension.SetFirstValueSelect(sideName);
             priceSelfCreatePage.SaveButton.Click();
-            pricesSelfPage = priceSelfCreatePage.GoTo<PricesSelfPage>();
+            pricesSelfPage = priceSelfCreatePage.GoTo<PricesPage>();
 
             pricesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesSelfPage = pricesSelfPage.SeachButtonRowClickAndGo();
