@@ -7,13 +7,13 @@ namespace Autotests.WebPages.Pages.PageAdmin
     {
         public OrderInputEditingPage()
         {
-            LabelDirectoryOrderInput = new StaticText(By.CssSelector("legend"));
+            LabelDirectory = new StaticText(By.CssSelector("legend"));
             PickupDate = new StaticText(By.Name("pickup_date"));
             TransferCDDate = new StaticText(By.Name("transfer_date"));
             ProcessDate = new StaticText(By.Name("process_date"));
         }
 
-        public StaticText LabelDirectoryOrderInput { get; set; }
+        public StaticText LabelDirectory { get; set; }
         public StaticText PickupDate { get; set; }
         public StaticText TransferCDDate { get; set; }
         public StaticText ProcessDate { get; set; }
@@ -21,7 +21,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public override void BrowseWaitVisible()
         {
             base.BrowseWaitVisible();
-            LabelDirectoryOrderInput.WaitTextContains("Заявка");
+            LabelDirectory.WaitTextContains("Заявка");
         }
     }
 }

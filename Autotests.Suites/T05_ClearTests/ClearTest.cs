@@ -30,6 +30,14 @@ namespace Autotests.Tests.T05_ClearTests
                 оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders?&filters[shop]=" + userShopName);
             }
 
+            оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders?&filters[delivery_company]=" + companyName);
+            while (оrdersInputPage.Table.GetRow(0).ID.IsPresent)
+            {
+                var id = оrdersInputPage.Table.GetRow(0).ID.GetText();
+                оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders/delete/" + id);
+                оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders?&filters[delivery_company]=" + companyName);
+            }
+
             var оrdersOutputPage = LoadPage<OrdersOutputPage>("admin/outgoingorders?&filters[company]=" + companyName);
             while (оrdersOutputPage.Table.GetRow(0).ID.IsPresent)
             {

@@ -490,9 +490,6 @@ namespace Autotests.Utilities.ApiTestCore
         {
             [DataMember(Name = "order_id")]
             public string OrderId { get; set; }
-
-            [DataMember(Name = "ticket_id")]
-            public string TicketId { get; set; }
         }
 
         [DataContract]

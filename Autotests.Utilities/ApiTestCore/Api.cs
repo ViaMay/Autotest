@@ -122,7 +122,7 @@ namespace Autotests.Utilities.ApiTestCore
                 return (ApiResponse.ResponseOrderInfo)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
 //            ResponseTrueCancel
-            if (value.Contains(@"success"":true,""response"":{""order_id") && value.Contains(@"ticket_id"))
+            if (value.Contains(@"success"":true,""response"":{""order_id"))
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseTrueCancel));
                 return (ApiResponse.ResponseTrueCancel)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));

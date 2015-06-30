@@ -8,7 +8,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
     {
         public OrdersInputPage()
         {
-            LabelDirectoryOrdersInput = new StaticText(By.CssSelector("legend"));
+            LabelDirectory = new StaticText(By.CssSelector("legend"));
             Table = new OrdersInputListControl(By.ClassName("table"));
         }
 
@@ -18,13 +18,13 @@ namespace Autotests.WebPages.Pages.PageAdmin
             return GoTo<OrdersInputPage>();
         }
 
-        public StaticText LabelDirectoryOrdersInput { get; set; }
+        public StaticText LabelDirectory { get; set; }
         public OrdersInputListControl Table { get; set; }
         
         public override void BrowseWaitVisible()
         {
             base.BrowseWaitVisible();
-            LabelDirectoryOrdersInput.WaitText(@"Справочник ""Заявки""");
+            LabelDirectory.WaitTextContains(@"Справочник ""Заявки");
         }
     }
 }

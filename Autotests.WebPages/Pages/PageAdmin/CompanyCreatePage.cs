@@ -19,6 +19,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
             ManagersLegalEntity = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 3));
 
             Term = new TextInput(By.Name("term"));
+            ItemsMax = new TextInput(By.Name("items_max"));
             SinglePickup = new CheckBox(By.Name("single_pickup"));
             Prolongation = new CheckBox(By.Name("prolongation"));
         }
@@ -36,6 +37,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public CheckBox Prolongation { get; set; }
         public CheckBox SinglePickup { get; set; }
         public TextInput Term { get; set; }
+        public TextInput ItemsMax { get; set; }
 
         public override void BrowseWaitVisible()
         {

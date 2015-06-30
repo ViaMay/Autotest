@@ -13,7 +13,7 @@ namespace Autotests.Tests.T02_UserTests
             userPage.UserShops.Click();
             var shopsListPage = userPage.GoTo<UserShopsPage>();
             shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
-            var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
+             var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
             orderCreateSelfPage.Width.SetValueAndWait("4");
             orderCreateSelfPage.Height.SetValueAndWait("4");
             orderCreateSelfPage.Length.SetValueAndWait("4");
@@ -209,6 +209,8 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.OrderNumber.SetValue("44");
 
             orderSelfEditingPage.SaveChangeButton.Click();
+            orderSelfEditingPage.Aletr.WaitText("Ваш запрос на редактирование заявки успешно отправлен. Он будет обработан в течение 8 рабочих часов");
+            orderSelfEditingPage.Aletr.Accept();
             orderPage = orderSelfEditingPage.GoTo<OrderPage>();
 
             orderPage.TableSender.City.WaitText("Москва");

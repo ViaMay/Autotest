@@ -28,6 +28,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             companyCreatePage.Name.SetValueAndWait(companyPickupName);
             companyCreatePage.CompanyDriver.SelectValue("Boxberry");
             companyCreatePage.CompanyAddress.SetValueAndWait("Address");
+            companyCreatePage.ItemsMax.SetValueAndWait("3");
             companyCreatePage.ManagersLegalEntity.SetFirstValueSelect(legalEntityName);
             companyCreatePage.ManagersPickup.SetFirstValueSelect(legalPickupName);
             companyCreatePage.SaveButton.Click();
@@ -62,6 +63,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             companyCreatePage.CompanyPickupAddButton.Click();
             companyCreatePage.CompanyDriver.SelectValue("Boxberry");
             companyCreatePage.CompanyAddress.SetValueAndWait("Address");
+            companyCreatePage.ItemsMax.SetValueAndWait("3");
             companyCreatePage.ManagersLegalEntity.SetFirstValueSelect(legalEntityName);
             companyCreatePage.SaveButton.Click();
             companiesPage = companyCreatePage.GoTo<AdminBaseListPage>();

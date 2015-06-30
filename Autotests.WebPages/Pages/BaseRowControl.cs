@@ -16,6 +16,7 @@ namespace Autotests.WebPages.Pages
             Name = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[2]", index)));
 
             ColumnThree = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[3]", index)));
+            ColumnThreeLink = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[3]/a", index)));
 
             ActionsEdit = new Link(By.XPath(string.Format("//tbody/tr[{0}]/*/a[1]", index)));
             ActionsDelete = new Link(By.XPath(string.Format("//tbody/tr[{0}]/*/a[2]", index)));
@@ -23,6 +24,7 @@ namespace Autotests.WebPages.Pages
         public StaticText ID { get; private set; }
         public StaticText Name { get; private set; }
         public StaticText ColumnThree { get; private set; }
+        public StaticText ColumnThreeLink { get; private set; }
 
         public Link ActionsEdit { get; private set; }
         public Link ActionsDelete { get; private set; }

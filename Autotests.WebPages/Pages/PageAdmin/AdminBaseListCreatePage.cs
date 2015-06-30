@@ -18,7 +18,6 @@ namespace Autotests.WebPages.Pages.PageAdmin
         { 
             base.BrowseWaitVisible();
             LabelDirectory.WaitVisible();
-            SaveButton.WaitVisible();
         }
     }
 }

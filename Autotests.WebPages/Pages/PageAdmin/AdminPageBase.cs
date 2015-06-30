@@ -70,8 +70,10 @@ namespace Autotests.WebPages.Pages.PageAdmin
             UsersSupportFreshDesk = new Link(By.LinkText("FreshDesk"));
 
             Orders = new Link(By.LinkText("Заказы"));
+            OrderPickup = new Link(By.LinkText("Забор"));
             OrderInput = new Link(By.LinkText("Входящие"));
             OrderOutput = new Link(By.LinkText("Исходящие"));
+            Documents = new Link(By.LinkText("Документы"));
             Сalculator = new Link(By.LinkText("Калькулятор"));
 
             Reports = new Link(By.LinkText("Отчеты"));
@@ -158,8 +160,10 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public Link UsersSupportFreshDesk { get; set; }
 
         public Link Orders { get; set; }
+        public Link OrderPickup { get; set; }
         public Link OrderInput { get; set; }
         public Link OrderOutput { get; set; }
+        public Link Documents { get; set; }
         public Link Сalculator { get; set; }
         
         public Link Reports { get; set; }

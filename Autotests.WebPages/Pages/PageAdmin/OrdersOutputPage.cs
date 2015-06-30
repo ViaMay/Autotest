@@ -7,7 +7,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
     {
         public OrdersOutputPage()
         {
-            LabelDirectoryOrdersOutput = new StaticText(By.CssSelector("legend"));
+            LabelDirectory = new StaticText(By.CssSelector("legend"));
             Table = new BaseTableListControl(By.ClassName("table"));
         }
 
@@ -17,13 +17,13 @@ namespace Autotests.WebPages.Pages.PageAdmin
             return GoTo<OrdersOutputPage>();
         }
 
-        public StaticText LabelDirectoryOrdersOutput { get; set; }
+        public StaticText LabelDirectory { get; set; }
         public BaseTableListControl Table { get; set; }
         
         public override void BrowseWaitVisible()
         {
             base.BrowseWaitVisible();
-            LabelDirectoryOrdersOutput.WaitText(@"Справочник ""Исходящие заявки""");
+            LabelDirectory.WaitText(@"Справочник ""Исходящие заявки""");
         }
     }
 }

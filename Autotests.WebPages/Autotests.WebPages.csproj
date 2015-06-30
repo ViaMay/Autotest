@@ -103,7 +103,8 @@
     <Compile Include="Pages\ComboboxControl.cs" />
     <Compile Include="Pages\DefaultPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
-    <Compile Include="Pages\SupportFreshDeskPage.cs" />
+    <Compile Include="Pages\PageFreshDesk\SupportTicketsPage.cs" />
+    <Compile Include="Pages\PageFreshDesk\SupportFreshDeskPage.cs" />
     <Compile Include="Pages\PageAdmin\СalculatorPage.cs" />
     <Compile Include="Pages\PageAdmin\SupportAdminListPage.cs" />
     <Compile Include="Pages\PageAdmin\AdminMaintenancePage.cs" />

@@ -30,8 +30,19 @@ namespace Autotests.Tests.T01_StartSettingTests
             orderedIttemplatesCreatePage.Through.SelectValue("Email");
             orderedIttemplatesCreatePage.Action.SelectValue("Отмена заказа");
             orderedIttemplatesCreatePage.ThroughEmail.SetValueAndWait(adminName);
-            orderedIttemplatesCreatePage.Subject.SetValueAndWait("Тема");
-            orderedIttemplatesCreatePage.Message.SetValueAndWait("Сообщение");
+            orderedIttemplatesCreatePage.Subject.SetValueAndWait("Отмена заказа #dd");
+            orderedIttemplatesCreatePage.Message.SetValueAndWait("Сообщение на отмену заказа #dd");
+            orderedIttemplatesCreatePage.SaveButton.Click();
+            orderedIttemplatesPage = orderedIttemplatesCreatePage.GoTo<OrderedIttemplatesPage>();
+
+            orderedIttemplatesPage.Create.Click();
+            orderedIttemplatesCreatePage = orderedIttemplatesPage.GoTo<OrderedIttemplatesCreatePage>();
+            orderedIttemplatesCreatePage.CompanyName.SetFirstValueSelect(companyName);
+            orderedIttemplatesCreatePage.Through.SelectValue("Email");
+            orderedIttemplatesCreatePage.Action.SelectValue("Редактирование заказа");
+            orderedIttemplatesCreatePage.ThroughEmail.SetValueAndWait(adminName);
+            orderedIttemplatesCreatePage.Subject.SetValueAndWait("Редактирование заказа #dd");
+            orderedIttemplatesCreatePage.Message.SetValueAndWait("список измененных полей и новых значений: #changed");
             orderedIttemplatesCreatePage.SaveButton.Click();
             orderedIttemplatesPage = orderedIttemplatesCreatePage.GoTo<OrderedIttemplatesPage>();
         }

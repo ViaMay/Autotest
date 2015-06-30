@@ -95,7 +95,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.ErrorText[2].WaitText("Квартира получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[3].WaitText("ФИО получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[4].WaitText("Телефон получателя обязательно к заполнению");
-            orderCreateCourirsPage.ErrorText[5].WaitText("Максимальное количество мест - 1");
+            orderCreateCourirsPage.ErrorText[5].WaitTextContains("Максимальное количество мест");
             orderCreateCourirsPage.ErrorText[6].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
             orderCreateCourirsPage.ErrorText[7].WaitText("Описание посылки обязательно к заполнению");
 
