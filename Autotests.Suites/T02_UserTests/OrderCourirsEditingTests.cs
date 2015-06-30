@@ -39,6 +39,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.PaymentPrice.SetValueAndWait("1500");
             orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("Хороший товар,годный");
+            orderCreateCourirsPage.OrderComment.SetValueAndWait("OrderComment");
 
             var rowArticle = orderCreateCourirsPage.GetArticleRow(0);
                 rowArticle.Name.SetValueAndWait("Имя1");
@@ -75,6 +76,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.PaymentPrice.WaitValue("1500");
             orderCourirsEditingPage.OrderNumber.WaitValue("OrderNumber");
             orderCourirsEditingPage.GoodsDescription.WaitValue("Хороший товар,годный");
+            orderCourirsEditingPage.OrderComment.WaitValue("OrderComment");
 
             var rowArticleStatic = orderCourirsEditingPage.GetArticleRow(0);
             rowArticleStatic.Name.WaitValue("Имя1");
@@ -97,6 +99,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.PaymentPrice.SetValue("1600");
             orderCourirsEditingPage.OrderNumber.SetValue("OrderNumber2");
             orderCourirsEditingPage.GoodsDescription.SetValue("Хороший товар,годный2");
+            orderCourirsEditingPage.OrderComment.SetValue("OrderComment2");
 
             orderCourirsEditingPage.SaveChangeButton.Click();
             orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
@@ -106,6 +109,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSender.Name.WaitText(legalEntityName);
             orderCourirsPage.TableSender.Phone.WaitText("+7 (111)111-1111");
             orderCourirsPage.TableSender.Delivery.WaitText("Курьерская");
+            orderCourirsPage.TableSender.OrderComment.WaitText("OrderComment2");
 
             orderCourirsPage.TableRecipient.City.WaitText("Москва");
             orderCourirsPage.TableRecipient.PostCode.WaitText("123456");
@@ -172,6 +176,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.PaymentPrice.SetValueAndWait("1500");
             orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("Хороший товар,годный");
+            orderCreateCourirsPage.OrderComment.SetValueAndWait("OrderComment");
 
             var rowArticle = orderCreateCourirsPage.GetArticleRow(0);
             rowArticle.Name.SetValueAndWait("Имя1");
@@ -210,6 +215,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.PaymentPrice.WaitValue("1500");
             orderCourirsEditingPage.OrderNumber.WaitValue("OrderNumber");
             orderCourirsEditingPage.GoodsDescription.WaitValue("Хороший товар,годный");
+            orderCourirsEditingPage.OrderComment.WaitValue("OrderComment");
             orderCourirsEditingPage.DeliveryDate.WaitValue(dateDelivery);
 
             var rowArticleStatic = orderCourirsEditingPage.GetArticleRow(0);
@@ -237,8 +243,11 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.PaymentPrice.SetValue("1600");
             orderCourirsEditingPage.OrderNumber.SetValue("OrderNumber2");
             orderCourirsEditingPage.GoodsDescription.SetValue("Хороший товар,годный2");
+            orderCourirsEditingPage.OrderComment.SetValue("OrderComment2");
 
             orderCourirsEditingPage.SaveChangeButton.Click();
+            orderCourirsEditingPage.Aletr.WaitText("Ваш запрос на редактирование заявки успешно отправлен. Он будет обработан в течение 8 рабочих часов");
+            orderCourirsEditingPage.Aletr.Accept();
             orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
 
             orderCourirsPage.TableSender.City.WaitText("Москва");
@@ -246,6 +255,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSender.Name.WaitText(legalEntityName);
             orderCourirsPage.TableSender.Phone.WaitText("+7 (111)111-1111");
             orderCourirsPage.TableSender.Delivery.WaitText("Курьерская");
+            orderCourirsPage.TableSender.OrderComment.WaitText("OrderComment2");
 
             orderCourirsPage.TableRecipient.City.WaitText("Москва");
             orderCourirsPage.TableRecipient.PostCode.WaitText("123456");
