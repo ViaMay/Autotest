@@ -26,7 +26,7 @@ namespace Autotests.Utilities.WebTestCore.Pages
                 CleanFields(this);
                 var newPage = new TPage();
                 newPage.BrowseWaitVisible();
-                InitPage();
+//                InitPage();
                 return newPage;
             });
         }
@@ -50,7 +50,7 @@ namespace Autotests.Utilities.WebTestCore.Pages
                 WebDriverCache.WebDriver.SetCookie("testingMode", "1");
                 var newPage = new TPage();
                 newPage.BrowseWaitVisible();
-                InitPage();
+//                InitPage();
                 return newPage;
             });
         }
@@ -84,7 +84,7 @@ namespace Autotests.Utilities.WebTestCore.Pages
                 CleanFields(page);
                 var newPage = new TPage1();
                 newPage.BrowseWaitVisible();
-                InitPage();
+//                InitPage();
                 return newPage;
             });
         }
