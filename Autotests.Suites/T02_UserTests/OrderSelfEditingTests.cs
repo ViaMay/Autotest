@@ -26,6 +26,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.DeclaredPrice.SetValueAndWait("0");
             orderCreateSelfPage.PaymentPrice.SetValueAndWait("4");
             orderCreateSelfPage.GoodsDescription.SetValueAndWait("4");
+            orderCreateSelfPage.ItemsCount.SetValueAndWait("2");
 
             var rowArticle = orderCreateSelfPage.GetArticleRow(0);
             rowArticle.Name.SetValueAndWait("Имя1");
@@ -64,7 +65,7 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.DeclaredPrice.WaitValue("0");
             orderSelfEditingPage.PaymentPrice.WaitValue("4");
             orderSelfEditingPage.GoodsDescription.WaitValue("4");
-            orderSelfEditingPage.ItemsCount.WaitValue("1");
+            orderSelfEditingPage.ItemsCount.WaitValue("2");
 
             var rowArticleStatic = orderSelfEditingPage.GetArticleRow(0);
             rowArticleStatic.Name.WaitValue("Имя1");
@@ -80,6 +81,7 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.BuyerName.SetValue("Фамилия2 Имя2 Очество2");
             orderSelfEditingPage.BuyerPhone.SetValue("2222222222");
             orderSelfEditingPage.BuyerEmail.SetValue("2" + userNameAndPass);
+            orderSelfEditingPage.ItemsCount.SetValue("3");
 
             orderSelfEditingPage.PaymentPrice.SetValue("1500");
             orderSelfEditingPage.DeclaredPrice.SetValue("1600");
@@ -115,7 +117,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableSize.Height.WaitText("12 см");
             orderPage.TableSize.Length.WaitText("13 см");
             orderPage.TableSize.Weight.WaitText("9.20 кг");
-            orderPage.TableSize.Count.WaitText("1");
+            orderPage.TableSize.Count.WaitText("3");
 
             orderPage.TableArticle.GetRow(0).Name.WaitText("Имя1");
             orderPage.TableArticle.GetRow(0).Article.WaitText("Article1");

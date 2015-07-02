@@ -1,13 +1,12 @@
 ﻿using System.Collections.Specialized;
 using Autotests.Utilities.ApiTestCore;
-using Autotests.WebPages.Pages;
 using Autotests.WebPages.Pages.PageAdmin;
-using Autotests.WebPages.Pages.PageFreshDesk;
+using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
 
-namespace Autotests.Tests.T04_SupportFreshDeskTests
+namespace Autotests.Tests.T02_UserTests
 {
-    public class SupportCancelTests : ConstVariablesTestBase
+    public class OrderCancelTests : ConstVariablesTestBase
     {
         [Test, Description("Создание заказа на самовывоз и отмена заявки")]
         public void SupportCancelTest()
@@ -49,32 +48,21 @@ namespace Autotests.Tests.T04_SupportFreshDeskTests
             Assert.IsTrue(responseCreateOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
             
             LoadPage<AdminMaintenancePage>("admin/maintenance/process_i_orders");
-
-            var responseOrderCancel = (ApiResponse.ResponseTrueCancel)apiRequest.GET("api/v1/" + keyShopPublic + "/order_cancel.json",
-                new NameValueCollection
-                {
-                {"api_key", keyShopPublic},
-                {"order", responseCreateOrders.Response.OrderId}
-                });
-            Assert.AreEqual(responseOrderCancel.Response.OrderId, responseCreateOrders.Response.OrderId);
-
+            
             var defaultPage = shopsPage.LoginOut();
             var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.Support.Click();
-            userPage.SupportCreate.Click();
-            var pageFreshDesk = userPage.GoTo<SupportFreshDeskPage>();
-            pageFreshDesk.LabelDirectory.WaitText("Служба поддержки");
-            pageFreshDesk.TicketsLink.Click();
-            var pageTickets = pageFreshDesk.GoTo<SupportTicketsPage>();
-            pageTickets.Table.GetRow(0).TicketLink.Click();
-            var pageTicket = pageFreshDesk.GoTo<SupportTicketOpenPage>();
-            pageTicket.TicketStatus.WaitTextContains("Начиная с");
-            pageTicket.TicketHeading.WaitTextContains("Отмена заказа dd-" + responseCreateOrders.Response.OrderId);
-            pageTicket.TicketInfo.WaitTextContains("admin/orders/edit/" + responseCreateOrders.Response.OrderId);
-            pageTicket.TicketInfo.WaitTextContains("admin/outgoingorders/edit/");
-            pageTicket.TicketInfo.WaitTextContains("Сообщение на отмену заказа dd-" + responseCreateOrders.Response.OrderId);
-
-            defaultPage = LoadPage<DefaultPage>("auth/logout");
+            userPage.Orders.Click();
+            var ordersPage = userPage.GoTo<OrdersListPage>();
+            ordersPage.Table.GetRow(0).Number.WaitText("test_userShops_via");
+            ordersPage.Table.GetRow(0).Status.WaitText("На складе ИМ");
+            ordersPage.Table.GetRow(0).Undo.Click();
+            ordersPage.Aletr.WaitText("Ваш запрос на отмену заявки успешно отправлен. Он будет обработан в течение 8 рабочих часов");
+            ordersPage.Aletr.Accept();
+            ordersPage.Table.GetRow(0).ID.Click();
+            var orderPage = ordersPage.GoTo<OrderPage>();
+            orderPage.UndoButton.Click();
+            orderPage.Aletr.WaitText("Ваш запрос на отмену заявки успешно отправлен. Он будет обработан в течение 8 рабочих часов");
+            orderPage.Aletr.Accept();
          }
     }
 }

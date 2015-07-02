@@ -11,16 +11,13 @@ namespace Autotests.WebPages.Pages
         public DefaultPage()
         {
             LoginButton = new Link(By.LinkText("Вход в личный кабинет"));
-            CalculatorButton = new Link(By.LinkText("Калькулятор"));
         }
 
-        public Link CalculatorButton { get; private set; }
         public Link LoginButton { get; private set; }
 
         public override void BrowseWaitVisible()
         {
             LoginButton.WaitVisible();
-//            CalculatorButton.WaitVisible();
         }
 
         public LoginPage LoginButtonClickAndGo()

@@ -12,12 +12,14 @@ namespace Autotests.WebPages.Pages.PageFreshDesk
             HomeLink = new Link(By.LinkText("Главная"));
             SolutionsLink = new Link(By.LinkText("Решения"));
             TicketsLink = new Link(By.LinkText("Заявки"));
+            LogOut = new Link(By.XPath("//header/div/nav/b[2]/a"));
         }
 
         public StaticText LabelDirectory { get; set; }
         public Link HomeLink { get; private set; }
         public Link SolutionsLink { get; private set; }
         public Link TicketsLink { get; private set; }
+        public Link LogOut { get; private set; }
         
         public override void BrowseWaitVisible()
         {

@@ -35,6 +35,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
+            orderCreateCourirsPage.ItemsCount.SetValueAndWait("2");
 
             orderCreateCourirsPage.PaymentPrice.SetValueAndWait("1500");
             orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
@@ -63,7 +64,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.Height.WaitValue("11.1");
             orderCourirsEditingPage.Length.WaitValue("12.1");
             orderCourirsEditingPage.Weight.WaitValue("9.1");
-            orderCourirsEditingPage.ItemsCount.WaitValue("1");
+            orderCourirsEditingPage.ItemsCount.WaitValue("2");
 
             orderCourirsEditingPage.BuyerPostalCode.WaitValue("123123");
             orderCourirsEditingPage.BuyerStreet.WaitValue("Улица");
@@ -96,6 +97,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.BuyerName.SetValue("Фамилия2 Имя2 Очество2");
             orderCourirsEditingPage.BuyerPhone.SetValue("2222222222");
             orderCourirsEditingPage.BuyerEmail.SetValue("2"+ userNameAndPass);
+            orderCourirsEditingPage.ItemsCount.SetValue("3");
             orderCourirsEditingPage.PaymentPrice.SetValue("1600");
             orderCourirsEditingPage.OrderNumber.SetValue("OrderNumber2");
             orderCourirsEditingPage.GoodsDescription.SetValue("Хороший товар,годный2");
@@ -131,7 +133,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSize.Height.WaitText("12 см");
             orderCourirsPage.TableSize.Length.WaitText("13 см");
             orderCourirsPage.TableSize.Weight.WaitText("9.20 кг");
-            orderCourirsPage.TableSize.Count.WaitText("1");
+            orderCourirsPage.TableSize.Count.WaitText("3");
 
             orderCourirsPage.TableArticle.GetRow(0).Name.WaitText("Имя1");
             orderCourirsPage.TableArticle.GetRow(0).Article.WaitText("Article1");

@@ -34,6 +34,7 @@ namespace Autotests.WebPages.Pages.PageUser
             BuyerName = new TextInput(By.Name("to_name"));
             BuyerPhone = new TextInput(By.Name("to_phone"));
             BuyerEmail = new TextInput(By.Name("to_email"));
+            ItemsCount = new TextInput(By.Name("items_count"));
 
             PaymentPrice = new TextInput(By.Name("payment_price"));
             OrderNumber = new TextInput(By.Name("shop_refnum"));
@@ -45,7 +46,6 @@ namespace Autotests.WebPages.Pages.PageUser
             TextRadioButtonError = new StaticText(By.ClassName("help-block"));
             ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"));
             ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"));
-            AletrError = new AlertControl();
          }
 
         public OrderArticleRowControl GetArticleRow(int index)
@@ -112,11 +112,11 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput OrderNumber { get; set; }
         public TextInput GoodsDescription { get; set; }
         public TextInput OrderComment { get; set; }
+        public TextInput ItemsCount { get; set; }
 
         private StaticControl Countedloader { get; set; }
         public ErrorActionTextControl ActionErrorText { get; set; }
         public ErrorTextControl ErrorText { get; set; }
         public StaticText TextRadioButtonError { get; set; }
-        public AlertControl AletrError { get; set; }
     }
 }

@@ -16,8 +16,8 @@ namespace Autotests.Tests.T02_UserTests
             var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
 
             orderCreateSelfPage.СountedButton.Click();
-            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
-            orderCreateSelfPage.AletrError.Сancel();
+            orderCreateSelfPage.Aletr.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
+            orderCreateSelfPage.Aletr.Сancel();
 
             orderCreateSelfPage.Width.SetValueAndWait("10.1");
             orderCreateSelfPage.Height.SetValueAndWait("11.1");
@@ -25,15 +25,15 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.Weight.SetValueAndWait("9.1");
 
             orderCreateSelfPage.СountedButton.Click();
-            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
-            orderCreateSelfPage.AletrError.Accept();
+            orderCreateSelfPage.Aletr.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
+            orderCreateSelfPage.Aletr.Accept();
 
             orderCreateSelfPage.DeclaredPrice.SetValueAndWait("100");
             orderCreateSelfPage.Weight.SetValueAndWait("");
 
             orderCreateSelfPage.СountedButton.Click();
-            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
-            orderCreateSelfPage.AletrError.Accept();
+            orderCreateSelfPage.Aletr.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
+            orderCreateSelfPage.Aletr.Accept();
 
             orderCreateSelfPage.Weight.SetValueAndWait("3");
             orderCreateSelfPage.Height.SetValueAndWait("");
@@ -41,8 +41,8 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.Width.SetValueAndWait("");
 
             orderCreateSelfPage.СountedButton.Click();
-            orderCreateSelfPage.AletrError.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
-            orderCreateSelfPage.AletrError.Accept();
+            orderCreateSelfPage.Aletr.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
+            orderCreateSelfPage.Aletr.Accept();
 
             orderCreateSelfPage.Height.SetValueAndWait("0");
             orderCreateSelfPage.Length.SetValueAndWait("0");

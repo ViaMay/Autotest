@@ -31,7 +31,7 @@ namespace Autotests.WebPages.Pages.PageUser
             GoodsDescription = new TextInput(By.Name("goods_description"));
             DeliveryDate = new TextInput(By.Name("delivery_date_new"));
             OrderComment = new TextInput(By.Name("order_comment"));
-            ItemsCount = new StaticText(By.Name("items_count"));
+            ItemsCount = new TextInput(By.Name("items_count"));
 
             ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"));
             ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"));
@@ -71,7 +71,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput GoodsDescription { get; set; }
         public TextInput DeliveryDate { get; set; }
         public TextInput OrderComment { get; set; }
-        public StaticText ItemsCount { get; set; }
+        public TextInput ItemsCount { get; set; }
 
         public ErrorActionTextControl ActionErrorText { get; set; }
         public ErrorTextControl ErrorText { get; set; }

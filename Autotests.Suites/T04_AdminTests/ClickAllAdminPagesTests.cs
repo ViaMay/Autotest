@@ -548,10 +548,13 @@ namespace Autotests.Tests.T04_AdminTests
             page.MargindisCounts.Click();
             page = page.GoTo<AdminBaseListPage>();
             page.LabelDirectory.WaitText(@"Справочник ""Скидки""");
-            page.Table.GetRow(0).ActionsEdit.Click();
-            editPage = page.GoTo<AdminBaseListCreatePage>();
-            editPage.LabelDirectory.WaitTextContains(@"""Скидки""");
-            editPage.LabelDirectory.WaitTextContains(@"Edit record");
+            if (page.Table.GetRow(0).ActionsEdit.IsPresent)
+            {
+                page.Table.GetRow(0).ActionsEdit.Click();
+                editPage = page.GoTo<AdminBaseListCreatePage>();
+                editPage.LabelDirectory.WaitTextContains(@"""Скидки""");
+                editPage.LabelDirectory.WaitTextContains(@"Edit record");
+            }
         }
 
         [Test, Description("по всем страницам для пользователя"), Ignore]

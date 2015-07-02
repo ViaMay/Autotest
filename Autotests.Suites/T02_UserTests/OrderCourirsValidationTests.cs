@@ -16,8 +16,8 @@ namespace Autotests.Tests.T02_UserTests
             var orderCreateCourirsPage = shopsListPage.GoTo<OrderCourirsCreatePage>();
 
             orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
-            orderCreateCourirsPage.AletrError.Сancel();
+            orderCreateCourirsPage.Aletr.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
+            orderCreateCourirsPage.Aletr.Сancel();
 
             orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
             orderCreateCourirsPage.Width.SetValueAndWait("10.1");
@@ -26,38 +26,39 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
 
             orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
-            orderCreateCourirsPage.AletrError.Accept();
+            orderCreateCourirsPage.СountedButton.WaitPresenceWithRetries();
+            orderCreateCourirsPage.Aletr.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
+            orderCreateCourirsPage.Aletr.Accept();
 
             orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
             orderCreateCourirsPage.DeclaredPrice.SetValueAndWait(" ");
 
             orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
-            orderCreateCourirsPage.AletrError.Accept();
+            orderCreateCourirsPage.Aletr.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
+            orderCreateCourirsPage.Aletr.Accept();
 
             orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("100");
             orderCreateCourirsPage.Weight.SetValueAndWait(" ");
 
             orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
-            orderCreateCourirsPage.AletrError.Accept();
+            orderCreateCourirsPage.Aletr.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
+            orderCreateCourirsPage.Aletr.Accept();
 
             orderCreateCourirsPage.Height.SetValueAndWait(" ");
             orderCreateCourirsPage.Length.SetValueAndWait(" ");
             orderCreateCourirsPage.Weight.SetValueAndWait(" ");
 
             orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.AletrError.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
-            orderCreateCourirsPage.AletrError.Accept();
+            orderCreateCourirsPage.Aletr.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
+            orderCreateCourirsPage.Aletr.Accept();
 
             orderCreateCourirsPage.Height.SetValueAndWait("0");
             orderCreateCourirsPage.Length.SetValueAndWait("0");
             orderCreateCourirsPage.Weight.SetValueAndWait("0");
             orderCreateCourirsPage.СountedButton.Click();
 
-            orderCreateCourirsPage.AletrError.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
-            orderCreateCourirsPage.AletrError.Accept();
+            orderCreateCourirsPage.Aletr.WaitText("Превышены возможные размеры или вес отправления для данного ПВЗ");
+            orderCreateCourirsPage.Aletr.Accept();
 
             orderCreateCourirsPage.WaitTextRadioButtonError("Отсутствуют варианты доставки, соответствующие указанным параметрам заказа");
             orderCreateCourirsPage.Height.SetValueAndWait("10");

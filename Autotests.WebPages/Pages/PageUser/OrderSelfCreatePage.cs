@@ -19,6 +19,7 @@ namespace Autotests.WebPages.Pages.PageUser
             BuyerName = new TextInput(By.Name("to_name"));
             BuyerPhone = new TextInput(By.Name("to_phone"));
             BuyerEmail = new TextInput(By.Name("to_email"));
+            ItemsCount = new TextInput(By.Name("items_count"));
             DeclaredPrice = new TextInput(By.Name("declared_price"));
             PaymentPrice = new TextInput(By.Name("payment_price"));
             GoodsDescription = new TextInput(By.Name("goods_description"));
@@ -33,7 +34,6 @@ namespace Autotests.WebPages.Pages.PageUser
 
             ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"));
             ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"));
-            AletrError = new AlertControl();
 
             MapOrders = new MapControl(By.Id("ddelivery"));
          }
@@ -60,6 +60,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput BuyerName { get; set; }
         public TextInput BuyerPhone { get; set; }
         public TextInput BuyerEmail { get; set; }
+        public TextInput ItemsCount { get; set; }
         public TextInput DeclaredPrice { get; set; }
         public TextInput PaymentPrice { get; set; }
         public TextInput GoodsDescription { get; set; }
@@ -74,7 +75,6 @@ namespace Autotests.WebPages.Pages.PageUser
 
         public ErrorActionTextControl ActionErrorText { get; set; }
         public ErrorTextControl ErrorText { get; set; }
-        public AlertControl AletrError { get; set; }
 
         public MapControl MapOrders { get; set; }
     }
