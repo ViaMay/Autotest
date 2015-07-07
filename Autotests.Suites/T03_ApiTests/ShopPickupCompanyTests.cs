@@ -40,7 +40,12 @@ namespace Autotests.Tests.T03_ApiTests
             }
 
 //            Создание магазина
-            var responseShop = (ApiResponse.ResponseAddObject)apiRequest.POST(keyShopPublic + "/shop_create.json",
+            var usersPage = LoadPage<UsersPage>("admin/users?&filters[username]=" + userNameAndPass);
+            usersPage.UsersTable.GetRow(0).ActionsEdit.Click();
+            var userEdiringPage = usersPage.GoTo<UserCreatePage>();
+            var userId = userEdiringPage.Key.GetAttributeValue("value");
+
+            var responseShop = (ApiResponse.ResponseAddObject)apiRequest.POST("cabinet/" + userId + "/shop_create.json",
                 new NameValueCollection
                 {
                     {"name", userShopName + "_ApiAdmin"},

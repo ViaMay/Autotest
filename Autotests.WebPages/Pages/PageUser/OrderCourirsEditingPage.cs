@@ -30,6 +30,8 @@ namespace Autotests.WebPages.Pages.PageUser
             OrderNumber = new TextInput(By.Name("shop_refnum"));
             GoodsDescription = new TextInput(By.Name("goods_description"));
             DeliveryDate = new TextInput(By.Name("delivery_date_new"));
+            DeliveryTimeFrom = new Select(By.Name("delivery_time_from"));
+            DeliveryTimeTo = new Select(By.Name("delivery_time_to"));
             OrderComment = new TextInput(By.Name("order_comment"));
             ItemsCount = new TextInput(By.Name("items_count"));
 
@@ -70,6 +72,8 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput OrderNumber { get; set; }
         public TextInput GoodsDescription { get; set; }
         public TextInput DeliveryDate { get; set; }
+        public Select DeliveryTimeFrom { get; set; }
+        public Select DeliveryTimeTo { get; set; }
         public TextInput OrderComment { get; set; }
         public TextInput ItemsCount { get; set; }
 

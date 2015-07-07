@@ -5,7 +5,7 @@ using Autotests.WebPages.Pages.PageAdmin;
 using Autotests.WebPages.Pages.PageFreshDesk;
 using NUnit.Framework;
 
-namespace Autotests.Tests.T04_SupportFreshDeskTests
+namespace Autotests.Tests.T05_SupportFreshDeskTests
 {
     public class SupportCancelTests : ConstVariablesTestBase
     {
@@ -61,11 +61,14 @@ namespace Autotests.Tests.T04_SupportFreshDeskTests
             var defaultPage = shopsPage.LoginOut();
             var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Support.Click();
-            userPage.SupportCreate.Click();
+//            userPage.SupportCreate.Click();
             var pageFreshDesk = userPage.GoTo<SupportFreshDeskPage>();
             pageFreshDesk.LabelDirectory.WaitText("Служба поддержки");
             pageFreshDesk.TicketsLink.Click();
             var pageTickets = pageFreshDesk.GoTo<SupportTicketsPage>();
+            pageTickets.TicketFilters.Click();
+            pageTickets.TicketFiltersAll.Click();
+            pageTickets.WaitTableVisible();
             pageTickets.Table.GetRow(0).TicketLink.Click();
             var pageTicket = pageFreshDesk.GoTo<SupportTicketOpenPage>();
             pageTicket.TicketStatus.WaitTextContains("Начиная с");

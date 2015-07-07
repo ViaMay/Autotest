@@ -127,6 +127,7 @@
     <Compile Include="T03_ApiTests\WarehouseInfoTests.cs" />
     <Compile Include="T03_ApiTests\WarehouseCreateTests.cs" />
     <Compile Include="T03_ApiTests\ShopInfoAndEditTests.cs" />
+    <Compile Include="T04_AdminTests\CheckCompanyApiCalculatorTests.cs" />
     <Compile Include="T04_AdminTests\DateTransferCDCkeckOutOrderTests.cs" />
     <Compile Include="T04_AdminTests\ClickAllAdminPagesTests.cs" />
     <Compile Include="T04_AdminTests\SendOrdersBasePage.cs" />
@@ -159,10 +160,10 @@
     <Compile Include="T03_ApiTests\CalculatorPriceSelfTests.cs" />
     <Compile Include="T03_ApiTests\UserCreateShopTests.cs" />
     <Compile Include="T03_ApiTests\UserWarehouseCreateTests.cs" />
-    <Compile Include="T04_SupportFreshDeskTests\SupportEditingSendCourirsTests.cs" />
-    <Compile Include="T04_SupportFreshDeskTests\SupportEditingSendSelfTests.cs" />
-    <Compile Include="T04_SupportFreshDeskTests\SupportCancelTests.cs" />
-    <Compile Include="T05_ClearTests\ClearTest.cs" />
+    <Compile Include="T05_SupportFreshDeskTests\SupportEditingSendCourirsTests.cs" />
+    <Compile Include="T05_SupportFreshDeskTests\SupportEditingSendSelfTests.cs" />
+    <Compile Include="T05_SupportFreshDeskTests\SupportCancelTests.cs" />
+    <Compile Include="T06_ClearTests\ClearTest.cs" />
     <Compile Include="T01_StartSettingTests\T02_UserRegistrationTest.cs" />
     <Compile Include="T01_StartSettingTests\T05_CreateDeliveryPointTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

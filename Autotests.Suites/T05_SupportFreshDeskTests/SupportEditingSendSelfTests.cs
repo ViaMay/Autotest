@@ -6,9 +6,9 @@ using Autotests.WebPages.Pages.PageFreshDesk;
 using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
 
-namespace Autotests.Tests.T04_SupportFreshDeskTests
+namespace Autotests.Tests.T05_SupportFreshDeskTests
 {
-    public class SupportEditingSendCourirsTests : ConstVariablesTestBase
+    public class SupportEditingSendSelfTests : ConstVariablesTestBase
     {
         [Test, Description("Создание заказа самовывоза и редактирование")]
         public void OrderSelfEditingTest()
@@ -77,7 +77,7 @@ namespace Autotests.Tests.T04_SupportFreshDeskTests
             DefaultPage defaultPage = shopsPage.LoginOut();
             UserHomePage userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Support.Click();
-            userPage.SupportCreate.Click();
+//            userPage.SupportCreate.Click();
             var pageFreshDesk = userPage.GoTo<SupportFreshDeskPage>();
             pageFreshDesk.LabelDirectory.WaitText("Служба поддержки");
             pageFreshDesk.TicketsLink.Click();

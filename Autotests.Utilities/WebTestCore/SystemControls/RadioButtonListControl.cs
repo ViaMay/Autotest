@@ -5,7 +5,7 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
 {
     public class RadioButtonListControl : HtmlControl
     {
-        public RadioButtonListControl(By locator, HtmlControl container)
+        public RadioButtonListControl(By locator, HtmlControl container = null)
             : base(locator, container)
         {
         }

@@ -26,7 +26,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
 
             orderCreateCourirsPage.СountedButton.Click();
-            orderCreateCourirsPage.СountedButton.WaitPresenceWithRetries();
             orderCreateCourirsPage.Aletr.WaitText("Сначала нужно указать размеры, вес, оценочную стоимость и выбрать город");
             orderCreateCourirsPage.Aletr.Accept();
 
@@ -90,15 +89,16 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateCourirsPage.DeliveryList[0].WaitVisible();
 
-            orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError(2);
+            orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError(3);
             orderCreateCourirsPage.ErrorText[0].WaitText("Улица получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[1].WaitText("Дом получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[2].WaitText("Квартира получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[3].WaitText("ФИО получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[4].WaitText("Телефон получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[5].WaitTextContains("Максимальное количество мест");
-            orderCreateCourirsPage.ErrorText[6].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
-            orderCreateCourirsPage.ErrorText[7].WaitText("Описание посылки обязательно к заполнению");
+            orderCreateCourirsPage.ErrorText[6].WaitText("( Если по вашим оценкам ваше отправление превышает 0,5 м3)");
+            orderCreateCourirsPage.ErrorText[7].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
+            orderCreateCourirsPage.ErrorText[8].WaitText("Описание посылки обязательно к заполнению");
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
             orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");

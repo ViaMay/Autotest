@@ -111,6 +111,22 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             {
                 Thread.Sleep(1000);
             }
+            try
+            {
+                return driver.SwitchTo().Alert();
+            }
+            catch (NoAlertPresentException)
+            {
+                Thread.Sleep(1000);
+            }
+            try
+            {
+                return driver.SwitchTo().Alert();
+            }
+            catch (NoAlertPresentException)
+            {
+                Thread.Sleep(1000);
+            }
             return driver.SwitchTo().Alert();
         }
 

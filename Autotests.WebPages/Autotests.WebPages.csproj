@@ -103,12 +103,14 @@
     <Compile Include="Pages\ComboboxControl.cs" />
     <Compile Include="Pages\DefaultPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\СalculatorListAdminControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\СalculatorRowAdminControl.cs" />
     <Compile Include="Pages\PageFreshDesk\SupportTicketsListControl.cs" />
     <Compile Include="Pages\PageFreshDesk\SupportTicketOpenPage.cs" />
     <Compile Include="Pages\PageFreshDesk\SupportTicketsRowControl.cs" />
     <Compile Include="Pages\PageFreshDesk\SupportTicketsPage.cs" />
     <Compile Include="Pages\PageFreshDesk\SupportFreshDeskPage.cs" />
-    <Compile Include="Pages\PageAdmin\СalculatorPage.cs" />
+    <Compile Include="Pages\PageAdmin\CalculatorPage.cs" />
     <Compile Include="Pages\PageAdmin\SupportAdminListPage.cs" />
     <Compile Include="Pages\PageAdmin\AdminMaintenancePage.cs" />
     <Compile Include="Pages\PageAdmin\AdminBaseListPage.cs" />

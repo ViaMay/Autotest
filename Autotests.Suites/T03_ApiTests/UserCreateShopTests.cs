@@ -100,6 +100,86 @@ namespace Autotests.Tests.T03_ApiTests
                 );
             Assert.IsTrue(responseShop.Success, "Ожидался ответ true на отправленный запрос POST по API");
         }
+        
+        [Test, Description("Создание магазина через Api админа неудачное")]
+        public void ShopCreateErrorTest()
+        {
+            var adminPage = LoginAsAdmin(adminName, adminPass);
+            adminPage.AdminUsers.Click();
+            adminPage.Users.Click();
+            var usersPage = adminPage.GoTo<UsersPage>();
+            usersPage.UsersTable.RowSearch.UserEmail.SetValue(userNameAndPass);
+            usersPage = usersPage.SeachButtonRowClickAndGo();
+            usersPage.UsersTable.GetRow(0).UserEmail.WaitText(userNameAndPass);
+            usersPage.UsersTable.GetRow(0).ActionsEdit.Click();
+            var userEdiringPage = usersPage.GoTo<UserCreatePage>();
+            userId = userEdiringPage.Key.GetAttributeValue("value");
+            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
+            string keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
+
+            var responseWarehouse =
+                (ApiResponse.ResponseAddObject)apiRequest.POST(keyShopPublic + "/warehouse_create.json",
+                    new NameValueCollection
+                    {
+                        {"name", userWarehouseName + "_ApiAdmin"},
+                        {"flat", "138"},
+                        {"city", "416"},
+                        {"contact_person", "contact_person"},
+                        {"contact_phone", "contact_phone"},
+                        {"contact_email", userNameAndPass},
+                        {"schedule", "schedule"},
+                        {"street", "street"},
+                        {"house", "house"}
+                    }
+                    );
+            Assert.IsTrue(responseWarehouse.Success, "Ожидался ответ true на отправленный запрос POST по API");
+
+            //            Создание магазина - ошибка пусто адрес
+            var responseShop = (ApiResponse.ResponseFailObject)apiRequest.POST("cabinet/" + userId + "/shop_create.json",
+                new NameValueCollection
+                {
+                    {"name", userShopName + "_ApiAdmin"},
+                    {"warehouse", responseWarehouse.Response.Id},
+                }
+                );
+            Assert.IsFalse(responseShop.Success, "Ожидался ответ false на отправленный запрос POST по API");
+            Assert.AreEqual(responseShop.Response.Error.Address, "Адрес обязательно к заполнению");
+
+            //            Создание магазина - ошибка пусто склад
+            responseShop = (ApiResponse.ResponseFailObject)apiRequest.POST("cabinet/" + userId + "/shop_create.json",
+                new NameValueCollection
+                {
+                    {"name", userShopName + "_ApiAdmin"},
+                    {"address", "Санкт-Питербург"}
+                }
+                );
+            Assert.IsFalse(responseShop.Success, "Ожидался ответ false на отправленный запрос POST по API");
+            Assert.AreEqual(responseShop.Response.Error.Warehouse, "Поле склад обязательно к заполнению");
+
+            //            пустое имя магазина
+            responseShop = (ApiResponse.ResponseFailObject)apiRequest.POST("cabinet/" + userId + "/shop_create.json",
+                new NameValueCollection
+                {
+                    {"warehouse", responseWarehouse.Response.Id},
+                    {"address", "Санкт-Питербург"}
+                }
+                );
+            Assert.IsFalse(responseShop.Success, "Ожидался ответ false на отправленный запрос POST по API");
+            Assert.AreEqual(responseShop.Response.Error.Name, "Название обязательно к заполнению");
+
+            //            такое имя уже было
+            responseShop = (ApiResponse.ResponseFailObject)apiRequest.POST("cabinet/" + userId + "/shop_create.json",
+                new NameValueCollection
+                {
+                    {"name", userShopName},
+                    {"warehouse", responseWarehouse.Response.Id},
+                    {"address", "Санкт-Питербург"}
+                }
+                );
+            Assert.IsFalse(responseShop.Success, "Ожидался ответ false на отправленный запрос POST по API");
+            Assert.AreEqual(responseShop.Response.Error.Name, "Такое имя уже существует");
+        }
+
         private string userId;
     }
 }

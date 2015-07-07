@@ -681,7 +681,7 @@ namespace Autotests.Tests.T04_AdminTests
             var adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.Orders.Click();
             adminPage.Сalculator.Click();
-            var pageC = adminPage.GoTo<СalculatorPage>();
+            var pageC = adminPage.GoTo<CalculatorPage>();
             pageC.LabelDirectory.WaitText("Маршрут");
 
             pageC.Orders.Click();

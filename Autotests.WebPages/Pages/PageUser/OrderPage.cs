@@ -13,6 +13,7 @@ namespace Autotests.WebPages.Pages.PageUser
             TableSender = new SenderListControl(By.XPath("//div[@class='span5']/table[1]"));
             TableRecipient = new RecipientListControl(By.XPath("//div[@class='span4']/table[1]"));
             DeliveryDate = new StaticText(By.XPath("//div[@class='span6']/table[1]/tbody/tr/td"));
+            DeliveryTime = new StaticText(By.XPath("//div[@class='span6']/table[1]/tbody/tr[2]/td"));
             TablePrice = new PriceListControl(By.XPath("//div[4]/div[@class='span6']/table[1]"));
 
             TableSize = new SizeListControl(By.XPath("//div[@class='span3']/table[1]"));
@@ -30,6 +31,7 @@ namespace Autotests.WebPages.Pages.PageUser
         }
         public StaticText StatusOrder { get; set; }
         public StaticText DeliveryDate { get; set; }
+        public StaticText DeliveryTime { get; set; }
         public ButtonInput BackOrders { get; set; }
         public ButtonInput UndoButton { get; set; }
         public ButtonInput СonfirmButton { get; set; }

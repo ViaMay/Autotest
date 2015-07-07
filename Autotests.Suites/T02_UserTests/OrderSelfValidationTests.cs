@@ -91,7 +91,8 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.ActionErrorText[1].WaitText("Компания доставки обязательно к заполнению");
             orderCreateSelfPage.ActionErrorText[2].WaitText("Не выбран пункт выдачи");
             orderCreateSelfPage.ActionErrorText[3].WaitText("Город получения обязательно к заполнению");
-            orderCreateSelfPage.ErrorText[0].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
+            orderCreateSelfPage.ErrorText[0].WaitText("( Если по вашим оценкам ваше отправление превышает 0,5 м3)");
+            orderCreateSelfPage.ErrorText[1].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
 
             orderCreateSelfPage.MapOrders.SwitchToFrame();
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
