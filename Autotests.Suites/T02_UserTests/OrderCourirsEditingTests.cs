@@ -224,15 +224,15 @@ namespace Autotests.Tests.T02_UserTests
             rowArticleStatic.Name.WaitValue("Имя1");
             rowArticleStatic.Article.WaitValue("Article1");
             rowArticleStatic.Count.WaitValue("6");
-
-            orderCourirsEditingPage.DeliveryDate.
-                SetValueAndWait(nowDate.AddDays(5).ToString("dd-MM-yyyy", CultureInfo.InvariantCulture));
-           
+            
             orderCourirsEditingPage.DeclaredPrice.SetValue("10.2");
             orderCourirsEditingPage.Width.SetValue("11.2");
             orderCourirsEditingPage.Height.SetValue("12.2");
             orderCourirsEditingPage.Length.SetValue("13.2");
             orderCourirsEditingPage.Weight.SetValue("9.2");
+
+            orderCourirsEditingPage.DeliveryTimeFrom.SelectValue("9:00");
+            orderCourirsEditingPage.DeliveryTimeTo.SelectValue("17:00");
 
             orderCourirsEditingPage.BuyerPostalCode.SetValue("123456");
             orderCourirsEditingPage.BuyerStreet.SetValue("Улица2");
@@ -269,7 +269,8 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
-//            orderCourirsPage.DeliveryDate.WaitText(nowDate.AddDays(5).ToString("dd-MM-yyyy", CultureInfo.InvariantCulture));
+            orderCourirsPage.DeliveryDate.WaitText(dateDelivery);
+            orderCourirsPage.DeliveryTime.WaitText("9:00 - 17:00");
 
             orderCourirsPage.TablePrice.PaymentPrice.WaitText("1600.00 руб.");
             orderCourirsPage.TablePrice.DeclaredPrice.WaitText("10.20 руб.");
