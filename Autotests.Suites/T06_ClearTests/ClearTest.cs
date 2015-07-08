@@ -1,7 +1,7 @@
 ﻿using Autotests.WebPages.Pages.PageAdmin;
 using NUnit.Framework;
 
-namespace Autotests.Tests.T05_ClearTests
+namespace Autotests.Tests.T06_ClearTests
 {
     public class ClearTestTest : ConstVariablesTestBase
     {

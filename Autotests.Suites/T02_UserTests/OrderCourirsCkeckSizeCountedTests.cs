@@ -21,6 +21,10 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Length.SetValueAndWait("12.1");
             orderCreateCourirsPage.Weight.SetValueAndWait("3.0");
 
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
+
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
             orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 32.00 руб");
@@ -59,6 +63,10 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Height.SetValueAndWait("11.1");
             orderCreateCourirsPage.Length.SetValueAndWait("12.1");
             orderCreateCourirsPage.Weight.SetValueAndWait("3.0");
+
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
 
             orderCreateCourirsPage.Width.SetValueAndWait(side1Min.ToString());
             orderCreateCourirsPage.Height.SetValueAndWait(side3Min.ToString());

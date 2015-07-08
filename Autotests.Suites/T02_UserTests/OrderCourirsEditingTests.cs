@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Autotests.WebPages.Pages.PageUser;
+﻿using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
 
 namespace Autotests.Tests.T02_UserTests
@@ -22,6 +21,10 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Length.SetValueAndWait("12.1");
             orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
 
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
+
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
 
@@ -29,9 +32,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.DeliveryList[0].Click();
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
-            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
-            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
-            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
@@ -91,9 +91,12 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.Weight.SetValue("9.2");
 
             orderCourirsEditingPage.BuyerPostalCode.SetValue("123456");
+
             orderCourirsEditingPage.BuyerStreet.SetValue("Улица2");
             orderCourirsEditingPage.BuyerHouse.SetValue("Дом2");
             orderCourirsEditingPage.BuyerFlat.SetValue("Квартира2");
+            orderCourirsEditingPage.СountedButton.Click();
+
             orderCourirsEditingPage.BuyerName.SetValue("Фамилия2 Имя2 Очество2");
             orderCourirsEditingPage.BuyerPhone.SetValue("2222222222");
             orderCourirsEditingPage.BuyerEmail.SetValue("2"+ userNameAndPass);
@@ -161,6 +164,10 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Length.SetValueAndWait("12.1");
             orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
 
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
+
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
 
@@ -168,9 +175,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.DeliveryList[0].Click();
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
-            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
-            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
-            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);

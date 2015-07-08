@@ -1,5 +1,7 @@
-﻿using Autotests.Utilities.WebTestCore.SystemControls;
+﻿using System.Threading;
+using Autotests.Utilities.WebTestCore.SystemControls;
 using Autotests.WebPages.Pages.PageUser.Controls;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageUser
@@ -14,6 +16,8 @@ namespace Autotests.WebPages.Pages.PageUser
             Width = new TextInput(By.Name("dimension_side1"));
             Height = new TextInput(By.Name("dimension_side2"));
             Length = new TextInput(By.Name("dimension_side3"));
+
+            СountedButton = new ButtonInput(By.Name("recalc"));
 
             CanceledButton = new ButtonInput(By.CssSelector("div.form-actions > input.btn.btn-primary.btn-success"));
             SaveChangeButton = new ButtonInput(By.CssSelector("div.form-actions > input.btn.btn-primary.pull-right"));
@@ -76,6 +80,8 @@ namespace Autotests.WebPages.Pages.PageUser
         public Select DeliveryTimeTo { get; set; }
         public TextInput OrderComment { get; set; }
         public TextInput ItemsCount { get; set; }
+
+        public ButtonInput СountedButton { get; set; }
 
         public ErrorActionTextControl ActionErrorText { get; set; }
         public ErrorTextControl ErrorText { get; set; }

@@ -21,6 +21,10 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Length.SetValueAndWait("12.1");
             orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
 
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
+
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
 
@@ -28,9 +32,9 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.DeliveryList[0].Click();
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
-            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
-            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
-            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
+            orderCreateCourirsPage.BuyerStreet.WaitValue("Улица");
+            orderCreateCourirsPage.BuyerHouse.WaitValue("Дом");
+            orderCreateCourirsPage.BuyerFlat.WaitValue("Квартира");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
@@ -97,13 +101,15 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Height.SetValueAndWait("11.1");
             orderCreateCourirsPage.Length.SetValueAndWait("12.1");
             orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
+
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
+
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
-            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
-            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
-            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             
