@@ -95,6 +95,7 @@
     <Compile Include="Pages\BaseRowControl.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Pages\PostcalcPage.cs" />
     <Compile Include="Pages\MapControl.cs" />
     <Compile Include="Pages\ErrorTextControl.cs" />
     <Compile Include="Pages\ErrorActionTextControl.cs" />

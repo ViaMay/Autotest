@@ -66,6 +66,11 @@ namespace Autotests.Utilities.WebTestCore
             return PageBase.GoToUri<TPage>(new Uri(new Uri(string.Format("http://{0}/", ApplicationBaseUrl)), localPath));
         }
 
+        protected TPage LoadPageUrl<TPage>(string localPath) where TPage : PageBase, new()
+        {
+            return PageBase.GoToUri<TPage>(new Uri(localPath));
+        }
+
         public virtual string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
         private static void CaptureJavascriptErrors()

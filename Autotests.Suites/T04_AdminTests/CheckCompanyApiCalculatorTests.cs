@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Autotests.WebPages.Pages;
 using Autotests.WebPages.Pages.PageAdmin;
 using NUnit.Framework;
 
@@ -12,7 +12,6 @@ namespace Autotests.Tests.T04_AdminTests
         {
             LoginAsAdmin(adminName, adminPass);
             var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[driver]=pochtarossii&filters[enabled_delivery]=1");
-            var companyId = companiesPage.Table.GetRow(0).ID.GetText();
             var companyName = companiesPage.Table.GetRow(0).Name.GetText();
 
             companiesPage.Orders.Click();
@@ -34,8 +33,18 @@ namespace Autotests.Tests.T04_AdminTests
             calculatorPage.СountedButton.Click();
             calculatorPage = calculatorPage.GoTo<CalculatorPage>();
             var row = calculatorPage.Table.FindRowByName(companyName);
-            var priceDeliveryBase = calculatorPage.Table.FindRowByName(companyName).PriceDeliveryBase.GetText();
-
+            var priceDeliveryBase = row.PriceDeliveryBase.GetText();
+        
+            var postcalcPage =LoadPageUrl<PostcalcPage>("http://test.postcalc.ru/?f=190000&t=101000&w=4000&v=0");
+            var priceParcel = postcalcPage.PriceParcel.GetText();
+            priceParcel = priceParcel.Replace("Array\r\n(\r\n", "");
+            priceParcel = priceParcel.Replace(")", "");
+            priceParcel = priceParcel.Replace(" ", "");
+            priceParcel = priceParcel.Replace("\r", "");
+            var cells = priceParcel.Split('\n');
+            var priceDeliveryParcel = cells[4];
+            Assert.AreEqual("[Доставка]=>" + priceDeliveryBase + ".00", priceDeliveryParcel);
+            
         }
     }
 }
