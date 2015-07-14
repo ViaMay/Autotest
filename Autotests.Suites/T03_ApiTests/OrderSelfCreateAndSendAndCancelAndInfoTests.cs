@@ -38,16 +38,18 @@ namespace Autotests.Tests.T03_ApiTests
                 {"declared_price", "100"},
 		        {"payment_price", "300"},
 		        {"to_name", "Ургудан Рабат Мантов"},
-		        {"to_phone", "9999999999"},
+		        {"to_phone", "79999999999"},
+		        {"to_add_phone", "71234567890"},
 		        {"to_email", userNameAndPass},
 		        {"goods_description", "Памперс"},
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
-		        {"items_count", "1"},
+		        {"items_count", "2"},
+		        {"is_cargo_volume", "true"},
 		        {"order_comment", "order_comment"}
                 });
             Assert.IsTrue(responseCreateOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
-            var defaultPage = shopsPage.LoginOut();
+           var defaultPage = shopsPage.LoginOut();
             var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Orders.Click();
             var ordersPage = userPage.GoTo<OrdersListPage>();
@@ -67,12 +69,16 @@ namespace Autotests.Tests.T03_ApiTests
 
             orderSelfEditingPage.BuyerName.WaitValue("Ургудан Рабат Мантов");
             orderSelfEditingPage.BuyerPhone.WaitValue("+7 (999)999-9999");
+            orderSelfEditingPage.BuyerPhoneAdd.WaitValue("+7 (123)456-7890");
             orderSelfEditingPage.BuyerEmail.WaitValue(userNameAndPass);
+            orderSelfEditingPage.IsCargoVolume.WaitChecked();
+
             orderSelfEditingPage.DeclaredPrice.WaitValue("100");
             orderSelfEditingPage.PaymentPrice.WaitValue("300");
             orderSelfEditingPage.OrderNumber.WaitValue("test_userShops_via");
             orderSelfEditingPage.GoodsDescription.WaitValue("Памперс");
-            orderSelfEditingPage.ItemsCount.WaitValue("1");
+            orderSelfEditingPage.OrderComment.WaitValue("order_comment");
+            orderSelfEditingPage.ItemsCount.WaitValue("2");
 
 //           Подтверждение заявки
             var responseConfirmationOrders = apiRequest.POST(keyShopPublic + "/order_confirm.json",

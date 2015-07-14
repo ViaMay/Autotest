@@ -31,9 +31,11 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
+            orderCreateCourirsPage.BuyerPhoneAdd.SetValueAndWait("3333333333");
 
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("ok");
             orderCreateCourirsPage.OrderComment.SetValueAndWait("OrderComment");
+            orderCreateCourirsPage.IsCargoVolume.CheckAndWait();
             orderCreateCourirsPage.SendOrderButton.Click();
             var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");

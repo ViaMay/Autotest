@@ -34,6 +34,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
+            orderCreateCourirsPage.BuyerPhoneAdd.SetValueAndWait("3333333333");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
             orderCreateCourirsPage.ItemsCount.SetValueAndWait("2");
 
@@ -41,6 +42,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("Хороший товар,годный");
             orderCreateCourirsPage.OrderComment.SetValueAndWait("OrderComment");
+            orderCreateCourirsPage.IsCargoVolume.CheckAndWait();
 
             var rowArticle = orderCreateCourirsPage.GetArticleRow(0);
                 rowArticle.Name.SetValueAndWait("Имя1");
@@ -72,12 +74,14 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.BuyerFlat.WaitValue("Квартира");
             orderCourirsEditingPage.BuyerName.WaitValue("Фамилия Имя Очество");
             orderCourirsEditingPage.BuyerPhone.WaitValue("+7 (111)111-1111");
+            orderCourirsEditingPage.BuyerPhoneAdd.WaitValue("+7 (333)333-3333");
             orderCourirsEditingPage.BuyerEmail.WaitValue(userNameAndPass);
 
             orderCourirsEditingPage.PaymentPrice.WaitValue("1500");
             orderCourirsEditingPage.OrderNumber.WaitValue("OrderNumber");
             orderCourirsEditingPage.GoodsDescription.WaitValue("Хороший товар,годный");
             orderCourirsEditingPage.OrderComment.WaitValue("OrderComment");
+            orderCourirsEditingPage.IsCargoVolume.WaitChecked();
 
             var rowArticleStatic = orderCourirsEditingPage.GetArticleRow(0);
             rowArticleStatic.Name.WaitValue("Имя1");
@@ -99,12 +103,14 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCourirsEditingPage.BuyerName.SetValue("Фамилия2 Имя2 Очество2");
             orderCourirsEditingPage.BuyerPhone.SetValue("2222222222");
+            orderCourirsEditingPage.BuyerPhoneAdd.SetValue("4444444444");
             orderCourirsEditingPage.BuyerEmail.SetValue("2"+ userNameAndPass);
             orderCourirsEditingPage.ItemsCount.SetValue("3");
             orderCourirsEditingPage.PaymentPrice.SetValue("1600");
             orderCourirsEditingPage.OrderNumber.SetValue("OrderNumber2");
             orderCourirsEditingPage.GoodsDescription.SetValue("Хороший товар,годный2");
             orderCourirsEditingPage.OrderComment.SetValue("OrderComment2");
+            orderCourirsEditingPage.IsCargoVolume.UncheckAndWait();
 
             orderCourirsEditingPage.SaveChangeButton.Click();
             orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
@@ -115,6 +121,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSender.Phone.WaitText("+7 (111)111-1111");
             orderCourirsPage.TableSender.Delivery.WaitText("Курьерская");
             orderCourirsPage.TableSender.OrderComment.WaitText("OrderComment2");
+            orderCourirsPage.TableSender.IsCargoVolume.WaitText("нет");
 
             orderCourirsPage.TableRecipient.City.WaitText("Москва");
             orderCourirsPage.TableRecipient.PostCode.WaitText("123456");
@@ -122,6 +129,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.Name.WaitText("Фамилия2 Имя2 Очество2");
             orderCourirsPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
             orderCourirsPage.TableRecipient.Phone.WaitText("+7 (222)222-2222");
+            orderCourirsPage.TableRecipient.PhoneAdd.WaitText("+7 (444)444-4444");
             orderCourirsPage.TableRecipient.Issue.WaitText("Ручная");
             orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);
@@ -177,12 +185,14 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
+            orderCreateCourirsPage.BuyerPhoneAdd.SetValueAndWait("3333333333");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
 
             orderCreateCourirsPage.PaymentPrice.SetValueAndWait("1500");
             orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("Хороший товар,годный");
             orderCreateCourirsPage.OrderComment.SetValueAndWait("OrderComment");
+            orderCreateCourirsPage.IsCargoVolume.CheckAndWait();
 
             var rowArticle = orderCreateCourirsPage.GetArticleRow(0);
             rowArticle.Name.SetValueAndWait("Имя1");
@@ -216,6 +226,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.BuyerFlat.WaitValue("Квартира");
             orderCourirsEditingPage.BuyerName.WaitValue("Фамилия Имя Очество");
             orderCourirsEditingPage.BuyerPhone.WaitValue("+7 (111)111-1111");
+            orderCourirsEditingPage.BuyerPhoneAdd.WaitValue("+7 (333)333-3333");
             orderCourirsEditingPage.BuyerEmail.WaitValue(userNameAndPass);
 
             orderCourirsEditingPage.PaymentPrice.WaitValue("1500");
@@ -223,6 +234,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.GoodsDescription.WaitValue("Хороший товар,годный");
             orderCourirsEditingPage.OrderComment.WaitValue("OrderComment");
             orderCourirsEditingPage.DeliveryDate.WaitValue(dateDelivery);
+            orderCourirsEditingPage.IsCargoVolume.WaitChecked();
 
             var rowArticleStatic = orderCourirsEditingPage.GetArticleRow(0);
             rowArticleStatic.Name.WaitValue("Имя1");
@@ -244,12 +256,14 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.BuyerFlat.SetValue("Квартира2");
             orderCourirsEditingPage.BuyerName.SetValue("Фамилия2 Имя2 Очество2");
             orderCourirsEditingPage.BuyerPhone.SetValue("2222222222");
+            orderCourirsEditingPage.BuyerPhoneAdd.SetValue("4444444444");
             orderCourirsEditingPage.BuyerEmail.SetValue("2" + userNameAndPass);
 
             orderCourirsEditingPage.PaymentPrice.SetValue("1600");
             orderCourirsEditingPage.OrderNumber.SetValue("OrderNumber2");
             orderCourirsEditingPage.GoodsDescription.SetValue("Хороший товар,годный2");
             orderCourirsEditingPage.OrderComment.SetValue("OrderComment2");
+            orderCourirsEditingPage.IsCargoVolume.Click();
 
             orderCourirsEditingPage.SaveChangeButton.Click();
             orderCourirsEditingPage.Aletr.WaitText("Ваш запрос на редактирование заявки успешно отправлен. Он будет обработан в течение 8 рабочих часов");
@@ -262,6 +276,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSender.Phone.WaitText("+7 (111)111-1111");
             orderCourirsPage.TableSender.Delivery.WaitText("Курьерская");
             orderCourirsPage.TableSender.OrderComment.WaitText("OrderComment2");
+            orderCourirsPage.TableSender.IsCargoVolume.WaitText("да");
 
             orderCourirsPage.TableRecipient.City.WaitText("Москва");
             orderCourirsPage.TableRecipient.PostCode.WaitText("123456");
@@ -269,6 +284,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.Name.WaitText("Фамилия2 Имя2 Очество2");
             orderCourirsPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
             orderCourirsPage.TableRecipient.Phone.WaitText("+7 (222)222-2222");
+            orderCourirsPage.TableRecipient.PhoneAdd.WaitText("+7 (444)444-4444");
             orderCourirsPage.TableRecipient.Issue.WaitText("Ручная");
             orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);

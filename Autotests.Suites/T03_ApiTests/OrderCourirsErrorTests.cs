@@ -102,35 +102,6 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsFalse(responseCreateFailOrder.Success, "Ожидался ответ Fail на отправленный запрос POST по API");
             Assert.AreEqual(responseCreateFailOrder.Response.Error.CalculateOrder, "Ошибка просчета цены, или маршрут недоступен");
             Assert.AreEqual(responseCreateFailOrder.Response.Error.ToCity, "Город получения обязательно к заполнению");
-
-//            слишком длинный комментарий
-            responseCreateFailOrder = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_create.json",
-        new NameValueCollection
-                {
-                {"api_key", keyShopPublic},
-		        {"type", "2"},
-		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveryCompanyId},
-		        {"shop_refnum", userShopName},
-		        {"dimension_side1", "4"},
-		        {"dimension_side2", "4"},
-		        {"dimension_side3", "4"},
-		        {"confirmed", "false"},
-		        {"weight", "4"},
-                {"declared_price", "100"},
-		        {"payment_price", "300"},
-		        {"to_name", "Ургудан Рабат Мантов"},
-		        {"to_street", "Барна"},
-		        {"to_house", "3a"},
-		        {"to_flat", "12"},
-		        {"to_phone", "9999999999"},
-		        {"to_email", userNameAndPass},
-		        {"goods_description", "Памперс"},
-		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
-		        {"order_comment", "123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890order_comment"}
-                });
-            Assert.IsFalse(responseCreateFailOrder.Success, "Ожидался ответ Fail на отправленный запрос POST по API");
-            Assert.AreEqual(responseCreateFailOrder.Response.Error.OrderComment, "Длина поля &laquo;Комментарий к заказу&raquo; должна быть не более 300 символов");
         }
     }
 }

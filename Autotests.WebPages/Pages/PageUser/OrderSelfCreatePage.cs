@@ -18,11 +18,14 @@ namespace Autotests.WebPages.Pages.PageUser
             
             BuyerName = new TextInput(By.Name("to_name"));
             BuyerPhone = new TextInput(By.Name("to_phone"));
+            BuyerPhoneAdd = new TextInput(By.Name("to_add_phone"));
             BuyerEmail = new TextInput(By.Name("to_email"));
             ItemsCount = new TextInput(By.Name("items_count"));
             DeclaredPrice = new TextInput(By.Name("declared_price"));
             PaymentPrice = new TextInput(By.Name("payment_price"));
             GoodsDescription = new TextInput(By.Name("goods_description"));
+            OrderComment = new TextInput(By.Name("order_comment"));
+            IsCargoVolume = new CheckBox(By.Name("is_cargo_volume"));
 
             PointDeliveryName = new StaticText(By.XPath("//div[@class='point_info_detail']/div"));
             PointDeliveryAddress = new StaticText(By.XPath("//div[@class='point_info_detail']/div[2]"));
@@ -59,11 +62,15 @@ namespace Autotests.WebPages.Pages.PageUser
         
         public TextInput BuyerName { get; set; }
         public TextInput BuyerPhone { get; set; }
+        public TextInput BuyerPhoneAdd { get; set; }
         public TextInput BuyerEmail { get; set; }
-        public TextInput ItemsCount { get; set; }
         public TextInput DeclaredPrice { get; set; }
         public TextInput PaymentPrice { get; set; }
         public TextInput GoodsDescription { get; set; }
+
+        public TextInput OrderComment { get; set; }
+        public TextInput ItemsCount { get; set; }
+        public CheckBox IsCargoVolume { get; set; }
 
         public ButtonInput SaveDraftButton { get; set; }
         public ButtonInput SendOrderButton { get; set; }

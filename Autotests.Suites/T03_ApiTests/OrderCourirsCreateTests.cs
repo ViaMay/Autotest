@@ -38,10 +38,13 @@ namespace Autotests.Tests.T03_ApiTests
 		        {"to_house", "3a"},
 		        {"to_flat", "12"},
 		        {"to_phone", "79999999999"},
+		        {"to_add_phone", "71234567890"},
 		        {"to_email", userNameAndPass},
 		        {"goods_description", "Памперс"},
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
-		        {"items_count", "1"},
+		        {"items_count", "2"},
+		        {"is_cargo_volume", "true"},
+		        {"to_shop_api_key", "3e1c7bd47d7fb91aaa5b85027ac3499d"},
 		        {"order_comment", "order_comment"}
                 });
             Assert.IsTrue(responseCreateOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
@@ -72,13 +75,15 @@ namespace Autotests.Tests.T03_ApiTests
             orderCourirsEditingPage.BuyerFlat.WaitValue("12");
             orderCourirsEditingPage.BuyerName.WaitValue("Ургудан Рабат Мантов");
             orderCourirsEditingPage.BuyerPhone.WaitValue("+7 (999)999-9999");
+            orderCourirsEditingPage.BuyerPhoneAdd.WaitValue("+7 (123)456-7890");
             orderCourirsEditingPage.BuyerEmail.WaitValue(userNameAndPass);
+            orderCourirsEditingPage.IsCargoVolume.WaitChecked();
 
             orderCourirsEditingPage.PaymentPrice.WaitValue("300");
             orderCourirsEditingPage.OrderNumber.WaitValue("test_userShops_via");
             orderCourirsEditingPage.GoodsDescription.WaitValue("Памперс");
             orderCourirsEditingPage.OrderComment.WaitValue("order_comment");
-            orderCourirsEditingPage.ItemsCount.WaitValue("1");
+            orderCourirsEditingPage.ItemsCount.WaitValue("2");
         }
     }
 }

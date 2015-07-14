@@ -37,12 +37,14 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerFlat.WaitValue("Квартира");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
+            orderCreateCourirsPage.BuyerPhoneAdd.SetValueAndWait("3333333333");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
 
             orderCreateCourirsPage.PaymentPrice.SetValueAndWait("1500");
             orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("Хороший товар,годный");
             orderCreateCourirsPage.OrderComment.SetValueAndWait("OrderNumber");
+            orderCreateCourirsPage.IsCargoVolume.CheckAndWait();
 
             var rowArticle = orderCreateCourirsPage.GetArticleRow(0);
                 rowArticle.Name.SetValueAndWait("Имя1");
@@ -58,6 +60,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSender.Phone.WaitText("+7 (111)111-1111");
             orderCourirsPage.TableSender.Delivery.WaitText("Курьерская");
             orderCourirsPage.TableSender.OrderComment.WaitText("OrderNumber");
+            orderCourirsPage.TableSender.IsCargoVolume.WaitText("да");
 
             orderCourirsPage.TableRecipient.City.WaitText("Москва");
             orderCourirsPage.TableRecipient.PostCode.WaitText("123123");
@@ -65,6 +68,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.Name.WaitText("Фамилия Имя Очество");
             orderCourirsPage.TableRecipient.Email.WaitText(userNameAndPass);
             orderCourirsPage.TableRecipient.Phone.WaitText("+7 (111)111-1111");
+            orderCourirsPage.TableRecipient.PhoneAdd.WaitText("+7 (333)333-3333");
             orderCourirsPage.TableRecipient.Issue.WaitText("Ручная");
             orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);

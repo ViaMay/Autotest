@@ -28,7 +28,9 @@ namespace Autotests.WebPages.Pages.PageUser
             BuyerFlat = new TextInput(By.Name("to_flat"));
             BuyerName = new TextInput(By.Name("to_name"));
             BuyerPhone = new TextInput(By.Name("to_phone"));
+            BuyerPhoneAdd = new TextInput(By.Name("to_add_phone"));
             BuyerEmail = new TextInput(By.Name("to_email"));
+            IsCargoVolume = new CheckBox(By.Name("is_cargo_volume"));
 
             PaymentPrice = new TextInput(By.Name("payment_price"));
             OrderNumber = new TextInput(By.Name("shop_refnum"));
@@ -71,7 +73,9 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput BuyerFlat { get; set; }
         public TextInput BuyerName { get; set; }
         public TextInput BuyerPhone { get; set; }
+        public TextInput BuyerPhoneAdd { get; set; }
         public TextInput BuyerEmail { get; set; }
+        public CheckBox IsCargoVolume { get; set; }
         public TextInput PaymentPrice { get; set; }
         public TextInput OrderNumber { get; set; }
         public TextInput GoodsDescription { get; set; }

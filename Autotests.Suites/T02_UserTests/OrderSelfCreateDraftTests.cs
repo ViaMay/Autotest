@@ -22,6 +22,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateSelfPage.BuyerName.SetValueAndWait("Фамилия Имя Отчество");
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
+            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("3333333333");
             orderCreateSelfPage.BuyerEmail.SetValueAndWait(userNameAndPass);
             orderCreateSelfPage.DeclaredPrice.SetValueAndWait("4");
             orderCreateSelfPage.PaymentPrice.SetValueAndWait("4");
@@ -31,6 +32,9 @@ namespace Autotests.Tests.T02_UserTests
             rowArticle.Name.SetValueAndWait("Имя1");
             rowArticle.Article.SetValueAndWait("Article1");
             rowArticle.Count.SetValueAndWait("6");
+
+            orderCreateSelfPage.OrderComment.SetValueAndWait("OrderNumber");
+            orderCreateSelfPage.IsCargoVolume.CheckAndWait();
 
             orderCreateSelfPage.СountedButton.Click();
             orderCreateSelfPage.MapOrders.SwitchToFrame();
@@ -53,12 +57,15 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableSender.Name.WaitText(legalEntityName);
             orderPage.TableSender.Phone.WaitText("+7 (111)111-1111");
             orderPage.TableSender.Delivery.WaitText("Самовывоз");
+            orderPage.TableSender.OrderComment.WaitText("OrderNumber");
+            orderPage.TableSender.IsCargoVolume.WaitText("да");
 
             orderPage.TableRecipient.City.WaitText("Москва");
             orderPage.TableRecipient.Address.WaitText("Ленинский проспект 127");
             orderPage.TableRecipient.Name.WaitText("Фамилия Имя Отчество");
             orderPage.TableRecipient.Email.WaitText(userNameAndPass);
             orderPage.TableRecipient.Phone.WaitText("+7 (111)111-1111");
+            orderPage.TableRecipient.PhoneAdd.WaitText("+7 (333)333-3333");
             orderPage.TableRecipient.Issue.WaitText("Ручная");
             orderPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderPage.TableRecipient.DeliveryCompany.WaitText(companyName);

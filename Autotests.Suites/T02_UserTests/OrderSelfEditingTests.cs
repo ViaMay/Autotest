@@ -22,10 +22,13 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateSelfPage.BuyerName.SetValueAndWait("Фамилия Имя Отчество");
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
+            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("3333333333");
             orderCreateSelfPage.BuyerEmail.SetValueAndWait(userNameAndPass);
             orderCreateSelfPage.DeclaredPrice.SetValueAndWait("0");
             orderCreateSelfPage.PaymentPrice.SetValueAndWait("4");
             orderCreateSelfPage.GoodsDescription.SetValueAndWait("4");
+            orderCreateSelfPage.OrderComment.SetValueAndWait("OrderComment");
+            orderCreateSelfPage.IsCargoVolume.CheckAndWait();
             orderCreateSelfPage.ItemsCount.SetValueAndWait("2");
 
             var rowArticle = orderCreateSelfPage.GetArticleRow(0);
@@ -61,10 +64,13 @@ namespace Autotests.Tests.T02_UserTests
 
             orderSelfEditingPage.BuyerName.WaitValue("Фамилия Имя Отчество");
             orderSelfEditingPage.BuyerPhone.WaitValue("+7 (111)111-1111");
+            orderSelfEditingPage.BuyerPhoneAdd.WaitValue("+7 (333)333-3333");
             orderSelfEditingPage.BuyerEmail.WaitValue(userNameAndPass);
             orderSelfEditingPage.DeclaredPrice.WaitValue("0");
             orderSelfEditingPage.PaymentPrice.WaitValue("4");
             orderSelfEditingPage.GoodsDescription.WaitValue("4");
+            orderSelfEditingPage.OrderComment.WaitValue("OrderComment");
+            orderSelfEditingPage.IsCargoVolume.WaitChecked();
             orderSelfEditingPage.ItemsCount.WaitValue("2");
 
             var rowArticleStatic = orderSelfEditingPage.GetArticleRow(0);
@@ -80,6 +86,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderSelfEditingPage.BuyerName.SetValue("Фамилия2 Имя2 Очество2");
             orderSelfEditingPage.BuyerPhone.SetValue("2222222222");
+            orderSelfEditingPage.BuyerPhoneAdd.SetValue("4444444444");
             orderSelfEditingPage.BuyerEmail.SetValue("2" + userNameAndPass);
             orderSelfEditingPage.ItemsCount.SetValue("3");
 
@@ -87,6 +94,8 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.DeclaredPrice.SetValue("1600");
 
             orderSelfEditingPage.GoodsDescription.SetValue("24");
+            orderSelfEditingPage.OrderComment.SetValue("OrderComment2");
+            orderSelfEditingPage.IsCargoVolume.UncheckAndWait();
             orderSelfEditingPage.OrderNumber.SetValue("44");
 
             orderSelfEditingPage.SaveChangeButton.Click();
@@ -97,12 +106,15 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableSender.Name.WaitText(legalEntityName);
             orderPage.TableSender.Phone.WaitText("+7 (111)111-1111");
             orderPage.TableSender.Delivery.WaitText("Самовывоз");
+            orderPage.TableSender.OrderComment.WaitText("OrderComment2");
+            orderPage.TableSender.IsCargoVolume.WaitText("нет");
 
             orderPage.TableRecipient.City.WaitText("Москва");
             orderPage.TableRecipient.Address.WaitText("Ленинский проспект 127");
             orderPage.TableRecipient.Name.WaitText("Фамилия2 Имя2 Очество2");
             orderPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
             orderPage.TableRecipient.Phone.WaitText("+7 (222)222-2222");
+            orderPage.TableRecipient.PhoneAdd.WaitText("+7 (444)444-4444");
             orderPage.TableRecipient.Issue.WaitText("Ручная");
             orderPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderPage.TableRecipient.DeliveryCompany.WaitText(companyName);
@@ -146,10 +158,13 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateSelfPage.BuyerName.SetValueAndWait("Фамилия Имя Отчество");
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
+            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("3333333333");
             orderCreateSelfPage.BuyerEmail.SetValueAndWait(userNameAndPass);
             orderCreateSelfPage.DeclaredPrice.SetValueAndWait("0");
             orderCreateSelfPage.PaymentPrice.SetValueAndWait("5");
             orderCreateSelfPage.GoodsDescription.SetValueAndWait("4");
+            orderCreateSelfPage.OrderComment.SetValueAndWait("OrderComment");
+            orderCreateSelfPage.IsCargoVolume.CheckAndWait();
 
             var rowArticle = orderCreateSelfPage.GetArticleRow(0);
             rowArticle.Name.SetValueAndWait("Имя1");
@@ -184,10 +199,13 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.BuyerName.WaitValue("Фамилия Имя Отчество");
             orderSelfEditingPage.BuyerPhone.WaitValue("+7 (111)111-1111");
             orderSelfEditingPage.BuyerEmail.WaitValue(userNameAndPass);
+            orderSelfEditingPage.BuyerPhoneAdd.WaitValue("+7 (333)333-3333");
             orderSelfEditingPage.DeclaredPrice.WaitValue("0");
             orderSelfEditingPage.PaymentPrice.WaitValue("5");
             orderSelfEditingPage.GoodsDescription.WaitValue("4");
+            orderSelfEditingPage.OrderComment.WaitValue("OrderComment");
             orderSelfEditingPage.ItemsCount.WaitValue("1");
+            orderSelfEditingPage.IsCargoVolume.WaitChecked();
 
             var rowArticleStatic = orderSelfEditingPage.GetArticleRow(0);
             rowArticleStatic.Name.WaitValue("Имя1");
@@ -202,12 +220,15 @@ namespace Autotests.Tests.T02_UserTests
 
             orderSelfEditingPage.BuyerName.SetValue("Фамилия2 Имя2 Очество2");
             orderSelfEditingPage.BuyerPhone.SetValue("2222222222");
+            orderSelfEditingPage.BuyerPhoneAdd.SetValue("4444444444");
             orderSelfEditingPage.BuyerEmail.SetValue("2" + userNameAndPass);
 
             orderSelfEditingPage.PaymentPrice.SetValue("1500");
             orderSelfEditingPage.DeclaredPrice.SetValue("1600");
 
             orderSelfEditingPage.GoodsDescription.SetValue("24");
+            orderSelfEditingPage.OrderComment.SetValue("OrderComment2");
+            orderSelfEditingPage.IsCargoVolume.Click();
             orderSelfEditingPage.OrderNumber.SetValue("44");
 
             orderSelfEditingPage.SaveChangeButton.Click();
@@ -220,12 +241,16 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableSender.Name.WaitText(legalEntityName);
             orderPage.TableSender.Phone.WaitText("+7 (111)111-1111");
             orderPage.TableSender.Delivery.WaitText("Самовывоз");
+            orderPage.TableSender.OrderComment.WaitText("OrderComment2");
+            orderPage.TableSender.IsCargoVolume.WaitText("да");
+
 
             orderPage.TableRecipient.City.WaitText("Москва");
             orderPage.TableRecipient.Address.WaitText("Ленинский проспект 127");
             orderPage.TableRecipient.Name.WaitText("Фамилия2 Имя2 Очество2");
             orderPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
             orderPage.TableRecipient.Phone.WaitText("+7 (222)222-2222");
+            orderPage.TableRecipient.PhoneAdd.WaitText("+7 (444)444-4444");
             orderPage.TableRecipient.Issue.WaitText("Ручная");
             orderPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderPage.TableRecipient.DeliveryCompany.WaitText(companyName);

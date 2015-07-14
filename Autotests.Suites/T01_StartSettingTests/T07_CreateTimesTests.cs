@@ -20,6 +20,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (timesPickupPage.Table.GetRow(0).Name.IsPresent)
             {
                 timesPickupPage.Table.GetRow(0).ActionsDelete.Click();
+                timesPickupPage.Aletr.Accept();
                 timesPickupPage = timesPickupPage.GoTo<AdminBaseListPage>();
                 timesPickupPage.Table.RowSearch.CompanyName.SetValue(companyPickupName);
                 timesPickupPage = timesPickupPage.SeachButtonRowClickAndGo();

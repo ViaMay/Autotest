@@ -22,6 +22,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateSelfPage.BuyerName.SetValueAndWait("Фамилия Имя Отчество");
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
+            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("3333333333");
             orderCreateSelfPage.BuyerEmail.SetValueAndWait(userNameAndPass);
             orderCreateSelfPage.DeclaredPrice.SetValueAndWait("4");
             orderCreateSelfPage.PaymentPrice.SetValueAndWait("0");
@@ -31,6 +32,9 @@ namespace Autotests.Tests.T02_UserTests
             rowArticle.Name.SetValueAndWait("Имя1");
             rowArticle.Article.SetValueAndWait("Article1");
             rowArticle.Count.SetValueAndWait("6");
+
+            orderCreateSelfPage.OrderComment.SetValueAndWait("OrderNumber");
+            orderCreateSelfPage.IsCargoVolume.CheckAndWait();
 
             orderCreateSelfPage.СountedButton.Click();
 

@@ -22,6 +22,10 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.Length.SetValueAndWait("12.1");
             orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
 
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
+
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
 
@@ -29,9 +33,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.DeliveryList[0].Click();
 
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
-            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
-            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
-            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
@@ -73,11 +74,11 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.ErrorText[1].WaitText("Значение поля «Сторона 2» должно быть положительным числом");
             orderCourirsEditingPage.ErrorText[2].WaitText("Значение поля «Сторона 3» должно быть положительным числом");
             orderCourirsEditingPage.ErrorText[3].WaitText("Значение поля «Вес» должно быть положительным числом");
-            orderCourirsEditingPage.ErrorText[4].WaitText("Улица получателя обязательно к заполнению");
-            orderCourirsEditingPage.ErrorText[5].WaitText("Дом получателя обязательно к заполнению");
-            orderCourirsEditingPage.ErrorText[6].WaitText("Квартира получателя обязательно к заполнению");
-            orderCourirsEditingPage.ErrorText[7].WaitText("ФИО получателя обязательно к заполнению");
-            orderCourirsEditingPage.ErrorText[8].WaitText("Телефон получателя обязательно к заполнению");
+//            orderCourirsEditingPage.ErrorText[4].WaitText("Улица получателя обязательно к заполнению");
+//            orderCourirsEditingPage.ErrorText[5].WaitText("Дом получателя обязательно к заполнению");
+//            orderCourirsEditingPage.ErrorText[6].WaitText("Квартира получателя обязательно к заполнению");
+            orderCourirsEditingPage.ErrorText[4].WaitText("ФИО получателя обязательно к заполнению");
+            orderCourirsEditingPage.ErrorText[5].WaitText("Телефон получателя обязательно к заполнению");
             orderCourirsEditingPage.ActionErrorText[0].WaitText("Ошибка просчета цены, или маршрут недоступен");
 
             orderCourirsEditingPage.Width.SetValue("11.2");
