@@ -22,7 +22,7 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateSelfPage.BuyerName.SetValueAndWait("Фамилия Имя Отчество");
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
-            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("3333333333");
+            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("+71234567890, +71234567890");
             orderCreateSelfPage.BuyerEmail.SetValueAndWait(userNameAndPass);
             orderCreateSelfPage.DeclaredPrice.SetValueAndWait("4");
             orderCreateSelfPage.PaymentPrice.SetValueAndWait("4");
@@ -65,7 +65,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableRecipient.Name.WaitText("Фамилия Имя Отчество");
             orderPage.TableRecipient.Email.WaitText(userNameAndPass);
             orderPage.TableRecipient.Phone.WaitText("+7 (111)111-1111");
-            orderPage.TableRecipient.PhoneAdd.WaitText("+7 (333)333-3333");
+            orderPage.TableRecipient.PhoneAdd.WaitText("+71234567890, +71234567890");
             orderPage.TableRecipient.Issue.WaitText("Ручная");
             orderPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderPage.TableRecipient.DeliveryCompany.WaitText(companyName);

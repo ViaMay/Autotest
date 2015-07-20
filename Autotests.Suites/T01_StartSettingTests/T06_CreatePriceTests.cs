@@ -70,10 +70,21 @@ namespace Autotests.Tests.T01_StartSettingTests
             priceCourierCreatePage.Dimension.SetFirstValueSelect(sideName);
             priceCourierCreatePage.SaveButton.Click();
             pricesCourierPage = priceCourierCreatePage.GoTo<PricesPage>();
+            
+            pricesCourierPage.Create.Click();
+            priceCourierCreatePage = pricesCourierPage.GoTo<PriceCreatePage>();
+            priceCourierCreatePage.Price.SetValueAndWait("11");
+            priceCourierCreatePage.PriceOverFlow.SetValueAndWait("3");
+            priceCourierCreatePage.Route.SetFirstValueSelect("3", "г. Москва #151184 - г. Санкт-Петербург #151185");
+            priceCourierCreatePage.CompanyName.SetFirstValueSelect(companyName);
+            priceCourierCreatePage.Weight.SetFirstValueSelect(weightName);
+            priceCourierCreatePage.Dimension.SetFirstValueSelect(sideName);
+            priceCourierCreatePage.SaveButton.Click();
 
+            pricesCourierPage = priceCourierCreatePage.GoTo<PricesPage>();
             pricesCourierPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesCourierPage = pricesCourierPage.SeachButtonRowClickAndGo();
-            pricesCourierPage.Table.GetRow(0).CompanyName.WaitText(companyName);
+            pricesCourierPage.Table.GetRow(1).CompanyName.WaitText(companyName);
         }
 
         [Test, Description("Создания цены самовывоза")]
@@ -106,10 +117,21 @@ namespace Autotests.Tests.T01_StartSettingTests
             priceSelfCreatePage.Dimension.SetFirstValueSelect(sideName);
             priceSelfCreatePage.SaveButton.Click();
             pricesSelfPage = priceSelfCreatePage.GoTo<PricesPage>();
+            
+            pricesSelfPage.Create.Click();
+            priceSelfCreatePage = pricesSelfPage.GoTo<PriceCreatePage>();
+            priceSelfCreatePage.Price.SetValueAndWait("12");
+            priceSelfCreatePage.PriceOverFlow.SetValueAndWait("3");
+            priceSelfCreatePage.Route.SetFirstValueSelect("3", "г. Москва #151184 - г. Санкт-Петербург #151185");
+            priceSelfCreatePage.CompanyName.SetFirstValueSelect(companyName);
+            priceSelfCreatePage.Weight.SetFirstValueSelect(weightName);
+            priceSelfCreatePage.Dimension.SetFirstValueSelect(sideName);
+            priceSelfCreatePage.SaveButton.Click();
+            pricesSelfPage = priceSelfCreatePage.GoTo<PricesPage>();
 
             pricesSelfPage.Table.RowSearch.CompanyName.SetValue(companyName);
             pricesSelfPage = pricesSelfPage.SeachButtonRowClickAndGo();
-            pricesSelfPage.Table.GetRow(0).CompanyName.WaitText(companyName);
+            pricesSelfPage.Table.GetRow(1).CompanyName.WaitText(companyName);
         }
     }
 }

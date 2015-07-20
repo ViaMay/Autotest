@@ -69,7 +69,7 @@ namespace Autotests.Tests.T03_ApiTests
 
             orderSelfEditingPage.BuyerName.WaitValue("Ургудан Рабат Мантов");
             orderSelfEditingPage.BuyerPhone.WaitValue("+7 (999)999-9999");
-            orderSelfEditingPage.BuyerPhoneAdd.WaitValue("+7 (123)456-7890");
+            orderSelfEditingPage.BuyerPhoneAdd.WaitValue("71234567890");
             orderSelfEditingPage.BuyerEmail.WaitValue(userNameAndPass);
             orderSelfEditingPage.IsCargoVolume.WaitChecked();
 

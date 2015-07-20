@@ -35,10 +35,10 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            подтверждаем что заказ на складе
             var responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[0] }, });
+                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
             Assert.IsTrue(responseConfirmDelivery.Success);
             responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[1] }, });
+                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
             Assert.IsTrue(responseConfirmDelivery.Success);
 
 //            запрос списка

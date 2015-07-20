@@ -6,10 +6,10 @@ namespace Autotests.Tests.T04_AdminTests
 {
     public class DateTransferCDCkeckOutOrderTests : SendOrdersBasePage
     {
-        [Test, Description("Проверяем пернос даты из входящей завки в исходящию")]
+        [Test, Description("Проверяем переноса даты из входящей завки в исходящию")]
         public void CkeckEqualInputOutputDatesTest()
         {
-            LoginAsAdmin(adminName, adminPass);
+            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             string[] ordersID = SendOrdersRequest();
 
 //            Создание исходщих завок

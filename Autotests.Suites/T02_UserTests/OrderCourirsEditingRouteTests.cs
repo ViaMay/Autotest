@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T02_UserTests
 {
-    public class OrderCourirsEditingTests : ConstVariablesTestBase
+    public class OrderCourirsEditingRouteTests : ConstVariablesTestBase
     {
         [Test, Description("Создание черновика заказа а потом редактирование")]
         public void OrderCourirsDraftEditingTest()
@@ -14,16 +14,12 @@ namespace Autotests.Tests.T02_UserTests
             var shopsListPage = userPage.GoTo<UserShopsPage>();
             shopsListPage.Table.FindRowByName(userShopName).OrdersCreateCourier.Click();
             var orderCreateCourirsPage = shopsListPage.GoTo<OrderCourirsCreatePage>();
-            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
+            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Санкт-Петербург");
             orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
             orderCreateCourirsPage.Width.SetValueAndWait("10.1");
             orderCreateCourirsPage.Height.SetValueAndWait("11.1");
             orderCreateCourirsPage.Length.SetValueAndWait("12.1");
             orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
-
-            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
-            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
-            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
 
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
@@ -31,6 +27,9 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 53.00 руб");
             orderCreateCourirsPage.DeliveryList[0].Click();
 
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
@@ -38,7 +37,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
             orderCreateCourirsPage.ItemsCount.SetValueAndWait("2");
 
-            orderCreateCourirsPage.PaymentPrice.SetValueAndWait("1500");
+            orderCreateCourirsPage.PaymentPrice.WaitValue("0");
             orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("Хороший товар,годный");
             orderCreateCourirsPage.OrderComment.SetValueAndWait("OrderComment");
@@ -60,7 +59,7 @@ namespace Autotests.Tests.T02_UserTests
             ordersPage.Table.GetRow(0).Edit.Click();
             var orderCourirsEditingPage = ordersPage.GoTo<OrderCourirsEditingPage>();
 
-            orderCourirsEditingPage.City.WaitValue("Москва");
+            orderCourirsEditingPage.City.WaitValue("Санкт-Петербург");
             orderCourirsEditingPage.DeclaredPrice.WaitValue("10.1");
             orderCourirsEditingPage.Width.WaitValue("10.1");
             orderCourirsEditingPage.Height.WaitValue("11.1");
@@ -69,15 +68,15 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.ItemsCount.WaitValue("2");
 
             orderCourirsEditingPage.BuyerPostalCode.WaitValue("123123");
-            orderCourirsEditingPage.BuyerStreet.WaitValue("Улица");
-            orderCourirsEditingPage.BuyerHouse.WaitValue("Дом");
-            orderCourirsEditingPage.BuyerFlat.WaitValue("Квартира");
+//            orderCourirsEditingPage.BuyerStreet.WaitValue("Улица");
+//            orderCourirsEditingPage.BuyerHouse.WaitValue("Дом");
+//            orderCourirsEditingPage.BuyerFlat.WaitValue("Квартира");
             orderCourirsEditingPage.BuyerName.WaitValue("Фамилия Имя Очество");
             orderCourirsEditingPage.BuyerPhone.WaitValue("+7 (111)111-1111");
             orderCourirsEditingPage.BuyerPhoneAdd.WaitValue("+71234567890, +71234567890");
             orderCourirsEditingPage.BuyerEmail.WaitValue(userNameAndPass);
 
-            orderCourirsEditingPage.PaymentPrice.WaitValue("1500");
+            orderCourirsEditingPage.PaymentPrice.WaitValue("0");
             orderCourirsEditingPage.OrderNumber.WaitValue("OrderNumber");
             orderCourirsEditingPage.GoodsDescription.WaitValue("Хороший товар,годный");
             orderCourirsEditingPage.OrderComment.WaitValue("OrderComment");
@@ -106,7 +105,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.BuyerPhoneAdd.SetValue("+74444444444, +75555555555");
             orderCourirsEditingPage.BuyerEmail.SetValue("2"+ userNameAndPass);
             orderCourirsEditingPage.ItemsCount.SetValue("3");
-            orderCourirsEditingPage.PaymentPrice.SetValue("1600");
             orderCourirsEditingPage.OrderNumber.SetValue("OrderNumber2");
             orderCourirsEditingPage.GoodsDescription.SetValue("Хороший товар,годный2");
             orderCourirsEditingPage.OrderComment.SetValue("OrderComment2");
@@ -123,7 +121,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableSender.OrderComment.WaitText("OrderComment2");
             orderCourirsPage.TableSender.IsCargoVolume.WaitText("нет");
 
-            orderCourirsPage.TableRecipient.City.WaitText("Москва");
+            orderCourirsPage.TableRecipient.City.WaitText("Санкт-Петербург");
             orderCourirsPage.TableRecipient.PostCode.WaitText("123456");
             orderCourirsPage.TableRecipient.Address.WaitText("ул.Улица2, дом Дом2, офис(квартира) Квартира2");
             orderCourirsPage.TableRecipient.Name.WaitText("Фамилия2 Имя2 Очество2");
@@ -134,7 +132,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
-            orderCourirsPage.TablePrice.PaymentPrice.WaitText("1600.00 руб.");
+            orderCourirsPage.TablePrice.PaymentPrice.WaitText("0.00 руб.");
             orderCourirsPage.TablePrice.DeclaredPrice.WaitText("10.20 руб.");
             orderCourirsPage.TablePrice.Insurance.WaitText("0.00 руб.");
             orderCourirsPage.TablePrice.DeliveryPrice.WaitText("53.00 руб.");
@@ -165,30 +163,29 @@ namespace Autotests.Tests.T02_UserTests
             var shopsListPage = userPage.GoTo<UserShopsPage>();
             shopsListPage.Table.FindRowByName(userShopName).OrdersCreateCourier.Click();
             var orderCreateCourirsPage = shopsListPage.GoTo<OrderCourirsCreatePage>();
-            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Москва");
+            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Санкт-Петербург");
             orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
             orderCreateCourirsPage.Width.SetValueAndWait("10.1");
             orderCreateCourirsPage.Height.SetValueAndWait("11.1");
             orderCreateCourirsPage.Length.SetValueAndWait("12.1");
             orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
-
-            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
-            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
-            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
-
+            
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
 
             orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via, цена: 53.00 руб");
             orderCreateCourirsPage.DeliveryList[0].Click();
 
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateCourirsPage.BuyerPhoneAdd.SetValueAndWait("+71234567890, +71234567890");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
 
-            orderCreateCourirsPage.PaymentPrice.SetValueAndWait("1500");
+            orderCreateCourirsPage.PaymentPrice.WaitValue("0");
             orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("Хороший товар,годный");
             orderCreateCourirsPage.OrderComment.SetValueAndWait("OrderComment");
@@ -212,24 +209,24 @@ namespace Autotests.Tests.T02_UserTests
             ordersPage.Table.GetRow(0).Edit.Click();
             var orderCourirsEditingPage = ordersPage.GoTo<OrderCourirsEditingPage>();
 
-            orderCourirsEditingPage.City.WaitValue("Москва");
+            orderCourirsEditingPage.City.WaitValue("Санкт-Петербург");
             orderCourirsEditingPage.DeclaredPrice.WaitValue("10.1");
             orderCourirsEditingPage.Width.WaitValue("10.1");
             orderCourirsEditingPage.Height.WaitValue("11.1");
             orderCourirsEditingPage.Length.WaitValue("12.1");
             orderCourirsEditingPage.Weight.WaitValue("9.1");
-            orderCourirsEditingPage.ItemsCount.WaitValue("1");
-
-            orderCourirsEditingPage.BuyerPostalCode.WaitValue("123123");
+//            orderCourirsEditingPage.ItemsCount.WaitValue("1");
+//
+//            orderCourirsEditingPage.BuyerPostalCode.WaitValue("123123");
 //            orderCourirsEditingPage.BuyerStreet.WaitValue("Улица");
 //            orderCourirsEditingPage.BuyerHouse.WaitValue("Дом");
 //            orderCourirsEditingPage.BuyerFlat.WaitValue("Квартира");
 //            orderCourirsEditingPage.BuyerName.WaitValue("Фамилия Имя Очество");
 //            orderCourirsEditingPage.BuyerPhone.WaitValue("+7 (111)111-1111");
-            //            orderCourirsEditingPage.BuyerPhoneAdd.WaitValue("+71234567890, +71234567890");
+//            orderCourirsEditingPage.BuyerPhoneAdd.WaitValue("+71234567890, +71234567890");
 //            orderCourirsEditingPage.BuyerEmail.WaitValue(userNameAndPass);
 //
-//            orderCourirsEditingPage.PaymentPrice.WaitValue("1500");
+//            orderCourirsEditingPage.PaymentPrice.WaitValue("0");
 //            orderCourirsEditingPage.OrderNumber.WaitValue("OrderNumber");
 //            orderCourirsEditingPage.GoodsDescription.WaitValue("Хороший товар,годный");
 //            orderCourirsEditingPage.OrderComment.WaitValue("OrderComment");
@@ -256,10 +253,9 @@ namespace Autotests.Tests.T02_UserTests
 //            orderCourirsEditingPage.BuyerFlat.SetValue("Квартира2");
 //            orderCourirsEditingPage.BuyerName.SetValue("Фамилия2 Имя2 Очество2");
 //            orderCourirsEditingPage.BuyerPhone.SetValue("2222222222");
-            //            orderCourirsEditingPage.BuyerPhoneAdd.SetValue("+74444444444, +75555555555");
+//            orderCourirsEditingPage.BuyerPhoneAdd.SetValue("+74444444444, +75555555555");
 //            orderCourirsEditingPage.BuyerEmail.SetValue("2" + userNameAndPass);
 //
-//            orderCourirsEditingPage.PaymentPrice.SetValue("1600");
 //            orderCourirsEditingPage.OrderNumber.SetValue("OrderNumber2");
 //            orderCourirsEditingPage.GoodsDescription.SetValue("Хороший товар,годный2");
 //            orderCourirsEditingPage.OrderComment.SetValue("OrderComment2");
@@ -278,13 +274,13 @@ namespace Autotests.Tests.T02_UserTests
 //            orderCourirsPage.TableSender.OrderComment.WaitText("OrderComment2");
 //            orderCourirsPage.TableSender.IsCargoVolume.WaitText("да");
 //
-//            orderCourirsPage.TableRecipient.City.WaitText("Москва");
+//            orderCourirsPage.TableRecipient.City.WaitText("Санкт-Петербург");
 //            orderCourirsPage.TableRecipient.PostCode.WaitText("123456");
 //            orderCourirsPage.TableRecipient.Address.WaitText("ул.Улица2, дом Дом2, офис(квартира) Квартира2");
 //            orderCourirsPage.TableRecipient.Name.WaitText("Фамилия2 Имя2 Очество2");
 //            orderCourirsPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
 //            orderCourirsPage.TableRecipient.Phone.WaitText("+7 (222)222-2222");
-            //            orderCourirsPage.TableRecipient.PhoneAdd.WaitText("+74444444444, +75555555555");
+//                        orderCourirsPage.TableRecipient.PhoneAdd.WaitText("+74444444444, +75555555555");
 //            orderCourirsPage.TableRecipient.Issue.WaitText("Ручная");
 //            orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
 //            orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);
@@ -292,7 +288,7 @@ namespace Autotests.Tests.T02_UserTests
 //            orderCourirsPage.DeliveryDate.WaitText(dateDelivery);
 //            orderCourirsPage.DeliveryTime.WaitText("9:00 - 17:00");
 //
-//            orderCourirsPage.TablePrice.PaymentPrice.WaitText("1600.00 руб.");
+//            orderCourirsPage.TablePrice.PaymentPrice.WaitText("0.00 руб.");
 //            orderCourirsPage.TablePrice.DeclaredPrice.WaitText("10.20 руб.");
 //            orderCourirsPage.TablePrice.Insurance.WaitText("0.00 руб.");
 //            orderCourirsPage.TablePrice.DeliveryPrice.WaitText("53.00 руб.");

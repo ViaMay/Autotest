@@ -21,7 +21,7 @@ namespace Autotests.Tests.T03_ApiTests
             usersPage.UsersTable.GetRow(0).UserEmail.WaitText(userNameAndPass);
             usersPage.UsersTable.GetRow(0).ActionsEdit.Click();
             var userEdiringPage = usersPage.GoTo<UserCreatePage>();
-            var userId = userEdiringPage.Key.GetAttributeValue("value");
+            var userId = userEdiringPage.Key.GetValue();
             userEdiringPage.IsMaster.CheckAndWait();
             userEdiringPage.SaveButton.Click();
             userEdiringPage = userEdiringPage.GoTo<UserCreatePage>();

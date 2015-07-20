@@ -93,6 +93,17 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.ActionErrorText[3].WaitText("Город получения обязательно к заполнению");
             orderCreateSelfPage.ErrorText[0].WaitText("( Если по вашим оценкам ваше отправление превышает 0,5 м3)");
             orderCreateSelfPage.ErrorText[1].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
+            
+            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("+74444444444, +75555555555,  +75555555555");
+            orderCreateSelfPage.BuyerEmail.SetValueAndWait("+7");
+            orderCreateSelfPage.SendOrderButton.Click();
+
+            orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError(3);
+            orderCreateSelfPage.ErrorText[0].WaitText("Длина поля «Дополнительный телефон получателя» должна быть не более 30 символов");
+            orderCreateSelfPage.ErrorText[1].WaitText("Email должно быть корректным адресом электронной почты");
+
+            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("");
+            orderCreateSelfPage.BuyerEmail.SetValueAndWait("");
 
             orderCreateSelfPage.MapOrders.SwitchToFrame();
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");

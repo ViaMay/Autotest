@@ -6,7 +6,7 @@ namespace Autotests.Tests
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
-        public override string ApplicationBaseUrl { get { return "dev:adept2frost_late@dev.ddelivery.ru"; } }
+        public override string ApplicationBaseUrl { get { return "dev:Grass$Clash8pelvis@dev.ddelivery.ru"; } }
 //        public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
 //        public override string ApplicationBaseUrl { get { return "cabinet.ddelivery.ru"; } }
@@ -49,6 +49,10 @@ namespace Autotests.Tests
             deliveryPointAddress = "Ленинский проспект 127";
             deliveryPointLongitude = "37.477079";
             deliveryPointLatitude = "55.645873";
+            
+            deliveryPointAddress2 = "ул. Салова, 27Литер АД, пом. 35";
+            deliveryPointLongitude2 = "30.372815";
+            deliveryPointLatitude2 = "59.895735";
 
             apiRequest = new Api(ApplicationBaseUrl);
             TimeZoneInfo moscowTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Russian Standard Time");
@@ -86,6 +90,9 @@ namespace Autotests.Tests
         public string deliveryPointAddress;
         public string deliveryPointLongitude;
         public string deliveryPointLatitude;
+        public string deliveryPointAddress2;
+        public string deliveryPointLongitude2;
+        public string deliveryPointLatitude2;
 
         public int marginsPickup;
         public int marginsCourirs;

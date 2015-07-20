@@ -156,7 +156,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"payment_price", "300"},
                         {"to_name", "Ургудан Рабат Мантов"},
                         {"to_phone", "9999999999"},
-                        {"to_add_phone", "71234567890"},
+                        {"to_add_phone", "1234567891234567890123456789001"},
                         {"to_email", userNameAndPass},
                         {"goods_description", "Памперс"},
                         {"is_cargo_volume", "true"},
@@ -333,6 +333,31 @@ namespace Autotests.Tests.T03_ApiTests
                 });
             Assert.IsFalse(responseOrderFail.Success, "Ожидался ответ false на отправленный запрос POST по API");
             Assert.AreEqual(responseOrderFail.Response.Error.CalculateOrder, "Ошибка просчета цены, или маршрут недоступен");
+
+
+            responseOrderFail = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_update/" +
+                                                          responseCreateOrders.Response.OrderId
+                                                          + ".json",
+                                                          new NameValueCollection
+                {
+                    {"api_key", keyShopPublic},
+                    {"order_id", responseCreateOrders.Response.OrderId},
+                    {"order_comment", "1231231111111111111111111111111231231111111111111111111111111231231111111111111111111111111231231111111111111111111111111231231111111111111111111111111231231111111111111111111111111231231111111111111111111111111231231111111111111111111111111231231111111111111111111111111231231111111111111111111111112"},
+                });
+            Assert.IsFalse(responseOrderFail.Success, "Ожидался ответ false на отправленный запрос POST по API");
+            Assert.AreEqual(responseOrderFail.Response.Error.OrderComment, @"Длина поля &laquo;Комментарий к заказу&raquo; должна быть не более 300 символов");
+            responseOrderFail = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_update/" +
+                                                          responseCreateOrders.Response.OrderId
+                                                          + ".json",
+                                                          new NameValueCollection
+                {
+                    {"api_key", keyShopPublic},
+                    {"order_id", responseCreateOrders.Response.OrderId},
+                    {"to_add_phone", "1234567890123456789012345678901"},
+                });
+            Assert.IsFalse(responseOrderFail.Success, "Ожидался ответ false на отправленный запрос POST по API");
+            Assert.AreEqual(responseOrderFail.Response.Error.ToAddPhone, @"Длина поля &laquo;Дополнительный телефон получателя&raquo; должна быть не более 30 символов");
+        
         }
     }
 }

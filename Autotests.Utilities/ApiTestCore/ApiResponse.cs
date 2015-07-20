@@ -59,6 +59,9 @@ namespace Autotests.Utilities.ApiTestCore
         {
             [DataMember(Name = "order")]
             public string OrderId { get; set; }
+
+            [DataMember(Name = "barcodes")]
+            public string[] Barcodes { get; set; }
         }
 
         [DataContract]
@@ -114,6 +117,9 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "order_comment")]
             public string OrderComment { get; set; }
+
+            [DataMember(Name = "to_add_phone")]
+            public string ToAddPhone { get; set; }
         }
 
         [DataContract]
@@ -486,6 +492,13 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class MessageObject
+        {
+            [DataMember(Name = "message")]
+            public string Message { get; set; }
+        }
+
+        [DataContract]
         public class MessageTrueCancal
         {
             [DataMember(Name = "order_id")]
@@ -516,6 +529,13 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "delivery_company_id")]
             public string DeliveryCompanyId { get; set; }
+        }
+
+        [DataContract]
+        public class MessageUserBarcodes
+        {
+            [DataMember(Name = "list")]
+            public string[] List  { get; set; }
         }
         
         [DataContract]
@@ -699,10 +719,24 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class ResponseMessage : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageObject Response { get; set; }
+        }
+
+        [DataContract]
         public class ResponsePickupOrders : TResponse
         {
             [DataMember(Name = "response")]
             public MessagePickupOrders[] Response { get; set; }
+        }
+
+        [DataContract]
+        public class ResponseUserBarcodes : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageUserBarcodes Response { get; set; }
         }
 
         [DataContract]

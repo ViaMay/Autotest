@@ -46,6 +46,5 @@ namespace Autotests.Tests.T01_StartSettingTests
             orderedIttemplatesCreatePage.SaveButton.Click();
             orderedIttemplatesPage = orderedIttemplatesCreatePage.GoTo<OrderedIttemplatesPage>();
         }
-
     }
 }

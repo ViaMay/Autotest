@@ -60,7 +60,7 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.DeclaredPrice.SetValue("");
             orderSelfEditingPage.PaymentPrice.SetValue("");
 
-            orderSelfEditingPage.SaveChangeButton.ClickAndWaitTextError(1);
+            orderSelfEditingPage.SaveChangeButton.ClickAndWaitTextError(3);
             orderSelfEditingPage.ErrorText[0].WaitText("ФИО получателя обязательно к заполнению");
             orderSelfEditingPage.ErrorText[1].WaitText("Телефон получателя обязательно к заполнению");
             orderSelfEditingPage.ErrorText[2].WaitText("Значение поля «Сторона 1» должно быть положительным числом");
@@ -76,6 +76,26 @@ namespace Autotests.Tests.T02_UserTests
 
             orderSelfEditingPage.BuyerName.SetValue("Фамилия2 Имя2 Очество2");
             orderSelfEditingPage.BuyerPhone.SetValue("2222222222");
+
+            orderSelfEditingPage.BuyerPhoneAdd.SetValueAndWait("+74444444444, +75555555555,  +75555555555");
+            orderSelfEditingPage.BuyerEmail.SetValueAndWait("+7");
+            orderSelfEditingPage.SaveChangeButton.Click();
+
+            orderSelfEditingPage.SaveChangeButton.ClickAndWaitTextError(3);
+            orderSelfEditingPage.ErrorText[0].WaitText("Длина поля «Дополнительный телефон получателя» должна быть не более 30 символов");
+            orderSelfEditingPage.ErrorText[1].WaitText("Email должно быть корректным адресом электронной почты");
+
+            orderSelfEditingPage.BuyerPhoneAdd.SetValueAndWait("");
+            orderSelfEditingPage.BuyerEmail.SetValueAndWait("");
+
+            orderSelfEditingPage.GoodsDescription.SetValue("");
+            orderSelfEditingPage.SaveChangeButton.Click();
+
+            orderSelfEditingPage.SaveChangeButton.Click();
+            orderSelfEditingPage.SaveChangeButton.ClickAndWaitTextError(2);
+            orderSelfEditingPage.ErrorText[0].WaitText("Описание посылки обязательно к заполнению");
+
+            orderSelfEditingPage.GoodsDescription.SetValue("GoodsDescription");
             orderSelfEditingPage.SaveChangeButton.Click();
             orderPage = orderSelfEditingPage.GoTo<OrderPage>();
             orderPage.StatusOrder.WaitText("В обработке");

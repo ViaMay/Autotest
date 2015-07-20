@@ -38,9 +38,22 @@ namespace Autotests.Tests.T01_StartSettingTests
             deliveryPointCreatePage.SaveButton.Click();
             deliveryPointsPage = deliveryPointCreatePage.GoTo<AdminBaseListPage>();
 
+            deliveryPointsPage.Create.Click();
+            deliveryPointCreatePage = deliveryPointsPage.GoTo<DeliveryPointCreatePage>();
+            deliveryPointCreatePage.City.SetFirstValueSelect("Санкт-Петербург");
+            deliveryPointCreatePage.DeliveryPointName.SetValueAndWait(deliveryPointName);
+            deliveryPointCreatePage.CompanyName.SetFirstValueSelect(companyName);
+            deliveryPointCreatePage.Address.SetValueAndWait(deliveryPointAddress2);
+            deliveryPointCreatePage.Longitude.SetValueAndWait(deliveryPointLongitude2);
+            deliveryPointCreatePage.Latitude.SetValueAndWait(deliveryPointLatitude2);
+            deliveryPointCreatePage.HasFittingRoom.Click();
+            deliveryPointCreatePage.IsCard.Click();
+            deliveryPointCreatePage.IsCash.Click();
+            deliveryPointCreatePage.SaveButton.Click();
+            deliveryPointsPage = deliveryPointCreatePage.GoTo<AdminBaseListPage>();
             deliveryPointsPage.Table.RowSearch.Name.SetValue(deliveryPointName);
             deliveryPointsPage = deliveryPointsPage.SeachButtonRowClickAndGo();
-            deliveryPointsPage.Table.GetRow(0).Name.WaitPresence();
+            deliveryPointsPage.Table.GetRow(1).Name.WaitPresence();
 
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/mongo_points");
             adminMaintenancePage.AlertText.WaitTextContains("Синхронизировано");

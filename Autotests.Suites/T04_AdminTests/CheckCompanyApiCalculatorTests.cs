@@ -6,7 +6,7 @@ namespace Autotests.Tests.T04_AdminTests
 {
     public class CheckCompanyApiCalculatorTests : SendOrdersBasePage
     {
-        [Test, Description("Проверка компании у поторой драйвер pochtarossii - что калькулятор для нее работает")]
+        [Test, Description("Проверка компании у которой драйвер pochtarossii - что калькулятор для нее работает")]
 //        то как считается на этом сайте http://www.postcalc.ru/
         public void CheckCompanyApiCalculatorTest()
         {
@@ -44,7 +44,8 @@ namespace Autotests.Tests.T04_AdminTests
             var cells = priceParcel.Split('\n');
             var priceDeliveryParcel = cells[4];
             Assert.AreEqual("[Доставка]=>" + priceDeliveryBase + ".00", priceDeliveryParcel);
-            
+
+            LoadPage<DefaultPage>("auth/logout");
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {"api_key", keyShopPublic},
 		        {"type", "2"},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveryCompanyId},
+		        {"delivery_company", deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},
@@ -44,7 +44,6 @@ namespace Autotests.Tests.T03_ApiTests
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
 		        {"items_count", "2"},
 		        {"is_cargo_volume", "true"},
-		        {"to_shop_api_key", "3e1c7bd47d7fb91aaa5b85027ac3499d"},
 		        {"order_comment", "order_comment"}
                 });
             Assert.IsTrue(responseCreateOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
@@ -75,7 +74,7 @@ namespace Autotests.Tests.T03_ApiTests
             orderCourirsEditingPage.BuyerFlat.WaitValue("12");
             orderCourirsEditingPage.BuyerName.WaitValue("Ургудан Рабат Мантов");
             orderCourirsEditingPage.BuyerPhone.WaitValue("+7 (999)999-9999");
-            orderCourirsEditingPage.BuyerPhoneAdd.WaitValue("+7 (123)456-7890");
+            orderCourirsEditingPage.BuyerPhoneAdd.WaitValue("71234567890");
             orderCourirsEditingPage.BuyerEmail.WaitValue(userNameAndPass);
             orderCourirsEditingPage.IsCargoVolume.WaitChecked();
 

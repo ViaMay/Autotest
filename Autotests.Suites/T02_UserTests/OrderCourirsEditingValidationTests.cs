@@ -60,38 +60,50 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.Length.SetValue("");
             orderCourirsEditingPage.Weight.SetValue("");
 
-            orderCourirsEditingPage.BuyerStreet.SetValue("");
-            orderCourirsEditingPage.BuyerHouse.SetValue("");
-            orderCourirsEditingPage.BuyerFlat.SetValue("");
             orderCourirsEditingPage.BuyerName.SetValue("");
             orderCourirsEditingPage.BuyerPhone.SetValue(" ");
             orderCourirsEditingPage.BuyerEmail.SetValue("");
-
             orderCourirsEditingPage.PaymentPrice.SetValue("");
+            orderCourirsEditingPage.BuyerPhoneAdd.SetValueAndWait("+74444444444, +75555555555,  +75555555555");
+            orderCourirsEditingPage.BuyerEmail.SetValueAndWait("+7");
 
-            orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError(1);
+            orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError(3);
             orderCourirsEditingPage.ErrorText[0].WaitText("Значение поля «Сторона 1» должно быть положительным числом");
             orderCourirsEditingPage.ErrorText[1].WaitText("Значение поля «Сторона 2» должно быть положительным числом");
             orderCourirsEditingPage.ErrorText[2].WaitText("Значение поля «Сторона 3» должно быть положительным числом");
             orderCourirsEditingPage.ErrorText[3].WaitText("Значение поля «Вес» должно быть положительным числом");
-//            orderCourirsEditingPage.ErrorText[4].WaitText("Улица получателя обязательно к заполнению");
-//            orderCourirsEditingPage.ErrorText[5].WaitText("Дом получателя обязательно к заполнению");
-//            orderCourirsEditingPage.ErrorText[6].WaitText("Квартира получателя обязательно к заполнению");
             orderCourirsEditingPage.ErrorText[4].WaitText("ФИО получателя обязательно к заполнению");
             orderCourirsEditingPage.ErrorText[5].WaitText("Телефон получателя обязательно к заполнению");
+            orderCourirsEditingPage.ErrorText[6].WaitText("Длина поля «Дополнительный телефон получателя» должна быть не более 30 символов");
+            orderCourirsEditingPage.ErrorText[7].WaitText("Email должно быть корректным адресом электронной почты");
             orderCourirsEditingPage.ActionErrorText[0].WaitText("Ошибка просчета цены, или маршрут недоступен");
 
             orderCourirsEditingPage.Width.SetValue("11.2");
             orderCourirsEditingPage.Height.SetValue("12.2");
             orderCourirsEditingPage.Length.SetValue("13.2");
             orderCourirsEditingPage.Weight.SetValue("9.2");
-
-            orderCourirsEditingPage.BuyerStreet.SetValue("Улица2");
-            orderCourirsEditingPage.BuyerHouse.SetValue("Дом2");
-            orderCourirsEditingPage.BuyerFlat.SetValue("Квартира2");
+            orderCourirsEditingPage.DeclaredPrice.SetValueAndWait("10.1");
+            
             orderCourirsEditingPage.BuyerName.SetValue("Фамилия2 Имя2 Очество2");
             orderCourirsEditingPage.BuyerPhone.SetValue("2222222222");
+            orderCourirsEditingPage.BuyerPhoneAdd.SetValueAndWait("");
+            orderCourirsEditingPage.BuyerEmail.SetValueAndWait("");
 
+            orderCourirsEditingPage.CityTo.SetFirstValueSelect("Санкт-Петербург");
+            orderCourirsEditingPage.СountedButton.Click();
+            orderCourirsEditingPage.WaitCounted();
+
+            orderCourirsEditingPage.BuyerStreet.SetValueAndWait("");
+            orderCourirsEditingPage.BuyerHouse.SetValueAndWait("");
+            orderCourirsEditingPage.BuyerFlat.SetValueAndWait("");
+            orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError(3);
+            orderCourirsEditingPage.ErrorText[0].WaitText("Улица получателя обязательно к заполнению");
+            orderCourirsEditingPage.ErrorText[1].WaitText("Дом получателя обязательно к заполнению");
+            orderCourirsEditingPage.ErrorText[2].WaitText("Квартира получателя обязательно к заполнению");
+
+            orderCourirsEditingPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCourirsEditingPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCourirsEditingPage.BuyerFlat.SetValueAndWait("Квартира");
             orderCourirsEditingPage.SaveChangeButton.Click();
             orderCourirsPage = orderCourirsEditingPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("В обработке");

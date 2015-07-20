@@ -37,7 +37,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerFlat.WaitValue("Квартира");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
-            orderCreateCourirsPage.BuyerPhoneAdd.SetValueAndWait("3333333333");
+            orderCreateCourirsPage.BuyerPhoneAdd.SetValueAndWait("+71234567890, +71234567890");
             orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
 
             orderCreateCourirsPage.PaymentPrice.SetValueAndWait("1500");
@@ -68,7 +68,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsPage.TableRecipient.Name.WaitText("Фамилия Имя Очество");
             orderCourirsPage.TableRecipient.Email.WaitText(userNameAndPass);
             orderCourirsPage.TableRecipient.Phone.WaitText("+7 (111)111-1111");
-            orderCourirsPage.TableRecipient.PhoneAdd.WaitText("+7 (333)333-3333");
+            orderCourirsPage.TableRecipient.PhoneAdd.WaitText("+71234567890, +71234567890");
             orderCourirsPage.TableRecipient.Issue.WaitText("Ручная");
             orderCourirsPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderCourirsPage.TableRecipient.DeliveryCompany.WaitText(companyName);

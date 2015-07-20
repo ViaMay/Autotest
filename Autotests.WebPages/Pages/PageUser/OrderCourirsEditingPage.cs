@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Autotests.Utilities.WebTestCore.SystemControls;
+using Autotests.Utilities.WebTestCore.TestSystem;
 using Autotests.WebPages.Pages.PageUser.Controls;
 using NUnit.Framework;
 using OpenQA.Selenium;
@@ -11,6 +12,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public OrderCourirsEditingPage()
         {
             City = new StaticText(By.Name("to_city__value__"));
+            CityTo = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 0));
             DeclaredPrice = new TextInput(By.Name("declared_price"));
             Weight = new TextInput(By.Name("weight"));
             Width = new TextInput(By.Name("dimension_side1"));
@@ -43,7 +45,7 @@ namespace Autotests.WebPages.Pages.PageUser
 
             ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"));
             ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"));
-            AletrError = new AlertControl();
+            Countedloader = new StaticControl(By.CssSelector("#radio_div > div > imj"));
          }
 
         public OrderArticleStaticRowControl GetArticleRow(int index)
@@ -57,6 +59,18 @@ namespace Autotests.WebPages.Pages.PageUser
             base.BrowseWaitVisible();
             City.WaitVisible();
         }
+
+        public void WaitCounted()
+        {
+            var second = 0;
+            while (Countedloader.IsPresent)
+            {
+                second = second + 1;
+                if (second >= 60) Assert.AreEqual(Countedloader.IsPresent, false, "Время ожидание завершено. Не найден элемент");
+            }
+        }
+
+        public AutocompleteControl CityTo { get; set; }
         public StaticText City { get; set; }
         public TextInput DeclaredPrice { get; set; }
         public TextInput Weight { get; set; }
@@ -89,6 +103,6 @@ namespace Autotests.WebPages.Pages.PageUser
 
         public ErrorActionTextControl ActionErrorText { get; set; }
         public ErrorTextControl ErrorText { get; set; }
-        public AlertControl AletrError { get; set; }
+        private StaticControl Countedloader { get; set; }
     }
 }

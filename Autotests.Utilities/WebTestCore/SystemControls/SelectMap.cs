@@ -27,9 +27,10 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             WaitPresenceWithRetries();
             if (GetAttributeValue("title").Contains(value))
                 return;
-            element.SendKeys(value);
+            element.Click();
             Thread.Sleep(1000);
             element.SendKeys(Keys.Tab + Keys.Enter);
+
             var clickelement = new LinkMap(By.XPath("//div[3]/div[3]/h2"));
             var second = 0;
             Link:
@@ -48,28 +49,30 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             }
             clickelement.WaitVisibleWithRetries();
         }
+        public void SelectValueStP()
+        {
+            WaitPresenceWithRetries();
+            element.Click();
+            Thread.Sleep(1000);
+            element.SendKeys(Keys.Tab + Keys.Tab + Keys.Enter);
 
-//        public void SelectValue(string value)
-//        {
-//            WaitEnabled();
-//            if (GetText() == value)
-//                return;
-//            IList<IWebElement> list = element.FindElements(By.XPath(".//div[1]/ul[2]/li/a/strong"));
-//            foreach (IWebElement option in list)
-//            {
-//                if (option.Text == value)
-//                {
-//                    SetSelected(option);
-//                    Click();
-//                }
-//            }
-//        }
-//
-//        private static void SetSelected(IWebElement option)
-//        {
-//            if (option.Selected)
-//                return;
-//            option.Click();
-//        }
+            var clickelement = new LinkMap(By.XPath("//div[3]/div[3]/h2"));
+            var second = 0;
+        Link:
+            try
+            {
+                clickelement.WaitVisibleWithRetries();
+                clickelement.WaitPresenceWithRetries();
+                clickelement.Click();
+            }
+            catch (Exception)
+            {
+                if (second >= 1000)
+                    return;
+                Thread.Sleep(10);
+                goto Link;
+            }
+            clickelement.WaitVisibleWithRetries();
+        }
     }
 }

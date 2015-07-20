@@ -31,7 +31,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
-            orderCreateCourirsPage.BuyerPhoneAdd.SetValueAndWait("3333333333");
+            orderCreateCourirsPage.BuyerPhoneAdd.SetValueAndWait("+71234567890, +71234567890");
 
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("ok");
             orderCreateCourirsPage.OrderComment.SetValueAndWait("OrderComment");

@@ -17,6 +17,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
             UserGroupsAddButton = new ButtonInput(By.XPath("//button[@type='button']"));
 
             Key = new TextInput(By.Name("public_key"));
+            BarcodeLimit = new TextInput(By.Name("barcode_limit"));
             ResponsibleName = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 1));
             IsMaster = new CheckBox(By.Name("is_master"));
 
@@ -44,6 +45,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public ButtonInput UserGroupsAddButton { get; set; }
 
         public TextInput Key { get; set; }
+        public TextInput BarcodeLimit { get; set; }
         public AutocompleteControl ResponsibleName { get; set; }
         public CheckBox IsMaster { get; set; }
 

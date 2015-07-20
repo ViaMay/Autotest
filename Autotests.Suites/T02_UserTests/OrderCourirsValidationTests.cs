@@ -105,25 +105,46 @@ namespace Autotests.Tests.T02_UserTests
 
             orderCreateCourirsPage.DeliveryList[0].WaitVisible();
 
+            orderCreateCourirsPage.BuyerPhoneAdd.SetValueAndWait("+74444444444, +75555555555,  +75555555555");
+            orderCreateCourirsPage.BuyerEmail.SetValueAndWait("+7");
+
             orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError(3);
-//            orderCreateCourirsPage.ErrorText[0].WaitText("Улица получателя обязательно к заполнению");
-//            orderCreateCourirsPage.ErrorText[1].WaitText("Дом получателя обязательно к заполнению");
-//            orderCreateCourirsPage.ErrorText[2].WaitText("Квартира получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[0].WaitText("ФИО получателя обязательно к заполнению");
             orderCreateCourirsPage.ErrorText[1].WaitText("Телефон получателя обязательно к заполнению");
-            orderCreateCourirsPage.ErrorText[2].WaitTextContains("Максимальное количество мест");
-            orderCreateCourirsPage.ErrorText[3].WaitText("( Если по вашим оценкам ваше отправление превышает 0,5 м3)");
-            orderCreateCourirsPage.ErrorText[4].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
-            orderCreateCourirsPage.ErrorText[5].WaitText("Описание посылки обязательно к заполнению");
-
+            orderCreateCourirsPage.ErrorText[2].WaitText("Длина поля «Дополнительный телефон получателя» должна быть не более 30 символов");
+            orderCreateCourirsPage.ErrorText[3].WaitText("Email должно быть корректным адресом электронной почты"); 
+            orderCreateCourirsPage.ErrorText[4].WaitTextContains("Максимальное количество мест");
+            orderCreateCourirsPage.ErrorText[5].WaitText("( Если по вашим оценкам ваше отправление превышает 0,5 м3)");
+            orderCreateCourirsPage.ErrorText[6].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
+            orderCreateCourirsPage.ErrorText[7].WaitText("Описание посылки обязательно к заполнению");
+            
             orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
             orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
             orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
             orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
             orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
-
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("ok");
+            orderCreateCourirsPage.BuyerPhoneAdd.SetValueAndWait("");
+            orderCreateCourirsPage.BuyerEmail.SetValueAndWait("");
+
+            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Санкт-Петербург");
+            orderCreateCourirsPage.СountedButton.Click();
+            orderCreateCourirsPage.СountedButton.Click();
+            orderCreateCourirsPage.WaitCounted();
+            orderCreateCourirsPage.DeliveryList[0].WaitVisible();
+
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("");
+            orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError(3);
+            orderCreateCourirsPage.ErrorText[0].WaitText("Улица получателя обязательно к заполнению");
+            orderCreateCourirsPage.ErrorText[1].WaitText("Дом получателя обязательно к заполнению");
+            orderCreateCourirsPage.ErrorText[2].WaitText("Квартира получателя обязательно к заполнению");
+            
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
             orderCreateCourirsPage.SendOrderButton.Click();
             var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");

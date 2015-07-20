@@ -39,6 +39,5 @@ namespace Autotests.Tests.T01_StartSettingTests
             marginsValuePage = marginsValueCreatePage.GoTo<MarginsValuePage>();
 
         }
-
     }
 }

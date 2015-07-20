@@ -190,6 +190,12 @@ namespace Autotests.Utilities.ApiTestCore
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponsePickupOrders));
                 return (ApiResponse.ResponsePickupOrders)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
+//            ResponseUserBarcodes
+            if (value.Contains(@"success"":true") && value.Contains(@"list"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseUserBarcodes));
+                return (ApiResponse.ResponseUserBarcodes)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
 //            ResponsePickupCompaniesOrShops
             if (value.Contains(@"response"":[") && value.Contains(@"id"))
             {
@@ -201,6 +207,13 @@ namespace Autotests.Utilities.ApiTestCore
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponsePickupCompany));
                 return (ApiResponse.ResponsePickupCompany)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+
+//            ResponseMessage
+            if (value.Contains(@"{""success"":true,""response"":{""message"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseMessage));
+                return (ApiResponse.ResponseMessage)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
             var json2 = new DataContractJsonSerializer(typeof (ApiResponse.TResponse));
             return (ApiResponse.TResponse) json2.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));

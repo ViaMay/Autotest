@@ -77,7 +77,6 @@ namespace Autotests.Tests.T05_SupportFreshDeskTests
             DefaultPage defaultPage = shopsPage.LoginOut();
             UserHomePage userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Support.Click();
-//            userPage.SupportCreate.Click();
             var pageFreshDesk = userPage.GoTo<SupportFreshDeskPage>();
             pageFreshDesk.LabelDirectory.WaitText("Служба поддержки");
             pageFreshDesk.TicketsLink.Click();

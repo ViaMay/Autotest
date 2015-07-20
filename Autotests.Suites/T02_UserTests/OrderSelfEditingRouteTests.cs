@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T02_UserTests
 {
-    public class OrderSelfEditingTests : ConstVariablesTestBase
+    public class OrderSelfEditingRouteTests : ConstVariablesTestBase
     {
         [Test, Description("Создание черновика заказа а потом редактирование")]
         public void OrdeSelfDraftEditingTest()
@@ -24,7 +24,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("+71234567890, +71234567890");
             orderCreateSelfPage.BuyerEmail.SetValueAndWait(userNameAndPass);
-            orderCreateSelfPage.DeclaredPrice.SetValueAndWait("0");
+            orderCreateSelfPage.DeclaredPrice.SetValueAndWait("10");
             orderCreateSelfPage.PaymentPrice.SetValueAndWait("4");
             orderCreateSelfPage.GoodsDescription.SetValueAndWait("4");
             orderCreateSelfPage.OrderComment.SetValueAndWait("OrderComment");
@@ -39,7 +39,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.СountedButton.Click();
             orderCreateSelfPage.MapOrders.SwitchToFrame();
 
-            orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
+            orderCreateSelfPage.MapOrders.City.SelectValueStP();
             orderCreateSelfPage.MapOrders.ImageLocator.Click();
             orderCreateSelfPage.MapOrders.TakeHere.Click();
             orderCreateSelfPage.MapOrders.SwitchToDefaultContent();;
@@ -66,8 +66,8 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.BuyerPhone.WaitValue("+7 (111)111-1111");
             orderSelfEditingPage.BuyerPhoneAdd.WaitValue("+71234567890, +71234567890");
             orderSelfEditingPage.BuyerEmail.WaitValue(userNameAndPass);
-            orderSelfEditingPage.DeclaredPrice.WaitValue("0");
-            orderSelfEditingPage.PaymentPrice.WaitValue("4");
+            orderSelfEditingPage.DeclaredPrice.WaitValue("10");
+            orderSelfEditingPage.PaymentPrice.WaitValue("0");
             orderSelfEditingPage.GoodsDescription.WaitValue("4");
             orderSelfEditingPage.OrderComment.WaitValue("OrderComment");
             orderSelfEditingPage.IsCargoVolume.WaitChecked();
@@ -109,8 +109,8 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableSender.OrderComment.WaitText("OrderComment2");
             orderPage.TableSender.IsCargoVolume.WaitText("нет");
 
-            orderPage.TableRecipient.City.WaitText("Москва");
-            orderPage.TableRecipient.Address.WaitText("Ленинский проспект 127");
+            orderPage.TableRecipient.City.WaitText("Санкт-Петербург");
+            orderPage.TableRecipient.Address.WaitText("ул. Салова, 27Литер АД, пом. 35");
             orderPage.TableRecipient.Name.WaitText("Фамилия2 Имя2 Очество2");
             orderPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
             orderPage.TableRecipient.Phone.WaitText("+7 (222)222-2222");
@@ -122,7 +122,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
             orderPage.TablePrice.DeclaredPrice.WaitText("1600.00 руб.");
             orderPage.TablePrice.Insurance.WaitText("0.00 руб.");
-            orderPage.TablePrice.DeliveryPrice.WaitText("65.00 руб.");
+            orderPage.TablePrice.DeliveryPrice.WaitText("55.00 руб.");
             orderPage.TablePrice.PickupPrice.WaitText("21.00 руб.");
 
             orderPage.TableSize.Width.WaitText("11 см");
@@ -160,7 +160,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("+71234567890, +71234567890");
             orderCreateSelfPage.BuyerEmail.SetValueAndWait(userNameAndPass);
-            orderCreateSelfPage.DeclaredPrice.SetValueAndWait("0");
+            orderCreateSelfPage.DeclaredPrice.SetValueAndWait("10");
             orderCreateSelfPage.PaymentPrice.SetValueAndWait("5");
             orderCreateSelfPage.GoodsDescription.SetValueAndWait("4");
             orderCreateSelfPage.OrderComment.SetValueAndWait("OrderComment");
@@ -174,7 +174,7 @@ namespace Autotests.Tests.T02_UserTests
             orderCreateSelfPage.СountedButton.Click();
             orderCreateSelfPage.MapOrders.SwitchToFrame();
 
-            orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
+            orderCreateSelfPage.MapOrders.City.SelectValueStP();
             orderCreateSelfPage.MapOrders.ImageLocator.Click();
             orderCreateSelfPage.MapOrders.TakeHere.Click();
             orderCreateSelfPage.MapOrders.SwitchToDefaultContent();
@@ -200,8 +200,8 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.BuyerPhone.WaitValue("+7 (111)111-1111");
             orderSelfEditingPage.BuyerEmail.WaitValue(userNameAndPass);
             orderSelfEditingPage.BuyerPhoneAdd.WaitValue("+71234567890, +71234567890");
-            orderSelfEditingPage.DeclaredPrice.WaitValue("0");
-            orderSelfEditingPage.PaymentPrice.WaitValue("5");
+            orderSelfEditingPage.DeclaredPrice.WaitValue("10");
+            orderSelfEditingPage.PaymentPrice.WaitValue("0");
             orderSelfEditingPage.GoodsDescription.WaitValue("4");
             orderSelfEditingPage.OrderComment.WaitValue("OrderComment");
             orderSelfEditingPage.ItemsCount.WaitValue("1");
@@ -245,8 +245,8 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableSender.IsCargoVolume.WaitText("да");
 
 
-            orderPage.TableRecipient.City.WaitText("Москва");
-            orderPage.TableRecipient.Address.WaitText("Ленинский проспект 127");
+            orderPage.TableRecipient.City.WaitText("Санкт-Петербург");
+            orderPage.TableRecipient.Address.WaitText("ул. Салова, 27Литер АД, пом. 35");
             orderPage.TableRecipient.Name.WaitText("Фамилия2 Имя2 Очество2");
             orderPage.TableRecipient.Email.WaitText("2" + userNameAndPass);
             orderPage.TableRecipient.Phone.WaitText("+7 (222)222-2222");
@@ -258,7 +258,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
             orderPage.TablePrice.DeclaredPrice.WaitText("1600.00 руб.");
             orderPage.TablePrice.Insurance.WaitText("0.00 руб.");
-            orderPage.TablePrice.DeliveryPrice.WaitText("65.00 руб.");
+            orderPage.TablePrice.DeliveryPrice.WaitText("55.00 руб.");
             orderPage.TablePrice.PickupPrice.WaitText("21.00 руб.");
 
             orderPage.TableSize.Width.WaitText("11 см");

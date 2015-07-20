@@ -7,8 +7,7 @@ namespace Autotests.Tests.T04_AdminTests
 {
     public class DateTransferCDCountTests : SendOrdersBasePage
     {
-        [Test, Description("Проверяем расчет даты передачи в КД если не стоит галочка Единый забор у компании доставки")
-        ]
+        [Test, Description("Проверяем расчет даты передачи в КД если не стоит галочка Единый забор у компании доставки")]
         public void SinglePickupFalseTest()
         {
             //            Ставим нет (галочку) в компании нашей у поля Единый забор
