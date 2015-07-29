@@ -19,6 +19,7 @@ namespace Autotests.WebPages.Pages.PageUser
             ContactPerson = new TextInput(By.Name("contact_person"));
             ContactPhone = new TextInput(By.Name("contact_phone"));
             ContactEmail = new TextInput(By.Name("contact_email"));
+            PostalCode = new TextInput(By.Name("postal_code"));
             City = new AutocompleteControl(BY.NthOfClass("ajax-combobox", 0));
             Freshlogic = new TextInput(By.Name("freshlogic_id"));
 
@@ -48,6 +49,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public TextInput Flat { get; set; }
         public TextInput ContactPerson { get; set; }
         public TextInput ContactPhone { get; set; }
+        public TextInput PostalCode { get; set; }
         public TextInput ContactEmail { get; set; }
         public AutocompleteControl City { get; set; }
         public TextInput Freshlogic { get; set; }

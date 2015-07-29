@@ -28,7 +28,7 @@ namespace Autotests.Tests.T02_UserTests
 		        {"type", "1"},
 		        {"delivery_point", deliveryPoinId},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveryCompanyId},
+		        {"delivery_company", deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},

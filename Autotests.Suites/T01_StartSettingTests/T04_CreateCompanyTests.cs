@@ -26,7 +26,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             companiesPage.Create.Click();
             var companyCreatePage = companiesPage.GoTo<CompanyCreatePage>();
             companyCreatePage.Name.SetValueAndWait(companyPickupName);
-            companyCreatePage.CompanyDriver.SelectValue("Boxberry");
+            companyCreatePage.CompanyDriver.SelectValue("Aplix");
             companyCreatePage.CompanyAddress.SetValueAndWait("Address");
             companyCreatePage.ItemsMax.SetValueAndWait("3");
             companyCreatePage.ManagersLegalEntity.SetFirstValueSelect(legalEntityName);

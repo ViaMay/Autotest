@@ -25,11 +25,13 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            подтверждаем что заказы на складе
             var responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
+//                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
+                new NameValueCollection { { "barcode", "dd-" + ordersId[0] }, });
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
             responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
+//                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
+                new NameValueCollection { { "barcode", "dd-" + ordersId[1] }, });
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
 //            запрашиваем магазины

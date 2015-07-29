@@ -45,6 +45,7 @@ namespace Autotests.Tests.T03_ApiTests
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
 		        {"items_count", "2"},
 		        {"is_cargo_volume", "true"},
+		        {"to_shop_api_key", keyShopPublic},
 		        {"order_comment", "order_comment"}
                 });
             Assert.IsTrue(responseCreateOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");

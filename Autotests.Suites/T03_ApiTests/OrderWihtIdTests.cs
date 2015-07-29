@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections.Specialized;
 using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages.Pages.PageAdmin;
 using Autotests.WebPages.Pages.PageUser;
@@ -12,7 +8,7 @@ namespace Autotests.Tests.T03_ApiTests
 {
     public class OrderWihtIdTests : ConstVariablesTestBase
     {
-        [Test, Description("Создание заказа на самовывоз c указанием ID, запрос статусов, информации, подтверждения и отмена заявки")]
+        [Test, Description("Создание заказа на самовывоз c указанием ID, запрос статусов, информации, подтверждения и отмена заявки"), Ignore]
         public void OrderWihtIdTest()
         {
             LoginAsAdmin(adminName, adminPass);
@@ -101,22 +97,22 @@ namespace Autotests.Tests.T03_ApiTests
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/process_i_orders");
 
 //            подтверждаем что заказ на складе
-            var responseConfirmDelivery = (ApiResponse.ResponseMessage)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
+            var responseConfirmPart = (ApiResponse.ResponseMessage)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
                 new NameValueCollection { { "barcode", responseCreateOrders.Response.Barcodes[0] }, });
-            Assert.IsTrue(responseConfirmDelivery.Success);
-            Assert.AreEqual(responseConfirmDelivery.Response.Message, "В заказе dd-" + responseCreateOrders.Response.OrderId
+            Assert.IsTrue(responseConfirmPart.Success);
+            Assert.AreEqual(responseConfirmPart.Response.Message, "В заказе dd-" + responseCreateOrders.Response.OrderId
                 + " 3 мест, вы отсканировали место m01, остались места m02, m03");
-            
-            responseConfirmDelivery = (ApiResponse.ResponseMessage)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
+
+            responseConfirmPart = (ApiResponse.ResponseMessage)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
                 new NameValueCollection { { "barcode", responseCreateOrders.Response.Barcodes[1] }, });
-            Assert.IsTrue(responseConfirmDelivery.Success);
-            Assert.AreEqual(responseConfirmDelivery.Response.Message, "В заказе dd-" + responseCreateOrders.Response.OrderId
+            Assert.IsTrue(responseConfirmPart.Success);
+            Assert.AreEqual(responseConfirmPart.Response.Message, "В заказе dd-" + responseCreateOrders.Response.OrderId
                 + " 3 мест, вы отсканировали место m02, остались места m03");
 
-            var responseConfirmDeliveryF = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
+            var responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
                 new NameValueCollection { { "barcode", responseCreateOrders.Response.Barcodes[2] }, });
-            Assert.IsTrue(responseConfirmDeliveryF.Success);
-            Assert.AreEqual(responseConfirmDeliveryF.Response.Message, "Заказ #" + responseCreateOrders.Response.Barcodes[2]
+            Assert.IsTrue(responseConfirmDelivery.Success);
+            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #" + responseCreateOrders.Response.Barcodes[2]
                 + " подтвержден. Заказ подтвержден у вас на складе и ожидает отправки в транспортную компанию");
 
 //            формируем  документы
@@ -125,10 +121,22 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsTrue(responseDocumentsDelivery.Success);
 
 //            Возврат 
-            var responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
+            responseConfirmPart = (ApiResponse.ResponseMessage)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
                 new NameValueCollection { { "barcode", responseCreateOrders.Response.Barcodes[2] }, });
+            Assert.IsTrue(responseConfirmPart.Success);
+            Assert.AreEqual(responseConfirmPart.Response.Message, "В заказе dd-" + responseCreateOrders.Response.OrderId
+                + " 3 мест, вы отсканировали место m03, остались места m01, m02");
+
+            responseConfirmPart = (ApiResponse.ResponseMessage)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
+                new NameValueCollection { { "barcode", responseCreateOrders.Response.Barcodes[1] }, });
+            Assert.IsTrue(responseConfirmPart.Success);
+            Assert.AreEqual(responseConfirmPart.Response.Message, "В заказе dd-" + responseCreateOrders.Response.OrderId
+                + " 3 мест, вы отсканировали место m02, остались места m01");
+
+            var responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
+                new NameValueCollection { { "barcode", responseCreateOrders.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmReturn.Success);
-            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #" + responseCreateOrders.Response.Barcodes[2]
+            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #" + responseCreateOrders.Response.Barcodes[0]
                 + " подтвержден для возврата. Заказ подтвержден для возврата и ожидает отправки в интернет-магазин");
             Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
 
@@ -141,7 +149,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
         }
 
-        [Test, Description("Создание заказа на курьерку c указанием ID, не корректный")]
+        [Test, Description("Создание заказа на курьерку c указанием ID, не корректный"), Ignore]
         public void OrderWihtIdErrorTest()
         {
             LoginAsAdmin(adminName, adminPass);

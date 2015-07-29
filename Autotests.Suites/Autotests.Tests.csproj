@@ -102,7 +102,10 @@
     <Compile Include="T02_UserTests\OrderCancelTests.cs" />
     <Compile Include="T02_UserTests\OrderCourirsEditingRouteTests.cs" />
     <Compile Include="T02_UserTests\OrderSelfEditingRouteTests.cs" />
+    <Compile Include="T03_ApiTests\OrderCreateToShopApiKeyTests.cs" />
     <Compile Include="T03_ApiTests\OrderEditingSendTests.cs" />
+    <Compile Include="T03_ApiTests\PickupWihtCountTests.cs" />
+    <Compile Include="T03_ApiTests\UserBarcodeTests.cs" />
     <Compile Include="T03_ApiTests\OrderWihtIdTests.cs" />
     <Compile Include="T03_ApiTests\ShopDeliveryCompanyTests.cs" />
     <Compile Include="T03_ApiTests\ShopPickupCompanyTests.cs" />

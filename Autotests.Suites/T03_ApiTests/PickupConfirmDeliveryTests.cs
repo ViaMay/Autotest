@@ -25,22 +25,26 @@ namespace Autotests.Tests.T03_ApiTests
             var responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
                 new NameValueCollection
                 {
-                    {"barcode", "dd-" + ordersId[0] + "M01" },
+//                    {"barcode", "dd-" + ordersId[0] + "M01" },
+                    {"barcode", "dd-" + ordersId[0] },
                 }
                 );
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
-            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #dd-" + ordersId[0] + "M01" + 
+//            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #dd-" + ordersId[0] + "M01" + 
+            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #dd-" + ordersId[0] + 
                 " подтвержден. Заказ подтвержден у вас на складе и ожидает отправки в транспортную компанию");
             Assert.AreEqual(responseConfirmDelivery.Response.Status, "20");
 
             responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
                 new NameValueCollection
                 {
-                    {"barcode", "dd-" + ordersId[1] + "M01" },
+//                    {"barcode", "dd-" + ordersId[1] + "M01" },
+                    {"barcode", "dd-" + ordersId[1]},
                 }
                 );
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
-            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #dd-" + ordersId[1] + "M01" +
+//            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #dd-" + ordersId[1] + "M01" +
+            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #dd-" + ordersId[1] +
                 " подтвержден. Заказ подтвержден у вас на складе и ожидает отправки в транспортную компанию");
             Assert.AreEqual(responseConfirmDelivery.Response.Status, "20");
         }
@@ -64,7 +68,8 @@ namespace Autotests.Tests.T03_ApiTests
                 }
                );
             Assert.IsFalse(responseConfirmDelivery.Success);
-            Assert.AreEqual(responseConfirmDelivery.Response.ErrorText, "Заказ не найден. Сверьте номер на штрих-коде, соответствует ли он коду " + errorOrderId);
+//            Assert.AreEqual(responseConfirmDelivery.Response.ErrorText, "Заказ не найден. Сверьте номер на штрих-коде, соответствует ли он коду " + errorOrderId);
+            Assert.AreEqual(responseConfirmDelivery.Response.ErrorText, "Заказ не найден");
 
 //            отправляем запрос с пустым номером заявки
             responseConfirmDelivery = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",

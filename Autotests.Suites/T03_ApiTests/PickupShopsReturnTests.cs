@@ -25,11 +25,13 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            подтверждаем что заказы на складе
             var responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
+//                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
+                new NameValueCollection { { "barcode", "dd-" + ordersId[0] }, });
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
             responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
+//                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
+                new NameValueCollection { { "barcode", "dd-" + ordersId[1] }, });
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
 //            формируем  документы
@@ -39,12 +41,14 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            делаем возврат
             var responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
+//                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
+                new NameValueCollection { { "barcode", "dd-" + ordersId[0] }, });
             Assert.IsTrue(responseConfirmReturn.Success);
             Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
 
             responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
+//                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
+                new NameValueCollection { { "barcode", "dd-" + ordersId[1] }, });
             Assert.IsTrue(responseConfirmReturn.Success);
             Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
 
@@ -59,7 +63,7 @@ namespace Autotests.Tests.T03_ApiTests
             string shopId = shopsPage.Table.GetRow(0).ID.GetText();
             Assert.AreEqual(responsePickupShop.Response[0].Id, shopId);
 
-//            формируем  документы на возврат
+//            формируем документы на возврат
             var responseDocumentsReturn = (ApiResponse.ResponseDocumentPickup)apiRequest.GET("api/v1/pickup/" + pickupId + "/documents_return.json",
                new NameValueCollection { { "shop_id", shopId }, });
             Assert.IsTrue(responseDocumentsReturn.Success);

@@ -38,6 +38,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             warehouseCreatePage.Flat.SetValueAndWait("Квартира");
             warehouseCreatePage.ContactPerson.SetValueAndWait(legalEntityName);
             warehouseCreatePage.ContactPhone.SetValueAndWait("1111111111");
+            warehouseCreatePage.PostalCode.SetValueAndWait("555444");
             warehouseCreatePage.ContactEmail.SetValueAndWait(userNameAndPass);
             warehouseCreatePage.City.SetFirstValueSelect("Москва");
 

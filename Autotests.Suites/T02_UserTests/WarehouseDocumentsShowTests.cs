@@ -16,7 +16,7 @@ namespace Autotests.Tests.T02_UserTests
             var row = warehousesListPage.Table.FindRowByName(userWarehouseName);
             row.Name.WaitText(userWarehouseName);
             row.City.WaitText("Москва");
-            row.Address.WaitText("Улица, Дом Квартира");
+            row.Address.WaitText("555444, Улица, Дом Квартира");
             row.Contact.WaitText("test_legalEntity (+7 (111)111-1111 tester@user.ru)");
             row.TimeWork.WaitText("1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23");
 

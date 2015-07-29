@@ -56,7 +56,8 @@ namespace Autotests.Tests.T03_ApiTests
             var responseConfirmDelivery = apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
                 new NameValueCollection
                 {
-                    {"barcode", "dd-" + responseCreateOrder.Response.OrderId + "M01" },
+//                    {"barcode", "dd-" + responseCreateOrder.Response.OrderId + "M01" },
+                    {"barcode", "dd-" + responseCreateOrder.Response.OrderId},
                 }
                 );
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");

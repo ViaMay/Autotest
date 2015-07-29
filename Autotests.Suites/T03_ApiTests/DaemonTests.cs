@@ -246,6 +246,8 @@ namespace Autotests.Tests.T03_ApiTests
                 if (responseDeliveryPoints.Points[i].Name == deliveryPointName)
                     throw new Exception(string.Format("Найдена точка доставки с именем {0} в списке всех точек доставки", deliveryPointName));
             }
+//            проверяем что вторая точка есть
+            responseRowDeliveryPoint = FindRowByName(deliveryPointName + "2", responseDeliveryPoints);
         }
 
         public ApiResponse.OptionsPoints FindRowByName(string name, ApiResponse.ResponseDeamonPoints responseDeliveryPoints)
