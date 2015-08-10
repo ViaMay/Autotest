@@ -19,99 +19,68 @@ namespace Autotests.Tests.T03_ApiTests
             usersPage.UsersTable.GetRow(0).ActionsEdit.Click();
             var userEdiringPage = usersPage.GoTo<UserCreatePage>();
             var pickupId = userEdiringPage.Key.GetValue();
+            usersPage =
+                LoadPage<UsersPage>("admin/users?&filters[username]=" + userNameAndPass);
+            usersPage.Table.GetRow(0).ActionsEdit.Click();
+            var userCreatePage = usersPage.GoTo<UserCreatePage>();
+            var userKey = userCreatePage.Key.GetValue();
+
+            var responseBarcodes01 = (ApiResponse.ResponseUserBarcodes)apiRequest.GET("api/v1/cabinet/" + userKey + "/get_packages_by_order.json",
+                new NameValueCollection { { "order_id", ordersId[0] }, });
+            var responseBarcodes02 = (ApiResponse.ResponseUserBarcodes)apiRequest.GET("api/v1/cabinet/" + userKey + "/get_packages_by_order.json",
+                new NameValueCollection { { "order_id", ordersId[1] }, });
 
 //            запрашиваем документы на возврат - ошибка
             var responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
-                new NameValueCollection { { "barcode", "dd-" + ordersId[0] }, });
+                new NameValueCollection { { "barcode", responseBarcodes01.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmReturn.Success);
-//            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[0] + "M01" 
-            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[0]  
+            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #" + responseBarcodes01.Response.Barcodes[0]  
                 + " невозможно вернуть. Заказ еще не отправлялся и находится на складе интернет-магазина");
             Assert.AreEqual(responseConfirmReturn.Response.Status, "10");
 
             responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-//                new NameValueCollection{{"barcode", "dd-" + ordersId[1] + "M01" },});
-                new NameValueCollection{{"barcode", "dd-" + ordersId[1] },});
+                new NameValueCollection { { "barcode", responseBarcodes02.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmReturn.Success);
-//            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[1] + "M01" 
-            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[1]  
+            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #" + responseBarcodes02.Response.Barcodes[0]  
                 + " невозможно вернуть. Заказ еще не отправлялся и находится на складе интернет-магазина");
             Assert.AreEqual(responseConfirmReturn.Response.Status, "10");
 
 //            подтверждаем что заказ на складе
             var responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[0] }, });
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
+                new NameValueCollection { { "barcode", responseBarcodes01.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
             responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[1] }, }
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, }
-                );
+                new NameValueCollection { { "barcode", responseBarcodes02.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
-
-////            снова проверяем статус - ошибка
-//            responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[0] }, });
-////                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
-//            Assert.IsTrue(responseConfirmReturn.Success);
-////            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[0] + "M01" 
-//            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[0] 
-//                + " невозможно вернуть. Заказ находится на складе Забора и ожидает отправки в транспортную компанию.");
-//            Assert.AreEqual(responseConfirmReturn.Response.Status, "20");
-//
-//            responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[1] }, });
-////                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
-//            Assert.IsTrue(responseConfirmReturn.Success);
-////            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[1] + "M01" 
-//            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[1] 
-//                + " невозможно вернуть. Заказ находится на складе Забора и ожидает отправки в транспортную компанию.");
-//            Assert.AreEqual(responseConfirmReturn.Response.Status, "20");
-//
-////            формируем  документы
-//            var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
-//            var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
-//            var responseDocumentsDelivery = apiRequest.GET("api/v1/pickup/" + pickupId + "/documents_delivery.json",
-//               new NameValueCollection{ {"delivery_company_id", deliveryCompanyId},});
-//            Assert.IsTrue(responseDocumentsDelivery.Success);
 
 //            проверяем теперь
             responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[0] }, });
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
+                new NameValueCollection { { "barcode", responseBarcodes01.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmReturn.Success);
-//            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[0] + "M01" 
-            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[0]
+            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #" + responseBarcodes01.Response.Barcodes[0]
                 + " подтвержден для возврата. Заказ подтвержден для возврата и ожидает отправки в интернет-магазин");
             Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
 
             responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[1] }, });
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
+                new NameValueCollection { { "barcode", responseBarcodes02.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmReturn.Success);
-//            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[1] + "M01" 
-            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[1] 
+            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #" + responseBarcodes02.Response.Barcodes[0]
                 + " подтвержден для возврата. Заказ подтвержден для возврата и ожидает отправки в интернет-магазин");
             Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
 
 //            при повторной отправке на возврат
             responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[0] }, });
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
+                new NameValueCollection { { "barcode", responseBarcodes01.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmReturn.Success);
-//            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[0] + "M01" 
-            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[0]
+            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #" + responseBarcodes01.Response.Barcodes[0]
                 + " уже ожидает возврата. Заказ подтвержден для возврата и ожидает отправки в интернет-магазин");
             Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
 
             responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-                new NameValueCollection { { "barcode", "dd-" + ordersId[1] }, });
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
+                new NameValueCollection { { "barcode", responseBarcodes02.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmReturn.Success);
-//            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[1] + "M01" 
-            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #dd-" + ordersId[1]
+            Assert.AreEqual(responseConfirmReturn.Response.Message, "Заказ #" + responseBarcodes02.Response.Barcodes[0]
                 + " уже ожидает возврата. Заказ подтвержден для возврата и ожидает отправки в интернет-магазин");
             Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
         }

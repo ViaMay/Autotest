@@ -19,37 +19,39 @@ namespace Autotests.Tests.T03_ApiTests
             usersPage.UsersTable.GetRow(0).ActionsEdit.Click();
             var userEdiringPage = usersPage.GoTo<UserCreatePage>();
             var pickupId = userEdiringPage.Key.GetValue();
+            usersPage =
+                LoadPage<UsersPage>("admin/users?&filters[username]=" + userNameAndPass);
+            usersPage.Table.GetRow(0).ActionsEdit.Click();
+            var userCreatePage = usersPage.GoTo<UserCreatePage>();
+            var userKey = userCreatePage.Key.GetValue();
+
+            var responseBarcodes01 = (ApiResponse.ResponseUserBarcodes)apiRequest.GET("api/v1/cabinet/" + userKey + "/get_packages_by_order.json",
+                new NameValueCollection { { "order_id", ordersId[0] }, });
+            var responseBarcodes02 = (ApiResponse.ResponseUserBarcodes)apiRequest.GET("api/v1/cabinet/" + userKey + "/get_packages_by_order.json",
+                new NameValueCollection { { "order_id", ordersId[1] }, });
 
 //            подтверждаем что заказ на складе
             var responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
-                new NameValueCollection { { "barcode", "dd-" + ordersId[0] }, });
+                new NameValueCollection { { "barcode", responseBarcodes01.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmDelivery.Success);
-
             responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
-                new NameValueCollection { { "barcode", "dd-" + ordersId[1] }, });
+                new NameValueCollection { { "barcode", responseBarcodes02.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmDelivery.Success);
-
-//            формируем  документы
-            var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[name]=" + companyName);
-            var deliveryCompanyId = companiesPage.Table.GetRow(0).ID.GetText();
-            var responseDocumentsDelivery = apiRequest.GET("api/v1/pickup/" + pickupId + "/documents_delivery.json",
-               new NameValueCollection{ {"delivery_company_id", deliveryCompanyId},});
-            Assert.IsTrue(responseDocumentsDelivery.Success);
 
 //            делаем возврат
             var responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[0] + "M01" }, });
-                new NameValueCollection { { "barcode", "dd-" + ordersId[0] }, });
+                new NameValueCollection { { "barcode", responseBarcodes01.Response.Barcodes[0] }, });
+            Assert.IsTrue(responseConfirmReturn.Success);
+            Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
+            responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
+                new NameValueCollection { { "barcode", responseBarcodes02.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmReturn.Success);
             Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
 
-            responseConfirmReturn = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_return.json",
-//                new NameValueCollection { { "barcode", "dd-" + ordersId[1] + "M01" }, });
-                new NameValueCollection { { "barcode", "dd-" + ordersId[1] }, });
-            Assert.IsTrue(responseConfirmReturn.Success);
-            Assert.AreEqual(responseConfirmReturn.Response.Status, "40");
+            var ordersEditPage = LoadPage<OrderInputEditingPage>("admin/orders/edit/" + ordersId[0]);
+            ordersEditPage.PickupStatus.WaitText("Возврат со склада Сортировки");
+            ordersEditPage = LoadPage<OrderInputEditingPage>("admin/orders/edit/" + ordersId[1]);
+            ordersEditPage.PickupStatus.WaitText("Возврат со склада Сортировки");
 
 //            формируем документы на возврат
             var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
@@ -59,6 +61,11 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsTrue(responseDocumentsReturn.Success);
             responseDocumentsReturn.Response.Confirm.Contains("http://s.");
             responseDocumentsReturn.Response.Confirm.Contains(".pdf?token=");
+
+            ordersEditPage = LoadPage<OrderInputEditingPage>("admin/orders/edit/" + ordersId[0]);
+            ordersEditPage.PickupStatus.WaitText("На складе ИМ");
+            ordersEditPage = LoadPage<OrderInputEditingPage>("admin/orders/edit/" + ordersId[1]);
+            ordersEditPage.PickupStatus.WaitText("На складе ИМ");
 
 //            формируем документы - нет заказов
             var responseDocumentsError = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/pickup/" + pickupId + "/documents_return.json",

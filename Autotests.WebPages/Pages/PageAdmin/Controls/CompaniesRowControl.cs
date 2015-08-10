@@ -10,7 +10,7 @@ namespace Autotests.WebPages.Pages.PageAdmin.Controls
         public CompaniesRowControl(int index)
             : base(index)
         {
-            SinglePickup = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[12]", index)));
+            SinglePickup = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[13]", index)));
         }
         public StaticText SinglePickup { get; private set; }
     }

@@ -8,6 +8,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public OrderInputEditingPage()
         {
             LabelDirectory = new StaticText(By.CssSelector("legend"));
+            PickupStatus = new Select(By.Name("pickup_status"));
             PickupDate = new StaticText(By.Name("pickup_date"));
             TransferCDDate = new StaticText(By.Name("transfer_date"));
             ProcessDate = new StaticText(By.Name("process_date"));
@@ -15,6 +16,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
 
         public StaticText LabelDirectory { get; set; }
         public StaticText PickupDate { get; set; }
+        public Select PickupStatus { get; set; }
         public StaticText TransferCDDate { get; set; }
         public StaticText ProcessDate { get; set; }
         

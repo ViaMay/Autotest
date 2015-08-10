@@ -29,7 +29,7 @@ namespace Autotests.Tests.T02_UserTests
             var shopCreatePage = shopsListPage.GoTo<UserShopCreatePage>();
             shopCreatePage.Name.SetValueAndWait(userShopName + "_2");
             shopCreatePage.Address.SetValueAndWait("Квебек");
-            shopCreatePage.Warehouse.SelectValue(userWarehouseName);
+            shopCreatePage.Warehouse.SelectValue(userWarehouseName + " (Москва)");
             shopCreatePage.CreateButton.Click();
             shopsListPage = shopCreatePage.GoTo<UserShopsPage>();
             var row = shopsListPage.Table.FindRowByName(userShopName + "_2");

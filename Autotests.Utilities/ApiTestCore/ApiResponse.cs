@@ -499,6 +499,13 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class MessageLkAuth
+        {
+            [DataMember(Name = "ttl_token")]
+            public string Token { get; set; }
+        }
+
+        [DataContract]
         public class MessageTrueCancal
         {
             [DataMember(Name = "order_id")]
@@ -534,8 +541,8 @@ namespace Autotests.Utilities.ApiTestCore
         [DataContract]
         public class MessageUserBarcodes
         {
-            [DataMember(Name = "list")]
-            public string[] List  { get; set; }
+            [DataMember(Name = "barcodes")]
+            public string[] Barcodes { get; set; }
         }
         
         [DataContract]
@@ -559,6 +566,40 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "documents")]
             public Documents[] Documents { get; set; }
+        }
+                
+        [DataContract]
+        public class MessageDocumentsList
+        {
+            [DataMember(Name = "_id")]
+            public string Id { get; set; }
+
+            [DataMember(Name = "_create_user")]
+            public string CreateUser { get; set; }
+
+            [DataMember(Name = "_create_date")]
+            public string CreateDate { get; set; }
+
+            [DataMember(Name = "_modify_user")]
+            public string ModifyUser { get; set; }
+
+            [DataMember(Name = "_modify_date")]
+            public string ModifyDate { get; set; }
+
+            [DataMember(Name = "type")]
+            public string Type { get; set; }
+
+            [DataMember(Name = "warehouse")]
+            public string Warehouse { get; set; }
+
+            [DataMember(Name = "pickup_company")]
+            public string IdPickupCompany { get; set; }
+
+            [DataMember(Name = "delivery_company")]
+            public string IdDeliveryCompany { get; set; }
+
+            [DataMember(Name = "file")]
+            public string File { get; set; }
         }
         
         [DataContract]
@@ -726,6 +767,13 @@ namespace Autotests.Utilities.ApiTestCore
         }
 
         [DataContract]
+        public class ResponseLkAuth : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageLkAuth Response { get; set; }
+        }
+
+        [DataContract]
         public class ResponsePickupOrders : TResponse
         {
             [DataMember(Name = "response")]
@@ -751,6 +799,13 @@ namespace Autotests.Utilities.ApiTestCore
         {
             [DataMember(Name = "response")]
             public MessageDocumentsRequest Response { get; set; }
+        }
+          
+        [DataContract]
+        public class ResponseDocumentsList : TResponse
+        {
+            [DataMember(Name = "response")]
+            public MessageDocumentsList[] Response { get; set; }
         }       
  
         [DataContract]

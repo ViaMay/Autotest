@@ -2,14 +2,13 @@
 using System.Linq;
 using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages.Pages.PageAdmin;
-using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ApiTests
 {
     public class UserBarcodeTests : ConstVariablesTestBase
     {
-        [Test, Description("get_barcodes.json Получить пул штрих-кодов"), Ignore]
+        [Test, Description("get_barcodes.json Получить пул штрих-кодов")]
         public void UserGetBarcodesTest()
         {
             LoginAsAdmin(adminName, adminPass);
@@ -21,7 +20,11 @@ namespace Autotests.Tests.T03_ApiTests
             var deliveryCompaniesPage =
                 LoadPage<CompaniesPage>("/admin/companies/?&filters[name]=" + companyName);
             var deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
-
+            deliveryCompaniesPage.Table.GetRow(0).ActionsEdit.Click();
+            var companyCreatePage = deliveryCompaniesPage.GoTo<CompanyCreatePage>();
+            companyCreatePage.BarcodePull.CheckAndWait();
+            companyCreatePage.SaveButton.Click();
+            deliveryCompaniesPage = companyCreatePage.GoTo<CompaniesPage>();
             var usersPage =
                 LoadPage<UsersPage>("admin/users?&filters[username]=" + userNameAndPass);
             usersPage.Table.GetRow(0).ActionsEdit.Click();
@@ -30,28 +33,25 @@ namespace Autotests.Tests.T03_ApiTests
             var userKey = userCreatePage.Key.GetValue();
             userCreatePage.SaveButton.Click();
             userCreatePage = userCreatePage.GoTo<UserCreatePage>();
+            var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
+            adminMaintenancePage.AlertText.WaitText("Cache flushed!");
 
 //            получение шрикодов
-            var response =
+            var response1 =
                 (ApiResponse.ResponseUserBarcodes) apiRequest.POST("cabinet/" + userKey + "/get_barcodes.json",
                     new NameValueCollection
                     {});
-            Assert.AreEqual(response.Response.List.Count(), 10);
-
-            var responseFail =
-                (ApiResponse.ResponseFail) apiRequest.POST("cabinet/" + userKey + "/get_barcodes.json",
-                    new NameValueCollection {});
-            Assert.AreEqual(responseFail.Response.ErrorText, "Too frequent queries");
-
-            //            оправляем заказ используя один из номеров
-
+            Assert.AreEqual(response1.Response.Barcodes.Count(), 10);
+            
+            //            оправляем заказ используя три номера из списка
             var responseCreateOrders =
-                (ApiResponse.ResponseAddOrder) apiRequest.POST(keyShopPublic + "/order_create.json",
+                (ApiResponse.ResponseAddOrder) apiRequest.POST(keyShopPublic + "/pro_order_create.json",
                     new NameValueCollection
                     {
                         {"api_key", keyShopPublic},
                         {"type", "1"},
-                        {"_id", response.Response.List[0]},
+                        {"barcodes", response1.Response.Barcodes[2]+ 
+                        ", " + response1.Response.Barcodes[1] + ", " + response1.Response.Barcodes[0]},
                         {"delivery_point", deliveryPoinId},
                         {"to_city", "151184"},
                         {"delivery_company", "" + deliveryCompanyId},
@@ -69,18 +69,23 @@ namespace Autotests.Tests.T03_ApiTests
                         {"to_email", userNameAndPass},
                         {"goods_description", "Памперс"},
                         {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
-                        {"items_count", "3"},
+                        {"items_count", "1"},
                         {"is_cargo_volume", "true"},
                         {"order_comment", "order_comment"}
                     });
             Assert.IsTrue(responseCreateOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
-            Assert.AreEqual(responseCreateOrders.Response.OrderId, response.Response.List[0]);
 
-            response =
+            var response2 =
                 (ApiResponse.ResponseUserBarcodes) apiRequest.POST("cabinet/" + userKey + "/get_barcodes.json",
                     new NameValueCollection
                     {});
-            Assert.AreEqual(response.Response.List.Count(), 10);
+            Assert.AreEqual(response2.Response.Barcodes.Count(), 10);
+            foreach (var code in response2.Response.Barcodes)
+            {
+                Assert.AreNotEqual(code, response1.Response.Barcodes[0]);
+                Assert.AreNotEqual(code, response1.Response.Barcodes[1]);
+                Assert.AreNotEqual(code, response1.Response.Barcodes[2]);
+            }
         }
     }
 }

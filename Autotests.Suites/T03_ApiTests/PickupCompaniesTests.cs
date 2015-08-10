@@ -46,6 +46,7 @@ namespace Autotests.Tests.T03_ApiTests
                         {"to_phone", "9999999999"},
                         {"to_email", userNameAndPass},
                         {"goods_description", "Памперс"},
+                        {"items_count", "1"},
                         {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"}
                     });
             Assert.IsTrue(responseCreateOrder.Success, "Ожидался ответ true на отправленный запрос POST по API");

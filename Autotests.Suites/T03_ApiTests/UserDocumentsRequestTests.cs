@@ -9,12 +9,18 @@ using NUnit.Framework;
 
 namespace Autotests.Tests.T03_ApiTests
 {
-    public class DocumentsRequesAndStatusTests : ConstVariablesTestBase
+    public class UserDocumentsRequestTests : ConstVariablesTestBase
     {
-        [Test, Description("Запрос документов на генерацию и проверка статуса - не работает на стрейдж")]
+        [Test, Description("Запрос документов на генерацию и проверка статуса")]
         public void DocumentsTest()
         {
             LoginAsAdmin(adminName, adminPass);
+            var usersPage =
+                LoadPage<UsersPage>("admin/users?&filters[username]=" + userNameAndPass);
+            usersPage.Table.GetRow(0).ActionsEdit.Click();
+            var userCreatePage = usersPage.GoTo<UserCreatePage>();
+            var userKey = userCreatePage.Key.GetValue();
+
             var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
             var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
             var usersWarehousesPage = LoadPage<AdminBaseListPage>("/admin/warehouses?&filters[name]=" + userWarehouseName);
@@ -84,7 +90,7 @@ namespace Autotests.Tests.T03_ApiTests
 
 //            генерация документов
             var responseDocumentsRequest =
-                (ApiResponse.ResponseDocumentsRequest)apiRequest.GET("api/v1/" + keyShopPublic + "/documents_request.json",
+                (ApiResponse.ResponseDocumentsRequest)apiRequest.GET("api/v1/cabinet/" + userKey + "/documents_request.json",
                 new NameValueCollection
                 {
                 {"order_id", responseCreateOrders.Response.OrderId + "," + responseCreateOrders2.Response.OrderId }
@@ -123,12 +129,15 @@ namespace Autotests.Tests.T03_ApiTests
         public void DocumentsErrorTest()
         {
             LoginAsAdmin(adminName, adminPass);
-            var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
-            var keyShopPublic = shopsPage.Table.GetRow(0).KeyPublic.GetText();
+            var usersPage =
+                LoadPage<UsersPage>("admin/users?&filters[username]=" + userNameAndPass);
+            usersPage.Table.GetRow(0).ActionsEdit.Click();
+            var userCreatePage = usersPage.GoTo<UserCreatePage>();
+            var userKey = userCreatePage.Key.GetValue();
 
-            //            генерация документов с не правильным Id заказа
+            //            генерация документов с неправильным Id заказа
             var responseDocumentsError =
-                (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + keyShopPublic + "/documents_request.json",
+                (ApiResponse.ResponseFail)apiRequest.GET("api/v1/cabinet/" + userKey + "/documents_request.json",
                 new NameValueCollection
                 {
                 {"order_id", "123456" }
@@ -136,13 +145,12 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.IsFalse(responseDocumentsError.Success, "Ожидался ответ false на отправленный запрос Get по API");
             Assert.AreEqual(responseDocumentsError.Response.ErrorText, "Order not found");
 
-            //            проверка статуса документа с неправильным id RequestId
-            var responseDocumentsStatus =
-                (ApiResponse.ResponseDocumentsRequest)apiRequest.GET("api/v1/" + keyShopPublic +
-                 "/documents_status/" + "a_23456" + ".json", new NameValueCollection { });
-
-            Assert.IsTrue(responseDocumentsStatus.Success, "Ожидался ответ true на отправленный запрос Get по API");
-            Assert.IsFalse(responseDocumentsStatus.Response.Completed);
+            //            генерация документов с пустым Id заказа
+            responseDocumentsError =
+                (ApiResponse.ResponseFail)apiRequest.GET("api/v1/cabinet/" + userKey + "/documents_request.json",
+                new NameValueCollection{});
+            Assert.IsFalse(responseDocumentsError.Success, "Ожидался ответ false на отправленный запрос Get по API");
+            Assert.AreEqual(responseDocumentsError.Response.ErrorText, "Empty id field");
         }
     }
 }

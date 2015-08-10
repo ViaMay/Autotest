@@ -10,7 +10,7 @@ namespace Autotests.Tests.T03_ApiTests
         [Test, Description("Принять заказ на склад по штрих-коду")]
         public void PickupConfirmDeliveryTest()
         {
-            var adminPage = LoginAsAdmin(adminName, adminPass);
+            LoginAsAdmin(adminName, adminPass);
 //            отправляем две заявки
             string[] ordersId = SendOrdersRequest();
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/process_i_orders");
@@ -21,30 +21,29 @@ namespace Autotests.Tests.T03_ApiTests
             var userEdiringPage = usersPage.GoTo<UserCreatePage>();
             var pickupId = userEdiringPage.Key.GetValue();
 
-//            шлем запрос потверить их
+            usersPage =
+                LoadPage<UsersPage>("admin/users?&filters[username]=" + userNameAndPass);
+            usersPage.Table.GetRow(0).ActionsEdit.Click();
+            var userCreatePage = usersPage.GoTo<UserCreatePage>();
+            var userKey = userCreatePage.Key.GetValue();
+
+            var responseBarcodes = (ApiResponse.ResponseUserBarcodes)apiRequest.GET("api/v1/cabinet/" + userKey + "/get_packages_by_order.json",
+                new NameValueCollection {{ "order_id", ordersId[0] },});
+
+//            шлем запрос подтверить их
             var responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-                new NameValueCollection
-                {
-//                    {"barcode", "dd-" + ordersId[0] + "M01" },
-                    {"barcode", "dd-" + ordersId[0] },
-                }
-                );
+                new NameValueCollection { { "barcode", responseBarcodes.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
-//            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #dd-" + ordersId[0] + "M01" + 
-            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #dd-" + ordersId[0] + 
+            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #" + responseBarcodes.Response.Barcodes[0] +
                 " подтвержден. Заказ подтвержден у вас на складе и ожидает отправки в транспортную компанию");
             Assert.AreEqual(responseConfirmDelivery.Response.Status, "20");
 
+            responseBarcodes = (ApiResponse.ResponseUserBarcodes)apiRequest.GET("api/v1/cabinet/" + userKey + "/get_packages_by_order.json",
+                new NameValueCollection { { "order_id", ordersId[1] }, });
             responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-                new NameValueCollection
-                {
-//                    {"barcode", "dd-" + ordersId[1] + "M01" },
-                    {"barcode", "dd-" + ordersId[1]},
-                }
-                );
+                new NameValueCollection { { "barcode", responseBarcodes.Response.Barcodes[0] }, });
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
-//            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #dd-" + ordersId[1] + "M01" +
-            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #dd-" + ordersId[1] +
+            Assert.AreEqual(responseConfirmDelivery.Response.Message, "Заказ #" + responseBarcodes.Response.Barcodes[0] +
                 " подтвержден. Заказ подтвержден у вас на складе и ожидает отправки в транспортную компанию");
             Assert.AreEqual(responseConfirmDelivery.Response.Status, "20");
         }

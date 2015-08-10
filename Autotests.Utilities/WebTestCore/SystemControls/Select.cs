@@ -10,19 +10,21 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
     public class Select : HtmlControl
     {
         private readonly StaticText selectedText;
+        private readonly StaticText selectedText02;
 
         public Select(By locator, HtmlControl container = null)
             : base(locator, container)
         {
             var controlContainer = new HtmlControlContainer(locator, container);
-            selectedText = new StaticText(By.CssSelector("select > option"), controlContainer);
+            
+            selectedText = new StaticText(By.XPath("option[@selected]"), controlContainer);
+            selectedText02 = new StaticText(By.XPath("option"), controlContainer);
         }
-
         public bool IsMultiple { get; private set; }
 
         public override string GetText()
         {
-            return selectedText.GetText();
+            return selectedText02.GetText();
         }
 
         public override void WaitText(string expectedText)

@@ -191,11 +191,18 @@ namespace Autotests.Utilities.ApiTestCore
                 return (ApiResponse.ResponsePickupOrders)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
 //            ResponseUserBarcodes
-            if (value.Contains(@"success"":true") && value.Contains(@"list"))
+            if (value.Contains(@"success"":true") && value.Contains(@"barcodes"))
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseUserBarcodes));
                 return (ApiResponse.ResponseUserBarcodes)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
+//            ResponseDocumentsList 
+            if (value.Contains(@"success"":true,""response"":[]") || value.Contains(@"success"":true,""response"":[{""_id"""))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDocumentsList));
+                return (ApiResponse.ResponseDocumentsList)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+
 //            ResponsePickupCompaniesOrShops
             if (value.Contains(@"response"":[") && value.Contains(@"id"))
             {
@@ -208,12 +215,17 @@ namespace Autotests.Utilities.ApiTestCore
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponsePickupCompany));
                 return (ApiResponse.ResponsePickupCompany)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
-
 //            ResponseMessage
             if (value.Contains(@"{""success"":true,""response"":{""message"))
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseMessage));
                 return (ApiResponse.ResponseMessage)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+            }
+//            ResponseLkAuth
+            if (value.Contains(@"{""success"":true,""response"":{""ttl_token"))
+            {
+                var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseLkAuth));
+                return (ApiResponse.ResponseLkAuth)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
             var json2 = new DataContractJsonSerializer(typeof (ApiResponse.TResponse));
             return (ApiResponse.TResponse) json2.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));

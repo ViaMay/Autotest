@@ -68,7 +68,6 @@ namespace Autotests.Tests.T03_ApiTests
 //            отправляем запрос так что в магазин с пустой компанией забора
             responseDeliveryCompanу = (ApiResponse.ResponseCompaniesOrShops)apiRequest.GET("api/v1/" + responseShop.Response.Key + "/shop_delivery_companies.json",
                 new NameValueCollection { });
-
             Assert.IsTrue(responseDeliveryCompanу.Success);
 
             var responseRowDeliveryCompanу = FindRowByName(companyName, responseDeliveryCompanу);
@@ -141,6 +140,10 @@ namespace Autotests.Tests.T03_ApiTests
                 pricesPickupPage = pricesPickupPage.GoTo<PricesPickupPage>();
                 pricesPickupPage = LoadPage<PricesPickupPage>("/admin/pickupprices/?&filters[company]=" + companyName);
             }
+
+            var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
+            adminMaintenancePage.AlertText.WaitText("Cache flushed!");
+
 //            Отправляем запрос указываем магазин у которого у компании забора не указаны цены забора
             var responseDeliveryCompanу = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + responseShop.Response.Key + "/shop_delivery_companies.json",
                 new NameValueCollection { });
@@ -148,6 +151,8 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseDeliveryCompanу.Response.ErrorText, "У компании Забора нет забора в городе, к которому привязан склад.");
 
 //            создаем цену забора
+
+            pricesPickupPage = LoadPage<PricesPickupPage>("/admin/pickupprices/");
             pricesPickupPage.Create.Click();
             var pricePickupCreatePage = pricesPickupPage.GoTo<PricePickupCreatePage>();
             pricePickupCreatePage.CompanyName.SetFirstValueSelect(companyName);
@@ -158,6 +163,9 @@ namespace Autotests.Tests.T03_ApiTests
             pricePickupCreatePage.Dimension.SetFirstValueSelect(sideName);
             pricePickupCreatePage.SaveButton.Click();
             pricesPickupPage = pricePickupCreatePage.GoTo<PricesPickupPage>();
+
+            adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
+            adminMaintenancePage.AlertText.WaitText("Cache flushed!");
 
 //            Оправляем запрос указывая магазин у которого есть компания забора с ценами но нет ни одной компании доставки к которой она привязана.
             responseDeliveryCompanу = (ApiResponse.ResponseFail)apiRequest.GET("api/v1/" + responseShop.Response.Key + "/shop_delivery_companies.json",
@@ -175,7 +183,7 @@ namespace Autotests.Tests.T03_ApiTests
                 warehousesPage = LoadPage<AdminBaseListPage>("/admin/warehouses/?&filters[name]=" + userWarehouseName + "_Api");
             }
 
-            var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
+            adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/cache_flush");
             adminMaintenancePage.AlertText.WaitText("Cache flushed!");
 
 //            Отправляем запрос указываем магазин у которого удален склад.

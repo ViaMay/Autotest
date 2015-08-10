@@ -1,4 +1,6 @@
 ﻿using System.Collections.Specialized;
+using System.Threading;
+using System.Threading.Tasks;
 using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages.Pages.PageAdmin;
 using Autotests.WebPages.Pages.PageUser;
@@ -49,7 +51,7 @@ namespace Autotests.Tests.T03_ApiTests
                 {
                 {"api_key", keyShopPublic},
 		        {"type", "1"},
-		        {"_id", response.Response.List[0]},
+		        {"_id", response.Response.Barcodes[0]},
 		        {"delivery_point", deliveryPoinId},
 		        {"to_city", "151184"},
 		        {"delivery_company", "" + deliveryCompanyId},
@@ -72,10 +74,10 @@ namespace Autotests.Tests.T03_ApiTests
 		        {"order_comment", "order_comment"}
                 });
             Assert.IsTrue(responseCreateOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
-            Assert.AreEqual(responseCreateOrders.Response.OrderId, response.Response.List[0]);
-            Assert.AreEqual(responseCreateOrders.Response.Barcodes[0], "dd-" + response.Response.List[0] + "m01");
-            Assert.AreEqual(responseCreateOrders.Response.Barcodes[1], "dd-" + response.Response.List[0] + "m02");
-            Assert.AreEqual(responseCreateOrders.Response.Barcodes[2], "dd-" + response.Response.List[0] + "m03");
+            Assert.AreEqual(responseCreateOrders.Response.OrderId, response.Response.Barcodes[0]);
+            Assert.AreEqual(responseCreateOrders.Response.Barcodes[0], "dd-" + response.Response.Barcodes[0] + "m01");
+            Assert.AreEqual(responseCreateOrders.Response.Barcodes[1], "dd-" + response.Response.Barcodes[0] + "m02");
+            Assert.AreEqual(responseCreateOrders.Response.Barcodes[2], "dd-" + response.Response.Barcodes[0] + "m03");
             
             var defaultPage = shopsPage.LoginOut();
             var homePage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
@@ -182,7 +184,7 @@ namespace Autotests.Tests.T03_ApiTests
                     {
                         {"api_key", keyShopPublic},
                         {"type", "2"},
-                        {"_id", response.Response.List[0]},
+                        {"_id", response.Response.Barcodes[0]},
                         {"to_city", "151184"},
                         {"delivery_company", deliveryCompanyId},
                         {"shop_refnum", userShopName},
@@ -207,9 +209,9 @@ namespace Autotests.Tests.T03_ApiTests
                         {"order_comment", "order_comment"}
                     });
             Assert.IsTrue(responseCreateOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
-            Assert.AreEqual(responseCreateOrders.Response.OrderId, response.Response.List[0]);
-            Assert.AreEqual(responseCreateOrders.Response.Barcodes[0], "dd-" + response.Response.List[0] + "m01");
-            Assert.AreEqual(responseCreateOrders.Response.Barcodes[1], "dd-" + response.Response.List[0] + "m02");
+            Assert.AreEqual(responseCreateOrders.Response.OrderId, response.Response.Barcodes[0]);
+            Assert.AreEqual(responseCreateOrders.Response.Barcodes[0], "dd-" + response.Response.Barcodes[0] + "m01");
+            Assert.AreEqual(responseCreateOrders.Response.Barcodes[1], "dd-" + response.Response.Barcodes[0] + "m02");
 
 //            повторное создание  - получаем ошибку:
             var responseCreateOrdersError =
@@ -218,7 +220,7 @@ namespace Autotests.Tests.T03_ApiTests
                     {
                         {"api_key", keyShopPublic},
                         {"type", "2"},
-                        {"_id", response.Response.List[0]},
+                        {"_id", response.Response.Barcodes[0]},
                         {"to_city", "151184"},
                         {"delivery_company", deliveryCompanyId},
                         {"shop_refnum", userShopName},
@@ -278,7 +280,7 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseCreateOrdersError.Response.ErrorText, "Номер заказа не существует в вашем пуле");
         }
 
-//
+
 //        [Test, Description("Создание 3 заказов одновременно с одним ID")]
 //        public void OrderWihtIdErrorTest02()
 //        {
@@ -310,36 +312,8 @@ namespace Autotests.Tests.T03_ApiTests
 //
 //            Parallel.Invoke(
 //                
-//                () =>
-//                {
-//                    Thread.Sleep(3785);
-//                    SendOrders(new[] { keyShopPublic, barcode, deliveryCompanyId, "2400" });
-//                },
-//                () =>
-//                {
-//                    Thread.Sleep(3780);
-//                    SendOrders(new[] { keyShopPublic, barcode, deliveryCompanyId, "2300" });
-//                },
-//                () =>
-//                {
-//                    Thread.Sleep(3775);
-//                    SendOrders(new[] { keyShopPublic, barcode, deliveryCompanyId, "2200" });
-//                },
-//                () =>
-//                {
-//                    Thread.Sleep(3770);
-//                    SendOrders(new[] { keyShopPublic, barcode, deliveryCompanyId, "2100" });
-//                },
-//                () =>
-//                {
-//                    Thread.Sleep(3765);
-//                    SendOrders(new[] { keyShopPublic, barcode, deliveryCompanyId, "2000" });
-//                },
-//                () =>
-//                {
-//                    Thread.Sleep(3760);
-//                    SendOrders(new[] { keyShopPublic, barcode, deliveryCompanyId, "1900" });
-//                })
+//                () => SendOrders(new[] { keyShopPublic, barcode, deliveryCompanyId, "2400" }),
+//                () => SendOrders(new[] { keyShopPublic, barcode, deliveryCompanyId, "2300" }))
 //                ; 
 //
 //

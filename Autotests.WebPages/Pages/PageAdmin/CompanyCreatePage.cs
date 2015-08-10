@@ -22,6 +22,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
             ItemsMax = new TextInput(By.Name("items_max"));
             SinglePickup = new CheckBox(By.Name("single_pickup"));
             Prolongation = new CheckBox(By.Name("prolongation"));
+            BarcodePull = new CheckBox(By.Name("enabled_barcode_pull"));
         }
 
         public TextInput Name { get; set; }
@@ -36,6 +37,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
 
         public CheckBox Prolongation { get; set; }
         public CheckBox SinglePickup { get; set; }
+        public CheckBox BarcodePull { get; set; }
         public TextInput Term { get; set; }
         public TextInput ItemsMax { get; set; }
 

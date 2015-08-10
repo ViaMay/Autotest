@@ -144,6 +144,7 @@ namespace Autotests.Tests.T01_StartSettingTests
             while (pickupTimetablePage.Table.GetRow(0).Name.IsPresent)
             {
                 pickupTimetablePage.Table.GetRow(0).ActionsDelete.Click();
+                pickupTimetablePage.Aletr.Accept();
                 pickupTimetablePage = pickupTimetablePage.GoTo<AdminBaseListPage>();
                 pickupTimetablePage.Table.RowSearch.CompanyName.SetValue(companyName);
                 pickupTimetablePage = pickupTimetablePage.SeachButtonRowClickAndGo();
