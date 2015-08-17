@@ -120,6 +120,9 @@ namespace Autotests.Utilities.ApiTestCore
 
             [DataMember(Name = "to_add_phone")]
             public string ToAddPhone { get; set; }
+
+            [DataMember(Name = "items_count")]
+            public string ItemsCount { get; set; }
         }
 
         [DataContract]

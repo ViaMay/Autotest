@@ -88,7 +88,7 @@ namespace Autotests.Tests.T02_UserTests
         }
 
         [Test, Description("Проверка изменения статусов")]
-        public void OrderCreateCourirsCheckStatusTest()
+        public void OrderCreateCheckStatusTest()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.UseProfile.Click();

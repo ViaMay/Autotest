@@ -102,6 +102,8 @@
     <Compile Include="T02_UserTests\OrderCancelTests.cs" />
     <Compile Include="T02_UserTests\OrderCourirsEditingRouteTests.cs" />
     <Compile Include="T02_UserTests\OrderSelfEditingRouteTests.cs" />
+    <Compile Include="T03_ApiTests\OrderCreateWihtBarcodTests.cs" />
+    <Compile Include="T03_ApiTests\UserBarcodeEditPackagesTests.cs" />
     <Compile Include="T03_ApiTests\UserDocumentsListTests.cs" />
     <Compile Include="T03_ApiTests\UserDocumentsRequestTests.cs" />
     <Compile Include="T03_ApiTests\OrderCreateToShopApiKeyTests.cs" />

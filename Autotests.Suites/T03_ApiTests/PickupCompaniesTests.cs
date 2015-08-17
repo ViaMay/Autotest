@@ -54,13 +54,18 @@ namespace Autotests.Tests.T03_ApiTests
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/process_i_orders");
             adminMaintenancePage.AlertText.WaitTextContains("Processed");
 
-            var responseConfirmDelivery = apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
-                new NameValueCollection
-                {
-//                    {"barcode", "dd-" + responseCreateOrder.Response.OrderId + "M01" },
-                    {"barcode", "dd-" + responseCreateOrder.Response.OrderId},
-                }
-                );
+            usersPage =
+                LoadPage<UsersPage>("admin/users?&filters[username]=" + userNameAndPass);
+            usersPage.Table.GetRow(0).ActionsEdit.Click();
+            var userCreatePage = usersPage.GoTo<UserCreatePage>();
+            var userKey = userCreatePage.Key.GetValue();
+            var responseBarcodes = (ApiResponse.ResponseUserBarcodes)apiRequest.GET("api/v1/cabinet/" + userKey + "/get_packages_by_order.json",
+                new NameValueCollection { { "order_id", responseCreateOrder.Response.OrderId }, });
+
+            //            шлем запрос подтверить их
+            var responseConfirmDelivery = (ApiResponse.ResponseStatusConfirm)apiRequest.GET("api/v1/pickup/" + pickupId + "/confirm_delivery.json",
+                new NameValueCollection { { "barcode", responseBarcodes.Response.Barcodes[0] }, });
+
             Assert.IsTrue(responseConfirmDelivery.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
             var responsePickupCompanies =

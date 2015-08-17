@@ -11,7 +11,9 @@ namespace Autotests.WebPages.Pages.PageAdmin.Controls
             : base(index)
         {
             SinglePickup = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[13]", index)));
+            Driver = new StaticText(By.XPath(string.Format("//tbody/tr[{0}]/td[8]", index)));
         }
         public StaticText SinglePickup { get; private set; }
+        public StaticText Driver { get; private set; }
     }
 }

@@ -90,7 +90,6 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.BuyerEmail.SetValue("2" + userNameAndPass);
             orderSelfEditingPage.ItemsCount.SetValue("3");
 
-            orderSelfEditingPage.PaymentPrice.SetValue("1500");
             orderSelfEditingPage.DeclaredPrice.SetValue("1600");
 
             orderSelfEditingPage.GoodsDescription.SetValue("24");
@@ -119,7 +118,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
-            orderPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
+            orderPage.TablePrice.PaymentPrice.WaitText("0.00 руб.");
             orderPage.TablePrice.DeclaredPrice.WaitText("1600.00 руб.");
             orderPage.TablePrice.Insurance.WaitText("0.00 руб.");
             orderPage.TablePrice.DeliveryPrice.WaitText("55.00 руб.");
@@ -223,7 +222,6 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.BuyerPhoneAdd.SetValue("+74444444444, +75555555555");
             orderSelfEditingPage.BuyerEmail.SetValue("2" + userNameAndPass);
 
-            orderSelfEditingPage.PaymentPrice.SetValue("1500");
             orderSelfEditingPage.DeclaredPrice.SetValue("1600");
 
             orderSelfEditingPage.GoodsDescription.SetValue("24");
@@ -255,7 +253,7 @@ namespace Autotests.Tests.T02_UserTests
             orderPage.TableRecipient.PickupCompany.WaitText(companyPickupName);
             orderPage.TableRecipient.DeliveryCompany.WaitText(companyName);
 
-            orderPage.TablePrice.PaymentPrice.WaitText("1500.00 руб.");
+            orderPage.TablePrice.PaymentPrice.WaitText("0.00 руб.");
             orderPage.TablePrice.DeclaredPrice.WaitText("1600.00 руб.");
             orderPage.TablePrice.Insurance.WaitText("0.00 руб.");
             orderPage.TablePrice.DeliveryPrice.WaitText("55.00 руб.");
