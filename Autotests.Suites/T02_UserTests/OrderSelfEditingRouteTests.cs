@@ -230,7 +230,7 @@ namespace Autotests.Tests.T02_UserTests
             orderSelfEditingPage.OrderNumber.SetValue("44");
 
             orderSelfEditingPage.SaveChangeButton.Click();
-            orderSelfEditingPage.Aletr.WaitText("Ваш запрос на редактирование заявки успешно отправлен. Он будет обработан в течение 8 рабочих часов");
+            orderSelfEditingPage.Aletr.WaitText("Уважаемый клиент! ДДеливери.ру делает все возможное, чтобы редактирование заказа прошло успешно, но не гарантирует внесение изменений в заказ, так как уровень автоматизации работы служб доставки не всегда позволяет это сделать. Надеемся на понимание.");
             orderSelfEditingPage.Aletr.Accept();
             orderPage = orderSelfEditingPage.GoTo<OrderPage>();
 
