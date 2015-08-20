@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{32E95D12-F0BB-42A6-B0FD-4971B4954F5B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Autotests.WebPages</RootNamespace>
+    <AssemblyName>Autotests.WebPages</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;CONTRACTS_FULL</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>True</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsDisjunctiveRequires>False</CodeContractsDisjunctiveRequires>
+    <CodeContractsRunInBackground>True</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>DoNotBuild</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\Assemblies\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\Assemblies\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebDriver">
+      <HintPath>..\Assemblies\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="WebDriver.Support">
+      <HintPath>..\Assemblies\WebDriver.Support.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\BaseRowControl.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Pages\PostcalcPage.cs" />
+    <Compile Include="Pages\MapControl.cs" />
+    <Compile Include="Pages\ErrorTextControl.cs" />
+    <Compile Include="Pages\ErrorActionTextControl.cs" />
+    <Compile Include="Pages\BaseRowSearchControl.cs" />
+    <Compile Include="Pages\BaseTableListControl.cs" />
+    <Compile Include="Pages\ComboboxControl.cs" />
+    <Compile Include="Pages\DefaultPage.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\СalculatorListAdminControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\СalculatorRowAdminControl.cs" />
+    <Compile Include="Pages\PageFreshDesk\SupportTicketsListControl.cs" />
+    <Compile Include="Pages\PageFreshDesk\SupportTicketOpenPage.cs" />
+    <Compile Include="Pages\PageFreshDesk\SupportTicketsRowControl.cs" />
+    <Compile Include="Pages\PageFreshDesk\SupportTicketsPage.cs" />
+    <Compile Include="Pages\PageFreshDesk\SupportFreshDeskPage.cs" />
+    <Compile Include="Pages\PageAdmin\CalculatorPage.cs" />
+    <Compile Include="Pages\PageAdmin\SupportAdminListPage.cs" />
+    <Compile Include="Pages\PageAdmin\AdminMaintenancePage.cs" />
+    <Compile Include="Pages\PageAdmin\AdminBaseListPage.cs" />
+    <Compile Include="Pages\PageAdmin\AdminBaseListCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\CompaniesPage.cs" />
+    <Compile Include="Pages\PageAdmin\ManagersCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\OrderedIttemplatesCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\MarginsValueCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\OrderedIttemplatesPage.cs" />
+    <Compile Include="Pages\PageAdmin\OrdersPickupPage.cs" />
+    <Compile Include="Pages\PageAdmin\PaymentPriceFeeCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\PaymentPriceFeePage.cs" />
+    <Compile Include="Pages\PageAdmin\PickupTimetableCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\OrderOutputEditingPage.cs" />
+    <Compile Include="Pages\PageAdmin\OrdersOutputPage.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\OrdersInputRowControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\OrdersInputListControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\CompaniesListControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\CompaniesRowControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\ShopRowControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\ShopsListControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\PricesListControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\PricesPickupListControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\PricesPickupRowControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\PricesRowControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\UsersListControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\UsersRowControl.cs" />
+    <Compile Include="Pages\PageAdmin\Controls\UsersRowSearchControl.cs" />
+    <Compile Include="Pages\PageAdmin\CalendarCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\OrderInputEditingPage.cs" />
+    <Compile Include="Pages\PageAdmin\OrdersInputPage.cs" />
+    <Compile Include="Pages\PageAdmin\TimeCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\TimePickupCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\MarginsValuePage.cs" />
+    <Compile Include="Pages\PageAdmin\IntervalSideCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\PricesPage.cs" />
+    <Compile Include="Pages\PageAdmin\PricesPickupPage.cs" />
+    <Compile Include="Pages\PageAdmin\UserAdminShopCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\UsersShopsPage.cs" />
+    <Compile Include="Pages\PageAdmin\LegalEntityCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\PricePickupCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\PriceCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\UsersPage.cs" />
+    <Compile Include="Pages\PageAdmin\UserCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\DeliveryPointCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\IntervalWeightCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\PaymentPriceCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\CompanyCreatePage.cs" />
+    <Compile Include="Pages\PageAdmin\AdminHomePage.cs" />
+    <Compile Include="Pages\PageAdmin\AdminPageBase.cs" />
+    <Compile Include="Pages\PageUser\Controls\DocumentsPreparedRowControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\SupportRowControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\SupportListControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\OrdersListControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\OrdersRowControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\ShopsRowControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\СalculatorListControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\ShopsListControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\WarehousesListControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\OrderArticleRowControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\СalculatorRowControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\WarehousesRowControl.cs" />
+    <Compile Include="Pages\PageUser\Controls\TimeWorkRowControl.cs" />
+    <Compile Include="Pages\PageUser\OrderSelfEditingPage.cs" />
+    <Compile Include="Pages\PageUser\OrderCourirsEditingPage.cs" />
+    <Compile Include="Pages\PageUser\OrderSelfCreatePage.cs" />
+    <Compile Include="Pages\PageUser\SupportListPage.cs" />
+    <Compile Include="Pages\PageUser\OrdersListPage.cs" />
+    <Compile Include="Pages\PageUser\OrderPage.cs" />
+    <Compile Include="Pages\PageUser\OrderCourirsCreatePage.cs" />
+    <Compile Include="Pages\PageUser\DocumentsPreparedPage.cs" />
+    <Compile Include="Pages\PageUser\СalculatorPage.cs" />
+    <Compile Include="Pages\PageUser\UserWarehouseCreatePage.cs" />
+    <Compile Include="Pages\PageUser\UserShopCreatePage.cs" />
+    <Compile Include="Pages\PageUser\UserWarehousesPage.cs" />
+    <Compile Include="Pages\PageUser\UserShopsPage.cs" />
+    <Compile Include="Pages\PageUser\UserHomePage.cs" />
+    <Compile Include="Pages\SimpleFunctionalTestBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pages\PageUser\UserPageBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Autotests.Utilities\Autotests.Utilities.csproj">
+      <Project>{574c34f7-c509-42c5-9131-16b7b023113a}</Project>
+      <Name>Autotests.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
