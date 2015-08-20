@@ -194,7 +194,6 @@ namespace Autotests.Tests.T03_ApiTests
             Assert.AreEqual(responseFail.Response.ErrorText, "Заказ не найден");
         }
 
-
         [Test, Description("get_order_by_packages Получить номер заказа по шк")]
         public void UserGetOrderByPackagesTest()
         {

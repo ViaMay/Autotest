@@ -6,14 +6,15 @@ namespace Autotests.Tests.T04_AdminTests
 {
     public class CheckCompanyApiCalculatorTests : SendOrdersBasePage
     {
-        [Test, Description("Проверка компании у которой драйвер pochtarossiib2cpl - что калькулятор для нее работает")]
 //        то как считается на этом сайте http://www.postcalc.ru/
-        public void CheckCompanyApiCalculatorTest()
+        [Test, Description("Проверка компании у которой драйвер pochtarossii_shoplogistics - что калькулятор для нее работает")]
+        [TestCase("pochtarossii_shoplogistics")]
+        public void CheckCompanyApiCalculatorTest(string driver)
         {
             LoginAsAdmin(adminName, adminPass);
-            var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[driver]=pochtarossiib2cpl&filters[enabled_delivery]=1&filters[name]=%D0%9F%D0%BE%D1%87%D1%82%D0%B0");
+            var companiesPage = LoadPage<CompaniesPage>("admin/companies/?&filters[driver]=" + driver + "&filters[enabled_delivery]=1&filters[name]=%D0%9F%D0%BE%D1%87%D1%82%D0%B0");
             var i = 0;
-            while (companiesPage.Table.GetRow(i).Driver.GetText() != "pochtarossiib2cpl")
+            while (companiesPage.Table.GetRow(i).Driver.GetText() != driver)
                 i = i + 1;
             var companyName = companiesPage.Table.GetRow(i).Name.GetText();
 

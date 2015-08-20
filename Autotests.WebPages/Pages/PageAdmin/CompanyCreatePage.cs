@@ -23,6 +23,8 @@ namespace Autotests.WebPages.Pages.PageAdmin
             SinglePickup = new CheckBox(By.Name("single_pickup"));
             Prolongation = new CheckBox(By.Name("prolongation"));
             BarcodePull = new CheckBox(By.Name("enabled_barcode_pull"));
+            PackingPaid = new CheckBox(By.Name("packing_paid"));
+            PackingRequired = new CheckBox(By.Name("packing_required"));
         }
 
         public TextInput Name { get; set; }
@@ -38,6 +40,8 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public CheckBox Prolongation { get; set; }
         public CheckBox SinglePickup { get; set; }
         public CheckBox BarcodePull { get; set; }
+        public CheckBox PackingPaid { get; set; }
+        public CheckBox PackingRequired { get; set; }
         public TextInput Term { get; set; }
         public TextInput ItemsMax { get; set; }
 
