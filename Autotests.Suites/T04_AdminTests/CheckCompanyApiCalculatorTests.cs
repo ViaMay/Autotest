@@ -8,7 +8,8 @@ namespace Autotests.Tests.T04_AdminTests
     {
 //        то как считается на этом сайте http://www.postcalc.ru/
         [Test, Description("Проверка компании у которой драйвер pochtarossii_shoplogistics - что калькулятор для нее работает")]
-        [TestCase("pochtarossii_shoplogistics")]
+//        [TestCase("pochtarossii_shoplogistics")]
+        [TestCase("pochtarossii_b2cpl")]
         public void CheckCompanyApiCalculatorTest(string driver)
         {
             LoginAsAdmin(adminName, adminPass);

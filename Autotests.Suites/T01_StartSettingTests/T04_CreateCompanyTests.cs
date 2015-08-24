@@ -64,8 +64,8 @@ namespace Autotests.Tests.T01_StartSettingTests
             companyCreatePage.CompanyDriver.SelectValue("Boxberry");
             companyCreatePage.CompanyAddress.SetValueAndWait("Address");
             companyCreatePage.ItemsMax.SetValueAndWait("3");
-            companyCreatePage.PackingPaid.WaitUnchecked();
-            companyCreatePage.PackingRequired.WaitUnchecked();
+            companyCreatePage.PackingPaid.UncheckAndWait();
+            companyCreatePage.PackingRequired.UncheckAndWait();
             companyCreatePage.ManagersLegalEntity.SetFirstValueSelect(legalEntityName);
             companyCreatePage.SaveButton.Click();
             companiesPage = companyCreatePage.GoTo<AdminBaseListPage>();
