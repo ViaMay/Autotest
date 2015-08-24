@@ -12,7 +12,7 @@ namespace Autotests.WebPages.Pages.PageUser.Controls
             Company = new StaticText(By.XPath(string.Format("{1}/tbody/tr[{0}]/td[1]", index, locator)));
             TimeDelivery = new StaticText(By.XPath(string.Format("{1}/tbody/tr[{0}]/td[2]", index, locator)));
             PriceDelivery = new StaticText(By.XPath(string.Format("{1}/tbody/tr[{0}]/td[3]", index, locator)));
-            PricePickup = new StaticText(By.XPath(string.Format("{1}/tbody/tr[{0}]/td[4]", index, locator)));
+            PricePickup = new StaticText(By.XPath(string.Format("{1}/tbody/tr[{0}]/td[5]", index, locator)));
         }
 
         public StaticText Company { get; private set; }

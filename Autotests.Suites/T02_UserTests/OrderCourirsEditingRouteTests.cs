@@ -68,9 +68,6 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.ItemsCount.WaitValue("2");
 
             orderCourirsEditingPage.BuyerPostalCode.WaitValue("123123");
-//            orderCourirsEditingPage.BuyerStreet.WaitValue("Улица");
-//            orderCourirsEditingPage.BuyerHouse.WaitValue("Дом");
-//            orderCourirsEditingPage.BuyerFlat.WaitValue("Квартира");
             orderCourirsEditingPage.BuyerName.WaitValue("Фамилия Имя Очество");
             orderCourirsEditingPage.BuyerPhone.WaitValue("+7 (111)111-1111");
             orderCourirsEditingPage.BuyerPhoneAdd.WaitValue("+71234567890, +71234567890");
@@ -93,13 +90,13 @@ namespace Autotests.Tests.T02_UserTests
             orderCourirsEditingPage.Length.SetValue("13.2");
             orderCourirsEditingPage.Weight.SetValue("9.2");
 
-            orderCourirsEditingPage.BuyerPostalCode.SetValue("123456");
+            orderCourirsEditingPage.СountedButton.Click();
 
+            orderCourirsEditingPage.BuyerPostalCode.SetValue("123456");
             orderCourirsEditingPage.BuyerStreet.SetValue("Улица2");
             orderCourirsEditingPage.BuyerHouse.SetValue("Дом2");
             orderCourirsEditingPage.BuyerFlat.SetValue("Квартира2");
-            orderCourirsEditingPage.СountedButton.Click();
-
+            
             orderCourirsEditingPage.BuyerName.SetValue("Фамилия2 Имя2 Очество2");
             orderCourirsEditingPage.BuyerPhone.SetValue("2222222222");
             orderCourirsEditingPage.BuyerPhoneAdd.SetValue("+74444444444, +75555555555");
