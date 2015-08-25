@@ -8,7 +8,7 @@ namespace Autotests.Tests.T04_AdminTests
 
     public class ClickAllAdminPagesTests : ConstVariablesTestBase
     {
-        [Test, Description("по всем страницам справочника"), Ignore]
+        [Test, Description("по всем страницам справочника")]
         public void ClickAllDirectoryListTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -91,7 +91,7 @@ namespace Autotests.Tests.T04_AdminTests
             createPage.LabelDirectory.WaitText(@"Новая запись в справочнике ""Статусы компаний доставки""");
         }
 
-        [Test, Description("по всем страницам справочника"), Ignore]
+        [Test, Description("по всем страницам справочника")]
         public void ClickAllDirectoryListEditTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -183,7 +183,7 @@ namespace Autotests.Tests.T04_AdminTests
             editPage.LabelDirectory.WaitTextContains(@"Edit record");
         }
 
-        [Test, Description("по всем страницам компании"), Ignore]
+        [Test, Description("по всем страницам компании")]
         public void ClickAllCompaniesListTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
@@ -355,7 +355,7 @@ namespace Autotests.Tests.T04_AdminTests
             createPage.LabelDirectory.WaitText(@"Новая запись в справочнике ""Скидки""");
         }
 
-        [Test, Description("по всем страницам компании"), Ignore]
+        [Test, Description("по всем страницам компании")]
         public void ClickAllCompaniesListEditTest()
         {
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
@@ -557,7 +557,7 @@ namespace Autotests.Tests.T04_AdminTests
             }
         }
 
-        [Test, Description("по всем страницам для пользователя"), Ignore]
+        [Test, Description("по всем страницам для пользователя")]
         public void ClickAllUsersListEditTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -615,7 +615,7 @@ namespace Autotests.Tests.T04_AdminTests
             editPage.LabelDirectory.WaitTextContains(@"Edit record");
         }
 
-        [Test, Description("по всем страницам для пользователя"), Ignore]
+        [Test, Description("по всем страницам для пользователя")]
         public void ClickAllUsersListTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -675,7 +675,7 @@ namespace Autotests.Tests.T04_AdminTests
             pageFreshDesk.LabelDirectory.WaitText("Служба поддержки");
         }
 
-        [Test, Description("по всем страницам для заказов"), Ignore]
+        [Test, Description("по всем страницам для заказов")]
         public void ClickAllOrdersListTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -714,7 +714,7 @@ namespace Autotests.Tests.T04_AdminTests
             createPage.LabelDirectory.WaitText(@"Новая запись в справочнике ""Документы""");
         }
 
-        [Test, Description("по всем страницам для заказов"), Ignore]
+        [Test, Description("по всем страницам для заказов")]
         public void ClickAllOrdersListEditTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -754,7 +754,7 @@ namespace Autotests.Tests.T04_AdminTests
             createPage.LabelDirectory.WaitTextContains("Edit record");
         }
 
-        [Test, Description("по всем страницам для отчетов"), Ignore]
+        [Test, Description("по всем страницам для отчетов")]
         public void ClickAllReportsListTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -811,7 +811,7 @@ namespace Autotests.Tests.T04_AdminTests
             page.LabelDirectory.WaitText(@"Справочник ""История подключений PimPay""");
         }
 
-        [Test, Description("по всем страницам для отчетов"), Ignore]
+        [Test, Description("по всем страницам для отчетов")]
         public void ClickAllReportsListEditTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -862,7 +862,7 @@ namespace Autotests.Tests.T04_AdminTests
             editPageLog.LabelDirectory.WaitTextContains(@"""Экспорт в CSV""");
         }
 
-        [Test, Description("по всем страницам для системы"), Ignore]
+        [Test, Description("по всем страницам для системы")]
         public void ClickAllSystemListTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -901,7 +901,7 @@ namespace Autotests.Tests.T04_AdminTests
             pageS.LabelDirectory.WaitText(@"Печать наклеек");
         }
 
-        [Test, Description("по всем страницам для выход"), Ignore]
+        [Test, Description("по всем страницам для выход")]
         public void ClickAllExitListTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -909,7 +909,7 @@ namespace Autotests.Tests.T04_AdminTests
             var page = adminPage.GoTo<DefaultPage>();
         }
 
-        [Test, Description("по всем страницам для ссылки"), Ignore]
+        [Test, Description("по всем страницам для ссылки")]
         public void ClickAllReferenceListTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);

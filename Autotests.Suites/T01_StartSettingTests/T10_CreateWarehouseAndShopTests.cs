@@ -3,7 +3,7 @@ using System.Data;
 using Autotests.WebPages.Pages.PageAdmin;
 using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
-using MySql.Data.MySqlClient; 
+//using MySql.Data.MySqlClient; 
 
 namespace Autotests.Tests.T01_StartSettingTests
 {
