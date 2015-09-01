@@ -91,6 +91,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SendOrdersBasePage.cs" />
     <Compile Include="T01_StartSettingTests\T01_CreateLegalEntityTest.cs" />
     <Compile Include="T01_StartSettingTests\T03_CreateSizeTests.cs" />
     <Compile Include="T01_StartSettingTests\T04_CreateCompanyTests.cs" />
@@ -142,9 +143,7 @@
     <Compile Include="T04_AdminTests\CheckCompanyApiCalculatorTests.cs" />
     <Compile Include="T04_AdminTests\DateTransferCDCkeckOutOrderTests.cs" />
     <Compile Include="T04_AdminTests\ClickAllAdminPagesTests.cs" />
-    <Compile Include="T04_AdminTests\SendOrdersBasePage.cs" />
     <Compile Include="T04_AdminTests\PickupAndProcessDatesCountTests.cs" />
-    <Compile Include="T04_AdminTests\DateTransferCDDriverTests.cs" />
     <Compile Include="T04_AdminTests\DateTransferCDCountTests.cs" />
     <Compile Include="T02_UserTests\CalculatorValidationTests.cs" />
     <Compile Include="T02_UserTests\OrderCourirsEditingValidationTests.cs" />

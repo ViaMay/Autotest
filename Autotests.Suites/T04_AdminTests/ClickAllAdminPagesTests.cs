@@ -498,6 +498,16 @@ namespace Autotests.Tests.T04_AdminTests
             editPage.LabelDirectory.WaitTextContains(@"Edit record");
 
             editPage.AdminCompanies.Click();
+            editPage.Prices.Mouseover();
+            editPage.PricesPacking.Click();
+            page = editPage.GoTo<AdminBaseListPage>();
+            page.LabelDirectory.WaitText(@"Справочник ""Упаковка""");
+            page.Table.GetRow(0).ActionsEdit.Click();
+            editPage = page.GoTo<AdminBaseListCreatePage>();
+            editPage.LabelDirectory.WaitTextContains(@"""Упаковка""");
+            editPage.LabelDirectory.WaitTextContains(@"Edit record");
+
+            editPage.AdminCompanies.Click();
             editPage.Fees.Mouseover();
             editPage.FeesValue.Click();
             page = editPage.GoTo<AdminBaseListPage>();

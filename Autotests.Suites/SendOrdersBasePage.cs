@@ -5,7 +5,7 @@ using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages.Pages.PageAdmin;
 using NUnit.Framework;
 
-namespace Autotests.Tests.T04_AdminTests
+namespace Autotests.Tests
 {
     public class SendOrdersBasePage : ConstVariablesTestBase
     {

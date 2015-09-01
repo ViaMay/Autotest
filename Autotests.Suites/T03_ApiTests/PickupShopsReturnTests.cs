@@ -1,6 +1,5 @@
 ﻿using System.Collections.Specialized;
 using System.Linq;
-using Autotests.Tests.T04_AdminTests;
 using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages.Pages.PageAdmin;
 using NUnit.Framework;

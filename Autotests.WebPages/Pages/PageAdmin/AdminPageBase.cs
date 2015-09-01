@@ -42,6 +42,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
             PricesPickup = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(11) > ul > li:nth-child(1)"));
             PricesSelf = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(11) ul > li:nth-child(2)"));
             PricesCourier = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(11) ul > li:nth-child(3)"));
+            PricesPacking = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(11) ul > li:nth-child(4)"));
 
             Times = new Link(By.LinkText("Сроки"));
             TimesPickup = new Link(By.CssSelector("li.dropdown.open > ul.dropdown-menu > li:nth-child(10) > ul > li:nth-child(1)"));
@@ -132,6 +133,7 @@ namespace Autotests.WebPages.Pages.PageAdmin
         public Link PricesSelf { get; set; }
         public Link PricesPickup { get; set; }
         public Link PricesCourier { get; set; }
+        public Link PricesPacking { get; set; }
 
         public Link Times { get; set; }
         public Link TimesSelf { get; set; }
