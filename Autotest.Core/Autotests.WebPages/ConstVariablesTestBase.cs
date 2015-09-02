@@ -6,8 +6,8 @@ namespace Autotests.WebPages
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
-//        public override string ApplicationBaseUrl { get { return "dev:Grass$Clash8pelvis@dev.ddelivery.ru"; } }
-        public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
+        public override string ApplicationBaseUrl { get { return "dev:Grass$Clash8pelvis@dev.ddelivery.ru"; } }
+ //       public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
 //        public override string ApplicationBaseUrl { get { return "cabinet.ddelivery.ru"; } }
 
