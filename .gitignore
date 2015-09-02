@@ -1,7 +1,7 @@
 Autotest.Core/Autotests.Utilities/bin/*
 Autotest.Core/Autotests.Utilities/obj/*
 Autotest.Core/Autotests.WebPages/bin/*
-Autotest.Core/Autotests.WebPages/bin/*
+Autotest.Core/Autotests.WebPages/obj/*
 Autotest.Test.AdminAndSupportTests/Autotests.Suites/bin/*
 Autotest.Test.AdminAndSupportTests/Autotests.Suites/obj/*
 Autotest.Test.ApiTests/Autotests.Suites/bin/*
@@ -12,4 +12,4 @@ Autotest.Test.CreateTests/Autotests.Suites/bin/*
 Autotest.Test.CreateTests/Autotests.Suites/obj/*
 Autotest.Test.UserTests/Autotests.Suites/bin/*
 Autotest.Test.UserTests/Autotests.Suites/obj/*
-Assemblies/Temp/*
+/Assemblies/Temp
