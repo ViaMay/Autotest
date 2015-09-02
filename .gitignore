@@ -13,3 +13,4 @@ Autotest.Test.CreateTests/Autotests.Suites/obj/*
 Autotest.Test.UserTests/Autotests.Suites/bin/*
 Autotest.Test.UserTests/Autotests.Suites/obj/*
 /Assemblies/Temp
+/Assemblies/Temp/.gitkeep
