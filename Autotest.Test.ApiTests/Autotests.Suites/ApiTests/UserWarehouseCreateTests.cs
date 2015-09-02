@@ -8,7 +8,7 @@ namespace Autotests.Tests.ApiTests
 {
     public class UserWarehouseCreateTests : ConstVariablesTestBase
     {
-        [Test, Description("Создание склада")]
+        [Test, Description("Создание склада"), Ignore]
         public void WarehouseCreateTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);

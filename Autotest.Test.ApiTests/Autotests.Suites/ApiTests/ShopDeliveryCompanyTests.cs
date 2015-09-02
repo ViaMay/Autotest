@@ -10,7 +10,7 @@ namespace Autotests.Tests.ApiTests
 {
     public class ShopDeliveryCompanyTests : ConstVariablesTestBase
     {
-        [Test, Description("Получить список доступных компаний доставки если указана компания забора и если не указана")]
+        [Test, Description("Получить список доступных компаний доставки если указана компания забора и если не указана"), Ignore]
         public void ShopDeliveryCompanyTest()
         {
             LoginAsAdmin(adminName, adminPass);
@@ -76,7 +76,7 @@ namespace Autotests.Tests.ApiTests
             Assert.AreEqual(responseRowDeliveryCompanу.Name, companyName);
         }
 
-        [Test, Description("Получить список доступных компаний доставки")]
+        [Test, Description("Получить список доступных компаний доставки"), Ignore]
         public void ShopDeliveryCompanyErrorTest()
         {
             LoginAsAdmin(adminName, adminPass);

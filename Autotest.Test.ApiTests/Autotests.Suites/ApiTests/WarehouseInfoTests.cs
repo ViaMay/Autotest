@@ -8,7 +8,7 @@ namespace Autotests.Tests.ApiTests
 {
     public class WarehouseInfoTests : ConstVariablesTestBase
     {
-        [Test, Description("Получить информацию о текущем складе магазина Api админа")]
+        [Test, Description("Получить информацию о текущем складе магазина Api админа"), Ignore]
         public void WarehousesInfoTest()
         {
             LoginAsAdmin(adminName, adminPass);
@@ -87,7 +87,7 @@ namespace Autotests.Tests.ApiTests
             Assert.AreEqual(responseInfo.Response.Schedule, "10:00-19:00,10:00-19:00,10:00-19:00,10:00-19:00,10:00-19:00,NODAY,NODAY");
         }
 
-        [Test, Description("Получить информацию о текущем складе магазина Api админа не удачное")]
+        [Test, Description("Получить информацию о текущем складе магазина Api админа не удачное"), Ignore]
         public void WarehousesInfoErrorTest()
         {
             LoginAsAdmin(adminName, adminPass);

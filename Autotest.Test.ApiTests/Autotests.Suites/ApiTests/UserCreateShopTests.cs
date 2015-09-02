@@ -9,7 +9,7 @@ namespace Autotests.Tests.ApiTests
 {
     public class UserCreateShopTests : ConstVariablesTestBase
     {
-        [Test, Description("Создание магазина")]
+        [Test, Description("Создание магазина"), Ignore]
         public void ShopCreateTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);

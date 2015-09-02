@@ -69,7 +69,7 @@ namespace Autotests.Tests.ApiTests
             orderCourirsEditingPage.BuyerEmail.WaitValue(userNameAndPass);
         }
 
-        [Test, Description("Создание заказа курьерской используя апи кей магазина")]
+        [Test, Description("Создание заказа курьерской используя апи кей магазина"), Ignore]
         public void OrderCourirsTest02()
         {
             LoginAsAdmin(adminName, adminPass);

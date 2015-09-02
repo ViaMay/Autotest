@@ -9,7 +9,7 @@ namespace Autotests.Tests.ApiTests
 {
     public class ShopPickupCompanyTests : ConstVariablesTestBase
     {
-        [Test, Description("Получить компанию забора ИМ")]
+        [Test, Description("Получить компанию забора ИМ"), Ignore]
         public void ShopPickupCompanуTest()
         {
             LoginAsAdmin(adminName, adminPass);
