@@ -9,7 +9,7 @@ namespace Autotests.Tests.ApiTests
 {
     public class WarehouseCreateTests : ConstVariablesTestBase
     {
-        [Test, Description("Создание склада через Api админа")]
+        [Test, Description("Создание склада через Api админа"), Ignore]
         public void WarehousesCreateTest()
         {
             LoginAsAdmin(adminName, adminPass);
@@ -61,7 +61,7 @@ namespace Autotests.Tests.ApiTests
             row.TimeWork.WaitText("10:00-19:00,10:00-19:00,10:00-19:00,10:00-19:00,10:00-19:00,Выходной,Выходной");
         }
 
-        [Test, Description("Создание склада через Api админа неудачное")]
+        [Test, Description("Создание склада через Api админа неудачное"), Ignore]
         public void WarehousesCreateErrorTest()
         {
             LoginAsAdmin(adminName, adminPass);

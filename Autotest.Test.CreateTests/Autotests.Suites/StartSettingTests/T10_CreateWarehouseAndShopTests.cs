@@ -11,33 +11,6 @@ namespace Autotests.Tests.StartSettingTests
         [Test, Description("Создания Склада для тестов на калькулятор")]
         public void T01_CreateWarehouseTest()
         {
-//            MySqlConnectionStringBuilder mysqlCSB;
-//            mysqlCSB = new MySqlConnectionStringBuilder();
-//
-//            mysqlCSB.Server = "http://stage.ddelivery.ru/phpmyadmin/index.php";
-//            mysqlCSB.Database = "ddelivery_staging";
-//            mysqlCSB.UserID = "dd_user";
-//            mysqlCSB.Password = "'apron6lousy5foil'";
-//            string queryString = @"SSELECT * 
-//FROM  shops 
-//WHERE  name LIKE  'test_userShops_via'
-//LIMIT 0 , 30";
-//            MySqlConnection con = new MySqlConnection();
-//            con.ConnectionString = mysqlCSB.ConnectionString;
-//            con.Open();
-//            MySqlCommand com = new MySqlCommand(queryString, con);
-//            using (MySqlDataReader dr = com.ExecuteReader())
-//            {
-//                //есть записи?
-//                if (dr.HasRows)
-//                {
-//                    //заполняем объект DataTable
-//                    var d = dr;
-//                }
-//            }
-//                     
-//        
-//        
             AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
             adminPage.AdminUsers.Click();
             adminPage.UsersWarehouses.Click();

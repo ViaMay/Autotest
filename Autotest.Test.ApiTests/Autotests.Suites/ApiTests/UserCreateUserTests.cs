@@ -9,7 +9,7 @@ namespace Autotests.Tests.ApiTests
 {
     public class UserCreateUserTests : ConstVariablesTestBase
     {
-        [Test, Description("Создание пользователя")]
+        [Test, Description("Создание пользователя"), Ignore]
         public void UserCreateTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -134,7 +134,7 @@ namespace Autotests.Tests.ApiTests
             var userPage = defaultPage.LoginAsUser(emai3, emai3);
         }
 
-        [Test, Description("Создание пользователя не успешное")]
+        [Test, Description("Создание пользователя не успешное"), Ignore]
         public void UserCreateErrorTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);

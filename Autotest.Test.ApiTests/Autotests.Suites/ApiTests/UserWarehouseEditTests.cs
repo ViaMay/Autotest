@@ -9,7 +9,7 @@ namespace Autotests.Tests.ApiTests
 {
     public class UserWarehouseEditTests : ConstVariablesTestBase
     {
-        [Test, Description("Редактирование склада через Api")]
+        [Test, Description("Редактирование склада через Api"), Ignore]
         public void WarehousesEditTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -102,7 +102,7 @@ namespace Autotests.Tests.ApiTests
             row.TimeWork.WaitText("1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23,1:12-23:23");
         }
 
-        [Test, Description("Редактирвоание склада через Api неудачное")]
+        [Test, Description("Редактирвоание склада через Api неудачное"), Ignore]
         public void WarehousesEditErrorTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
