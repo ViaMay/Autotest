@@ -1,0 +1,17 @@
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\Autotests.Tests.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\Autotests.Tests.pdb
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\Autotests.Utilities.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\Autotests.WebPages.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\log4net.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\nunit.framework.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\WebDriver.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\WebDriver.Support.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\Autotests.Utilities.pdb
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\Autotests.WebPages.pdb
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\WebDriver.pdb
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\WebDriver.xml
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\WebDriver.Support.pdb
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\bin\Debug\WebDriver.Support.xml
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\obj\Debug\Autotests.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\obj\Debug\Autotests.Tests.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Test.CreateTests\Autotests.Suites\obj\Debug\Autotests.Tests.pdb

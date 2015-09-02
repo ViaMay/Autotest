@@ -1,0 +1,13 @@
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\bin\Debug\Autotests.Utilities.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\bin\Debug\Autotests.Utilities.pdb
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\bin\Debug\log4net.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\bin\Debug\nunit.framework.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\bin\Debug\WebDriver.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\bin\Debug\WebDriver.Support.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\bin\Debug\WebDriver.pdb
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\bin\Debug\WebDriver.xml
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\bin\Debug\WebDriver.Support.pdb
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\bin\Debug\WebDriver.Support.xml
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\obj\Debug\Autotests.Utilities.csprojResolveAssemblyReference.cache
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\obj\Debug\Autotests.Utilities.dll
+C:\Users\Виктория\Dropbox\WorkTest\Autotests\Autotests\Autotest.Core\Autotests.Utilities\obj\Debug\Autotests.Utilities.pdb

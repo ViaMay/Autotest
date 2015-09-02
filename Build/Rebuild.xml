@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Rebuild">
+
+  <PropertyGroup>
+    <ExtensionTasksPath>$(MSBuildThisFileDirectory)\..\Assemblies\MSBuild.ExtensionPack\</ExtensionTasksPath>
+    <BuildTarget></BuildTarget>
+  </PropertyGroup>
+  
+  <Import Project="$(MSBuildThisFileDirectory)\..\Assemblies\MSBuild.ExtensionPack\MSBuild.ExtensionPack.tasks"/>
+
+  <Import Project="$(CatalogueProject).xml" />
+
+  <Target Name="Rebuild">
+    <Error Condition="'$(BuildTarget)' == ''" Text="Укажите BuildTarget" />
+    
+    <MSBuild.ExtensionPack.FileSystem.Folder TaskAction="RemoveContent" Path="$(MSBuildThisFileDirectory)\..\Assemblies\Temp" />
+    <MSBuild
+      Projects="$(MSBuildThisFileDirectory)\RebuildSolution.xml"
+      Targets="$(BuildTarget)"
+      Properties="Path=%(SolutionFolder.Identity)" />
+  </Target>
+
+
+</Project>
