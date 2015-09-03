@@ -24,7 +24,7 @@ namespace Autotests.Tests.ApiTests
 //            ищем по id 151184 в этом списке москву
             var responseRowCity = FindRowById("151184", responseCities);
             Assert.AreEqual(responseRowCity.Area, "");
-            Assert.AreEqual(responseRowCity.Name, "Москва");
+            Assert.AreEqual(responseRowCity.Name, "Москва1");
             Assert.AreEqual(responseRowCity.NameIndex, "москва");
             Assert.AreEqual(responseRowCity.Importance, "100");
             Assert.AreEqual(responseRowCity.PostalCode, "101000");
