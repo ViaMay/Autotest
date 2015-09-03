@@ -17,6 +17,7 @@ namespace Autotests.WebPages.Pages
 
         public override void TearDown()
         {
+            LoadPage<DefaultPage>("auth/logout");
             base.TearDown();
         }
 

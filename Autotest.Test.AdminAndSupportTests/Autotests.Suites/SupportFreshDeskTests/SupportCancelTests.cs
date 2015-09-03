@@ -77,8 +77,6 @@ namespace Autotests.Tests.SupportFreshDeskTests
             pageTicket.TicketInfo.WaitTextContains("admin/orders/edit/" + responseCreateOrders.Response.OrderId);
             pageTicket.TicketInfo.WaitTextContains("admin/outgoingorders/edit/");
             pageTicket.TicketInfo.WaitTextContains("Сообщение на отмену заказа dd-" + responseCreateOrders.Response.OrderId);
-
-            defaultPage = LoadPage<DefaultPage>("auth/logout");
          }
     }
 }
