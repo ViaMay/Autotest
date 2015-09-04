@@ -147,10 +147,13 @@ namespace Autotests.Utilities.ApiTestCore
 //            ResponseDeamonСities
             if (value.Contains(@"success"":true,""options"))
             {
-//                Encoding utf8 = Encoding.GetEncoding("utf-8");
-//                Encoding win1251 = Encoding.GetEncoding("windows-1251");
-//                var bytes = win1251.GetBytes(value);
-//                value = utf8.GetString(bytes);
+                Encoding utf8 = Encoding.GetEncoding("utf-8");
+                Encoding win1251 = Encoding.GetEncoding("windows-1251");
+                Encoding win1252 = Encoding.GetEncoding("windows-1252");
+                var bytes = win1251.GetBytes(value);
+                value = win1252.GetString(bytes);
+                bytes = win1252.GetBytes(value);
+                value = utf8.GetString(bytes);
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeamonСities));
                 return (ApiResponse.ResponseDeamonСities)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
