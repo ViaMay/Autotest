@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Rebuild" ToolsVersion="4.0">
+    
+  <Target Name="Rebuild">
+    <GetFrameworkPath>
+        <Output TaskParameter="FrameworkVersion40Path" PropertyName="FrameworkPath" />    
+    </GetFrameworkPath>
+    
+    <Message Text="$(Path) start" />
+    <Exec Command='"$(FrameworkPath)\msbuild" ..\$(Path)\$(Path).sln /v:q /t:Clean' />
+    <Message Text="$(Path) cleaned" />
+    <Exec Command='"$(FrameworkPath)\msbuild" ..\$(Path)\$(Path).sln /v:q /t:Rebuild /p:"NoWarn=108;114"' />
+    <Message Text="$(Path) builded" />
+    
+    <OnError ExecuteTargets="RebuildSolutionError" />
+  </Target>
+
+  <Target Name="Build">
+    <GetFrameworkPath>
+        <Output TaskParameter="FrameworkVersion40Path" PropertyName="FrameworkPath" />    
+    </GetFrameworkPath>
+
+    <Message Text="$(Path) start" />
+    <Exec Command='"$(FrameworkPath)\msbuild" ..\$(Path)\$(Path).sln /v:q /t:Build /p:"NoWarn=108;114"' /> 
+    <Message Text="$(Path) builded" />
+
+    <OnError ExecuteTargets="RebuildSolutionError" />
+  </Target>
+
+  <Target Name="RebuildSolutionError">
+    <Error File="$(Path)" Text="%0a%0a%0a=================================================%0aОшибка при компиляции солюшина: $(Path)!%0a=================================================%0a%0a%0a"/>
+  </Target>
+  
+</Project>

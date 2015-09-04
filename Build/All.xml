@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Rebuild">
+
+  <ItemGroup>
+	<SolutionFolder Include="Autotest.Core" />
+    <SolutionFolder Include="Autotest.Test.AdminAndSupportTests" />
+    <SolutionFolder Include="Autotest.Test.ApiTests" />
+    <SolutionFolder Include="Autotest.Test.ClearTests" />
+    <SolutionFolder Include="Autotest.Test.CreateTests" />
+    <SolutionFolder Include="Autotest.Test.UserTests" />
+  </ItemGroup>
+
+
+</Project>
