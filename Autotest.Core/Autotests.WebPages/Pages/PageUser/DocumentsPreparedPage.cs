@@ -14,7 +14,7 @@ namespace Autotests.WebPages.Pages.PageUser
             Stickers = new Link(By.LinkText("Наклейки"));
             Acts = new Link(By.LinkText("Акты для компании забора"));
             ActsTC= new Link(By.LinkText("Акты для самостоятельной передачи заказов на склады ТК"));
-            TextAlert = new StaticText(By.ClassName("alert"));
+            TextAlert = new StaticText(By.XPath("//div/div[@class='alert']"));
         }
 
         public DocumentsPreparedRowControl GetRow(int index)

@@ -227,7 +227,7 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
                 DirectoryInfo[] directories = currentDirectory.GetDirectories();
                 foreach (DirectoryInfo directoryInfo in directories)
                 {
-                    if (directoryInfo.Name == "Assemblies")
+                    if (directoryInfo.Name == "Assemblies" || directoryInfo.Name == "assemblies")
                         return directoryInfo.FullName;
                 }
                 currentDirectory = currentDirectory.Parent;

@@ -101,8 +101,6 @@ namespace Autotests.Tests.SupportFreshDeskTests
             pageTicket.TicketInfo.WaitTextContains("Улица получателя = to_street");
             pageTicket.TicketInfo.WaitTextContains("Дом получателя = to_house");
             pageTicket.TicketInfo.WaitTextContains("Квартира получателя = to_flat");
-
-            defaultPage = LoadPage<DefaultPage>("auth/logout");
         }
     }
 }

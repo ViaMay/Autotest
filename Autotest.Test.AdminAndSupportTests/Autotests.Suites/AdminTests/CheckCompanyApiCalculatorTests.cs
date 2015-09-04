@@ -53,8 +53,6 @@ namespace Autotests.Tests.AdminTests
             var cells = priceParcel.Split('\n');
             var priceDeliveryParcel = cells[4];
             Assert.AreEqual("[Доставка]=>" + priceDeliveryBase + ".00", priceDeliveryParcel);
-
-            LoadPage<DefaultPage>("auth/logout");
         }
     }
 }

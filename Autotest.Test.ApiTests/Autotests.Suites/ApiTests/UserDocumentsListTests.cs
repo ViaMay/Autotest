@@ -116,7 +116,7 @@ namespace Autotests.Tests.ApiTests
                 (ApiResponse.ResponseDocumentsList)apiRequest.GET("api/v1/cabinet/" + userKey + "/documents_list.json", 
                  new NameValueCollection
                  {
-                      {"_create_date", nowDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture) },
+                      {"_create_date", nowDate.ToString("dd.MM.yyyy", CultureInfo.InvariantCulture) },
                       {"warehouse_id", usersWarehousId }
                  });
 
@@ -182,7 +182,7 @@ namespace Autotests.Tests.ApiTests
                 (ApiResponse.ResponseDocumentsList)apiRequest.GET("api/v1/cabinet/" + userKey + "/documents_list.json",
                  new NameValueCollection
                  {
-                     { "_create_date", "2011-12-12" },
+                     { "_create_date", "12.12.2011" },
                      {"warehouse_id", usersWarehousId },
                  });
             Assert.AreEqual(responseDocumentsList.Response.Count(), 0);
