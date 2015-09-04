@@ -97,7 +97,7 @@ namespace Autotests.Tests.UserTests
             orderCourirsEditingPage.BuyerStreet.SetValueAndWait("");
             orderCourirsEditingPage.BuyerHouse.SetValueAndWait("");
             orderCourirsEditingPage.BuyerFlat.SetValueAndWait("");
-            orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError(3);
+            orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError(4);
             orderCourirsEditingPage.ErrorText[0].WaitText("Улица получателя обязательно к заполнению");
             orderCourirsEditingPage.ErrorText[1].WaitText("Дом получателя обязательно к заполнению");
             orderCourirsEditingPage.ErrorText[2].WaitText("Квартира получателя обязательно к заполнению");

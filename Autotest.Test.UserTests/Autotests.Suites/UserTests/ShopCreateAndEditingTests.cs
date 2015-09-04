@@ -6,7 +6,7 @@ namespace Autotests.Tests.UserTests
 {
     public class ShopCreateAndEditingTests : ConstVariablesTestBase
     {
-        [Test, Description("Создания и редактирование магазина")]
+        [Test, Description("Создания и редактирование магазина"), Ignore]
         public void ShopCreateAndEditingTest()
         {
             UserHomePage userPage = LoginAsUser(userNameAndPass, userNameAndPass);
