@@ -19,7 +19,7 @@ namespace Autotests.Tests.ApiTests
             string deliveryCompanyId = deliveryCompaniesPage.Table.GetRow(0).ID.GetText();
 
 //            delivery_company = ""
-            var responseCreateFailOrder = (ApiResponse.ResponseFail)apiRequest.POST(keyShopPublic + "/order_create.json",
+            var responseCreateFailOrder = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_create.json",
                 new NameValueCollection
                 {
                 {"api_key", keyShopPublic},
@@ -44,7 +44,7 @@ namespace Autotests.Tests.ApiTests
 		        {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"}
                 });
             Assert.IsFalse(responseCreateFailOrder.Success, "Ожидался ответ Fail на отправленный запрос POST по API");
-            Assert.AreEqual(responseCreateFailOrder.Response.ErrorText, "Компания доставки обязательна к заполнению");
+            Assert.AreEqual(responseCreateFailOrder.Response.Error.DeliveryCompany, "Компания доставки обязательно к заполнению");
             
 //            Вес пустой weight=0
             var responseCreateFailObjectOrder = (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_create.json",

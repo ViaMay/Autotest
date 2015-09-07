@@ -182,7 +182,7 @@ namespace Autotests.Tests.UserTests
             orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateCourirsPage.GoodsDescription.SetValueAndWait("ok");
 
-            orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError(1);
+            orderCreateCourirsPage.SendOrderButton.ClickAndWaitTextError(2);
             orderCreateCourirsPage.ActionErrorText[0].WaitText("Ошибка просчета цены, или маршрут недоступен");
             orderCreateCourirsPage.ActionErrorText[1].WaitText("Город получения обязательно к заполнению");
 
