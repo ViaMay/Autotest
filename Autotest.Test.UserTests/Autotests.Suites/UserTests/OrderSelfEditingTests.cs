@@ -14,7 +14,7 @@ namespace Autotests.Tests.UserTests
             userPage.UserShops.Click();
             var shopsListPage = userPage.GoTo<UserShopsPage>();
             shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
-             var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
+            var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
             orderCreateSelfPage.Width.SetValueAndWait("4");
             orderCreateSelfPage.Height.SetValueAndWait("4");
             orderCreateSelfPage.Length.SetValueAndWait("4");

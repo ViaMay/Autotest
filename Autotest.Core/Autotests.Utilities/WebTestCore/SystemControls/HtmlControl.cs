@@ -248,9 +248,10 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
 
         public void ClickAndWaitTextError(int index = 0)
         {
+            Click(); 
             var alertClass = new StaticControl(BY.NthOfClass("alert-error", index));
             var errorClass = new StaticControl(BY.NthOfClass("help-inline", index));
-            Click();
+            Thread.Sleep(100);
             var second = 0;
             while (errorClass.IsPresent == false && alertClass.IsPresent == false)
             {

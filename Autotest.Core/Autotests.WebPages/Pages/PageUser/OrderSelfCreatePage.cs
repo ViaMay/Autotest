@@ -1,5 +1,8 @@
-﻿using Autotests.Utilities.WebTestCore.SystemControls;
+﻿using System.Net;
+using System.Threading;
+using Autotests.Utilities.WebTestCore.SystemControls;
 using Autotests.WebPages.Pages.PageUser.Controls;
+using NUnit.Framework;
 using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageUser
@@ -51,7 +54,17 @@ namespace Autotests.WebPages.Pages.PageUser
         {
             base.BrowseWaitVisible();
             Weight.WaitVisible();
+            MapOrders.SwitchToFrame();
+            RefreshUntilRMap();
+            MapOrders.SwitchToDefaultContent();
         }
+        public OrderSelfCreatePage RefreshUntilRMap()
+        {
+            Thread.Sleep(1000);
+            MapOrders.SwitchToFrame();
+            return RefreshUntil(this, page => MapOrders.TakeHere.IsPresent);
+        }
+
         public TextInput Weight { get; set; }
         public TextInput Width { get; set; }
         public TextInput Height { get; set; }

@@ -1,6 +1,6 @@
-﻿using Autotests.Utilities.WebTestCore.SystemControls;
+﻿using Autotests.Utilities.WebTestCore.Pages;
+using Autotests.Utilities.WebTestCore.SystemControls;
 using Autotests.Utilities.WebTestCore.TestSystem;
-using Autotests.Utilities.WebWorms.FuncTests;
 using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages.PageAdmin

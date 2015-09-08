@@ -96,6 +96,7 @@
   <ItemGroup>
     <Compile Include="ApiTestCore\ApiResponse.cs" />
     <Compile Include="ApiTestCore\Api.cs" />
+    <Compile Include="WebTestCore\Pages\CommonPageBase.cs" />
     <Compile Include="WebTestCore\Pages\PageBase.cs" />
     <Compile Include="WebTestCore\Pages\Timing\DefaultPageTimeStatistics.cs" />
     <Compile Include="WebTestCore\Pages\Timing\IPageTimeStatistics.cs" />
@@ -148,7 +149,6 @@
     <Compile Include="WebTestCore\TestSystem\WebDriverWrapper.cs" />
     <Compile Include="WebTestCore\TestSystem\WebElementWrapper.cs" />
     <Compile Include="WebTestCore\WebDriverFunctionalTestBase.cs" />
-    <Compile Include="WebWorms\FuncTests\CommonPageBase.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

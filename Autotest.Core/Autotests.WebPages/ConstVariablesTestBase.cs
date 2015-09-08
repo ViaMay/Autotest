@@ -6,7 +6,7 @@ namespace Autotests.WebPages
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
-//     public override string ApplicationBaseUrl { get { return "dev:Grass$Clash8pelvis@dev.ddelivery.ru"; } }
+ //            public override string ApplicationBaseUrl { get { return "dev:0DShabby7maiden&0Edata@dev.ddelivery.ru"; } }
         public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
 //        public override string ApplicationBaseUrl { get { return "cabinet.ddelivery.ru"; } }
@@ -16,7 +16,7 @@ namespace Autotests.WebPages
             base.SetUp();
             
             adminName = "v.e@ddelivery.ru";
-            adminPass = "LbREWCnpHa";
+            adminPass = "LbREWCnphA";
 
             legalEntityName = "test_legalEntity";
             legalUserName = "test_legalUser";

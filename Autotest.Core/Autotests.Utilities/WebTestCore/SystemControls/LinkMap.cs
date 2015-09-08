@@ -48,7 +48,6 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             StringAssert.DoesNotContain(expectedText, GetAttributeValue("alt"), description);
         }
 
-
         public void WaiteVisible()
         {
             var second = 0;
@@ -58,6 +57,7 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
                 if (second >= 1000) Assert.AreEqual(IsPresent, true, "Время ожидание завершено. Не найден элемент");
             }
         }
+
         public static Link ByLinkText(string linkText, HtmlControl container = null)
         {
             return new Link(By.LinkText(linkText), container);

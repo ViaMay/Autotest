@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using Autotests.Utilities.WebTestCore.SystemControls;
-using Autotests.Utilities.WebWorms.FuncTests;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
