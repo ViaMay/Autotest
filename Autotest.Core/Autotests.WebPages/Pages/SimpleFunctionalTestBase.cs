@@ -17,8 +17,8 @@ namespace Autotests.WebPages.Pages
 
         public override void TearDown()
         {
+            base.TearDown(); 
             LoadPage<DefaultPage>("auth/logout");
-            base.TearDown();
         }
 
         protected UserHomePage LoginAsUser(string login, string password)

@@ -61,7 +61,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public OrderSelfCreatePage RefreshUntilRMap()
         {
             Thread.Sleep(1000);
-            MapOrders.SwitchToFrame();
+//            MapOrders.SwitchToFrame();
             return RefreshUntil(this, page => MapOrders.TakeHere.IsPresent);
         }
 
