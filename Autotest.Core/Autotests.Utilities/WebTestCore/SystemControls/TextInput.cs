@@ -22,11 +22,6 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             element.SendKeys(value);
         }
 
-        public void SendKeys(string keys)
-        {
-            element.SendKeys(keys);
-        }
-
         public void Clear()
         {
             element.Clear();
