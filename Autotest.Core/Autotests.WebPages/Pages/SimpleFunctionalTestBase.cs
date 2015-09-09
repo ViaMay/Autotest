@@ -19,13 +19,17 @@ namespace Autotests.WebPages.Pages
 
         public override void TearDown()
         {
-            base.TearDown();
             try
             {
                 LoadPage<DefaultPage>("auth/logout");
             }
+            catch (IgnoreException)
+            {
+                
+            }
             finally
             {
+                base.TearDown();
             }
         }
 
