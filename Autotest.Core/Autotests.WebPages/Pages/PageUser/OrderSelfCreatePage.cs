@@ -1,7 +1,5 @@
 ﻿using System.Diagnostics;
-using System.Net;
 using System.Threading;
-using Autotests.Utilities.WebTestCore.Pages;
 using Autotests.Utilities.WebTestCore.SystemControls;
 using Autotests.WebPages.Pages.PageUser.Controls;
 using NUnit.Framework;

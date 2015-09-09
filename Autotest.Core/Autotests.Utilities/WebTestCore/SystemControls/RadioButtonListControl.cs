@@ -14,7 +14,8 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
         {
         }
 
-        public int Count {
+        public int Count
+        {
             get { return element.FindElements(By.ClassName("radio")).Count; }
         }
 

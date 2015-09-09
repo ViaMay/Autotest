@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using Autotests.Utilities.WebTestCore.TestSystem;
 using NUnit.Framework;
 using OpenQA.Selenium;

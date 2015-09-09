@@ -5,8 +5,8 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
 using System.Web;
-using Autotests.Utilities.WebTestCore.SystemControls;
 using Microsoft.Win32;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
@@ -74,6 +74,14 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             driver.Manage().Cookies.AddCookie(new Cookie(cookieName, cookieValue, "/"));
         }
 
+//        public string FindCookie(string cookieName)
+//        {
+//            var cookie = driver.Manage().Cookies.GetCookieNamed(cookieName);
+//            if (cookie == null)
+//                return null;
+//            return cookie.Value;
+//        }
+
         public object ExecuteScript(string script, params object[] args)
         {
             return ((IJavaScriptExecutor) driver).ExecuteScript(script, args);
@@ -101,65 +109,23 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             }
         }
 
-        public IAlert Alert()
+        public IAlert Alert(int timeout = 6000, int waitTimeout = 100)
         {
-            try
+            var w = Stopwatch.StartNew();
+            do
             {
-                return driver.SwitchTo().Alert();
-            }
-            catch (NoAlertPresentException)
-            {
-                Thread.Sleep(1000);
-            }
-            try
-            {
-                return driver.SwitchTo().Alert();
-            }
-            catch (NoAlertPresentException)
-            {
-                Thread.Sleep(1000);
-            }
-            try
-            {
-                return driver.SwitchTo().Alert();
-            }
-            catch (NoAlertPresentException)
-            {
-                Thread.Sleep(1000);
-            }
-            try
-            {
-                return driver.SwitchTo().Alert();
-            }
-            catch (NoAlertPresentException)
-            {
-                Thread.Sleep(1000);
-            }
-            try
-            {
-                return driver.SwitchTo().Alert();
-            }
-            catch (NoAlertPresentException)
-            {
-                Thread.Sleep(1000);
-            }
-            try
-            {
-                return driver.SwitchTo().Alert();
-            }
-            catch (NoAlertPresentException)
-            {
-                Thread.Sleep(1000);
-            }
-            try
-            {
-                return driver.SwitchTo().Alert();
-            }
-            catch (NoAlertPresentException)
-            {
-                Thread.Sleep(1000);
-            }
+                try
+                {
+                    return driver.SwitchTo().Alert();
+                }
+                catch (NoAlertPresentException)
+                {
+                    Thread.Sleep(waitTimeout);
+                }
+            } while (w.ElapsedMilliseconds < timeout);
+            Assert.Fail(string.Format("Не смогли дождаться страницу за {0} мс", timeout));
             return driver.SwitchTo().Alert();
+            
         }
 
         public IWebDriver SwitchToFrame(IWebElement value)

@@ -20,13 +20,10 @@ namespace Autotests.WebPages.Pages
         public override void TearDown()
         {
             base.TearDown();
-            var page = LoadPage<DefaultPage>("auth/logout");
             try
             {
-
-                page.Aletr.Сancel();
+                LoadPage<DefaultPage>("auth/logout");
             }
-
             catch (NoAlertPresentException)
             {
             }
