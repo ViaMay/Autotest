@@ -15,6 +15,7 @@ namespace Autotests.Tests.UserTests
             var shopsListPage = userPage.GoTo<UserShopsPage>();
             shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
             var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
+            orderCreateSelfPage = orderCreateSelfPage.RefreshUntilMap();
 
             orderCreateSelfPage.СountedButton.Click();
             orderCreateSelfPage.Aletr.WaitText("Сначала нужно указать размеры, вес и оценочную стоимость");
@@ -63,6 +64,7 @@ namespace Autotests.Tests.UserTests
             var shopsListPage = userPage.GoTo<UserShopsPage>();
             shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
             var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
+            orderCreateSelfPage = orderCreateSelfPage.RefreshUntilMap();
 
             orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError(1);
             orderCreateSelfPage.ErrorText[0].WaitText("ФИО получателя обязательно к заполнению");

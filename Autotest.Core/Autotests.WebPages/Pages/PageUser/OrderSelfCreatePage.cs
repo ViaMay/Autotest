@@ -1,5 +1,7 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 using System.Threading;
+using Autotests.Utilities.WebTestCore.Pages;
 using Autotests.Utilities.WebTestCore.SystemControls;
 using Autotests.WebPages.Pages.PageUser.Controls;
 using NUnit.Framework;
@@ -54,15 +56,36 @@ namespace Autotests.WebPages.Pages.PageUser
         {
             base.BrowseWaitVisible();
             Weight.WaitVisible();
-            MapOrders.SwitchToFrame();
-            RefreshUntilRMap();
-            MapOrders.SwitchToDefaultContent();
         }
-        public OrderSelfCreatePage RefreshUntilRMap()
+
+        public OrderSelfCreatePage RefreshPage()
         {
-            Thread.Sleep(1000);
-//            MapOrders.SwitchToFrame();
-            return RefreshUntil(this, page => MapOrders.TakeHere.IsPresent);
+            return RefreshPage(this);
+        }
+
+        public OrderSelfCreatePage RefreshUntilMap(int timeout = 65000, int waitTimeout = 100)
+        {
+            var w = Stopwatch.StartNew();
+            var newPage = new OrderSelfCreatePage();
+            newPage.MapOrders.SwitchToFrame();
+            if (newPage.MapOrders.TakeHere.IsPresent)
+            {
+                newPage.MapOrders.SwitchToDefaultContent();
+                return newPage;
+            }
+            do
+            {
+                newPage = RefreshPage();
+                newPage.MapOrders.SwitchToFrame();
+                if (newPage.MapOrders.TakeHere.IsPresent)
+                {
+                    newPage.MapOrders.SwitchToDefaultContent();
+                    return newPage;
+                }
+                Thread.Sleep(waitTimeout);
+            } while (w.ElapsedMilliseconds < timeout);
+            Assert.Fail(string.Format("Не смогли дождаться страницу за {0} мс", timeout));
+            return default(OrderSelfCreatePage);
         }
 
         public TextInput Weight { get; set; }

@@ -15,6 +15,7 @@ namespace Autotests.Tests.UserTests
             var shopsListPage = userPage.GoTo<UserShopsPage>();
             shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
             var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
+            orderCreateSelfPage = orderCreateSelfPage.RefreshUntilMap();
             orderCreateSelfPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateSelfPage.GoodsDescription.SetValueAndWait("ok");
@@ -65,6 +66,7 @@ namespace Autotests.Tests.UserTests
             var shopsListPage = userPage.GoTo<UserShopsPage>();
             shopsListPage.Table.FindRowByName(userShopName).OrdersCreateSelf.Click();
             var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
+            orderCreateSelfPage = orderCreateSelfPage.RefreshUntilMap();
             orderCreateSelfPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
             orderCreateSelfPage.BuyerPhone.SetValueAndWait("1111111111");
             orderCreateSelfPage.GoodsDescription.SetValueAndWait("ok");
