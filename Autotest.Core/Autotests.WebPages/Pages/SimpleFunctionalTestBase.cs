@@ -4,6 +4,7 @@ using Autotests.WebPages.Pages.PageAdmin;
 using Autotests.WebPages.Pages.PageUser;
 using System.Threading;
 using NUnit.Framework;
+using OpenQA.Selenium;
 
 namespace Autotests.WebPages.Pages
 {
@@ -18,9 +19,17 @@ namespace Autotests.WebPages.Pages
 
         public override void TearDown()
         {
-            base.TearDown(); 
-            LoadPage<DefaultPage>("auth/logout");
-            DefaultPage.Aletr.Сancel(); 
+            base.TearDown();
+            var page = LoadPage<DefaultPage>("auth/logout");
+            try
+            {
+
+                page.Aletr.Сancel();
+            }
+
+            catch (NoAlertPresentException)
+            {
+            }
         }
 
         protected UserHomePage LoginAsUser(string login, string password)
