@@ -22,7 +22,9 @@ namespace Autotests.WebPages.Pages
             base.TearDown();
             try
             {
-                LoadPage<DefaultPage>("auth/logout");
+                var page = LoadPage<DefaultPage>("auth/logout");
+                page.LoginButton.SendKeys(Keys.Escape);
+                page.LoginButton.SendKeys(Keys.Enter);
             }
             catch (NoAlertPresentException)
             {

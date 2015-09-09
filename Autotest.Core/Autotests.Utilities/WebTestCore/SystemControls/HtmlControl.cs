@@ -287,6 +287,11 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             element.SendKeysToBody(text);
         }
 
+        public void  SendKeys(string text)
+        {
+            element.SendKeys(text);
+        }
+
         public virtual string GetText()
         {
             return element.Text.Trim();
