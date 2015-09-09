@@ -20,6 +20,7 @@ namespace Autotests.WebPages.Pages
         {
             base.TearDown(); 
             LoadPage<DefaultPage>("auth/logout");
+            DefaultPage.Aletr.Сancel(); 
         }
 
         protected UserHomePage LoginAsUser(string login, string password)
