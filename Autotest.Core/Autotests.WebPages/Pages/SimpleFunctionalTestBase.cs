@@ -21,7 +21,7 @@ namespace Autotests.WebPages.Pages
         {
             try
             {
-                LoadPage<DefaultPage>("auth/logout");
+//                LoadPage<DefaultPage>("auth/logout");
             }
             catch (IgnoreException)
             {
