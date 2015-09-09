@@ -246,19 +246,18 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             element.ClickLeftUp();
         }
 
-        public void ClickAndWaitTextError(int index = 0)
+        public void ClickAndWaitTextError(int index = 0, int timeout = 6000, int waitTimeout = 100)
         {
             Click(); 
             var alertClass = new StaticControl(BY.NthOfClass("alert-error", index));
             var errorClass = new StaticControl(BY.NthOfClass("help-inline", index));
             Thread.Sleep(1500);
-            var second = 0;
+            var w = Stopwatch.StartNew();
             while (errorClass.IsPresent == false && alertClass.IsPresent == false)
             {
-                second = second + 1;
-                Thread.Sleep(10);
-                if (second >= 600) Assert.AreEqual(errorClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
-                if (second >= 600) Assert.AreEqual(alertClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
+                Thread.Sleep(waitTimeout);
+                if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(errorClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
+                if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(alertClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
             }
         }
 

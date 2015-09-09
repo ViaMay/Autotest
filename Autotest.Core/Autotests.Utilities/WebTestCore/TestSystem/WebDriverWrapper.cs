@@ -118,7 +118,7 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
                 {
                     return driver.SwitchTo().Alert();
                 }
-                catch (NoAlertPresentException)
+                catch (Exception)
                 {
                     Thread.Sleep(waitTimeout);
                 }
