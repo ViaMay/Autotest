@@ -95,7 +95,7 @@ namespace Autotests.Tests.ApiTests
             Assert.IsFalse(responseDocumentsRequest.Response.Completed);
 
 //            спим минуту ждем генерации
-           Thread.Sleep(60000);
+            WaitDocuments();
 
             var responseDocumentsStatus =
                 (ApiResponse.ResponseDocumentsRequest)apiRequest.GET("api/v1/" + keyShopPublic +

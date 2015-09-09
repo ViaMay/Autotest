@@ -30,7 +30,7 @@ namespace Autotests.Tests
                 {"api_key", keyShopPublic},
 		        {"type", "2"},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveryCompanyId},
+		        {"delivery_company", deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},
@@ -57,7 +57,7 @@ namespace Autotests.Tests
 		        {"type", "1"},
 		        {"delivery_point", deliveryPoinId},
 		        {"to_city", "151184"},
-		        {"delivery_company", "" + deliveryCompanyId},
+		        {"delivery_company", deliveryCompanyId},
 		        {"shop_refnum", userShopName},
 		        {"dimension_side1", "4"},
 		        {"dimension_side2", "4"},
@@ -76,6 +76,7 @@ namespace Autotests.Tests
             return new[] {responseCreateOrder1.Response.OrderId, responseCreateOrder2.Response.OrderId};
         }
 
+        
         //        "dd.MM.yyyy" формат pickupDate
         public string SendOrderCourirsRequest(DateTime pickupDate = default(DateTime))
         {

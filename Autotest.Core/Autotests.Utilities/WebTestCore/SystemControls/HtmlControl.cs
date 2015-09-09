@@ -251,7 +251,7 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             Click(); 
             var alertClass = new StaticControl(BY.NthOfClass("alert-error", index));
             var errorClass = new StaticControl(BY.NthOfClass("help-inline", index));
-            Thread.Sleep(100);
+            Thread.Sleep(1500);
             var second = 0;
             while (errorClass.IsPresent == false && alertClass.IsPresent == false)
             {

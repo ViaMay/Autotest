@@ -2,7 +2,6 @@
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
-using System.Threading;
 using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages;
 using Autotests.WebPages.Pages.PageAdmin;
@@ -101,7 +100,7 @@ namespace Autotests.Tests.ApiTests
             Assert.IsFalse(responseDocumentsRequest.Response.Completed);
 
 //            спим минуту ждем генерации
-           Thread.Sleep(60000);
+            WaitDocuments();
 
             var responseDocumentsStatus =
                 (ApiResponse.ResponseDocumentsRequest)apiRequest.GET("api/v1/" + keyShopPublic +

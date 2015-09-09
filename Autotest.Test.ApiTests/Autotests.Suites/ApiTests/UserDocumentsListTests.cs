@@ -110,7 +110,7 @@ namespace Autotests.Tests.ApiTests
             Assert.IsFalse(responseDocumentsRequest.Response.Completed);
 
 //            спим минуту ждем генерации
-           Thread.Sleep(60000);
+            WaitDocuments();
 
             var responseDocumentsList =
                 (ApiResponse.ResponseDocumentsList)apiRequest.GET("api/v1/cabinet/" + userKey + "/documents_list.json", 

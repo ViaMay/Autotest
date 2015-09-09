@@ -2,6 +2,7 @@
 using Autotests.Utilities.WebTestCore.TestSystem;
 using Autotests.WebPages.Pages.PageAdmin;
 using Autotests.WebPages.Pages.PageUser;
+using System.Threading;
 using NUnit.Framework;
 
 namespace Autotests.WebPages.Pages
@@ -42,6 +43,11 @@ namespace Autotests.WebPages.Pages
         {
             var partyCreationPage = LoadPage<DefaultPage>("");
             return partyCreationPage;
+        }
+
+        public void WaitDocuments(int value = 90000)
+        {
+            Thread.Sleep(value);
         }
 
         protected DefaultPage DefaultPage { get; private set; }

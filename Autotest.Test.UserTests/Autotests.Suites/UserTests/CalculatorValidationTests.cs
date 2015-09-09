@@ -1,4 +1,5 @@
-﻿using Autotests.WebPages;
+﻿using System;
+using Autotests.WebPages;
 using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
 
