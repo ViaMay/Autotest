@@ -66,7 +66,17 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
         
         public void DeleteAllCookies()
         {
-            driver.Manage().Cookies.DeleteAllCookies();
+            try
+            {
+                driver.Manage().Cookies.DeleteAllCookies();
+            }
+            catch (UnhandledAlertException e)
+            {
+                var alert = driver.SwitchTo().Alert();
+                alert.Dismiss();
+                driver.Manage().Cookies.DeleteAllCookies();
+            }
+            
         }
 
         public void SetCookie(string cookieName, string cookieValue)

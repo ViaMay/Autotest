@@ -21,11 +21,12 @@ namespace Autotests.WebPages.Pages
         {
             try
             {
-//                LoadPage<DefaultPage>("auth/logout");
+                LoadPage<DefaultPage>("auth/logout");
             }
-            catch (IgnoreException)
+            catch (UnhandledAlertException e)
             {
-                
+                var alert = WebDriverCache.WebDriver.Alert();
+                alert.Dismiss();
             }
             finally
             {
