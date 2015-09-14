@@ -1,4 +1,6 @@
-﻿using Autotests.WebPages;
+﻿using System.Diagnostics;
+using System.Threading;
+using Autotests.WebPages;
 using Autotests.WebPages.Pages.PageUser;
 using NUnit.Framework;
 
@@ -93,11 +95,21 @@ namespace Autotests.Tests.UserTests
             orderCourirsEditingPage.CityTo.SetFirstValueSelect("Санкт-Петербург");
             orderCourirsEditingPage.СountedButton.Click();
             orderCourirsEditingPage.WaitCounted();
-
             orderCourirsEditingPage.BuyerStreet.SetValueAndWait("");
             orderCourirsEditingPage.BuyerHouse.SetValueAndWait("");
             orderCourirsEditingPage.BuyerFlat.SetValueAndWait("");
-            orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError(8);
+
+            orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError(3);
+            var w = Stopwatch.StartNew();
+            do
+            {
+                if (orderCourirsEditingPage.ErrorText[0].GetText() == "Улица получателя обязательно к заполнению")
+                {
+                    break;
+                }
+                orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError(3);
+                Thread.Sleep(1000);
+            } while (w.ElapsedMilliseconds < 6000); 
             orderCourirsEditingPage.ErrorText[0].WaitText("Улица получателя обязательно к заполнению");
             orderCourirsEditingPage.ErrorText[1].WaitText("Дом получателя обязательно к заполнению");
             orderCourirsEditingPage.ErrorText[2].WaitText("Квартира получателя обязательно к заполнению");
