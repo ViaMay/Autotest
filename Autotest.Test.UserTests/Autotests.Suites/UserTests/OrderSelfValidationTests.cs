@@ -66,7 +66,7 @@ namespace Autotests.Tests.UserTests
             var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
             orderCreateSelfPage = orderCreateSelfPage.RefreshUntilMap();
 
-            orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError(1);
+            orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError(3);
             orderCreateSelfPage.ErrorText[0].WaitText("ФИО получателя обязательно к заполнению");
             orderCreateSelfPage.ErrorText[1].WaitText("Телефон получателя обязательно к заполнению");
             orderCreateSelfPage.ErrorText[2].WaitText("Описание посылки обязательно к заполнению");
@@ -89,7 +89,7 @@ namespace Autotests.Tests.UserTests
             orderCreateSelfPage.Weight.SetValueAndWait("4");
             orderCreateSelfPage.DeclaredPrice.SetValueAndWait("4");
 
-            orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError();
+            orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError(3);
             orderCreateSelfPage.ActionErrorText[0].WaitText("Ошибка просчета цены, или маршрут недоступен");
             orderCreateSelfPage.ActionErrorText[1].WaitText("Компания доставки обязательно к заполнению");
             orderCreateSelfPage.ActionErrorText[2].WaitText("Не выбран пункт выдачи");

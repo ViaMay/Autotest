@@ -261,6 +261,18 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             }
         }
 
+        public void ClickAndWaitTextHorizontalError(int index = 0, int timeout = 6000, int waitTimeout = 100)
+        {
+            Click(); 
+            var alertClass = new StaticControl(BY.NthOfClass("alert-error", index));
+            var w = Stopwatch.StartNew();
+            while (alertClass.IsPresent == false)
+            {
+                Thread.Sleep(waitTimeout);
+                if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(alertClass.IsPresent, true, "Время ожидание завершено. Не найден элемент содержаший ошибку");
+            }
+        }
+
         public void ClickAndWaitTextErrorAbsence(int index = 0, int timeout = 6000, int waitTimeout = 100)
         {
             var alertClass = new StaticControl(BY.NthOfClass("alert-error", index));

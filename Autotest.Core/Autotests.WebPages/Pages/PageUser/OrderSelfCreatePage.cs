@@ -66,7 +66,7 @@ namespace Autotests.WebPages.Pages.PageUser
             var w = Stopwatch.StartNew();
             var newPage = new OrderSelfCreatePage();
             newPage.MapOrders.SwitchToFrame();
-            if (newPage.MapOrders.TakeHere.IsPresent)
+            if (newPage.MapOrders.ImageLocator.IsPresent)
             {
                 newPage.MapOrders.SwitchToDefaultContent();
                 return newPage;
@@ -75,7 +75,7 @@ namespace Autotests.WebPages.Pages.PageUser
             {
                 newPage = RefreshPage();
                 newPage.MapOrders.SwitchToFrame();
-                if (newPage.MapOrders.TakeHere.IsPresent)
+                if (newPage.MapOrders.ImageLocator.IsPresent)
                 {
                     newPage.MapOrders.SwitchToDefaultContent();
                     return newPage;
