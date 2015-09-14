@@ -22,6 +22,7 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             return selectedText.GetAttributeValue("title");
         }
 
+//        TODO все переписать 
         public void SelectValueFirst(string value)
         {
             WaitPresenceWithRetries();

@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Diagnostics;
+using System.Threading;
 using Autotests.Utilities.WebTestCore.SystemControls;
 using Autotests.Utilities.WebTestCore.TestSystem;
 using Autotests.WebPages.Pages.PageUser.Controls;
@@ -56,30 +57,28 @@ namespace Autotests.WebPages.Pages.PageUser
             return row;
         }
 
-        public void WaitCounted()
+        public void WaitCounted(int timeout = 2000, int waitTimeout = 100)
         {
-            var second = 0;
+            var w = Stopwatch.StartNew();
             while (Countedloader.IsPresent)
             {
-                second = second + 1;
-                if (second >= 60) Assert.AreEqual(Countedloader.IsPresent, false, "Время ожидание завершено. Не найден элемент");
-            } second = 0;
+                Thread.Sleep(waitTimeout);
+                if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(Countedloader.IsPresent, false, "Время ожидание завершено. Не найден элемент");
+            }
             while (!DeliveryList[0].IsPresent)
             {
-                second = second + 1;
-                Thread.Sleep(10);
-                if (second >= 1000) Assert.AreEqual(DeliveryList[0].IsPresent, true, "Время ожидание завершено. Не найден элемент");
+                Thread.Sleep(waitTimeout);
+                if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(DeliveryList[0].IsPresent, true, "Время ожидание завершено. Не найден элемент");
             }
         }
 
-        public void WaitTextRadioButtonError(string value)
+        public void WaitTextRadioButtonError(string value, int timeout = 2000, int waitTimeout = 100)
         {
-            var second = 0;
+            var w = Stopwatch.StartNew();
             while (!TextRadioButtonError.IsPresent)
             {
-                second = second + 1;
-                if (second >= 1000) Assert.AreEqual(Countedloader.IsPresent, false, "Время ожидание завершено. Не найден элемент");
-                Thread.Sleep(10);
+                Thread.Sleep(waitTimeout);
+                if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(Countedloader.IsPresent, false, "Время ожидание завершено. Не найден элемент");
             }
             TextRadioButtonError.WaitText(value);
         }

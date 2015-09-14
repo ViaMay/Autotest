@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Diagnostics;
+using System.Threading;
 using Autotests.Utilities.WebTestCore.SystemControls;
 using Autotests.Utilities.WebTestCore.TestSystem;
 using Autotests.WebPages.Pages.PageUser.Controls;
@@ -60,13 +61,13 @@ namespace Autotests.WebPages.Pages.PageUser
             City.WaitVisible();
         }
 
-        public void WaitCounted()
+        public void WaitCounted(int timeout = 2000, int waitTimeout = 100)
         {
-            var second = 0;
+            var w = Stopwatch.StartNew();
             while (Countedloader.IsPresent)
             {
-                second = second + 1;
-                if (second >= 60) Assert.AreEqual(Countedloader.IsPresent, false, "Время ожидание завершено. Не найден элемент");
+                Thread.Sleep(waitTimeout);
+                if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(Countedloader.IsPresent, false, "Время ожидание завершено. Не найден элемент");
             }
         }
 

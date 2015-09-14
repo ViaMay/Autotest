@@ -1,4 +1,6 @@
-﻿using Autotests.Utilities.WebTestCore.TestSystem;
+﻿using System.Diagnostics;
+using System.Threading;
+using Autotests.Utilities.WebTestCore.TestSystem;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
@@ -48,18 +50,18 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             StringAssert.DoesNotContain(expectedText, GetAttributeValue("alt"), description);
         }
 
-        public void WaiteVisible(int timeout = 6000)
+        public void WaiteVisible(int timeout = 6000, int waitTimeout = 100)
         {
-            var second = 0;
+            var w = Stopwatch.StartNew();
             while (!IsPresent)
             {
-                second = second + 1;
-                if (second >= timeout) Assert.AreEqual(IsPresent, true, "Время ожидание завершено. Не найден элемент");
+                Thread.Sleep(waitTimeout);
+                if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(IsPresent, true, "Время ожидание завершено. Не найден элемент");
             }
             while (!IsVisible)
             {
-                second = second + 1;
-                if (second >= timeout) Assert.AreEqual(IsPresent, true, "Время ожидание завершено. Не найден элемент");
+                Thread.Sleep(waitTimeout);
+                if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(IsPresent, true, "Время ожидание завершено. Не найден элемент");
             }
         }
 

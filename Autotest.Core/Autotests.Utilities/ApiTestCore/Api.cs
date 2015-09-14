@@ -65,13 +65,13 @@ namespace Autotests.Utilities.ApiTestCore
 
         private static ApiResponse.TResponse JsonSerializer(string value)
         {
-//            ResponseDocumentsRequest если тег response есть completed и не 
+//            ResponsePaymentPriceFee если тег response есть percent_card то это ResponsePaymentPriceFee 
             if (value.Contains(@"percent_card") && value.Contains(@"percent"))
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponsePaymentPriceFee));
                 return (ApiResponse.ResponsePaymentPriceFee)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
             }
-//            ResponseDocumentsRequest если тег response есть completed и не 
+//            ResponseDocumentsRequest если тег response есть completed  
             if (value.Contains(@"response"":{""completed"""))
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDocumentsRequest));
@@ -149,10 +149,7 @@ namespace Autotests.Utilities.ApiTestCore
             {
                 Encoding utf8 = Encoding.GetEncoding("utf-8");
                 Encoding win1251 = Encoding.GetEncoding("windows-1251");
-                Encoding win1252 = Encoding.GetEncoding("windows-1252");
                 var bytes = win1251.GetBytes(value);
-                value = win1252.GetString(bytes);
-                bytes = win1252.GetBytes(value);
                 value = utf8.GetString(bytes);
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeamonСities));
                 return (ApiResponse.ResponseDeamonСities)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));

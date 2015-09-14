@@ -61,7 +61,7 @@ namespace Autotests.WebPages.Pages.PageUser
             return RefreshPage(this);
         }
 
-        public OrderSelfCreatePage RefreshUntilMap(int timeout = 65000, int waitTimeout = 100)
+        public OrderSelfCreatePage RefreshUntilMap(int timeout = 100000, int waitTimeout = 100)
         {
             var w = Stopwatch.StartNew();
             var newPage = new OrderSelfCreatePage();
@@ -82,7 +82,7 @@ namespace Autotests.WebPages.Pages.PageUser
                 }
                 Thread.Sleep(waitTimeout);
             } while (w.ElapsedMilliseconds < timeout);
-            Assert.Fail(string.Format("Не смогли дождаться страницу за {0} мс", timeout));
+            Assert.Fail(string.Format("Не смогли дождаться видимости карты на странице создания заказов за {0} мс", timeout));
             return default(OrderSelfCreatePage);
         }
 
