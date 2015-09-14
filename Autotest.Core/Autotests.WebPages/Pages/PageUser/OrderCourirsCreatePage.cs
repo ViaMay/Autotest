@@ -57,7 +57,7 @@ namespace Autotests.WebPages.Pages.PageUser
             return row;
         }
 
-        public void WaitCounted(int timeout = 2000, int waitTimeout = 100)
+        public void WaitCounted(int timeout = 10000, int waitTimeout = 100)
         {
             var w = Stopwatch.StartNew();
             while (Countedloader.IsPresent)
@@ -72,7 +72,7 @@ namespace Autotests.WebPages.Pages.PageUser
             }
         }
 
-        public void WaitTextRadioButtonError(string value, int timeout = 2000, int waitTimeout = 100)
+        public void WaitTextRadioButtonError(string value, int timeout = 10000, int waitTimeout = 100)
         {
             var w = Stopwatch.StartNew();
             while (!TextRadioButtonError.IsPresent)
