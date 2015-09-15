@@ -14,6 +14,7 @@ namespace Autotests.WebPages.Pages
             City = new SelectMap(By.XPath("//div[@id='ddelivery']/div/div/div/div/input"));
             TakeHere = new LinkMap(By.XPath("//div/div[2]/div[4]/div[5]/a"));
             ImageLocator = new LinkMap(By.CssSelector("ymaps.ymaps-image"));
+            ImageZoom = new LinkMap(By.ClassName("ymaps-b-zoom__sprite"));
             HasFittingRoom = new LinkMap(By.XPath("//div[3]/div[3]/div[2]/p[2]/a[2]"));
             Scroll = new LinkMap(By.XPath("//div[1]/div/div[1]/span"));
         }
@@ -22,6 +23,7 @@ namespace Autotests.WebPages.Pages
         public LinkMap TakeHere { get; set; }
         public SelectMap City { get; set; }
         public LinkMap ImageLocator { get; set; }
+        public LinkMap ImageZoom { get; set; }
         public LinkMap HasFittingRoom { get; set; }
         public LinkMap Scroll { get; set; }
 

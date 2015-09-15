@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Threading;
 using Autotests.Utilities.WebTestCore.SystemControls;
 using Autotests.WebPages.Pages.PageUser.Controls;
@@ -61,27 +62,35 @@ namespace Autotests.WebPages.Pages.PageUser
             return RefreshPage(this);
         }
 
-        public OrderSelfCreatePage RefreshUntilMap(int timeout = 180000, int waitTimeout = 1000)
+        public OrderSelfCreatePage RefreshUntilMap(int timeout = 100000, int waitTimeout = 1000)
         {
             var w = Stopwatch.StartNew();
             var newPage = new OrderSelfCreatePage();
-            newPage.MapOrders.SwitchToFrame();
-            if (newPage.MapOrders.ImageLocator.IsPresent)
+            try
             {
+                newPage.MapOrders.SwitchToFrame();
+                newPage.MapOrders.ImageZoom.WaiteVisible();
                 newPage.MapOrders.SwitchToDefaultContent();
                 return newPage;
             }
-            do
+            catch (Exception)
             {
-                newPage = RefreshPage();
-                newPage.MapOrders.SwitchToFrame();
-                if (newPage.MapOrders.ImageLocator.IsPresent)
+                do
                 {
-                    newPage.MapOrders.SwitchToDefaultContent();
-                    return newPage;
-                }
-                Thread.Sleep(waitTimeout);
-            } while (w.ElapsedMilliseconds < timeout);
+                    newPage = RefreshPage();
+                    try
+                    {
+                        newPage.MapOrders.SwitchToFrame();
+                        newPage.MapOrders.ImageZoom.WaiteVisible();
+                        newPage.MapOrders.SwitchToDefaultContent();
+                        return newPage;
+                    }
+                    catch (Exception)
+                    {
+                        Thread.Sleep(waitTimeout);
+                    }
+                } while (w.ElapsedMilliseconds < timeout);
+            }
             Assert.Fail(string.Format("Не смогли дождаться видимости карты на странице создания заказов за {0} мс", timeout));
             return default(OrderSelfCreatePage);
         }
