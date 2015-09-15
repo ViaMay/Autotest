@@ -23,7 +23,7 @@ namespace Autotests.WebPages.Pages
             {
                 LoadPage<DefaultPage>("auth/logout");
             }
-            catch (UnhandledAlertException e)
+            catch (UnhandledAlertException)
             {
                 var alert = WebDriverCache.WebDriver.Alert();
                 alert.Dismiss();
