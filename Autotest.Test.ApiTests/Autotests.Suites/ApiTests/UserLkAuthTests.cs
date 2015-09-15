@@ -64,7 +64,7 @@ namespace Autotests.Tests.ApiTests
             var responseFail =
                 (ApiResponse.ResponseFail)apiRequest.GET("api/v1/cabinet/lk_auth.json",
                 new NameValueCollection{});
-            Assert.AreEqual(responseFail.Response.ErrorText, "Некорректный логин или пароль");
+            Assert.AreEqual(responseFail.Response.ErrorText, "password:Пароль обязательно к заполнению;login:login обязательно к заполнению;");
 
             responseFail =
                 (ApiResponse.ResponseFail)apiRequest.GET("api/v1/cabinet/lk_auth.json",
@@ -72,7 +72,7 @@ namespace Autotests.Tests.ApiTests
                 {
                     {"login", userNameAndPass}
                 });
-            Assert.AreEqual(responseFail.Response.ErrorText, "Некорректный логин или пароль");
+            Assert.AreEqual(responseFail.Response.ErrorText, "password:Пароль обязательно к заполнению;");
 
             responseFail =
                 (ApiResponse.ResponseFail)apiRequest.GET("api/v1/cabinet/lk_auth.json",
@@ -80,7 +80,7 @@ namespace Autotests.Tests.ApiTests
                 {
                     {"password", userNameAndPass}
                 });
-            Assert.AreEqual(responseFail.Response.ErrorText, "Некорректный логин или пароль");
+            Assert.AreEqual(responseFail.Response.ErrorText, "login:login обязательно к заполнению;");
 
             responseFail =
                 (ApiResponse.ResponseFail)apiRequest.GET("api/v1/cabinet/lk_auth.json",
@@ -114,7 +114,7 @@ namespace Autotests.Tests.ApiTests
              var responseFail =
                 (ApiResponse.ResponseFail)apiRequest.GET("api/v1/cabinet/" + responseLkAuth.Response.Token + "/lk_request.json",
                  new NameValueCollection{});
-             Assert.AreEqual(responseFail.Response.ErrorText, "Недостаточно параметров для совершения операции");
+             Assert.AreEqual(responseFail.Response.ErrorText, "method:method обязательно к заполнению;");
 
              responseFail =
                 (ApiResponse.ResponseFail)apiRequest.GET("api/v1/cabinet/" + responseLkAuth.Response.Token + "/lk_request.json",
@@ -122,7 +122,7 @@ namespace Autotests.Tests.ApiTests
                 {
                     {"method", ""},
                 });
-             Assert.AreEqual(responseFail.Response.ErrorText, "Метод не найден");
+             Assert.AreEqual(responseFail.Response.ErrorText, "method:method обязательно к заполнению;");
 
              responseFail =
                 (ApiResponse.ResponseFail)apiRequest.GET("api/v1/cabinet/" + responseLkAuth.Response.Token + "/lk_request.json",
