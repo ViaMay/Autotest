@@ -9,7 +9,6 @@ namespace Autotests.Tests.UserTests
     public class OrderCourirsEditingValidationTests : ConstVariablesTestBase
     {
         [Test, Description("Создание черновика заказа, проверка валидации при редактировании")]
-
         public void OrderCourirsEditingValidationTest()
         {
             var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
@@ -92,24 +91,57 @@ namespace Autotests.Tests.UserTests
             orderCourirsEditingPage.BuyerPhoneAdd.SetValueAndWait("");
             orderCourirsEditingPage.BuyerEmail.SetValueAndWait("");
 
-            orderCourirsEditingPage.CityTo.SetFirstValueSelect("Санкт-Петербург");
-            orderCourirsEditingPage.СountedButton.Click();
-            orderCourirsEditingPage.WaitCounted();
+            orderCourirsEditingPage.SaveChangeButton.Click();
+            orderCourirsPage = orderCourirsEditingPage.GoTo<OrderPage>();
+            orderCourirsPage.StatusOrder.WaitText("В обработке");
+        }
+
+        [Test, Description("Создание черновика заказа, проверка валидации при редактировании")]
+        public void OrderCourirsEditingValidation02Test()
+        {
+            var userPage = LoginAsUser(userNameAndPass, userNameAndPass);
+            userPage.UseProfile.Click();
+            userPage.UserShops.Click();
+            var shopsListPage = userPage.GoTo<UserShopsPage>();
+            shopsListPage.Table.FindRowByName(userShopName).OrdersCreateCourier.Click();
+            var orderCreateCourirsPage = shopsListPage.GoTo<OrderCourirsCreatePage>();
+            orderCreateCourirsPage.CityTo.SetFirstValueSelect("Санкт-Петербург");
+            orderCreateCourirsPage.DeclaredPrice.SetValueAndWait("10.1");
+            orderCreateCourirsPage.Width.SetValueAndWait("10.1");
+            orderCreateCourirsPage.Height.SetValueAndWait("11.1");
+            orderCreateCourirsPage.Length.SetValueAndWait("12.1");
+            orderCreateCourirsPage.Weight.SetValueAndWait("9.1");
+
+            orderCreateCourirsPage.СountedButton.Click();
+            orderCreateCourirsPage.WaitCounted();
+
+            orderCreateCourirsPage.DeliveryList[0].WaitTextContains("test_via");
+            orderCreateCourirsPage.DeliveryList[0].Click();
+
+            orderCreateCourirsPage.BuyerStreet.SetValueAndWait("Улица");
+            orderCreateCourirsPage.BuyerHouse.SetValueAndWait("Дом");
+            orderCreateCourirsPage.BuyerFlat.SetValueAndWait("Квартира");
+            orderCreateCourirsPage.BuyerPostalCode.SetValueAndWait("123123");
+            orderCreateCourirsPage.BuyerName.SetValueAndWait("Фамилия Имя Очество");
+            orderCreateCourirsPage.BuyerPhone.SetValueAndWait("1111111111");
+            orderCreateCourirsPage.BuyerEmail.SetValueAndWait(userNameAndPass);
+
+            orderCreateCourirsPage.OrderNumber.SetValueAndWait("OrderNumber");
+            orderCreateCourirsPage.GoodsDescription.SetValueAndWait("Хороший товар,годный");
+            
+            orderCreateCourirsPage.SaveDraftButton.Click();
+            var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
+            orderCourirsPage.BackOrders.Click();
+            var ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
+
+            ordersPage.Table.GetRow(0).Edit.Click();
+            var orderCourirsEditingPage = ordersPage.GoTo<OrderCourirsEditingPage>();
+            
             orderCourirsEditingPage.BuyerStreet.SetValueAndWait("");
             orderCourirsEditingPage.BuyerHouse.SetValueAndWait("");
             orderCourirsEditingPage.BuyerFlat.SetValueAndWait("");
 
             orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError(3);
-            var w = Stopwatch.StartNew();
-            do
-            {
-                if (orderCourirsEditingPage.ErrorText[0].GetText() == "Улица получателя обязательно к заполнению")
-                {
-                    break;
-                }
-                orderCourirsEditingPage.SaveChangeButton.ClickAndWaitTextError(3);
-                Thread.Sleep(1000);
-            } while (w.ElapsedMilliseconds < 6000); 
             orderCourirsEditingPage.ErrorText[0].WaitText("Улица получателя обязательно к заполнению");
             orderCourirsEditingPage.ErrorText[1].WaitText("Дом получателя обязательно к заполнению");
             orderCourirsEditingPage.ErrorText[2].WaitText("Квартира получателя обязательно к заполнению");
@@ -117,6 +149,7 @@ namespace Autotests.Tests.UserTests
             orderCourirsEditingPage.BuyerStreet.SetValueAndWait("Улица");
             orderCourirsEditingPage.BuyerHouse.SetValueAndWait("Дом");
             orderCourirsEditingPage.BuyerFlat.SetValueAndWait("Квартира");
+
             orderCourirsEditingPage.SaveChangeButton.Click();
             orderCourirsPage = orderCourirsEditingPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("В обработке");

@@ -47,6 +47,8 @@ namespace Autotests.WebPages.Pages.PageUser
             ActionErrorText = new ErrorActionTextControl(By.ClassName("form-horizontal"));
             ErrorText = new ErrorTextControl(By.ClassName("form-horizontal"));
             Countedloader = new StaticControl(By.CssSelector("#radio_div > div > imj"));
+
+            DeliveryList = new RadioButtonListControl("radio_div");
          }
 
         public OrderArticleStaticRowControl GetArticleRow(int index)
@@ -68,6 +70,11 @@ namespace Autotests.WebPages.Pages.PageUser
             {
                 Thread.Sleep(waitTimeout);
                 if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(Countedloader.IsPresent, false, "Время ожидание завершено. Не найден элемент");
+            }
+            while (!DeliveryList[0].IsPresent)
+            {
+                Thread.Sleep(waitTimeout);
+                if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(DeliveryList[0].IsPresent, true, "Время ожидание завершено. Не найден элемент");
             }
         }
 
@@ -105,5 +112,7 @@ namespace Autotests.WebPages.Pages.PageUser
         public ErrorActionTextControl ActionErrorText { get; set; }
         public ErrorTextControl ErrorText { get; set; }
         private StaticControl Countedloader { get; set; }
+
+        public RadioButtonListControl DeliveryList { get; set; }
     }
 }

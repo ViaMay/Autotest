@@ -61,7 +61,7 @@ namespace Autotests.WebPages.Pages.PageUser
             return RefreshPage(this);
         }
 
-        public OrderSelfCreatePage RefreshUntilMap(int timeout = 100000, int waitTimeout = 100)
+        public OrderSelfCreatePage RefreshUntilMap(int timeout = 180000, int waitTimeout = 1000)
         {
             var w = Stopwatch.StartNew();
             var newPage = new OrderSelfCreatePage();
