@@ -306,7 +306,8 @@ namespace Autotests.Tests.ApiTests
                         {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
                         {"order_comment", "order_comment"}
                     });
-            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Резервирование штрих-кодов недоступно для указанной ТК");
+//            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Резервирование штрих-кодов недоступно для указанной ТК");
+            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Ошибка обработки штрих-кодов");
 
             companyCreatePage = LoadPage<CompanyCreatePage>("admin/companies/edit/" + deliveryCompanyId);
             companyCreatePage.BarcodePull.CheckAndWait();
@@ -343,7 +344,8 @@ namespace Autotests.Tests.ApiTests
                         {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
                         {"order_comment", "order_comment"}
                     });
-            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Передано недопустимое значение ШК");
+//            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Передано недопустимое значение ШК");
+            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Ошибка обработки штрих-кодов");
 
             var responseCreateOrders2 =
                 (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_create.json",
