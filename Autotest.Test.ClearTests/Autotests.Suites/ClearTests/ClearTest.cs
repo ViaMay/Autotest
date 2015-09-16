@@ -33,14 +33,12 @@ namespace Autotests.Tests.ClearTests
 
         [Test, Description("Удаление заявок")]
         [TestCase("outgoingorders", "company")]
-        [TestCase("outgoingorders", "shop")]
         [TestCase("pickuporders", "pickup_company")]
         [TestCase("pickuporders", "warehouse")]
         public void T02_DeleteOrdersTest(string page, string filters)
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
             var filtersValue = "";
-            if (filters == "shop") filtersValue = userShopName;
             if (filters == "company") filtersValue = companyName;
             if (filters == "pickup_company") filtersValue = companyPickupName;
             if (filters == "warehouse") filtersValue = userWarehouseName;
