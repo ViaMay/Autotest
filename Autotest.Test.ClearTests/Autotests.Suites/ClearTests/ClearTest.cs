@@ -1,4 +1,5 @@
-﻿using Autotests.WebPages;
+﻿using System.Collections.Generic;
+using Autotests.WebPages;
 using Autotests.WebPages.Pages.PageAdmin;
 using NUnit.Framework;
 
@@ -13,47 +14,83 @@ namespace Autotests.Tests.ClearTests
             var documentsPage = LoadPage<AdminBaseListPage>("admin/documents/?&filters[warehouse]=" + userWarehouseName);
             while (documentsPage.Table.GetRow(0).ID.IsPresent)
             {
-                var id = documentsPage.Table.GetRow(0).ID.GetText();
-                documentsPage = LoadPage<AdminBaseListPage>("admin/documents/delete/" + id);
-                documentsPage = LoadPage<AdminBaseListPage>("admin/documents/?&filters[warehouse]=" + userWarehouseName);
+                var ids = new List<string>();
+                var i = 0;
+                do
+                {
+                    var id = documentsPage.Table.GetRow(i).ID.GetText();
+                    ids.Add(id);
+                    i++;
+                } while (documentsPage.Table.GetRow(i).ID.IsPresent);
+                foreach (var id in ids)
+                {
+                    documentsPage = LoadPage<AdminBaseListPage>("admin/documents/delete/" + id);
+                }
+                documentsPage =
+                    LoadPage<AdminBaseListPage>("admin/documents/?&filters[warehouse]=" + userWarehouseName);
             }
         }
 
         [Test, Description("Удаление заявок")]
-        public void T02_DeleteOrdersTest()
+        [TestCase("outgoingorders", "company")]
+        [TestCase("outgoingorders", "shop")]
+        [TestCase("pickuporders", "pickup_company")]
+        [TestCase("pickuporders", "warehouse")]
+        public void T02_DeleteOrdersTest(string page, string filters)
         {
-            AdminHomePage adminPage = LoginAsAdmin(adminName, adminPass);
-            var оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders?&filters[shop]=" + userShopName);
-            while (оrdersInputPage.Table.GetRow(0).ID.IsPresent)
+            var adminPage = LoginAsAdmin(adminName, adminPass);
+            var filtersValue = "";
+            if (filters == "shop") filtersValue = userShopName;
+            if (filters == "company") filtersValue = companyName;
+            if (filters == "pickup_company") filtersValue = companyPickupName;
+            if (filters == "warehouse") filtersValue = userWarehouseName;
+            var оrdersPage = LoadPage<AdminBaseListPage>("admin/" + page + "?&filters[" + filters + "]=" + filtersValue);
+            while (оrdersPage.Table.GetRow(0).ID.IsPresent)
             {
-                var id = оrdersInputPage.Table.GetRow(0).ID.GetText();
-                оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders/delete/" + id);
-                оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders?&filters[shop]=" + userShopName);
-            }
+                var ids = new List<string>();
+                var i = 0;
+                do
+                {
+                    var id = оrdersPage.Table.GetRow(i).ID.GetText();
+                    ids.Add(id);
+                    i++;
+                } while (оrdersPage.Table.GetRow(i).ID.IsPresent);
 
-            оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders?&filters[delivery_company]=" + companyName);
-            while (оrdersInputPage.Table.GetRow(0).ID.IsPresent)
-            {
-                var id = оrdersInputPage.Table.GetRow(0).ID.GetText();
-                оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders/delete/" + id);
-                оrdersInputPage = LoadPage<OrdersInputPage>("admin/orders?&filters[delivery_company]=" + companyName);
+                foreach (var id in ids)
+                {
+                    оrdersPage = LoadPage<AdminBaseListPage>("admin/" + page + "/delete/" + id);
+                }
+                оrdersPage = LoadPage<AdminBaseListPage>("admin/" + page + "?&filters[" + filters + "]=" + filtersValue);
             }
+        }
 
-            var оrdersOutputPage = LoadPage<OrdersOutputPage>("admin/outgoingorders?&filters[company]=" + companyName);
-            while (оrdersOutputPage.Table.GetRow(0).ID.IsPresent)
+        [Test, Description("Удаление заявок входящих")]
+        [TestCase("orders", "shop")]
+        [TestCase("orders", "delivery_company")]
+        public void T02_DeleteOrdersInputTest(string page, string filters)
+        {
+            var adminPage = LoginAsAdmin(adminName, adminPass);
+            var filtersValue = "";
+            if (filters == "shop") filtersValue = userShopName;
+            if (filters == "delivery_company") filtersValue = companyName;
+            var оrdersPage = LoadPage<OrdersInputPage>("admin/" + page + "?&filters[" + filters + "]=" + filtersValue);
+            while (оrdersPage.Table.GetRow(0).ID.IsPresent)
             {
-                var id = оrdersOutputPage.Table.GetRow(0).ID.GetText();
-                оrdersOutputPage = LoadPage<OrdersOutputPage>("admin/outgoingorders/delete/" + id);
-                оrdersOutputPage = LoadPage<OrdersOutputPage>("admin/outgoingorders?&filters[company]=" + companyName);
-            }
-
-            var оrdersPickupPage = LoadPage<OrdersPickupPage>("admin/pickuporders?&filters[pickup_company]=" + companyPickupName);
-            while (оrdersPickupPage.Table.GetRow(0).ID.IsPresent)
-            {
-                var id = оrdersPickupPage.Table.GetRow(0).ID.GetText();
-                оrdersPickupPage = LoadPage<OrdersPickupPage>("admin/pickuporders/delete/" + id);
-                оrdersPickupPage = LoadPage<OrdersPickupPage>("admin/pickuporders?&filters[pickup_company]=" + companyPickupName);
-            }
+                var ids = new List<string>();
+                var i = 0;
+                do
+                {
+                    var id = оrdersPage.Table.GetRow(i).ID.GetText();
+                    ids.Add(id);
+                    i++;
+                } while (оrdersPage.Table.GetRow(i).ID.IsPresent);
+                
+                foreach (var id in ids)
+                {
+                    оrdersPage = LoadPage<OrdersInputPage>("admin/" + page + "/delete/" + id);
+                }
+                оrdersPage = LoadPage<OrdersInputPage>("admin/" + page + "?&filters[" + filters + "]=" + filtersValue);
+            } 
         }
 
         [Test, Description("Удаляем склады")]
