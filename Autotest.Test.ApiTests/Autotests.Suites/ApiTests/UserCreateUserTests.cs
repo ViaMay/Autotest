@@ -9,7 +9,7 @@ namespace Autotests.Tests.ApiTests
 {
     public class UserCreateUserTests : ConstVariablesTestBase
     {
-        [Test, Description("Создание пользователя"), Ignore]
+        [Test, Description("Создание пользователя")]
         public void UserCreateTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -134,7 +134,7 @@ namespace Autotests.Tests.ApiTests
             var userPage = defaultPage.LoginAsUser(emai3, emai3);
         }
 
-        [Test, Description("Создание пользователя не успешное"), Ignore]
+        [Test, Description("Создание пользователя не успешное")]
         public void UserCreateErrorTest()
         {
             var adminPage = LoginAsAdmin(adminName, adminPass);
@@ -190,7 +190,7 @@ namespace Autotests.Tests.ApiTests
                 }
                 );
             Assert.IsFalse(responseFail.Success);
-            Assert.AreEqual(responseFail.Response.ErrorText, "email can not be empty; password can not be empty; official_name can not be empty");
+            Assert.AreEqual(responseFail.Response.ErrorText, "email:email обязательно к заполнению;password:Пароль обязательно к заполнению;official_name:official name обязательно к заполнению;");
 
             responseFail =
                 (ApiResponse.ResponseFail)apiRequest.POST("cabinet/" + userId + "/user_create.json",
@@ -202,10 +202,10 @@ namespace Autotests.Tests.ApiTests
                 }
                 );
             Assert.IsFalse(responseFail.Success);
-            Assert.AreEqual(responseFail.Response.ErrorText, "incorrect email");
+            Assert.AreEqual(responseFail.Response.ErrorText, "email:email должно быть корректным адресом электронной почты;");
 
-            var responseFailObject =
-                (ApiResponse.ResponseFailObject)apiRequest.POST("cabinet/" + userId + "/user_create.json",
+            responseFail =
+                (ApiResponse.ResponseFail)apiRequest.POST("cabinet/" + userId + "/user_create.json",
                 new NameValueCollection
                 {
                     {"official_name", "a"},
@@ -213,8 +213,9 @@ namespace Autotests.Tests.ApiTests
                     {"password", "a"},
                 }
                 );
-            Assert.IsFalse(responseFailObject.Success);
-            Assert.AreEqual(responseFailObject.Response.Error.Username, "Email должно быть корректным адресом электронной почты");
+            Assert.IsFalse(responseFail.Success);
+            Assert.AreEqual(responseFail.Response.ErrorText, "email:email должно быть корректным адресом электронной почты;");
+            
             responseFail =
                 (ApiResponse.ResponseFail)apiRequest.POST("cabinet/" + userId + "/user_create.json",
                 new NameValueCollection
@@ -229,10 +230,10 @@ namespace Autotests.Tests.ApiTests
                 }
                 );
             Assert.IsFalse(responseFail.Success);
-            Assert.AreEqual(responseFail.Response.ErrorText, "inn can contains only digits; " +
-                                                             "ogrn can contains only digits; " +
-                                                             "bank_bik can contains only digits; " +
-                                                             "bank_rs can contains only digits");
+            Assert.AreEqual(responseFail.Response.ErrorText, "inn:inn должно быть не менее 10 символа(ов);" +
+                                                             "ogrn:ogrn должно быть не менее 13 символа(ов);" +
+                                                             "bank_bik:Длина поля bank bik должна быть равной 9 символа(ов);" +
+                                                             "bank_rs:Длина поля bank rs должна быть равной 20 символа(ов);");
             
             responseFail =
                 (ApiResponse.ResponseFail)apiRequest.POST("cabinet/" + userId + "/user_create.json",
@@ -248,10 +249,10 @@ namespace Autotests.Tests.ApiTests
                 }
                 );
             Assert.IsFalse(responseFail.Success);
-            Assert.AreEqual(responseFail.Response.ErrorText, "inn can contains only 10 or 12 symbol length; " +
-                                                           "ogrn can contains only 15 or 13 symbol length; " +
-                                                           "bank_bik can contains only 9 symbol length; " +
-                                                           "bank_rs can contains only 20 symbol length");
+            Assert.AreEqual(responseFail.Response.ErrorText, "inn:inn должно быть не менее 10 символа(ов);" +
+                                                           "ogrn:ogrn должно быть не менее 13 символа(ов);" +
+                                                           "bank_bik:Длина поля bank bik должна быть равной 9 символа(ов);" +
+                                                           "bank_rs:Длина поля bank rs должна быть равной 20 символа(ов);");
 
             var response =
                 (ApiResponse.ResponseAddObject)apiRequest.POST("cabinet/" + userId + "/user_create.json",
@@ -262,8 +263,8 @@ namespace Autotests.Tests.ApiTests
                     {"password", emai1},
                 }
                 );
-            responseFail =
-                (ApiResponse.ResponseFail)apiRequest.POST("cabinet/" + userId + "/user_create.json",
+            var responseFailObject =
+                (ApiResponse.ResponseFailObject)apiRequest.POST("cabinet/" + userId + "/user_create.json",
                 new NameValueCollection
                 {                     
                 {"official_name", "Наименование юр лица3"},
@@ -271,8 +272,8 @@ namespace Autotests.Tests.ApiTests
                 {"password", emai1},
                 }
                 );
-            Assert.IsFalse(responseFail.Success);
-            Assert.AreEqual(responseFail.Response.ErrorText, "email already exists");
+            Assert.IsFalse(responseFailObject.Success);
+            Assert.AreEqual(responseFailObject.Response.Error.Username, "Email уже используется");
         }
     }
 }
