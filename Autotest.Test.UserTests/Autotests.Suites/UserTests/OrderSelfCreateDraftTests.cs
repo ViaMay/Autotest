@@ -133,9 +133,11 @@ namespace Autotests.Tests.UserTests
             orderCreateSelfPage.SaveDraftButton.Click();
             var orderPage = orderCreateSelfPage.GoTo<OrderPage>();
             orderPage.StatusOrder.WaitText("В обработке");
+            var ordersId = GetOdrerIdTakeOutUrl();
 
             orderPage.BackOrders.Click();
             var ordersPage = orderPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Подтвердить");
             ordersPage.Table.GetRow(0).ID.Click();
@@ -147,6 +149,7 @@ namespace Autotests.Tests.UserTests
 
             orderPage.Orders.Click();
             ordersPage = orderPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
             ordersPage.Table.GetRow(0).Status.WaitText("Подтверждена");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Отменить");
             ordersPage.Table.GetRow(0).ID.Click();
@@ -158,6 +161,7 @@ namespace Autotests.Tests.UserTests
 
             orderPage.BackOrders.Click();
             ordersPage = orderPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Подтвердить");
         }

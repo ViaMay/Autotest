@@ -49,9 +49,11 @@ namespace Autotests.Tests.UserTests
             orderCreateSelfPage.SaveDraftButton.Click();
             var orderPage = orderCreateSelfPage.GoTo<OrderPage>();
             orderPage.StatusOrder.WaitText("В обработке");
-
+            var ordersId = GetOdrerIdTakeOutUrl();
             orderPage.BackOrders.Click();
+
             var ordersPage = orderPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
 
             ordersPage.Table.GetRow(0).Number.WaitText("14");
             ordersPage.Table.GetRow(0).Goods.WaitText("4");
@@ -138,6 +140,7 @@ namespace Autotests.Tests.UserTests
 
             orderPage.BackOrders.Click();
             ordersPage = orderPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
             ordersPage.Table.GetRow(0).Number.WaitText("44");
             ordersPage.Table.GetRow(0).Goods.WaitText("24");
         }
@@ -184,8 +187,10 @@ namespace Autotests.Tests.UserTests
             orderCreateSelfPage.SendOrderButton.Click();
             var orderPage = orderCreateSelfPage.GoTo<OrderPage>();
             orderPage.StatusOrder.WaitText("Подтверждена");
+            var ordersId = GetOdrerIdTakeOutUrl();
             orderPage.BackOrders.Click();
             var ordersPage = orderPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
 
             ordersPage.Table.GetRow(0).Number.WaitText("14");
             ordersPage.Table.GetRow(0).Goods.WaitText("4");
@@ -274,6 +279,7 @@ namespace Autotests.Tests.UserTests
 
             orderPage.BackOrders.Click();
             ordersPage = orderPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
             ordersPage.Table.GetRow(0).Number.WaitText("44");
             ordersPage.Table.GetRow(0).Goods.WaitText("24");
         }

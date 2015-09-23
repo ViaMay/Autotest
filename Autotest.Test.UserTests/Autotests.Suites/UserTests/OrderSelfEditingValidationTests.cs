@@ -44,9 +44,10 @@ namespace Autotests.Tests.UserTests
 
             orderCreateSelfPage.SaveDraftButton.Click();
             var orderPage = orderCreateSelfPage.GoTo<OrderPage>();
-
+            var ordersId = GetOdrerIdTakeOutUrl();
             orderPage.BackOrders.Click();
             var ordersPage = orderPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
 
             ordersPage.Table.GetRow(0).Edit.Click();
             var orderSelfEditingPage = ordersPage.GoTo<OrderSelfEditingPage>();

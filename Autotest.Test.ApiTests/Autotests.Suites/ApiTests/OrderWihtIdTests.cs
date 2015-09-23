@@ -82,8 +82,8 @@ namespace Autotests.Tests.ApiTests
             
             var defaultPage = shopsPage.LoginOut();
             var homePage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
-            homePage.Orders.Click();
-            var ordersPage = homePage.GoTo<OrdersListPage>();
+            
+            var ordersPage = LoadPage<OrdersListPage>("user/?search=" + responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
 
 //           Подтверждение заявки

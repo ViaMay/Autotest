@@ -1,5 +1,6 @@
 ﻿using System;
 using Autotests.Utilities.ApiTestCore;
+using Autotests.Utilities.WebTestCore.Pages;
 using Autotests.WebPages.Pages;
 
 namespace Autotests.WebPages
@@ -100,5 +101,11 @@ namespace Autotests.WebPages
 
         public Api apiRequest;
         public DateTime nowDate;
+
+        public string GetOdrerIdTakeOutUrl()
+        {
+            var page = new DefaultPage();
+            return page.GetUrl().Replace("http://stage.ddelivery.ru/user/orders/view/", "").Replace("http://stage.ddelivery.ru/user/orders/view/", "");
+       }
     }
 }

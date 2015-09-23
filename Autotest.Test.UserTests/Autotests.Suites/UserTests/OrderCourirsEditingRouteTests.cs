@@ -52,8 +52,11 @@ namespace Autotests.Tests.UserTests
             orderCreateCourirsPage.SaveDraftButton.Click();
             var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("В обработке");
+
+            var ordersId = GetOdrerIdTakeOutUrl();
             orderCourirsPage.BackOrders.Click();
             var ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
 
             ordersPage.Table.GetRow(0).Number.WaitText("OrderNumber");
             ordersPage.Table.GetRow(0).Goods.WaitText("Хороший товар,годный");
@@ -148,6 +151,7 @@ namespace Autotests.Tests.UserTests
 
             orderCourirsPage.BackOrders.Click();
             ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
             ordersPage.Table.GetRow(0).Number.WaitText("OrderNumber2");
             ordersPage.Table.GetRow(0).Goods.WaitText("Хороший товар,годный 2");
         }
@@ -198,8 +202,10 @@ namespace Autotests.Tests.UserTests
             var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");
             var dateDelivery = orderCourirsPage.DeliveryDate.GetText();
+            var ordersId = GetOdrerIdTakeOutUrl();
             orderCourirsPage.BackOrders.Click();
             var ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
 
             ordersPage.Table.GetRow(0).Number.WaitText("OrderNumber");
             ordersPage.Table.GetRow(0).Goods.WaitText("Хороший товар,годный");
@@ -304,6 +310,7 @@ namespace Autotests.Tests.UserTests
 
             orderCourirsPage.BackOrders.Click();
             ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
             ordersPage.Table.GetRow(0).Number.WaitText("OrderNumber2");
             ordersPage.Table.GetRow(0).Goods.WaitText("Хороший товар,годный 2");
         }

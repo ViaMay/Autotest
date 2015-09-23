@@ -123,8 +123,10 @@ namespace Autotests.Tests.UserTests
             var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("В обработке");
 
+            var ordersId = GetOdrerIdTakeOutUrl();
             orderCourirsPage.BackOrders.Click();
             var ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Подтвердить");
             ordersPage.Table.GetRow(0).Delete.WaitText("Удалить");
@@ -137,6 +139,7 @@ namespace Autotests.Tests.UserTests
 
             orderCourirsPage.Orders.Click();
             ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
             ordersPage.Table.GetRow(0).Status.WaitText("Подтверждена");
             ordersPage.Table.GetRow(0).Undo.WaitText("Отменить");
             ordersPage.Table.GetRow(0).Delete.WaitAbsence();
@@ -151,6 +154,7 @@ namespace Autotests.Tests.UserTests
 
             orderCourirsPage.BackOrders.Click();
             ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Подтвердить");
             ordersPage.Table.GetRow(0).Delete.WaitText("Удалить");
@@ -160,7 +164,11 @@ namespace Autotests.Tests.UserTests
             ordersPage.Aletr.Accept();
 
             ordersPage = ordersPage.GoTo<OrdersListPage>();
-            ordersPage.Table.GetRow(0).ID.WaitTextNotContains(orderId);
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
+            ordersPage.Table.GetRow(0).ID.WaitAbsence();
+            
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId + "&deleted=1");
+            ordersPage.Table.GetRow(0).ID.WaitText(ordersId);
         }
     }
 }
