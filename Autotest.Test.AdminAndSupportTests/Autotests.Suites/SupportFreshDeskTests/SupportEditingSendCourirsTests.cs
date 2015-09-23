@@ -85,7 +85,7 @@ namespace Autotests.Tests.SupportFreshDeskTests
             pageTickets.TicketFilters.Click();
             pageTickets.TicketFiltersAll.Click();
             pageTickets.WaitTableVisible();
-            pageTickets.Table.GetRow(0).TicketLink.Click();
+            pageTickets.Table.FindRowByName(responseCreateOrders.Response.OrderId).TicketLink.Click();
             var pageTicket = pageFreshDesk.GoTo<SupportTicketOpenPage>();
 //            pageTicket.TicketStatus.WaitTextContains("Начиная с");
             pageTicket.TicketHeading.WaitTextContains("Редактирование заказа dd-" + responseCreateOrders.Response.OrderId);

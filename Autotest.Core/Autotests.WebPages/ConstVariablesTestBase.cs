@@ -105,7 +105,11 @@ namespace Autotests.WebPages
         public string GetOdrerIdTakeOutUrl()
         {
             var page = new DefaultPage();
-            return page.GetUrl().Replace("http://stage.ddelivery.ru/user/orders/view/", "").Replace("http://stage.ddelivery.ru/user/orders/view/", "");
+            return page.GetUrl()
+                .Replace("http://", "")
+                .Replace(".ddelivery.ru/user/orders/view/", "")
+                .Replace("stage", "")
+                .Replace("dev", "");
        }
     }
 }

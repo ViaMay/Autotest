@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -100,7 +101,9 @@ namespace Autotests.Utilities.ApiTestCore
             if (value.Contains(@"success"":false"))
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseFail));
-                return (ApiResponse.ResponseFail)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+                var responseFail = (ApiResponse.ResponseFail)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+                Console.WriteLine("выводим текст responseFail для ловли бага: " + responseFail.Response.ErrorText);
+                return responseFail;
             }
 //            ResponseAddOrder
             if (value.Contains(@"success"":true,""response"":{""order"":"))

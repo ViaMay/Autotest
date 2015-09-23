@@ -50,7 +50,7 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             StringAssert.DoesNotContain(expectedText, GetAttributeValue("alt"), description);
         }
 
-        public void WaiteVisible(int timeout = 6000, int waitTimeout = 100)
+        public void WaiteVisible(int timeout = 12000, int waitTimeout = 100)
         {
             var w = Stopwatch.StartNew();
             while (!IsPresent)
