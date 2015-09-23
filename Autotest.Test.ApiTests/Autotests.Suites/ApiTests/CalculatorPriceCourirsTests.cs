@@ -10,7 +10,7 @@ namespace Autotests.Tests.ApiTests
     public class CalculatorPriceCourirsTests : ConstVariablesTestBase
     {
         [Test, Description("Расчитать цену курьерская")]
-        public void CalculatorPriceSelfTest()
+        public void CalculatorPriceCourirsTest()
         {
             LoginAsAdmin(adminName, adminPass);
             var shopsPage = LoadPage<UsersShopsPage>("/admin/shops/?&filters[name]=" + userShopName);
