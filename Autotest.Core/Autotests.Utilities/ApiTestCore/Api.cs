@@ -102,7 +102,13 @@ namespace Autotests.Utilities.ApiTestCore
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseFail));
                 var responseFail = (ApiResponse.ResponseFail)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
-                Console.WriteLine("выводим текст responseFail для ловли бага: " + responseFail.Response.ErrorText);
+                try
+                {
+                    Console.WriteLine("выводим текст responseFail для ловли бага: " + responseFail.Response.ErrorText);   
+                }
+                catch (Exception)
+                {
+                }
                 return responseFail;
             }
 //            ResponseAddOrder
