@@ -50,13 +50,19 @@ namespace Autotests.Utilities.WebTestCore.SystemControls
             StringAssert.DoesNotContain(expectedText, GetAttributeValue("alt"), description);
         }
 
-        public void WaiteVisible(int timeout = 15000, int waitTimeout = 100)
+        public void WaiteVisible(int timeout = 20000, int waitTimeout = 100)
         {
             var w = Stopwatch.StartNew();
             while (!IsPresent)
             {
                 Thread.Sleep(waitTimeout);
                 if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(IsPresent, true, "Время ожидание завершено. Не найден элемент");
+            } 
+            w = Stopwatch.StartNew();
+            while (!IsVisible)
+            {
+                Thread.Sleep(waitTimeout);
+                if (w.ElapsedMilliseconds > timeout) Assert.AreEqual(IsVisible, true, "Время ожидание завершено. Не найден элемент");
             }
         }
 
