@@ -31,7 +31,7 @@ namespace Autotests.Tests.SupportFreshDeskTests
                         {"type", "1"},
                         {"delivery_point", deliveryPoinId},
                         {"to_city", "151184"},
-                        {"delivery_company", "" + deliveryCompanyId},
+                        {"delivery_company", deliveryCompanyId},
                         {"shop_refnum", userShopName},
                         {"dimension_side1", "4"},
                         {"dimension_side2", "4"},
@@ -85,7 +85,7 @@ namespace Autotests.Tests.SupportFreshDeskTests
             pageTickets.TicketFilters.Click();
             pageTickets.TicketFiltersAll.Click();
             pageTickets.WaitTableVisible();
-            pageTickets.Table.GetRow(0).TicketLink.Click();
+            pageTickets.Table.FindRowByName(responseCreateOrders.Response.OrderId).TicketLink.Click();
             var pageTicket = pageFreshDesk.GoTo<SupportTicketOpenPage>();
 //            pageTicket.TicketStatus.WaitTextContains("Начиная с");
             pageTicket.TicketHeading.WaitTextContains("Редактирование заказа dd-" + responseCreateOrders.Response.OrderId);

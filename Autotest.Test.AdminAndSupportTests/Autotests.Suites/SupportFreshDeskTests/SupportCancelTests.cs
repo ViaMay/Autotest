@@ -1,7 +1,6 @@
 ﻿using System.Collections.Specialized;
 using Autotests.Utilities.ApiTestCore;
 using Autotests.WebPages;
-using Autotests.WebPages.Pages;
 using Autotests.WebPages.Pages.PageAdmin;
 using Autotests.WebPages.Pages.PageFreshDesk;
 using NUnit.Framework;
@@ -62,7 +61,6 @@ namespace Autotests.Tests.SupportFreshDeskTests
             var defaultPage = shopsPage.LoginOut();
             var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Support.Click();
-//            userPage.SupportCreate.Click();
             var pageFreshDesk = userPage.GoTo<SupportFreshDeskPage>();
             pageFreshDesk.LabelDirectory.WaitText("Служба поддержки");
             pageFreshDesk.TicketsLink.Click();
@@ -70,9 +68,8 @@ namespace Autotests.Tests.SupportFreshDeskTests
             pageTickets.TicketFilters.Click();
             pageTickets.TicketFiltersAll.Click();
             pageTickets.WaitTableVisible();
-            pageTickets.Table.GetRow(0).TicketLink.Click();
+            pageTickets.Table.FindRowByName(responseOrderCancel.Response.OrderId).TicketLink.Click();
             var pageTicket = pageFreshDesk.GoTo<SupportTicketOpenPage>();
-//            pageTicket.TicketStatus.WaitTextContains("Начиная с");
             pageTicket.TicketHeading.WaitTextContains("Отмена заказа dd-" + responseCreateOrders.Response.OrderId);
             pageTicket.TicketInfo.WaitTextContains("admin/orders/edit/" + responseCreateOrders.Response.OrderId);
             pageTicket.TicketInfo.WaitTextContains("admin/outgoingorders/edit/");

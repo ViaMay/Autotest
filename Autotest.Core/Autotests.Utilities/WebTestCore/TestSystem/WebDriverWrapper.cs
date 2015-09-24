@@ -70,7 +70,7 @@ namespace Autotests.Utilities.WebTestCore.TestSystem
             {
                 driver.Manage().Cookies.DeleteAllCookies();
             }
-            catch (UnhandledAlertException e)
+            catch (UnhandledAlertException)
             {
                 var alert = driver.SwitchTo().Alert();
                 alert.Dismiss();

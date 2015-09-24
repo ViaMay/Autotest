@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -100,7 +101,15 @@ namespace Autotests.Utilities.ApiTestCore
             if (value.Contains(@"success"":false"))
             {
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseFail));
-                return (ApiResponse.ResponseFail)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+                var responseFail = (ApiResponse.ResponseFail)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+                try
+                {
+                    Console.WriteLine("выводим текст responseFail для ловли бага: " + responseFail.Response.ErrorText);   
+                }
+                catch (Exception)
+                {
+                }
+                return responseFail;
             }
 //            ResponseAddOrder
             if (value.Contains(@"success"":true,""response"":{""order"":"))
@@ -147,32 +156,20 @@ namespace Autotests.Utilities.ApiTestCore
 //            ResponseDeamonСities
             if (value.Contains(@"success"":true,""options"))
             {
-                Encoding utf8 = Encoding.GetEncoding("utf-8");
-                Encoding win1251 = Encoding.GetEncoding("windows-1251");
-                var bytes = win1251.GetBytes(value);
-                value = utf8.GetString(bytes);
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeamonСities));
-                return (ApiResponse.ResponseDeamonСities)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+                return (ApiResponse.ResponseDeamonСities)json.ReadObject(new MemoryStream(Encoding.GetEncoding(1252).GetBytes(value)));
             }
 //            ResponseDeamonСity
             if (value.Contains(@"success"":true,""result"))
             {
-                Encoding utf8 = Encoding.GetEncoding("utf-8");
-                Encoding win1251 = Encoding.GetEncoding("windows-1251");
-                var bytes = win1251.GetBytes(value);
-                value = utf8.GetString(bytes);
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeamonСity));
-                return (ApiResponse.ResponseDeamonСity)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+                return (ApiResponse.ResponseDeamonСity)json.ReadObject(new MemoryStream(Encoding.GetEncoding(1252).GetBytes(value)));
             }
 //            ResponseDeamonPoints
             if (value.Contains(@"success"":true,""points"))
             {
-                Encoding utf8 = Encoding.GetEncoding("utf-8");
-                Encoding win1251 = Encoding.GetEncoding("windows-1251");
-                var bytes = win1251.GetBytes(value);
-                value = utf8.GetString(bytes);
                 var json = new DataContractJsonSerializer(typeof(ApiResponse.ResponseDeamonPoints));
-                return (ApiResponse.ResponseDeamonPoints)json.ReadObject(new MemoryStream(Encoding.UTF8.GetBytes(value)));
+                return (ApiResponse.ResponseDeamonPoints)json.ReadObject(new MemoryStream(Encoding.GetEncoding(1252).GetBytes(value)));
             }
 //            ResponseStatusConfirm
             if (value.Contains(@"status") && value.Contains(@"message"))

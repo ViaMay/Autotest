@@ -44,9 +44,10 @@ namespace Autotests.Tests.UserTests
 
             orderCreateSelfPage.SaveDraftButton.Click();
             var orderPage = orderCreateSelfPage.GoTo<OrderPage>();
-
+            var ordersId = GetOdrerIdTakeOutUrl();
             orderPage.BackOrders.Click();
             var ordersPage = orderPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
 
             ordersPage.Table.GetRow(0).Edit.Click();
             var orderSelfEditingPage = ordersPage.GoTo<OrderSelfEditingPage>();
@@ -81,22 +82,16 @@ namespace Autotests.Tests.UserTests
 
             orderSelfEditingPage.BuyerPhoneAdd.SetValueAndWait("+74444444444, +75555555555,  +75555555555");
             orderSelfEditingPage.BuyerEmail.SetValueAndWait("+7");
-            orderSelfEditingPage.SaveChangeButton.Click();
-
-            orderSelfEditingPage.SaveChangeButton.ClickAndWaitTextError(3);
-            orderSelfEditingPage.ErrorText[0].WaitText("Длина поля «Дополнительный телефон получателя» должна быть не более 30 символов");
-            orderSelfEditingPage.ErrorText[1].WaitText("Email должно быть корректным адресом электронной почты");
-
-            orderSelfEditingPage.BuyerPhoneAdd.SetValueAndWait("");
-            orderSelfEditingPage.BuyerEmail.SetValueAndWait("");
-
             orderSelfEditingPage.GoodsDescription.SetValue("");
             orderSelfEditingPage.SaveChangeButton.Click();
 
-            orderSelfEditingPage.SaveChangeButton.Click();
-            orderSelfEditingPage.SaveChangeButton.ClickAndWaitTextError(2);
-            orderSelfEditingPage.ErrorText[0].WaitText("Описание посылки обязательно к заполнению");
+            orderSelfEditingPage.SaveChangeButton.ClickAndWaitTextError(4);
+            orderSelfEditingPage.ErrorText[0].WaitText("Длина поля «Дополнительный телефон получателя» должна быть не более 30 символов");
+            orderSelfEditingPage.ErrorText[1].WaitText("Email должно быть корректным адресом электронной почты");
+            orderSelfEditingPage.ErrorText[2].WaitText("Описание посылки обязательно к заполнению");
 
+            orderSelfEditingPage.BuyerPhoneAdd.SetValueAndWait("");
+            orderSelfEditingPage.BuyerEmail.SetValueAndWait("");
             orderSelfEditingPage.GoodsDescription.SetValue("GoodsDescription");
             orderSelfEditingPage.SaveChangeButton.Click();
             orderPage = orderSelfEditingPage.GoTo<OrderPage>();

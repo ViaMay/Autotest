@@ -138,7 +138,7 @@ namespace Autotests.Tests.ApiTests
                 {
                     {"method", "shop_create"},
                 });
-             Assert.AreEqual(responseFail.Response.ErrorText, "POST method required");
+             Assert.AreEqual(responseFail.Response.ErrorText, "HTTP-метод не корректен");
          }
     }
 }

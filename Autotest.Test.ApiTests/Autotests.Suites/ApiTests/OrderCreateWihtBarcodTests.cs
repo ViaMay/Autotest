@@ -88,8 +88,7 @@ namespace Autotests.Tests.ApiTests
 
             DefaultPage defaultPage = shopsPage.LoginOut();
             UserHomePage userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.Orders.Click();
-            var ordersPage = userPage.GoTo<OrdersListPage>();
+            var ordersPage = LoadPage<OrdersListPage>("user/?search=" + responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Type.WaitText("Курьерская");
             ordersPage.Table.GetRow(0).Number.WaitText(userShopName);
@@ -181,8 +180,7 @@ namespace Autotests.Tests.ApiTests
 
             DefaultPage defaultPage = shopsPage.LoginOut();
             UserHomePage userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.Orders.Click();
-            var ordersPage = userPage.GoTo<OrdersListPage>();
+            var ordersPage = LoadPage<OrdersListPage>("user/?search=" + responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Type.WaitText("Самовывоз");
             ordersPage.Table.GetRow(0).Number.WaitText(userShopName);
@@ -306,7 +304,8 @@ namespace Autotests.Tests.ApiTests
                         {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
                         {"order_comment", "order_comment"}
                     });
-            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Резервирование штрих-кодов недоступно для указанной ТК");
+//            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Резервирование штрих-кодов недоступно для указанной ТК");
+            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Ошибка обработки штрих-кодов");
 
             companyCreatePage = LoadPage<CompanyCreatePage>("admin/companies/edit/" + deliveryCompanyId);
             companyCreatePage.BarcodePull.CheckAndWait();
@@ -343,7 +342,8 @@ namespace Autotests.Tests.ApiTests
                         {"metadata", "[{'name': 'Описание', 'article': 'Артикул', 'count': 1}]"},
                         {"order_comment", "order_comment"}
                     });
-            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Передано недопустимое значение ШК");
+//            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Передано недопустимое значение ШК");
+            Assert.AreEqual(responseCreateOrders.Response.ErrorText, "Ошибка обработки штрих-кодов");
 
             var responseCreateOrders2 =
                 (ApiResponse.ResponseFailObject)apiRequest.POST(keyShopPublic + "/order_create.json",

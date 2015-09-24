@@ -53,8 +53,7 @@ namespace Autotests.Tests.ApiTests
 
            var defaultPage = shopsPage.LoginOut();
             var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.Orders.Click();
-            var ordersPage = userPage.GoTo<OrdersListPage>();
+            var ordersPage = LoadPage<OrdersListPage>("user/?search=" + responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Type.WaitText("Самовывоз");
             ordersPage.Table.GetRow(0).Status.WaitText("В обработке");
@@ -91,8 +90,7 @@ namespace Autotests.Tests.ApiTests
                 });
             Assert.IsTrue(responseConfirmationOrders.Success, "Ожидался ответ true на отправленный запрос POST по API");
 
-            orderSelfEditingPage.Orders.Click();
-            ordersPage = orderSelfEditingPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Status.WaitText("Подтверждена");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Отменить");
@@ -128,8 +126,8 @@ namespace Autotests.Tests.ApiTests
             var adminMaintenancePage = LoadPage<AdminMaintenancePage>("admin/maintenance/process_i_orders");
             defaultPage = adminMaintenancePage.LoginOut();
             userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.Orders.Click();
-            ordersPage = userPage.GoTo<OrdersListPage>();
+            
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Status.WaitText("На складе ИМ");
             ordersPage.Table.GetRow(0).Сonfirm.WaitText("Отменить");

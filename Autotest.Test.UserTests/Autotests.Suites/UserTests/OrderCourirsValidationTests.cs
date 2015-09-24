@@ -194,7 +194,9 @@ namespace Autotests.Tests.UserTests
             orderCreateCourirsPage.Weight.SetValueAndWait("10");
             orderCreateCourirsPage.СountedButton.Click();
             orderCreateCourirsPage.WaitCounted();
-
+            orderCreateCourirsPage.DeliveryList[0].WaitVisible();
+            orderCreateCourirsPage.DeliveryList[0].Click();
+            orderCreateCourirsPage.GetArticleRow(0).Name.SetValueAndWait("");
             orderCreateCourirsPage.SendOrderButton.Click();
             var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
             orderCourirsPage.StatusOrder.WaitText("Подтверждена");

@@ -57,7 +57,7 @@ namespace Autotests.WebPages.Pages.PageUser
             return row;
         }
 
-        public void WaitCounted(int timeout = 10000, int waitTimeout = 100)
+        public void WaitCounted(int timeout = 20000, int waitTimeout = 100)
         {
             var w = Stopwatch.StartNew();
             while (Countedloader.IsPresent)

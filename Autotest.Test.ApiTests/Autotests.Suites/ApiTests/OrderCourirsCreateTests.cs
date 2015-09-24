@@ -51,8 +51,7 @@ namespace Autotests.Tests.ApiTests
 
             var defaultPage = shopsPage.LoginOut();
             var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
-            userPage.Orders.Click();
-            var ordersPage = userPage.GoTo<OrdersListPage>();
+            var ordersPage = LoadPage<OrdersListPage>("user/?search=" + responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).ID.WaitText(responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Type.WaitText("Курьерская");
             ordersPage.Table.GetRow(0).Number.WaitText(userShopName);

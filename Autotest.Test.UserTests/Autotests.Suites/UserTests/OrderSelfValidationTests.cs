@@ -66,14 +66,19 @@ namespace Autotests.Tests.UserTests
             var orderCreateSelfPage = shopsListPage.GoTo<OrderSelfCreatePage>();
             orderCreateSelfPage = orderCreateSelfPage.RefreshUntilMap();
 
+            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("+74444444444, +75555555555,  +75555555555");
+            orderCreateSelfPage.BuyerEmail.SetValueAndWait("+7");
+
             orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError(3);
             orderCreateSelfPage.ErrorText[0].WaitText("ФИО получателя обязательно к заполнению");
             orderCreateSelfPage.ErrorText[1].WaitText("Телефон получателя обязательно к заполнению");
-            orderCreateSelfPage.ErrorText[2].WaitText("Описание посылки обязательно к заполнению");
-            orderCreateSelfPage.ErrorText[3].WaitText("Сторона 1 обязательно к заполнению");
-            orderCreateSelfPage.ErrorText[4].WaitText("Сторона 2 обязательно к заполнению");
-            orderCreateSelfPage.ErrorText[5].WaitText("Сторона 3 обязательно к заполнению");
-            orderCreateSelfPage.ErrorText[6].WaitText("Вес обязательно к заполнению");
+            orderCreateSelfPage.ErrorText[2].WaitText("Длина поля «Дополнительный телефон получателя» должна быть не более 30 символов");
+            orderCreateSelfPage.ErrorText[3].WaitText("Email должно быть корректным адресом электронной почты"); 
+            orderCreateSelfPage.ErrorText[4].WaitText("Описание посылки обязательно к заполнению");
+            orderCreateSelfPage.ErrorText[5].WaitText("Сторона 1 обязательно к заполнению");
+            orderCreateSelfPage.ErrorText[6].WaitText("Сторона 2 обязательно к заполнению");
+            orderCreateSelfPage.ErrorText[7].WaitText("Сторона 3 обязательно к заполнению");
+            orderCreateSelfPage.ErrorText[8].WaitText("Вес обязательно к заполнению");
 
             orderCreateSelfPage.ActionErrorText[0].WaitText("Ошибка просчета цены, или маршрут недоступен");
             orderCreateSelfPage.ActionErrorText[1].WaitText("Компания доставки обязательно к заполнению");
@@ -88,6 +93,8 @@ namespace Autotests.Tests.UserTests
             orderCreateSelfPage.Length.SetValueAndWait("4");
             orderCreateSelfPage.Weight.SetValueAndWait("4");
             orderCreateSelfPage.DeclaredPrice.SetValueAndWait("4");
+            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("");
+            orderCreateSelfPage.BuyerEmail.SetValueAndWait("");
 
             orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError(3);
             orderCreateSelfPage.ActionErrorText[0].WaitText("Ошибка просчета цены, или маршрут недоступен");
@@ -96,18 +103,8 @@ namespace Autotests.Tests.UserTests
             orderCreateSelfPage.ActionErrorText[3].WaitText("Город получения обязательно к заполнению");
             orderCreateSelfPage.ErrorText[0].WaitText("( Если по вашим оценкам ваше отправление превышает 0,5 м3)");
             orderCreateSelfPage.ErrorText[1].WaitText("Внимание! Калькулятор произвел расчет по параметрам, не учитывающим кол-во мест в заказе");
-            
-            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("+74444444444, +75555555555,  +75555555555");
-            orderCreateSelfPage.BuyerEmail.SetValueAndWait("+7");
-            orderCreateSelfPage.SendOrderButton.Click();
 
-            orderCreateSelfPage.SendOrderButton.ClickAndWaitTextError(3);
-            orderCreateSelfPage.ErrorText[0].WaitText("Длина поля «Дополнительный телефон получателя» должна быть не более 30 символов");
-            orderCreateSelfPage.ErrorText[1].WaitText("Email должно быть корректным адресом электронной почты");
-
-            orderCreateSelfPage.BuyerPhoneAdd.SetValueAndWait("");
-            orderCreateSelfPage.BuyerEmail.SetValueAndWait("");
-
+            orderCreateSelfPage.СountedButton.Click();
             orderCreateSelfPage.MapOrders.SwitchToFrame();
             orderCreateSelfPage.MapOrders.City.SelectValueFirst("Москва");
             orderCreateSelfPage.MapOrders.ImageLocator.Click();

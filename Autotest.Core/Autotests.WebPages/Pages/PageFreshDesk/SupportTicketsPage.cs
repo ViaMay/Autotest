@@ -10,7 +10,7 @@ namespace Autotests.WebPages.Pages.PageFreshDesk
         public SupportTicketsPage()
         {
 
-            Table = new SupportTicketsListControl(By.ClassName("table"));
+            Table = new SupportTicketsListControl("ticket-list");
             TicketFilters = new Link(By.XPath("//*[@id='ticket-filters']/a"));
             TicketFiltersAll = new Link(By.LinkText("Все заявки"));
             TableLoading = new StaticText(By.CssSelector("div.loading.loading-box"));

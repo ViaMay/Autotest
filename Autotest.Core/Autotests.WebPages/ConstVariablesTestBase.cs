@@ -1,12 +1,13 @@
 ﻿using System;
 using Autotests.Utilities.ApiTestCore;
+using Autotests.Utilities.WebTestCore.Pages;
 using Autotests.WebPages.Pages;
 
 namespace Autotests.WebPages
 {
     public class ConstVariablesTestBase : SimpleFunctionalTestBase
     {
- //            public override string ApplicationBaseUrl { get { return "dev:0DShabby7maiden&0Edata@dev.ddelivery.ru"; } }
+//		public override string ApplicationBaseUrl { get { return "dev:0DShabby7maiden&0Edata@dev.ddelivery.ru"; } }
         public override string ApplicationBaseUrl { get { return "stage.ddelivery.ru"; } }
 
 //        public override string ApplicationBaseUrl { get { return "cabinet.ddelivery.ru"; } }
@@ -100,5 +101,15 @@ namespace Autotests.WebPages
 
         public Api apiRequest;
         public DateTime nowDate;
+
+        public string GetOdrerIdTakeOutUrl()
+        {
+            var page = new DefaultPage();
+            return page.GetUrl()
+                .Replace("http://", "")
+                .Replace(".ddelivery.ru/user/orders/view/", "")
+                .Replace("stage", "")
+                .Replace("dev", "");
+       }
     }
 }

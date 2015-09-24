@@ -50,8 +50,10 @@ namespace Autotests.Tests.UserTests
 
             orderCreateCourirsPage.SaveDraftButton.Click();
             var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
+            var ordersId = GetOdrerIdTakeOutUrl();
             orderCourirsPage.BackOrders.Click();
             var ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
 
             ordersPage.Table.GetRow(0).Edit.Click();
             var orderCourirsEditingPage = ordersPage.GoTo<OrderCourirsEditingPage>();
@@ -131,8 +133,10 @@ namespace Autotests.Tests.UserTests
             
             orderCreateCourirsPage.SaveDraftButton.Click();
             var orderCourirsPage = orderCreateCourirsPage.GoTo<OrderPage>();
+            var ordersId = GetOdrerIdTakeOutUrl();
             orderCourirsPage.BackOrders.Click();
             var ordersPage = orderCourirsPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + ordersId);
 
             ordersPage.Table.GetRow(0).Edit.Click();
             var orderCourirsEditingPage = ordersPage.GoTo<OrderCourirsEditingPage>();

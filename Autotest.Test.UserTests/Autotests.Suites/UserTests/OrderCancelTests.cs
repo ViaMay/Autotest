@@ -54,6 +54,7 @@ namespace Autotests.Tests.UserTests
             var userPage = defaultPage.LoginAsUser(userNameAndPass, userNameAndPass);
             userPage.Orders.Click();
             var ordersPage = userPage.GoTo<OrdersListPage>();
+            ordersPage = LoadPage<OrdersListPage>("user/?search=" + responseCreateOrders.Response.OrderId);
             ordersPage.Table.GetRow(0).Number.WaitText("test_userShops_via");
             ordersPage.Table.GetRow(0).Status.WaitText("На складе ИМ");
             ordersPage.Table.GetRow(0).Undo.Click();
